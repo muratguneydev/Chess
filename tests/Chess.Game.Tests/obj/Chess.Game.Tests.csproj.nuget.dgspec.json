@@ -1,0 +1,142 @@
+{
+  "format": 1,
+  "restore": {
+    "/Code/Chess/tests/Chess.Game.Tests/Chess.Game.Tests.csproj": {}
+  },
+  "projects": {
+    "/Code/Chess/src/Chess.Game/Chess.Game.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Code/Chess/src/Chess.Game/Chess.Game.csproj",
+        "projectName": "Chess.Game",
+        "projectPath": "/Code/Chess/src/Chess.Game/Chess.Game.csproj",
+        "packagesPath": "/Users/murat/.nuget/packages/",
+        "outputPath": "/Code/Chess/src/Chess.Game/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/murat/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/Users/murat/.dotnet/NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100-rc.1.21463.6/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Code/Chess/tests/Chess.Game.Tests/Chess.Game.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Code/Chess/tests/Chess.Game.Tests/Chess.Game.Tests.csproj",
+        "projectName": "Chess.Game.Tests",
+        "projectPath": "/Code/Chess/tests/Chess.Game.Tests/Chess.Game.Tests.csproj",
+        "packagesPath": "/Users/murat/.nuget/packages/",
+        "outputPath": "/Code/Chess/tests/Chess.Game.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/murat/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/Users/murat/.dotnet/NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Code/Chess/src/Chess.Game/Chess.Game.csproj": {
+                "projectPath": "/Code/Chess/src/Chess.Game/Chess.Game.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.10.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100-rc.1.21463.6/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
