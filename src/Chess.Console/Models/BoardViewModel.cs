@@ -5,17 +5,13 @@ namespace Chess.Console;
 public class BoardViewModel
 {
 	private readonly Board board;
-	private readonly BoardCellViewModel[,] boardCellViewModelTable;
 
 	public BoardViewModel(Board board)
 	{
 		this.board = board;
-		
-		this.boardCellViewModelTable = new BoardCellViewModel[this.board.Table.GetLength(0),this.board.Table.GetLength(1)];
-		this.InitializeBoardCellViewModelTable();
 	}
 
-	public BoardCellViewModel[,] BoardCellViewModelTable => this.boardCellViewModelTable;
+	public BoardCellViewModel[,] BoardCellViewModelTable => this.PopulateBoardCellViewModelTable();
 
 	public Cell GetCell(string cellName)
 	{
@@ -31,7 +27,7 @@ public class BoardViewModel
 
 		var x = xName - 97;
 		var y = yName - 49;
-		return this.boardCellViewModelTable[x, y].Cell;
+		return this.BoardCellViewModelTable[x, y].Cell;//try to optimize this. this triggers table build every time.
 	}
 
 	public string GetCellName(Cell cell)
@@ -39,15 +35,18 @@ public class BoardViewModel
 		return $"{(char)(cell.Coordinate.X+97)}{cell.Coordinate.Y+1}";
 	}
 
-	private void InitializeBoardCellViewModelTable()
+	private BoardCellViewModel[,] PopulateBoardCellViewModelTable()
 	{
+		var boardCellViewModelTable = new BoardCellViewModel[this.board.Table.GetLength(0),this.board.Table.GetLength(1)];
 		for (var x=0;x < this.board.Table.GetLength(0);x++)
 		{
 			for (var y=0;y < this.board.Table.GetLength(1);y++)
 			{
-				this.boardCellViewModelTable[x,y] = new BoardCellViewModel(this.board.Table[x,y]);
+				boardCellViewModelTable[x,y] = new BoardCellViewModel(this.board.Table[x,y]);
 			}
 		}
+
+		return boardCellViewModelTable;
 	}
 
 

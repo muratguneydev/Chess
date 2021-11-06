@@ -24,7 +24,7 @@ public class MoveCommand : ChessCommand
 		}
 		catch (Exception ex)
 		{
-			return new ErrorView(new ErrorViewModel(ex.ToString()), this.consoleWriterFactory);
+			return new ErrorView(new ErrorViewModel(ex.Message), this.consoleWriterFactory);
 		}
 
 		var move = fromTo.Move();

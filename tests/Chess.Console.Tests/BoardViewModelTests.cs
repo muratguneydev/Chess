@@ -9,7 +9,7 @@ public class BoardViewModelTests
     [TestCase("a9", TestName="Invalid y in cell name")]
     public void ShouldThrowArgumentExceptionForInvalidCellName(string cellString)
 	{
-		var boardViewModel = GetBoard();
+		var boardViewModel = BoardViewModelTestHelper.Create();
 
 		Assert.Throws<InvalidCellNameException>(() => boardViewModel.GetCell(cellString));
 	}
@@ -17,7 +17,7 @@ public class BoardViewModelTests
 	[TestCase("c8", 2, 7, TestName="Parse cell c8 correctly from cell name")]
     public void ShouldParseCellsCorrectlyFromCellString(string cellString, int expectedX, int expectedY)
     {
-		var boardViewModel = GetBoard();
+		var boardViewModel = BoardViewModelTestHelper.Create();
 
 		var cell = boardViewModel.GetCell(cellString);
         Assert.AreEqual(new Coordinate(expectedX, expectedY), cell.Coordinate);
@@ -28,18 +28,8 @@ public class BoardViewModelTests
 	[TestCase(7, 7, "h8", TestName="Should produce cell name h8 correctly from cell")]
     public void ShouldGetCellNameCorrectly(int x, int y, string cellString)
     {
-		var boardViewModel = GetBoard();
+		var boardViewModel = BoardViewModelTestHelper.Create();
 
 		Assert.AreEqual(cellString, boardViewModel.GetCellName(new Cell(new Coordinate(x, y))));
     }
-
-	private static BoardViewModel GetBoard()
-	{
-		var whitePlayer = new WhitePlayer();
-		var blackPlayer = new BlackPlayer();
-		var session = new Session(whitePlayer, blackPlayer);
-		var board = new Board(session);
-		board.SetOpeningPosition();
-		return new BoardViewModel(board);;
-	}
 }

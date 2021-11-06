@@ -5,6 +5,7 @@ namespace Chess.Console;
 class Program
 {
 	private static readonly ConsoleWriterFactory consoleWriterFactory = new ConsoleWriterFactory();
+	private static readonly IConsoleReader consoleReader = new ConsoleReader();
 	static void Main(string[] args)
 	{
 		//TestClass.BlackPawnShouldBeAbleToAttack(board => new FromTo(board.b7, board.a6));		
@@ -15,17 +16,14 @@ class Program
 		
 		var board = new Board(session);
 		board.SetOpeningPosition();
+		var boardViewModel = new BoardViewModel(board);
+		DisplayFromWhiteSide(boardViewModel);
 		
-		var consoleCommandInputIterator = new ConsoleCommandInputIterator(consoleWriterFactory, new BoardViewModel(board));
-		while (consoleCommandInputIterator.MoveNext())
+		var consoleCommandInputProducer = new ConsoleCommandInputProducer(consoleReader, consoleWriterFactory, boardViewModel);
+		foreach(var command in consoleCommandInputProducer)
 		{
-			var boardViewModel = new BoardViewModel(board);
-			consoleCommandInputIterator.UpdateBoardInformation(boardViewModel);
-			DisplayFromWhiteSide(boardViewModel);
-
-			var command = consoleCommandInputIterator.Current;
 			command.Execute(session).Display();
-			
+			DisplayFromWhiteSide(boardViewModel);
 			foreach (var item in session.MoveHistory)
 			{
 				new ValidMoveView(new MoveViewModel(item), boardViewModel, consoleWriterFactory).Display();

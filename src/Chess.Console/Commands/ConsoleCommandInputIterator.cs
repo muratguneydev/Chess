@@ -4,13 +4,16 @@ namespace Chess.Console;
 
 public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 {
+	private readonly IConsoleReader consoleReader;
 	private readonly ConsoleWriterFactory consoleWriterFactory;
 	private BoardViewModel boardViewModel;
 
 	private bool exitRequested;
 
-	public ConsoleCommandInputIterator(ConsoleWriterFactory consoleWriterFactory, BoardViewModel boardViewModel)
+	public ConsoleCommandInputIterator(IConsoleReader consoleReader, ConsoleWriterFactory consoleWriterFactory,
+		BoardViewModel boardViewModel)
 	{
+		this.consoleReader = consoleReader;
 		this.consoleWriterFactory = consoleWriterFactory;
 		this.boardViewModel = boardViewModel;
 	}
@@ -18,11 +21,6 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 	public ChessCommand Current => this.GetCommand();
 
 	object IEnumerator.Current => this.Current;
-
-	public void UpdateBoardInformation(BoardViewModel boardViewModel)
-	{
-		this.boardViewModel = boardViewModel;
-	}
 
 	public void Dispose()
 	{
@@ -41,7 +39,7 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 
 	private ChessCommand GetCommand()
 	{
-		var moveString = System.Console.ReadLine();
+		var moveString = this.consoleReader.ReadLine();
 		if (string.IsNullOrWhiteSpace(moveString))
 		{
 			this.exitRequested = true;
