@@ -1,4 +1,3 @@
-using System;
 using Chess.Game;
 using NUnit.Framework;
 
@@ -35,12 +34,12 @@ public class ConsoleMoveInputTests
         Assert.AreEqual(new Coordinate(toX, toY), consoleMoveInput.FromTo.To.Coordinate);
     }
 
-	private static Board GetBoard()
+	private static BoardViewModel GetBoard()
 	{
 		var whitePlayer = new WhitePlayer();
 		var blackPlayer = new BlackPlayer();
 		var session = new Session(whitePlayer, blackPlayer);
 		var board = new Board(session);
-		return board;
+		return new BoardViewModel(board);
 	}
 }
