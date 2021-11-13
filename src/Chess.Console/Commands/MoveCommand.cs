@@ -15,6 +15,7 @@ public class MoveCommand : ChessCommand
 		this.boardViewModel = boardViewModel;
 		this.moveString = moveString;
 	}
+	
 	public override View Execute(Session session)
 	{
 		FromTo fromTo;

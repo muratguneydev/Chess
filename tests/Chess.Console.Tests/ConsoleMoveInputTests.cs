@@ -1,4 +1,5 @@
 using Chess.Game;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Console.Tests;
@@ -12,7 +13,7 @@ public class ConsoleMoveInputTests
 	{
 		var board = GetBoard();
 
-		Assert.Throws<InvalidMoveSringException>(() => new ConsoleMoveInput(moveString, board));
+		Assert.Throws<InvalidMoveStringException>(() => new ConsoleMoveInput(moveString, board));
 	}
 
 	[TestCase("z2-b3", TestName="Invalid from cell name")]
@@ -36,10 +37,6 @@ public class ConsoleMoveInputTests
 
 	private static BoardViewModel GetBoard()
 	{
-		var whitePlayer = new WhitePlayer();
-		var blackPlayer = new BlackPlayer();
-		var session = new Session(whitePlayer, blackPlayer);
-		var board = new Board(session);
-		return new BoardViewModel(board);
+		return new BoardViewModel(BoardTestHelper.Create());
 	}
 }

@@ -1,3 +1,5 @@
+using Chess.Game.Tests.Helpers;
+
 namespace Chess.Game.Tests;
 
 internal class TestPiece : BoardPieceDecorator

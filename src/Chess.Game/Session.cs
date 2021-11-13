@@ -1,49 +1,60 @@
-namespace Chess.Game
+namespace Chess.Game;
+
+public class Session
 {
-	public class Session
+	private readonly WhitePlayer whitePlayer;
+	private readonly BlackPlayer blackPlayer;
+	private readonly Stack<Move> moves = new Stack<Move>();
+	public event Action<Move>? OnMove;
+
+	public Session(WhitePlayer whitePlayer, BlackPlayer blackPlayer)
 	{
-		private readonly WhitePlayer whitePlayer;
-		private readonly BlackPlayer blackPlayer;
-		private readonly Stack<Move> moves = new Stack<Move>();
-		public event Action<Move>? OnMove;
+		this.whitePlayer = whitePlayer;
+		this.blackPlayer = blackPlayer;
+	}
 
-		public Session(WhitePlayer whitePlayer, BlackPlayer blackPlayer)
-		{
-			this.whitePlayer = whitePlayer;
-			this.blackPlayer = blackPlayer;
-			this.PlayTurn = Color.White;
-		}
+	public bool IsComplete => false;
 
-		public bool IsComplete => false;
+	public Winner Winner => EmptyWinner.Winner;
 
-		public Winner Winner => EmptyWinner.Winner;
+	public Color PlayTurn => this.CurrentPlayer.Color;
+	public Player CurrentPlayer => this.moves.Any()
+		? this.moves.Peek().Color == Color.Black ? this.whitePlayer : this.blackPlayer
+		: this.whitePlayer;
 
-		public Color PlayTurn { get; private set; }
+	public Player WaitingPlayer => this.CurrentPlayer == this.whitePlayer
+		? this.blackPlayer
+		: this.whitePlayer;
 
-		public void Start()
-		{
-			
-		}
+	public void Start()
+	{
+		this.whitePlayer.ResumePlaying();
+	}
 
-		public void Next(Move move)
-		{
-			if (!move.IsValid)
-				return;
-			
-			this.moves.Push(move);
-			this.PlayTurn = move.Color == Color.Black ? Color.White : Color.Black;
-		}
+	public void Next(Move move)
+	{
+		if (!move.IsValid)
+			return;
 
-		public Move Back()
-		{
-			if (!this.moves.Any())
-				return EmptyMove.Move;
-			
-			var move = this.moves.Pop();
-			this.PlayTurn = move.Color;
-			return move;
-		}
+		this.moves.Push(move);
+		this.SwitchTurns();
+	}
 
-		public IEnumerable<Move> MoveHistory => this.moves;
+	public Move Back()
+	{
+		if (!this.moves.Any())
+			return EmptyMove.Move;
+		
+		var lastMove= this.moves.Pop();
+		this.SwitchTurns();
+		return lastMove;
+	}
+
+	public IEnumerable<Move> MoveHistory => this.moves;
+
+	private void SwitchTurns()
+	{
+		this.WaitingPlayer.Wait();
+		this.CurrentPlayer.ResumePlaying();
 	}
 }

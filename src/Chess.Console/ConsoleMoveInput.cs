@@ -7,14 +7,13 @@ public record ConsoleMoveInput
 	public ConsoleMoveInput(string moveString, BoardViewModel boardViewModel)
 	{
 		if (moveString == null)
-			throw new InvalidMoveSringException(string.Empty);
+			throw new InvalidMoveStringException(string.Empty);
 		var moveStringParts = moveString.Split("-");
 		if (moveStringParts.Length != 2)
-			throw new InvalidMoveSringException(moveString);
+			throw new InvalidMoveStringException(moveString);
 		
 		var fromCellString = moveStringParts[0];
 		var toCellString = moveStringParts[1];
-		//var boardViewModel = new BoardViewModel(board);
 		
 		var fromCell = boardViewModel.GetCell(fromCellString);
 		var toCell = boardViewModel.GetCell(toCellString);
@@ -32,9 +31,9 @@ public class InvalidCellNameException : ArgumentException
 	}
 }
 
-public class InvalidMoveSringException : ArgumentException
+public class InvalidMoveStringException : ArgumentException
 {
-	public InvalidMoveSringException(string moveString)
+	public InvalidMoveStringException(string moveString)
 		: base($"Provided move string '{moveString}' wasn't in the correct format. The format is: cellFrom-cellTo example: a1-a2")
 	{
 	}

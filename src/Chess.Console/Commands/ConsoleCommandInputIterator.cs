@@ -46,6 +46,9 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 			return new ExitCommand(this.consoleWriterFactory);
 		}
 
+		if (moveString == "back")
+			return new TakeBackCommand(this.consoleWriterFactory, this.boardViewModel);
+
 		return new MoveCommand(this.consoleWriterFactory, this.boardViewModel, moveString);
 	}
 }

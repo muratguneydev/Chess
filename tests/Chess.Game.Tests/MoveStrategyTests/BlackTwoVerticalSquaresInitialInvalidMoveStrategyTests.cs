@@ -1,4 +1,5 @@
 using System.Collections;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Game.Tests;

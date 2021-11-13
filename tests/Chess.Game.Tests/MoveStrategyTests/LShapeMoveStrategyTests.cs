@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Game.Tests;

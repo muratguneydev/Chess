@@ -15,6 +15,7 @@
 
   <ItemGroup>
 	<ProjectReference Include="../../src/Chess.Game/Chess.Game.csproj" />
+	<ProjectReference Include="../Chess.Game.Tests.Helpers/Chess.Game.Tests.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@ namespace Chess.Game;
 
 public class EmptyBoardPiece : BoardPieceDecorator
 {
-	private static readonly Session dummySession = new Session(new WhitePlayer(), new BlackPlayer());
+	private static readonly Session dummySession = EmptySession.Session;
 	private static EmptyBoardPiece emptyBoardPiece = new EmptyBoardPiece();
 
 	private EmptyBoardPiece()

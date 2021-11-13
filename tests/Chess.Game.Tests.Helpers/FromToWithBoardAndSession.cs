@@ -1,4 +1,4 @@
-namespace Chess.Game.Tests;
+namespace Chess.Game.Tests.Helpers;
 
 public class FromToWithBoardAndSession
 {

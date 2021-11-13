@@ -1,6 +1,4 @@
-using System;
-
-namespace Chess.Game.Tests;
+namespace Chess.Game.Tests.Helpers;
 
 public static class BoardTestHelper
 {
@@ -13,7 +11,7 @@ public static class BoardTestHelper
 	public static FromTo InitializeBoardWithFromCell(Func<Board, FromTo> fromToGetter, Piece piece)
 	{
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = Create(session);
 		var fromTo = fromToGetter(board);
 		
 		fromTo.From.Initialize(new WhitePieceDecorator(piece, session, board, fromTo.From));
@@ -23,7 +21,7 @@ public static class BoardTestHelper
 	public static FromToWithBoardAndSession GetInitializedBoardWithFromCellWhitePiece(Func<Board, FromTo> fromToGetter, Piece piece)
 	{
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = Create(session);
 		var fromTo = fromToGetter(board);
 		
 		fromTo.From.Initialize(new WhitePieceDecorator(piece, session, board, fromTo.From));
@@ -34,7 +32,7 @@ public static class BoardTestHelper
 	{
 		var session = SessionTestHelper.Create();
 		
-		var board = BoardTestHelper.Create(session);
+		var board = Create(session);
 		
 		var fromDummyCell = new Cell(new Coordinate(3, 3));
 		var toDummyCell = new Cell(new Coordinate(4, 3));

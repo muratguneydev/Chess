@@ -1,44 +1,45 @@
 using System;
 using System.Collections;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Game.Tests;
 
-public class KnightAttackTests
+public class KnightInvalidMoveTests
 {
-	[TestCaseSource(typeof(KnightAttackTestDataCollection), nameof(KnightAttackTestDataCollection.TestCases))]
+	[TestCaseSource(typeof(KnightInvalidMoveTestDataCollection), nameof(KnightInvalidMoveTestDataCollection.TestCases))]
 	public void ShouldNotBeAbleToMoveIfIfPathBlocked(Func<Board,FromTo> getFromToWithBoard)
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Knight());
 		var blockingCellWithAnotherPiece = fromTo.FromTo.To;
-		blockingCellWithAnotherPiece.Initialize(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board, blockingCellWithAnotherPiece));
+		blockingCellWithAnotherPiece.Initialize(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board, blockingCellWithAnotherPiece));
 		
-		CellTestHelper.AssertIsValidMove(fromTo.FromTo);
+		CellTestHelper.AssertIsNotValidMove(fromTo.FromTo);
 	}
 
-	private class KnightAttackTestDataCollection
+	private class KnightInvalidMoveTestDataCollection
 	{
 		public static IEnumerable TestCases
 		{
 			get
 			{
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.d6))
-					.SetName("Attack two up one right");
+					.SetName("Move two up one right not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.b6))
-					.SetName("Attack two up one left");
+					.SetName("Move two up one left not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.e5))
-					.SetName("Attack one up two right");
+					.SetName("Move one up two right not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.a5))
-					.SetName("Attack one up two left");
+					.SetName("Move one up two left not allowed if blocked");
 
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.d2))
-					.SetName("Attack two down one right");
+					.SetName("Move two down one right not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.b2))
-					.SetName("Attack two down one left");
+					.SetName("Move two down one left not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.e3))
-					.SetName("Attack one down two right");
+					.SetName("Move one down two right not allowed if blocked");
 				yield return new FromToUsingBoardTestData(board => new FromTo(board.c4, board.a3))
-					.SetName("Attack one down two left");
+					.SetName("Move one down two left not allowed if blocked");
 			}
 		}
 	}

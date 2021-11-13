@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Chess.Game.Tests;
+namespace Chess.Game.Tests.Helpers;
 
 public static class CellTestHelper
 {

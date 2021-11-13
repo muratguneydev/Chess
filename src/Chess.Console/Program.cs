@@ -8,19 +8,24 @@ class Program
 	private static readonly IConsoleReader consoleReader = new ConsoleReader();
 	static void Main(string[] args)
 	{
-		//TestClass.BlackPawnShouldBeAbleToAttack(board => new FromTo(board.b7, board.a6));		
+		using (var whiteClock = new Clock(new TimerWrapper()))
+		{
+			using (var blackClock = new Clock(new TimerWrapper()))
+			{
+				//TestClass.BlackPawnShouldBeAbleToAttack(board => new FromTo(board.b7, board.a6));	
+				var session = GetSession(whiteClock, blackClock);
+				var boardViewModel = GetBoardViewModel(session);
+				DisplayFromWhiteSide(boardViewModel);
+				session.Start();
+				ProcessCommands(session, boardViewModel);
+			}
+		}
+	}
 
-		var whitePlayer = new WhitePlayer();
-		var blackPlayer = new BlackPlayer();
-		var session = new Session(whitePlayer, blackPlayer);
-		
-		var board = new Board(session);
-		board.SetOpeningPosition();
-		var boardViewModel = new BoardViewModel(board);
-		DisplayFromWhiteSide(boardViewModel);
-		
+	private static void ProcessCommands(Session session, BoardViewModel boardViewModel)
+	{
 		var consoleCommandInputProducer = new ConsoleCommandInputProducer(consoleReader, consoleWriterFactory, boardViewModel);
-		foreach(var command in consoleCommandInputProducer)
+		foreach (var command in consoleCommandInputProducer)
 		{
 			command.Execute(session).Display();
 			DisplayFromWhiteSide(boardViewModel);
@@ -29,6 +34,22 @@ class Program
 				new ValidMoveView(new MoveViewModel(item), boardViewModel, consoleWriterFactory).Display();
 			}
 		}
+	}
+
+	private static BoardViewModel GetBoardViewModel(Session session)
+	{
+		var board = new Board(session);
+		board.SetOpeningPosition();
+		var boardViewModel = new BoardViewModel(board);
+		return boardViewModel;
+	}
+
+	private static Session GetSession(IClock whiteClock, IClock blackClock)
+	{
+		var whitePlayer = new WhitePlayer(whiteClock);
+		var blackPlayer = new BlackPlayer(blackClock);
+		var session = new Session(whitePlayer, blackPlayer);
+		return session;
 	}
 
 	private static void DisplayFromWhiteSide(BoardViewModel boardViewModel)

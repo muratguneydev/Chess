@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Game.Tests;
 
-public class QueenInvalidMoveTests
+public class RookInvalidMoveTests
 {
-	[TestCaseSource(typeof(QueenInvalidMoveTestDataCollection), nameof(QueenInvalidMoveTestDataCollection.TestCases))]
+	[TestCaseSource(typeof(RookInvalidMoveTestDataCollection), nameof(RookInvalidMoveTestDataCollection.TestCases))]
 	public void ShouldNotBeAbleToMoveIfIfPathBlocked(Func<Board,FromTo> getFromToWithBoard, Func<Board, Cell> getMiddleCell)
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Rook());
@@ -16,7 +17,7 @@ public class QueenInvalidMoveTests
 		CellTestHelper.AssertIsNotValidMove(fromTo.FromTo);
 	}
 
-	private class QueenInvalidMoveTestDataCollection
+	private class RookInvalidMoveTestDataCollection
 	{
 		public static IEnumerable TestCases
 		{
@@ -30,15 +31,6 @@ public class QueenInvalidMoveTests
 					.SetName("Move up not allowed if blocked");
 				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new FromTo(board.a5, board.a1), board => board.a3)
 					.SetName("Move down not allowed if blocked");
-
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new FromTo(board.c4, board.a6), board => board.b5)
-					.SetName("Move up left not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new FromTo(board.c4, board.f7), board => board.e6)
-					.SetName("Move up right not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new FromTo(board.c4, board.a2), board => board.b3)
-					.SetName("Move down left not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new FromTo(board.c4, board.f1), board => board.e2)
-					.SetName("Move down right not allowed if blocked");
 			}
 		}
 	}
