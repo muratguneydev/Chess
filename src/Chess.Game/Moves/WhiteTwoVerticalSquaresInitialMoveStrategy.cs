@@ -9,7 +9,7 @@ public class WhiteTwoVerticalSquaresInitialMoveStrategy : IMoveStrategy
 		this.verticalMoveStrategy = verticalMoveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (fromTo.From.Y != 1 || fromTo.To.Y != 3)
 			return new InvalidMovePath(fromTo);

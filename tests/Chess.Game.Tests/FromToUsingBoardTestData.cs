@@ -5,7 +5,7 @@ namespace Chess.Game.Tests;
 
 public class FromToUsingBoardTestData : TestCaseData
 {
-	public FromToUsingBoardTestData(Func<Board,FromTo> getFromToWithBoard)
+	public FromToUsingBoardTestData(Func<Board,Move> getFromToWithBoard)
 		: base(getFromToWithBoard)
 	{
 		
@@ -14,7 +14,7 @@ public class FromToUsingBoardTestData : TestCaseData
 
 public class FromToWithBlockingPieceInTheMiddleUsingBoardTestData : TestCaseData
 {
-	public FromToWithBlockingPieceInTheMiddleUsingBoardTestData(Func<Board,FromTo> getFromToWithBoard, Func<Board, Cell> getBlockingCell)
+	public FromToWithBlockingPieceInTheMiddleUsingBoardTestData(Func<Board,Move> getFromToWithBoard, Func<Board, Cell> getBlockingCell)
 		: base(getFromToWithBoard, getBlockingCell)
 	{
 		

@@ -17,10 +17,10 @@ public record ConsoleMoveInput
 		
 		var fromCell = boardViewModel.GetCell(fromCellString);
 		var toCell = boardViewModel.GetCell(toCellString);
-		this.FromTo = new FromTo(fromCell, toCell);
+		this.Move = new Move(fromCell, toCell);
 	}
 
-	public FromTo FromTo { get; }
+	public Move Move { get; }
 }
 
 public class InvalidCellNameException : ArgumentException

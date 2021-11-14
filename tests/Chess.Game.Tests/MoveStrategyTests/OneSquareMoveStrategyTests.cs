@@ -6,7 +6,7 @@ namespace Chess.Game.Tests;
 public class OneSquareMoveStrategyTests
 {
 	[TestCaseSource(typeof(OneSquareMoveStrategyDataCollection), nameof(OneSquareMoveStrategyDataCollection.TestCases))]
-	public void ShouldReturnValidForOneSquare(FromTo fromTo)
+	public void ShouldReturnValidForOneSquare(Move fromTo)
 	{
 		var oneSquareMoveStrategy = new OneSquareMoveStrategy(new TestMoveStrategy());
 
@@ -19,22 +19,22 @@ public class OneSquareMoveStrategyTests
 		{
 			get
 			{
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(0, 0)), new Cell(new Coordinate(0, 1))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(0, 0)), new Cell(new Coordinate(0, 1))))
 					.SetName("Move up 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(0, 2)), new Cell(new Coordinate(0, 1))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(0, 2)), new Cell(new Coordinate(0, 1))))
 					.SetName("Move down 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 3))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 3))))
 					.SetName("Move right 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(5, 7)), new Cell(new Coordinate(4, 7))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(5, 7)), new Cell(new Coordinate(4, 7))))
 					.SetName("Move left 1 row");
 
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(4, 5))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(4, 5))))
 					.SetName("Move right 1 row up 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(4, 3))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(4, 3))))
 					.SetName("Move right 1 row down 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(2, 5))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(2, 5))))
 					.SetName("Move left 1 row up 1 row");
-				yield return new MoveStrategyTestData(new FromTo(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(2, 3))))
+				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(2, 3))))
 					.SetName("Move left 1 row down 1 row");
 			}
 		}

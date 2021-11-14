@@ -15,24 +15,24 @@ public class MoveCommand : ChessCommand
 		this.boardViewModel = boardViewModel;
 		this.moveString = moveString;
 	}
-	
+
 	public override View Execute(Session session)
 	{
-		FromTo fromTo;
+		Move move;
 		try
 		{
-			fromTo = new ConsoleMoveInput(moveString, this.boardViewModel).FromTo;
+			move = new ConsoleMoveInput(moveString, this.boardViewModel).Move;
 		}
 		catch (Exception ex)
 		{
 			return new ErrorView(new ErrorViewModel(ex.Message), this.consoleWriterFactory);
 		}
 
-		var move = fromTo.Move();
-		if (!move.IsValid)
-			return new InvalidMoveView(new MoveViewModel(move), this.boardViewModel, this.consoleWriterFactory);
+		var executedMove = move.Go();
+		if (!executedMove.IsValid)
+			return new InvalidMoveView(new MoveViewModel(executedMove), this.boardViewModel, this.consoleWriterFactory);
 		
-		session.Next(move);
-		return new ValidMoveView(new MoveViewModel(move), this.boardViewModel, this.consoleWriterFactory);
+		session.Next(executedMove);
+		return new ValidMoveView(new MoveViewModel(executedMove), this.boardViewModel, this.consoleWriterFactory);
 	}
 }

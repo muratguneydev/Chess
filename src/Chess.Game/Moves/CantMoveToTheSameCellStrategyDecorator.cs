@@ -9,7 +9,7 @@ public class CantMoveToTheCurrentCellStrategyDecorator : IMoveStrategy
 		this.moveStrategy = moveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (fromTo.From.X == fromTo.To.X && fromTo.From.Y == fromTo.To.Y)
 			return new InvalidMovePath(fromTo);

@@ -9,7 +9,7 @@ public class BlackTwoVerticalSquaresInitialMoveStrategy : IMoveStrategy
 		this.verticalMoveStrategy = verticalMoveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (fromTo.From.Y != 6 || fromTo.To.Y != 4)
 			return new InvalidMovePath(fromTo);

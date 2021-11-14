@@ -4,7 +4,7 @@ namespace Chess.Game.Tests;
 
 public class MoveStrategyTestData : TestCaseData
 {
-	public MoveStrategyTestData(FromTo fromTo)
+	public MoveStrategyTestData(Move fromTo)
 		: base(fromTo)
 	{
 		

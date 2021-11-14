@@ -2,7 +2,7 @@ namespace Chess.Game;
 
 public class DiagonalMoveStrategy : IMoveStrategy
 {
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (Math.Abs(GetYDifference(fromTo)) != Math.Abs(GetXDifference(fromTo)))
 			return new InvalidMovePath(fromTo);
@@ -11,7 +11,7 @@ public class DiagonalMoveStrategy : IMoveStrategy
 
 	}
 
-	private static IEnumerable<Coordinate> GetDiagonalCoordinates(FromTo fromTo)
+	private static IEnumerable<Coordinate> GetDiagonalCoordinates(Move fromTo)
 	{
 		var diffX = GetXDifference(fromTo);
 		var diffY = GetYDifference(fromTo);
@@ -26,12 +26,12 @@ public class DiagonalMoveStrategy : IMoveStrategy
 		}
 	}
 
-	private static int GetXDifference(FromTo fromTo)
+	private static int GetXDifference(Move fromTo)
 	{
 		return fromTo.To.X - fromTo.From.X;
 	}
 
-	private static int GetYDifference(FromTo fromTo)
+	private static int GetYDifference(Move fromTo)
 	{
 		return fromTo.To.Y - fromTo.From.Y;
 	}

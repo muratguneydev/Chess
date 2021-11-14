@@ -2,7 +2,7 @@ namespace Chess.Game;
 
 public class HorizontalMoveStrategy : IMoveStrategy
 {
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (!fromTo.IsOnSameRow)
 			return new InvalidMovePath(fromTo);
@@ -10,7 +10,7 @@ public class HorizontalMoveStrategy : IMoveStrategy
 		return new MovePath(fromTo, GetHorizontalCoordinatesOnSameY(fromTo));
 	}
 
-	private static IEnumerable<Coordinate> GetHorizontalCoordinatesOnSameY(FromTo fromTo)
+	private static IEnumerable<Coordinate> GetHorizontalCoordinatesOnSameY(Move fromTo)
 	{
 		// return Enumerable
 		// 	.Range(fromTo.LowestRow+1,fromTo.HighestRow-fromTo.LowestRow-1)

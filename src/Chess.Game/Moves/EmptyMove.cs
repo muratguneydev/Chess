@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class EmptyMove : Move
+public record EmptyMove : Move
 {
 	private static EmptyMove emptyMove = new EmptyMove();
 	private EmptyMove()

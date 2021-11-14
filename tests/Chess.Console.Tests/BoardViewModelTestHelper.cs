@@ -1,5 +1,5 @@
 using Chess.Game;
-using static Chess.Console.TestClass;
+using Chess.Game.Tests.Helpers;
 
 namespace Chess.Console.Tests;
 

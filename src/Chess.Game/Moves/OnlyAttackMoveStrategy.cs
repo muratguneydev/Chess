@@ -9,7 +9,7 @@ public class OnlyAttackMoveStrategy : IMoveStrategy
 		this.moveStrategy = moveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if ((!fromTo.To.IsOccupied) || fromTo.HasSameColor)
 			return new InvalidMovePath(fromTo);

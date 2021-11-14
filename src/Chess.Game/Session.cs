@@ -46,6 +46,7 @@ public class Session
 			return EmptyMove.Move;
 		
 		var lastMove= this.moves.Pop();
+		lastMove.GoBack();
 		this.SwitchTurns();
 		return lastMove;
 	}

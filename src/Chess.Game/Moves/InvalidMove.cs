@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class InvalidMove : Move
+public record InvalidMove : Move
 {
 	private static InvalidMove invalidMove = new InvalidMove();
 

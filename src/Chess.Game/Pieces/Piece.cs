@@ -9,7 +9,7 @@ public abstract class Piece
 		this.moveStrategy = moveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		return this.moveStrategy.GetMovePath(fromTo);
 	}

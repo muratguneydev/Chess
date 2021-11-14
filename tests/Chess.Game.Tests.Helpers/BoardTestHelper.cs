@@ -8,7 +8,7 @@ public static class BoardTestHelper
 		return new Board(session);
 	}
 
-	public static FromTo InitializeBoardWithFromCell(Func<Board, FromTo> fromToGetter, Piece piece)
+	public static Move InitializeBoardWithFromCell(Func<Board, Move> fromToGetter, Piece piece)
 	{
 		var session = SessionTestHelper.Create();
 		var board = Create(session);
@@ -18,17 +18,17 @@ public static class BoardTestHelper
 		return fromTo;
 	}
 
-	public static FromToWithBoardAndSession GetInitializedBoardWithFromCellWhitePiece(Func<Board, FromTo> fromToGetter, Piece piece)
+	public static MoveWithBoardAndSession GetInitializedBoardWithFromCellWhitePiece(Func<Board, Move> fromToGetter, Piece piece)
 	{
 		var session = SessionTestHelper.Create();
 		var board = Create(session);
 		var fromTo = fromToGetter(board);
 		
 		fromTo.From.Initialize(new WhitePieceDecorator(piece, session, board, fromTo.From));
-		return new FromToWithBoardAndSession(fromTo, board, session);
+		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 
-	public static FromToWithBoardAndSession GetInitializedBoardWithFromCellBlackPiece(Func<Board, FromTo> fromToGetter, Piece piece)
+	public static MoveWithBoardAndSession GetInitializedBoardWithFromCellBlackPiece(Func<Board, Move> fromToGetter, Piece piece)
 	{
 		var session = SessionTestHelper.Create();
 		
@@ -42,6 +42,6 @@ public static class BoardTestHelper
 		var fromTo = fromToGetter(board);
 		
 		fromTo.From.Initialize(new BlackPieceDecorator(piece, session, board, fromTo.From));
-		return new FromToWithBoardAndSession(fromTo, board, session);
+		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 }

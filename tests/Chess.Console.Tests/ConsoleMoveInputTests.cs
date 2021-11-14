@@ -31,8 +31,8 @@ public class ConsoleMoveInputTests
 		var board = GetBoard();
 
 		var consoleMoveInput = new ConsoleMoveInput(moveString, board);
-        Assert.AreEqual(new Coordinate(fromX, fromY), consoleMoveInput.FromTo.From.Coordinate);
-        Assert.AreEqual(new Coordinate(toX, toY), consoleMoveInput.FromTo.To.Coordinate);
+        Assert.AreEqual(new Coordinate(fromX, fromY), consoleMoveInput.Move.From.Coordinate);
+        Assert.AreEqual(new Coordinate(toX, toY), consoleMoveInput.Move.To.Coordinate);
     }
 
 	private static BoardViewModel GetBoard()

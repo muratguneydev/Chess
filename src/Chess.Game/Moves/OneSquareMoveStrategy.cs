@@ -9,7 +9,7 @@ public class OneSquareMoveStrategy : IMoveStrategy
 		this.moveStrategy = moveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (!OneSquareInAnyDirection(fromTo))
 			return new InvalidMovePath(fromTo);
@@ -17,7 +17,7 @@ public class OneSquareMoveStrategy : IMoveStrategy
 		return this.moveStrategy.GetMovePath(fromTo);
 	}
 
-	private static bool OneSquareInAnyDirection(FromTo fromTo)
+	private static bool OneSquareInAnyDirection(Move fromTo)
 	{
 		return
 			IsVerticalOneSquare(fromTo)
@@ -25,17 +25,17 @@ public class OneSquareMoveStrategy : IMoveStrategy
 			|| IsDiagonalOneSquare(fromTo);
 	}
 
-	private static bool IsDiagonalOneSquare(FromTo fromTo)
+	private static bool IsDiagonalOneSquare(Move fromTo)
 	{
 		return (CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X) && CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));
 	}
 
-	private static bool IsHorizontalOneSquare(FromTo fromTo)
+	private static bool IsHorizontalOneSquare(Move fromTo)
 	{
 		return (fromTo.IsOnSameRow && CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X));
 	}
 
-	private static bool IsVerticalOneSquare(FromTo fromTo)
+	private static bool IsVerticalOneSquare(Move fromTo)
 	{
 		return (fromTo.IsOnSameColumn && CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));
 	}

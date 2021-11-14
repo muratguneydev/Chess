@@ -12,7 +12,7 @@ public class BoardPieceDecoratorTests
 		var piece = new TestPiece(cell);
 		cell.Initialize(piece);
 
-		CellTestHelper.AssertIsNotValidMove(new FromTo(cell, cell));
+		CellTestHelper.AssertIsNotValidMove(new Move(cell, cell));
 		Assert.IsFalse(piece.Move(cell).IsValid);
 	}
 

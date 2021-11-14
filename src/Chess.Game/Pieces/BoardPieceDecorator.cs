@@ -29,12 +29,13 @@ public abstract class BoardPieceDecorator : IBoardPiece
 		if (!this.CanMove(cellDestination))
 			return new InvalidMove(this.CurrentCell, cellDestination);
 
+		var move = new Move(this.CurrentCell, cellDestination);
 		cellDestination.Initialize(this.CurrentCell.Piece);
 		this.CurrentCell.MakeEmpty();
 		var previousCell = this.CurrentCell;
 		this.CurrentCell = cellDestination;
 		
-		return new Move(previousCell, cellDestination);
+		return move;
 	}
 
 	public virtual bool CanMove(Cell cellDestination)
@@ -42,14 +43,14 @@ public abstract class BoardPieceDecorator : IBoardPiece
 		return
 			this.IsTurnToPlay
 			&& !this.CurrentCell.Equals(cellDestination)
-			&& this.originalPiece.GetMovePath(new FromTo(this.CurrentCell, cellDestination)).IsValid
+			&& this.originalPiece.GetMovePath(new Move(this.CurrentCell, cellDestination)).IsValid
 			&& this.ThereArentAnyBlockingPiecesInBetween(cellDestination)
 			&& !this.HasSameColor(cellDestination.Piece);
 	}
 
 	private bool ThereArentAnyBlockingPiecesInBetween(Cell cellDestination)
 	{
-		var movePath = this.originalPiece.GetMovePath(new FromTo(this.CurrentCell, cellDestination));
+		var movePath = this.originalPiece.GetMovePath(new Move(this.CurrentCell, cellDestination));
 		return !this.board.GetPiecesInCoordinates(movePath.CoordinatesInPath)
 							.Any();
 	}

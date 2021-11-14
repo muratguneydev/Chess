@@ -9,7 +9,7 @@ public class WhiteForwardOnlyMoveStrategy : IMoveStrategy
 		this.moveStrategy = moveStrategy;
 	}
 
-	public MovePath GetMovePath(FromTo fromTo)
+	public MovePath GetMovePath(Move fromTo)
 	{
 		if (fromTo.From.Y >= fromTo.To.Y)
 			return new InvalidMovePath(fromTo);
