@@ -2,15 +2,13 @@ namespace Chess.Game;
 
 public class Session
 {
-	private readonly WhitePlayer whitePlayer;
-	private readonly BlackPlayer blackPlayer;
 	private readonly Stack<Move> moves = new Stack<Move>();
 	public event Action<Move>? OnMove;
 
 	public Session(WhitePlayer whitePlayer, BlackPlayer blackPlayer)
 	{
-		this.whitePlayer = whitePlayer;
-		this.blackPlayer = blackPlayer;
+		this.WhitePlayer = whitePlayer;
+		this.BlackPlayer = blackPlayer;
 	}
 
 	public bool IsComplete => false;
@@ -19,16 +17,16 @@ public class Session
 
 	public Color PlayTurn => this.CurrentPlayer.Color;
 	public Player CurrentPlayer => this.moves.Any()
-		? this.moves.Peek().Color == Color.Black ? this.whitePlayer : this.blackPlayer
-		: this.whitePlayer;
+		? this.moves.Peek().Color == Color.Black ? this.WhitePlayer : this.BlackPlayer
+		: this.WhitePlayer;
 
-	public Player WaitingPlayer => this.CurrentPlayer == this.whitePlayer
-		? this.blackPlayer
-		: this.whitePlayer;
+	public Player WaitingPlayer => this.CurrentPlayer == this.WhitePlayer
+		? this.BlackPlayer
+		: this.WhitePlayer;
 
 	public void Start()
 	{
-		this.whitePlayer.ResumePlaying();
+		this.WhitePlayer.ResumePlaying();
 	}
 
 	public void Next(Move move)
@@ -52,6 +50,9 @@ public class Session
 	}
 
 	public IEnumerable<Move> MoveHistory => this.moves;
+
+	public WhitePlayer WhitePlayer { get; }
+	public BlackPlayer BlackPlayer { get; }
 
 	private void SwitchTurns()
 	{

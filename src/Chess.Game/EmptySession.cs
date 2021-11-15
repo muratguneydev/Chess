@@ -5,7 +5,7 @@ public class EmptySession : Session
 	private static EmptySession emptySession = new EmptySession();
 
 	private EmptySession()
-		: base(new WhitePlayer(new EmptyClock()), new BlackPlayer(new EmptyClock()))
+		: base(new WhitePlayer(new EmptyClock(), "-"), new BlackPlayer(new EmptyClock(), "-"))
 	{
 	}
 

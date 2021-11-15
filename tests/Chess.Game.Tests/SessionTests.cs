@@ -22,8 +22,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = new WhitePlayer(whiteClock);
-				var blackPlayer = new BlackPlayer(blackClock);
+				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
+				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
 				var session = new Session(whitePlayer, blackPlayer);
 				session.Start();
 				Assert.IsTrue(whiteClock.Ticking);
@@ -39,8 +39,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = new WhitePlayer(whiteClock);
-				var blackPlayer = new BlackPlayer(blackClock);
+				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
+				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
 				var session = new Session(whitePlayer, blackPlayer);
 
 				var board = BoardTestHelper.Create(session);
@@ -67,8 +67,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = new WhitePlayer(whiteClock);
-				var blackPlayer = new BlackPlayer(blackClock);
+				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
+				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
 				var session = new Session(whitePlayer, blackPlayer);
 
 				var board = BoardTestHelper.Create(session);
@@ -96,8 +96,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = new WhitePlayer(whiteClock);
-				var blackPlayer = new BlackPlayer(blackClock);
+				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
+				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
 				var session = new Session(whitePlayer, blackPlayer);
 
 				var board = BoardTestHelper.Create(session);

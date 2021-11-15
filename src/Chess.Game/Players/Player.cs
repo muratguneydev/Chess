@@ -4,13 +4,15 @@ public abstract class Player
 {
 	private readonly IClock clock;
 
-	public Player(Color color, IClock clock)
+	public Player(Color color, IClock clock, string name)
 	{
-		Color = color;
+		this.Color = color;
 		this.clock = clock;
+		this.Name = name;
 	}
 
 	public Color Color { get; }
+	public string Name { get; }
 
 	public void ResumePlaying()
 	{
