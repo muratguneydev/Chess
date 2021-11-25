@@ -43,7 +43,7 @@ public class Session
 		if (!this.moves.Any())
 			return EmptyMove.Move;
 		
-		var lastMove= this.moves.Pop();
+		var lastMove = this.moves.Pop();
 		lastMove.GoBack();
 		this.SwitchTurns();
 		return lastMove;

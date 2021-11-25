@@ -2,7 +2,6 @@ namespace Chess.Game;
 
 public record Move
 {
-	private bool isDone;
 	private readonly IBoardPiece FromPiece;
 	private readonly IBoardPiece ToPiece;
 
@@ -29,7 +28,6 @@ public record Move
 	public Move Go()
 	{
 		var move = this.From.Move(this.To);
-		this.isDone = true;
 		return move;
 	}
 
@@ -37,6 +35,5 @@ public record Move
 	{
 		this.From.Initialize(this.FromPiece);
 		this.To.Initialize(this.ToPiece);
-		this.isDone = false;
 	}
 }

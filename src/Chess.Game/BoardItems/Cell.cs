@@ -21,14 +21,15 @@ public class Cell
 		this.Piece = piece;
 	}
 
-	public void MakeEmpty()
-	{
-		this.Initialize(EmptyBoardPiece.Piece);
-	}
-
 	public virtual Move Move(Cell destinationCell)
 	{
-		return this.Piece.Move(destinationCell);
+		if (!this.Piece.CanMove(this, destinationCell))
+	 		return new InvalidMove(this, destinationCell);
+
+		var move = new Move(this, destinationCell);
+		destinationCell.Initialize(this.Piece);
+		this.MakeEmpty();
+		return move;
 	}
 
 	public override bool Equals(object? obj)
@@ -51,5 +52,10 @@ public class Cell
 	public override string ToString()
 	{
 		return $"{this.Piece.GetType().Name} {this.Coordinate}";
+	}
+
+	private void MakeEmpty()
+	{
+		this.Initialize(EmptyBoardPiece.Piece);
 	}
 }

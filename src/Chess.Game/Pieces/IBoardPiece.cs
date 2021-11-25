@@ -6,6 +6,7 @@ public interface IBoardPiece
 	bool IsEmpty { get; }
 	Type PieceType { get; }
 
-	Move Move(Cell cellDestination);
+	//Move Move(Cell cellDestination);
+	bool CanMove(Cell from, Cell cellDestination);
 	bool HasSameColor(IBoardPiece otherBoardPiece);
 }
