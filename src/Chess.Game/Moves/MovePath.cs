@@ -15,8 +15,8 @@ public class MovePath
 
 public class InvalidMovePath : MovePath
 {
-	public InvalidMovePath(Move fromTo)
-		: base(fromTo, Enumerable.Empty<Coordinate>())
+	public InvalidMovePath(Move move)
+		: base(move, Enumerable.Empty<Coordinate>())
 	{
 	}
 }

@@ -12,7 +12,7 @@ public class WhitePawnAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new WhitePawn());
 		var cellToBeAttacked = fromTo.Move.To;;
-		cellToBeAttacked.Initialize(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board, cellToBeAttacked));
+		cellToBeAttacked.SetPiece(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsValidMove(fromTo.Move);
 	}

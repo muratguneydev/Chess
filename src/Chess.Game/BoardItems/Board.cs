@@ -15,41 +15,41 @@ public class Board
 
 	public void SetOpeningPosition()
 	{
-		this.a1.Initialize(new WhitePieceDecorator(new Rook(), this.session, this, this.a1));
-		this.b1.Initialize(new WhitePieceDecorator(new Knight(), this.session, this, this.b1));
-		this.c1.Initialize(new WhitePieceDecorator(new Bishop(), this.session, this, this.c1));
-		this.d1.Initialize(new WhitePieceDecorator(new Queen(), this.session, this, this.d1));
-		this.e1.Initialize(new WhitePieceDecorator(new King(), this.session, this, this.e1));
-		this.f1.Initialize(new WhitePieceDecorator(new Bishop(), this.session, this, this.f1));
-		this.g1.Initialize(new WhitePieceDecorator(new Knight(), this.session, this, this.g1));
-		this.h1.Initialize(new WhitePieceDecorator(new Rook(), this.session, this, this.h1));
+		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this));
+		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this));
+		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this));
+		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this));
+		this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this));
+		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this));
+		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this));
+		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this));
 
-		this.a2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.a2));
-		this.b2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.b2));
-		this.c2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.c2));
-		this.d2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.d2));
-		this.e2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.e2));
-		this.f2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.f2));
-		this.g2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.g2));
-		this.h2.Initialize(new WhitePieceDecorator(new WhitePawn(), this.session, this, this.h2));
+		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
 
-		this.a7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.a7));
-		this.b7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.b7));
-		this.c7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.c7));
-		this.d7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.d7));
-		this.e7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.e7));
-		this.f7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.f7));
-		this.g7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.g7));
-		this.h7.Initialize(new BlackPieceDecorator(new BlackPawn(), this.session, this, this.h7));
+		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
 
-		this.a8.Initialize(new BlackPieceDecorator(new Rook(), this.session, this, this.a8));
-		this.b8.Initialize(new BlackPieceDecorator(new Knight(), this.session, this, this.b8));
-		this.c8.Initialize(new BlackPieceDecorator(new Bishop(), this.session, this, this.c8));
-		this.d8.Initialize(new BlackPieceDecorator(new Queen(), this.session, this, this.d8));
-		this.e8.Initialize(new BlackPieceDecorator(new King(), this.session, this, this.e8));
-		this.f8.Initialize(new BlackPieceDecorator(new Bishop(), this.session, this, this.f8));
-		this.g8.Initialize(new BlackPieceDecorator(new Knight(), this.session, this, this.g8));
-		this.h8.Initialize(new BlackPieceDecorator(new Rook(), this.session, this, this.h8));
+		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this));
+		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this));
+		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this));
+		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this));
+		this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this));
+		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this));
+		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this));
+		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this));
 	}
 
 	public IEnumerable<IBoardPiece> GetPiecesInCoordinates(IEnumerable<Coordinate> coordinates)
@@ -148,20 +148,4 @@ public class Board
 				{new Cell(new Coordinate(7, 0)), new Cell(new Coordinate(7, 1)), new Cell(new Coordinate(7, 2)), new Cell(new Coordinate(7, 3)), new Cell(new Coordinate(7, 4)), new Cell(new Coordinate(7, 5)), new Cell(new Coordinate(7, 6)), new Cell(new Coordinate(7, 7))}
 			};
 	}
-
-	// public IEnumerator<Cell> GetEnumerator()
-	// {
-	// 	for (int x = 0; x < this.cells.GetLength(0); x++)
-	// 	{
-	// 		for (int y = 0; y < this.cells.GetLength(1); y++)
-	// 		{
-	// 			yield return this.cells[x,y];
-	// 		}
-	// 	}
-	// }
-
-	// IEnumerator IEnumerable.GetEnumerator()
-	// {
-	// 	return this.GetEnumerator();
-	// }
 }

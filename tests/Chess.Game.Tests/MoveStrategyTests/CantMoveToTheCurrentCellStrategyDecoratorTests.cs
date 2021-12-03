@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Chess.Game.Tests;
 
-public partial class CantMoveToTheCurrentCellStrategyDecoratorTests
+public class CantMoveToTheCurrentCellStrategyDecoratorTests
 {
 	[Test]
 	public void ShouldNotBeAllowedToMoveToTheCurrentCell()

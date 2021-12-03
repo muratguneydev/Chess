@@ -4,10 +4,25 @@ namespace Chess.Game.Tests;
 
 internal class TestPiece : BoardPieceDecorator
 {
-	public TestPiece(Cell initialCell)
-		: base(new Rook(), SessionTestHelper.Create(), BoardTestHelper.Create(), initialCell)
+	private readonly Color color;
+
+	public TestPiece()
+		: base(new Rook(), SessionTestHelper.Create(), BoardTestHelper.Create())
 	{
+		this.color = Color.White;
 	}
 
-	public override Color Color => Color.White;
+	public TestPiece(Color color)
+		: base(new Rook(), SessionTestHelper.Create(), BoardTestHelper.Create())
+	{
+		this.color = color;
+	}
+
+	public TestPiece(Piece piece, Color color)
+		: base(piece, SessionTestHelper.Create(), BoardTestHelper.Create())
+	{
+		this.color = color;
+	}
+
+	public override Color Color => this.color;
 }

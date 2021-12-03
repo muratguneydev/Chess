@@ -12,7 +12,7 @@ public class QueenInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Rook());
 		var middleCellWithAnotherPiece = getMiddleCell(fromTo.Board);
-		middleCellWithAnotherPiece.Initialize(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board, middleCellWithAnotherPiece));
+		middleCellWithAnotherPiece.SetPiece(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}

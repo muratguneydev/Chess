@@ -14,7 +14,7 @@ public static class BoardTestHelper
 		var board = Create(session);
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.Initialize(new WhitePieceDecorator(piece, session, board, fromTo.From));
+		fromTo.From.SetPiece(new WhitePieceDecorator(piece, session, board));
 		return fromTo;
 	}
 
@@ -24,7 +24,7 @@ public static class BoardTestHelper
 		var board = Create(session);
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.Initialize(new WhitePieceDecorator(piece, session, board, fromTo.From));
+		fromTo.From.SetPiece(new WhitePieceDecorator(piece, session, board));
 		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 
@@ -36,12 +36,12 @@ public static class BoardTestHelper
 		
 		var fromDummyCell = new Cell(new Coordinate(3, 3));
 		var toDummyCell = new Cell(new Coordinate(4, 3));
-		fromDummyCell.Initialize(new WhitePieceDecorator(new Rook(), session, board, fromDummyCell));
+		fromDummyCell.SetPiece(new WhitePieceDecorator(new Rook(), session, board));
 		session.Next(new Move(fromDummyCell, toDummyCell));
 		
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.Initialize(new BlackPieceDecorator(piece, session, board, fromTo.From));
+		fromTo.From.SetPiece(new BlackPieceDecorator(piece, session, board));
 		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 }

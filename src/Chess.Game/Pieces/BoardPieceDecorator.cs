@@ -5,8 +5,9 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	private readonly Piece originalPiece;
 	private readonly Session session;
 	private readonly Board board;
+	private readonly Stack<Cell> cellHistory = new Stack<Cell>();
 
-	public BoardPieceDecorator(Piece originalPiece, Session session, Board board, Cell initialCell)
+	public BoardPieceDecorator(Piece originalPiece, Session session, Board board)
 	{
 		this.originalPiece = originalPiece;
 		this.session = session;
@@ -29,6 +30,19 @@ public abstract class BoardPieceDecorator : IBoardPiece
 			&& this.originalPiece.GetMovePath(new Move(from, cellDestination)).IsValid
 			&& this.ThereArentAnyBlockingPiecesInBetween(from, cellDestination)
 			&& !this.HasSameColor(cellDestination.Piece);
+	}
+
+	public void RecordCurrentCellInHistory(Cell cell)
+	{
+		this.cellHistory.Push(cell);
+	}
+
+	public Cell PopLastCellFromHistory()
+	{
+		if (!this.cellHistory.Any())
+			return EmptyCell.Cell;
+
+		return this.cellHistory.Pop();
 	}
 
 	private bool ThereArentAnyBlockingPiecesInBetween(Cell from, Cell cellDestination)

@@ -3,25 +3,24 @@ using NUnit.Framework;
 
 namespace Chess.Game.Tests;
 
-public class BoardPieceDecoratorTests
+public class CellTests
 {
 	[Test]
 	public void ShouldNotBeAbleToMoveToTheSameCell()
 	{
 		var cell = new Cell(new Coordinate(0, 0));
-		var piece = new TestPiece(cell);
-		cell.Initialize(piece);
+		var piece = new TestPiece();
+		cell.SetPiece(piece);
 
 		CellTestHelper.AssertIsNotValidMove(new Move(cell, cell));
-		//Assert.IsFalse(piece.Move(cell).IsValid);
 	}
 
 	[Test]
 	public void ShouldValidMoveClearCurrentCell()
 	{
 		var fromCell = new Cell(new Coordinate(0, 0));
-		var piece = new TestPiece(fromCell);
-		fromCell.Initialize(piece);
+		var piece = new TestPiece();
+		fromCell.SetPiece(piece);
 
 		var toCell = new Cell(new Coordinate(0, 7));
 
@@ -33,8 +32,8 @@ public class BoardPieceDecoratorTests
 	public void ShouldValidMovePopulateDestinationCell()
 	{
 		var fromCell = new Cell(new Coordinate(0, 0));
-		var piece = new TestPiece(fromCell);
-		fromCell.Initialize(piece);
+		var piece = new TestPiece();
+		fromCell.SetPiece(piece);
 
 		var toCell = new Cell(new Coordinate(0, 7));
 

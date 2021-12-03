@@ -12,7 +12,7 @@ public class BlackPawnInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, new BlackPawn());
 		var blockingCellWithAnotherPiece = getMiddleCell(fromTo.Board);
-		blockingCellWithAnotherPiece.Initialize(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board, blockingCellWithAnotherPiece));
+		blockingCellWithAnotherPiece.SetPiece(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
@@ -30,7 +30,7 @@ public class BlackPawnInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, new BlackPawn());
 		var cellToAttack = fromTo.Move.To;
-		cellToAttack.Initialize(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board, cellToAttack));
+		cellToAttack.SetPiece(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}

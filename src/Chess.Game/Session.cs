@@ -45,7 +45,7 @@ public class Session
 		
 		var lastMove = this.moves.Pop();
 		lastMove.GoBack();
-		this.SwitchTurns();
+		this.SwitchTurns();//TODO: add back tests then move this before goback() call.
 		return lastMove;
 	}
 

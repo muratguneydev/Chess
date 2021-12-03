@@ -2,6 +2,6 @@ namespace Chess.Game;
 
 public interface IMoveStrategy
 {
-	MovePath GetMovePath(Move fromTo);
+	MovePath GetMovePath(Move move);
 	
 }

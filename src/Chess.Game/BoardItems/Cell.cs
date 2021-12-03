@@ -16,9 +16,16 @@ public class Cell
 
 	public bool IsOccupied => !this.Piece.IsEmpty;
 
-	public void Initialize(IBoardPiece piece)
+	public void SetPiece(IBoardPiece piece)
 	{
 		this.Piece = piece;
+		this.Piece.RecordCurrentCellInHistory(this);
+	}
+
+	public void GoBack(IBoardPiece piece)
+	{
+		this.Piece = piece;
+		this.Piece.PopLastCellFromHistory();
 	}
 
 	public virtual Move Move(Cell destinationCell)
@@ -27,7 +34,7 @@ public class Cell
 	 		return new InvalidMove(this, destinationCell);
 
 		var move = new Move(this, destinationCell);
-		destinationCell.Initialize(this.Piece);
+		destinationCell.SetPiece(this.Piece);
 		this.MakeEmpty();
 		return move;
 	}
@@ -56,6 +63,6 @@ public class Cell
 
 	private void MakeEmpty()
 	{
-		this.Initialize(EmptyBoardPiece.Piece);
+		this.SetPiece(EmptyBoardPiece.Piece);
 	}
 }
