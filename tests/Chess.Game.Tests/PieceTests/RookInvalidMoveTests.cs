@@ -12,7 +12,7 @@ public class RookInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Rook());
 		var middleCellWithAnotherPiece = getMiddleCell(fromTo.Board);
-		middleCellWithAnotherPiece.SetPiece(new WhitePieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
+		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
@@ -23,13 +23,13 @@ public class RookInvalidMoveTests
 		{
 			get
 			{
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a1, board.e1), board => board.b1)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a1, board.e1), board => board.b1)
 					.SetName("Move right not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c1, board.a1), board => board.b1)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c1, board.a1), board => board.b1)
 					.SetName("Move left not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a1, board.a5), board => board.a3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a1, board.a5), board => board.a3)
 					.SetName("Move up not allowed if blocked");
-				yield return new FromToWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a5, board.a1), board => board.a3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.a5, board.a1), board => board.a3)
 					.SetName("Move down not allowed if blocked");
 			}
 		}

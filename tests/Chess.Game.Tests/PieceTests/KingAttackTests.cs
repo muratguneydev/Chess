@@ -12,7 +12,7 @@ public class KingAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new King());
 		var destinationCellWithAnotherPiece = fromTo.Move.To;
-		destinationCellWithAnotherPiece.SetPiece(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
+		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsValidMove(fromTo.Move);
 	}
@@ -23,22 +23,22 @@ public class KingAttackTests
 		{
 			get
 			{
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.b5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b5))
 					.SetName("Attack up left");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.d5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d5))
 					.SetName("Attack up right");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.b3))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b3))
 					.SetName("Attack down left");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.d3))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d3))
 					.SetName("Attack down right");
 
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.c5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.c5))
 					.SetName("Attack up");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.c3))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.c3))
 					.SetName("Attack down");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.d4))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d4))
 					.SetName("Attack right");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.b4))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b4))
 					.SetName("Attack left");
 			}
 		}

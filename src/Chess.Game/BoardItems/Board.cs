@@ -15,41 +15,41 @@ public class Board
 
 	public void SetOpeningPosition()
 	{
-		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this));
-		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this));
-		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this));
-		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this));
-		this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this));
-		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this));
-		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this));
-		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this));
+		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));
+		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));
+		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));
+		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this, new CellHistory()));
+		this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this, new CellHistory()));
+		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));
+		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));
+		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));
 
-		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
-		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(), this.session, this));
+		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
 
-		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
-		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(), this.session, this));
+		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
 
-		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this));
-		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this));
-		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this));
-		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this));
-		this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this));
-		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this));
-		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this));
-		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this));
+		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));
+		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));
+		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));
+		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this, new CellHistory()));
+		this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this, new CellHistory()));
+		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));
+		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));
+		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));
 	}
 
 	public IEnumerable<IBoardPiece> GetPiecesInCoordinates(IEnumerable<Coordinate> coordinates)
@@ -59,7 +59,16 @@ public class Board
 			.Where(piece => !piece.IsEmpty);
 	}
 
-	public Cell[,] Table => (Cell[,])this.cells.Clone();
+	//public Cell[,] Table => (Cell[,])this.cells.Clone();
+	public int XSize => 8;
+	public int YSize => 8;
+
+	public Cell GetCell(int x, int y)
+	{
+		if (x >= this.XSize || x < 0 || y >= this.YSize || y < 0)
+			return EmptyCell.Cell;
+		return this.cells[x, y];
+	}
 
 	public Cell a1 => cells[0, 0];
 	public Cell b1 => cells[1, 0];

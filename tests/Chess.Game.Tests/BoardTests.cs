@@ -11,16 +11,16 @@ public class BoardTests
 		var session = SessionTestHelper.Create();
 		var board = BoardTestHelper.Create(session);
 
-		var a1Piece = new WhitePieceDecorator(new Rook(), session, board);
+		var a1Piece = WhitePieceDecoratorTestHelper.Create(new Rook(), session, board);
 		board.a1.SetPiece(a1Piece);
 
-		var a3Piece = new BlackPieceDecorator(new Knight(), session, board);
+		var a3Piece = BlackPieceDecoratorTestHelper.Create(new Knight(), session, board);
 		board.a3.SetPiece(a3Piece);
 
-		var a5Piece = new WhitePieceDecorator(new King(), session, board);
+		var a5Piece = WhitePieceDecoratorTestHelper.Create(new King(), session, board);
 		board.a5.SetPiece(a5Piece);
 		
-		var a7Piece = new BlackPieceDecorator(new Queen(), session, board);
+		var a7Piece = BlackPieceDecoratorTestHelper.Create(new Queen(), session, board);
 		board.a7.SetPiece(a7Piece);
 
 		var actualPieces = board.GetPiecesInCoordinates(new[] {

@@ -37,12 +37,12 @@ public class BoardViewModel
 
 	private BoardCellViewModel[,] PopulateBoardCellViewModelTable()
 	{
-		var boardCellViewModelTable = new BoardCellViewModel[this.board.Table.GetLength(0),this.board.Table.GetLength(1)];
-		for (var x=0;x < this.board.Table.GetLength(0);x++)
+		var boardCellViewModelTable = new BoardCellViewModel[this.board.XSize,this.board.YSize];
+		for (var x=0;x < this.board.XSize;x++)
 		{
-			for (var y=0;y < this.board.Table.GetLength(1);y++)
+			for (var y=0;y < this.board.YSize;y++)
 			{
-				boardCellViewModelTable[x,y] = new BoardCellViewModel(this.board.Table[x,y]);
+				boardCellViewModelTable[x,y] = new BoardCellViewModel(this.board.GetCell(x,y));
 			}
 		}
 

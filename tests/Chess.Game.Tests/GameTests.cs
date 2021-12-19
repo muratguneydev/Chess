@@ -52,7 +52,6 @@ public class MoveTests
 		session.Next(move);
 
 		var lastMove = session.Back();
-		//lastMove.GoBack();
 		Assert.AreEqual(typeof(BlackPawn), board.b7.Piece.PieceType);
 		Assert.IsFalse(board.b5.IsOccupied);
 		

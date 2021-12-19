@@ -12,7 +12,7 @@ public class BishopAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Bishop());
 		var destinationCellWithAnotherPiece = fromTo.Move.To;
-		destinationCellWithAnotherPiece.SetPiece(new BlackPieceDecorator(new Knight(), fromTo.Session, fromTo.Board));
+		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsValidMove(fromTo.Move);
 	}
@@ -23,13 +23,13 @@ public class BishopAttackTests
 		{
 			get
 			{
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.a6))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a6))
 					.SetName("Attack up left");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.f7))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f7))
 					.SetName("Attack up right");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.a2))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a2))
 					.SetName("Attack down left");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.f1))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f1))
 					.SetName("Attack down right");
 			}
 		}

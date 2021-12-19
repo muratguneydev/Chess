@@ -5,7 +5,8 @@ public interface IBoardPiece
 	Color Color { get; }
 	bool IsEmpty { get; }
 	Type PieceType { get; }
-
+	bool IsFirstMove { get; }
+	Cell PreviousCell { get; }
 	bool CanMove(Cell from, Cell cellDestination);
 	bool HasSameColor(IBoardPiece otherBoardPiece);
 	Cell PopLastCellFromHistory();

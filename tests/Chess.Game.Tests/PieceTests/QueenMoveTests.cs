@@ -21,30 +21,30 @@ public class QueenMoveTests
 		{
 			get
 			{
-				yield return new FromToUsingBoardTestData(board => new Move(board.a1, board.a5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.a5))
 					.SetName("Move up if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.a5, board.a1))
+				yield return new MoveUsingBoardTestData(board => new Move(board.a5, board.a1))
 					.SetName("Move down if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.a1, board.e1))
+				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.e1))
 					.SetName("Move right if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.e1, board.a1))
+				yield return new MoveUsingBoardTestData(board => new Move(board.e1, board.a1))
 					.SetName("Move left if not blocked");
 
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.b5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b5))
 					.SetName("Move up left if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.a6))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a6))
 					.SetName("Move up left to the edge if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.d5))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d5))
 					.SetName("Move up right if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.f7))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f7))
 					.SetName("Move up right to the edge if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.b3))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b3))
 					.SetName("Move down left if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.a2))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a2))
 					.SetName("Move down left to the edge if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.d3))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d3))
 					.SetName("Move down right if not blocked");
-				yield return new FromToUsingBoardTestData(board => new Move(board.c4, board.f1))
+				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f1))
 					.SetName("Move down right to the edge if not blocked");
 			}
 		}

@@ -15,6 +15,7 @@ public class Cell
 	public Coordinate Coordinate { get; }
 
 	public bool IsOccupied => !this.Piece.IsEmpty;
+	public bool IsEmpty => this is EmptyCell;
 
 	public void SetPiece(IBoardPiece piece)
 	{

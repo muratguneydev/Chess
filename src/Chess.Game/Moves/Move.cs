@@ -28,8 +28,6 @@ public record Move
 	public Move Go()
 	{
 		var move = this.From.Move(this.To);
-		// this.FromPiece.RecordCurrentCellInHistory(this.From);
-		// this.ToPiece.RecordCurrentCellInHistory(this.To);
 		return move;
 	}
 
@@ -37,10 +35,5 @@ public record Move
 	{
 		this.From.GoBack(this.FromPiece);
 		this.To.GoBack(this.ToPiece);
-
-		// this.From.SetPiece(this.FromPiece);
-		// this.FromPiece.PopLastCellFromHistory();
-		// this.To.SetPiece(this.ToPiece);
-		// this.ToPiece.PopLastCellFromHistory();
 	}
 }

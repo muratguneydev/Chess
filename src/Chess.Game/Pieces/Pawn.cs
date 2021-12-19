@@ -13,7 +13,7 @@ public abstract class Pawn : Piece
 
 public class WhitePawn : Pawn
 {
-	public WhitePawn()
+	public WhitePawn(Board board)
 		: base(new CantMoveToTheCurrentCellStrategyDecorator(
 			new CompositeMoveStrategy(new[] {
 					new WhiteTwoVerticalSquaresInitialMoveStrategy(
@@ -24,7 +24,8 @@ public class WhitePawn : Pawn
 					new WhiteForwardOnlyMoveStrategy(
 						new OnlyAttackMoveStrategy(
 							new OneSquareMoveStrategy(
-								new DiagonalMoveStrategy()))) as IMoveStrategy
+								new DiagonalMoveStrategy()))),
+					new WhiteEnPassantMoveStrategy(board) as IMoveStrategy
 				}))
 		)
 	{
@@ -35,7 +36,7 @@ public class WhitePawn : Pawn
 
 public class BlackPawn : Pawn
 {
-	public BlackPawn()
+	public BlackPawn(Board board)
 		: base(new CantMoveToTheCurrentCellStrategyDecorator(
 			new CompositeMoveStrategy(new[] {
 					new BlackTwoVerticalSquaresInitialMoveStrategy(
@@ -46,7 +47,8 @@ public class BlackPawn : Pawn
 					new BlackForwardOnlyMoveStrategy(
 						new OnlyAttackMoveStrategy(
 							new OneSquareMoveStrategy(
-								new DiagonalMoveStrategy()))) as IMoveStrategy
+								new DiagonalMoveStrategy()))),
+					new BlackEnPassantMoveStrategy(board) as IMoveStrategy
 				}))
 		)
 	{

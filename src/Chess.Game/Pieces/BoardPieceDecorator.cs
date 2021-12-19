@@ -5,14 +5,15 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	private readonly Piece originalPiece;
 	private readonly Session session;
 	private readonly Board board;
-	private readonly Stack<Cell> cellHistory = new Stack<Cell>();
+	private readonly CellHistory cellHistory = new CellHistory();
 
-	public BoardPieceDecorator(Piece originalPiece, Session session, Board board)
+	public BoardPieceDecorator(Piece originalPiece, Session session, Board board, CellHistory cellHistory)
 	{
 		this.originalPiece = originalPiece;
 		this.session = session;
 		this.board = board;
 		this.PieceType = originalPiece.GetType();
+		this.cellHistory = cellHistory;
 	}
 
 	public abstract Color Color { get; }
@@ -39,11 +40,14 @@ public abstract class BoardPieceDecorator : IBoardPiece
 
 	public Cell PopLastCellFromHistory()
 	{
-		if (!this.cellHistory.Any())
+		if (this.cellHistory.IsEmpty)
 			return EmptyCell.Cell;
 
 		return this.cellHistory.Pop();
 	}
+
+	public bool IsFirstMove => this.cellHistory.IsFirstMove;
+	public Cell PreviousCell => this.cellHistory.GetPrevious();
 
 	private bool ThereArentAnyBlockingPiecesInBetween(Cell from, Cell cellDestination)
 	{
