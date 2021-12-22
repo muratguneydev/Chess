@@ -1,0 +1,18 @@
+https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
+
+dotnet test --collect:"XPlat Code Coverage"
+
+--????
+dotnet tool install -g dotnet-reportgenerator-globaltool
+reportgenerator -reports:"/Code/Chess/tests/Chess.Game.Tests/TestResults/4c11d6bf-d415-4c67-8d5d-09f143e57b52/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html
+
+
+
+dotnet tool install --global coverlet.console
+
+coverlet /Code/Chess/tests/Chess.Game.Tests/bin/Debug/net6.0/Chess.Game.Tests.dll --target "dotnet" --targetargs "test /Code/Chess/tests/Chess.Game.Tests/Chess.Game.Tests.csproj --no-build" --format lcov
+
+--???---
+dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info .\my.tests
+dotnet watch --project .\Chess.Game.Tests test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info 
+

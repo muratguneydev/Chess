@@ -1,0 +1,1827 @@
+SF:/Code/Chess/src/Chess.Game/BoardItems/Board.cs
+FN:16,System.Void Chess.Game.Board::SetOpeningPosition()
+FNDA:6,System.Void Chess.Game.Board::SetOpeningPosition()
+DA:17,6
+DA:18,6
+DA:19,6
+DA:20,6
+DA:21,6
+DA:22,6
+DA:23,6
+DA:24,6
+DA:25,6
+DA:27,6
+DA:28,6
+DA:29,6
+DA:30,6
+DA:31,6
+DA:32,6
+DA:33,6
+DA:34,6
+DA:36,6
+DA:37,6
+DA:38,6
+DA:39,6
+DA:40,6
+DA:41,6
+DA:42,6
+DA:43,6
+DA:45,6
+DA:46,6
+DA:47,6
+DA:48,6
+DA:49,6
+DA:50,6
+DA:51,6
+DA:52,6
+DA:53,6
+FN:55,System.Collections.Generic.IEnumerable`1<Chess.Game.IBoardPiece> Chess.Game.Board::GetPiecesInCoordinates(System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate>)
+FNDA:142,System.Collections.Generic.IEnumerable`1<Chess.Game.IBoardPiece> Chess.Game.Board::GetPiecesInCoordinates(System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate>)
+DA:56,142
+DA:57,142
+DA:58,122
+DA:59,264
+DA:60,142
+FN:62,System.Int32 Chess.Game.Board::get_XSize()
+FNDA:252,System.Int32 Chess.Game.Board::get_XSize()
+DA:63,252
+FN:63,System.Int32 Chess.Game.Board::get_YSize()
+FNDA:217,System.Int32 Chess.Game.Board::get_YSize()
+DA:64,217
+FN:66,Chess.Game.Cell Chess.Game.Board::GetCell(System.Int32,System.Int32)
+FNDA:252,Chess.Game.Cell Chess.Game.Board::GetCell(System.Int32,System.Int32)
+DA:67,252
+DA:68,252
+DA:69,35
+DA:70,217
+DA:71,252
+BRDA:68,8,0,252
+BRDA:68,12,0,217
+BRDA:68,21,0,217
+BRDA:68,8,1,35
+BRDA:68,12,1,35
+BRDA:68,21,1,35
+BRDA:68,32,0,35
+BRDA:68,32,1,217
+FN:72,Chess.Game.Cell Chess.Game.Board::get_a1()
+FNDA:40,Chess.Game.Cell Chess.Game.Board::get_a1()
+DA:73,40
+FN:73,Chess.Game.Cell Chess.Game.Board::get_b1()
+FNDA:12,Chess.Game.Cell Chess.Game.Board::get_b1()
+DA:74,12
+FN:74,Chess.Game.Cell Chess.Game.Board::get_c1()
+FNDA:9,Chess.Game.Cell Chess.Game.Board::get_c1()
+DA:75,9
+FN:75,Chess.Game.Cell Chess.Game.Board::get_d1()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_d1()
+DA:76,6
+FN:76,Chess.Game.Cell Chess.Game.Board::get_e1()
+FNDA:16,Chess.Game.Cell Chess.Game.Board::get_e1()
+DA:77,16
+FN:77,Chess.Game.Cell Chess.Game.Board::get_f1()
+FNDA:13,Chess.Game.Cell Chess.Game.Board::get_f1()
+DA:78,13
+FN:78,Chess.Game.Cell Chess.Game.Board::get_g1()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_g1()
+DA:79,6
+FN:79,Chess.Game.Cell Chess.Game.Board::get_h1()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_h1()
+DA:80,6
+FN:81,Chess.Game.Cell Chess.Game.Board::get_a2()
+FNDA:27,Chess.Game.Cell Chess.Game.Board::get_a2()
+DA:82,27
+FN:82,Chess.Game.Cell Chess.Game.Board::get_b2()
+FNDA:12,Chess.Game.Cell Chess.Game.Board::get_b2()
+DA:83,12
+FN:83,Chess.Game.Cell Chess.Game.Board::get_c2()
+FNDA:12,Chess.Game.Cell Chess.Game.Board::get_c2()
+DA:84,12
+FN:84,Chess.Game.Cell Chess.Game.Board::get_d2()
+FNDA:10,Chess.Game.Cell Chess.Game.Board::get_d2()
+DA:85,10
+FN:85,Chess.Game.Cell Chess.Game.Board::get_e2()
+FNDA:8,Chess.Game.Cell Chess.Game.Board::get_e2()
+DA:86,8
+FN:86,Chess.Game.Cell Chess.Game.Board::get_f2()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_f2()
+DA:87,6
+FN:87,Chess.Game.Cell Chess.Game.Board::get_g2()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_g2()
+DA:88,6
+FN:88,Chess.Game.Cell Chess.Game.Board::get_h2()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_h2()
+DA:89,6
+FN:90,Chess.Game.Cell Chess.Game.Board::get_a3()
+FNDA:16,Chess.Game.Cell Chess.Game.Board::get_a3()
+DA:91,16
+FN:91,Chess.Game.Cell Chess.Game.Board::get_b3()
+FNDA:14,Chess.Game.Cell Chess.Game.Board::get_b3()
+DA:92,14
+FN:92,Chess.Game.Cell Chess.Game.Board::get_c3()
+FNDA:10,Chess.Game.Cell Chess.Game.Board::get_c3()
+DA:93,10
+FN:93,Chess.Game.Cell Chess.Game.Board::get_d3()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_d3()
+DA:94,6
+FN:94,Chess.Game.Cell Chess.Game.Board::get_e3()
+FNDA:3,Chess.Game.Cell Chess.Game.Board::get_e3()
+DA:95,3
+FN:95,Chess.Game.Cell Chess.Game.Board::get_f3()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_f3()
+DA:96,0
+FN:96,Chess.Game.Cell Chess.Game.Board::get_g3()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_g3()
+DA:97,0
+FN:97,Chess.Game.Cell Chess.Game.Board::get_h3()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_h3()
+DA:98,0
+FN:99,Chess.Game.Cell Chess.Game.Board::get_a4()
+FNDA:16,Chess.Game.Cell Chess.Game.Board::get_a4()
+DA:100,16
+FN:100,Chess.Game.Cell Chess.Game.Board::get_b4()
+FNDA:15,Chess.Game.Cell Chess.Game.Board::get_b4()
+DA:101,15
+FN:101,Chess.Game.Cell Chess.Game.Board::get_c4()
+FNDA:91,Chess.Game.Cell Chess.Game.Board::get_c4()
+DA:102,91
+FN:102,Chess.Game.Cell Chess.Game.Board::get_d4()
+FNDA:3,Chess.Game.Cell Chess.Game.Board::get_d4()
+DA:103,3
+FN:103,Chess.Game.Cell Chess.Game.Board::get_e4()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_e4()
+DA:104,0
+FN:104,Chess.Game.Cell Chess.Game.Board::get_f4()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_f4()
+DA:105,0
+FN:105,Chess.Game.Cell Chess.Game.Board::get_g4()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_g4()
+DA:106,0
+FN:106,Chess.Game.Cell Chess.Game.Board::get_h4()
+FNDA:1,Chess.Game.Cell Chess.Game.Board::get_h4()
+DA:107,1
+FN:108,Chess.Game.Cell Chess.Game.Board::get_a5()
+FNDA:22,Chess.Game.Cell Chess.Game.Board::get_a5()
+DA:109,22
+FN:109,Chess.Game.Cell Chess.Game.Board::get_b5()
+FNDA:27,Chess.Game.Cell Chess.Game.Board::get_b5()
+DA:110,27
+FN:110,Chess.Game.Cell Chess.Game.Board::get_c5()
+FNDA:18,Chess.Game.Cell Chess.Game.Board::get_c5()
+DA:111,18
+FN:111,Chess.Game.Cell Chess.Game.Board::get_d5()
+FNDA:11,Chess.Game.Cell Chess.Game.Board::get_d5()
+DA:112,11
+FN:112,Chess.Game.Cell Chess.Game.Board::get_e5()
+FNDA:4,Chess.Game.Cell Chess.Game.Board::get_e5()
+DA:113,4
+FN:113,Chess.Game.Cell Chess.Game.Board::get_f5()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_f5()
+DA:114,0
+FN:114,Chess.Game.Cell Chess.Game.Board::get_g5()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_g5()
+DA:115,0
+FN:115,Chess.Game.Cell Chess.Game.Board::get_h5()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_h5()
+DA:116,0
+FN:118,Chess.Game.Cell Chess.Game.Board::get_a6()
+FNDA:13,Chess.Game.Cell Chess.Game.Board::get_a6()
+DA:119,13
+FN:119,Chess.Game.Cell Chess.Game.Board::get_b6()
+FNDA:11,Chess.Game.Cell Chess.Game.Board::get_b6()
+DA:120,11
+FN:120,Chess.Game.Cell Chess.Game.Board::get_c6()
+FNDA:5,Chess.Game.Cell Chess.Game.Board::get_c6()
+DA:121,5
+FN:121,Chess.Game.Cell Chess.Game.Board::get_d6()
+FNDA:7,Chess.Game.Cell Chess.Game.Board::get_d6()
+DA:122,7
+FN:122,Chess.Game.Cell Chess.Game.Board::get_e6()
+FNDA:2,Chess.Game.Cell Chess.Game.Board::get_e6()
+DA:123,2
+FN:123,Chess.Game.Cell Chess.Game.Board::get_f6()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_f6()
+DA:124,0
+FN:124,Chess.Game.Cell Chess.Game.Board::get_g6()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_g6()
+DA:125,0
+FN:125,Chess.Game.Cell Chess.Game.Board::get_h6()
+FNDA:0,Chess.Game.Cell Chess.Game.Board::get_h6()
+DA:126,0
+FN:127,Chess.Game.Cell Chess.Game.Board::get_a7()
+FNDA:12,Chess.Game.Cell Chess.Game.Board::get_a7()
+DA:128,12
+FN:128,Chess.Game.Cell Chess.Game.Board::get_b7()
+FNDA:13,Chess.Game.Cell Chess.Game.Board::get_b7()
+DA:129,13
+FN:129,Chess.Game.Cell Chess.Game.Board::get_c7()
+FNDA:12,Chess.Game.Cell Chess.Game.Board::get_c7()
+DA:130,12
+FN:130,Chess.Game.Cell Chess.Game.Board::get_d7()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_d7()
+DA:131,6
+FN:131,Chess.Game.Cell Chess.Game.Board::get_e7()
+FNDA:7,Chess.Game.Cell Chess.Game.Board::get_e7()
+DA:132,7
+FN:132,Chess.Game.Cell Chess.Game.Board::get_f7()
+FNDA:13,Chess.Game.Cell Chess.Game.Board::get_f7()
+DA:133,13
+FN:133,Chess.Game.Cell Chess.Game.Board::get_g7()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_g7()
+DA:134,6
+FN:134,Chess.Game.Cell Chess.Game.Board::get_h7()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_h7()
+DA:135,6
+FN:136,Chess.Game.Cell Chess.Game.Board::get_a8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_a8()
+DA:137,6
+FN:137,Chess.Game.Cell Chess.Game.Board::get_b8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_b8()
+DA:138,6
+FN:138,Chess.Game.Cell Chess.Game.Board::get_c8()
+FNDA:7,Chess.Game.Cell Chess.Game.Board::get_c8()
+DA:139,7
+FN:139,Chess.Game.Cell Chess.Game.Board::get_d8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_d8()
+DA:140,6
+FN:140,Chess.Game.Cell Chess.Game.Board::get_e8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_e8()
+DA:141,6
+FN:141,Chess.Game.Cell Chess.Game.Board::get_f8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_f8()
+DA:142,6
+FN:142,Chess.Game.Cell Chess.Game.Board::get_g8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_g8()
+DA:143,6
+FN:143,Chess.Game.Cell Chess.Game.Board::get_h8()
+FNDA:6,Chess.Game.Cell Chess.Game.Board::get_h8()
+DA:144,6
+FN:146,Chess.Game.Cell[0...,0...] Chess.Game.Board::CreateCells()
+FNDA:187,Chess.Game.Cell[0...,0...] Chess.Game.Board::CreateCells()
+DA:147,187
+DA:148,187
+DA:149,187
+DA:150,187
+DA:151,187
+DA:152,187
+DA:153,187
+DA:154,187
+DA:155,187
+DA:156,187
+DA:157,187
+DA:158,187
+DA:159,187
+FN:9,System.Void Chess.Game.Board::.ctor(Chess.Game.Session)
+FNDA:187,System.Void Chess.Game.Board::.ctor(Chess.Game.Session)
+DA:10,187
+DA:11,187
+DA:12,187
+DA:13,187
+DA:14,187
+LF:128
+LH:116
+BRF:8
+BRH:8
+FNF:71
+FNH:59
+end_of_record
+SF:/Code/Chess/src/Chess.Game/BoardItems/Cell.cs
+FN:10,System.Int32 Chess.Game.Cell::get_X()
+FNDA:3235,System.Int32 Chess.Game.Cell::get_X()
+DA:11,3235
+FN:11,System.Int32 Chess.Game.Cell::get_Y()
+FNDA:3191,System.Int32 Chess.Game.Cell::get_Y()
+DA:12,3191
+FN:12,Chess.Game.IBoardPiece Chess.Game.Cell::get_Piece()
+FNDA:16019,Chess.Game.IBoardPiece Chess.Game.Cell::get_Piece()
+DA:13,16019
+FN:14,Chess.Game.Coordinate Chess.Game.Cell::get_Coordinate()
+FNDA:6942,Chess.Game.Coordinate Chess.Game.Cell::get_Coordinate()
+DA:15,6942
+FN:16,System.Boolean Chess.Game.Cell::get_IsOccupied()
+FNDA:244,System.Boolean Chess.Game.Cell::get_IsOccupied()
+DA:17,244
+FN:17,System.Boolean Chess.Game.Cell::get_IsEmpty()
+FNDA:12,System.Boolean Chess.Game.Cell::get_IsEmpty()
+DA:18,12
+FN:20,System.Void Chess.Game.Cell::SetPiece(Chess.Game.IBoardPiece)
+FNDA:685,System.Void Chess.Game.Cell::SetPiece(Chess.Game.IBoardPiece)
+DA:21,685
+DA:22,685
+DA:23,685
+DA:24,685
+FN:26,System.Void Chess.Game.Cell::GoBack(Chess.Game.IBoardPiece)
+FNDA:4,System.Void Chess.Game.Cell::GoBack(Chess.Game.IBoardPiece)
+DA:27,4
+DA:28,4
+DA:29,4
+DA:30,4
+FN:32,Chess.Game.Move Chess.Game.Cell::Move(Chess.Game.Cell)
+FNDA:172,Chess.Game.Move Chess.Game.Cell::Move(Chess.Game.Cell)
+DA:33,172
+DA:34,172
+DA:35,63
+DA:37,109
+DA:38,109
+DA:39,109
+DA:40,109
+DA:41,172
+BRDA:34,19,0,63
+BRDA:34,19,1,109
+FN:43,System.Boolean Chess.Game.Cell::Equals(System.Object)
+FNDA:271,System.Boolean Chess.Game.Cell::Equals(System.Object)
+DA:44,271
+DA:45,271
+DA:46,15
+DA:47,15
+DA:50,256
+DA:51,256
+DA:52,271
+BRDA:45,2,0,271
+BRDA:45,2,1,0
+BRDA:45,26,0,15
+BRDA:45,26,1,256
+FN:55,System.Int32 Chess.Game.Cell::GetHashCode()
+FNDA:0,System.Int32 Chess.Game.Cell::GetHashCode()
+DA:56,0
+DA:57,0
+DA:58,0
+FN:60,System.String Chess.Game.Cell::ToString()
+FNDA:0,System.String Chess.Game.Cell::ToString()
+DA:61,0
+DA:62,0
+DA:63,0
+FN:65,System.Void Chess.Game.Cell::MakeEmpty()
+FNDA:109,System.Void Chess.Game.Cell::MakeEmpty()
+DA:66,109
+DA:67,109
+DA:68,109
+FN:4,System.Void Chess.Game.Cell::.ctor(Chess.Game.Coordinate)
+FNDA:12177,System.Void Chess.Game.Cell::.ctor(Chess.Game.Coordinate)
+DA:5,12177
+DA:6,12177
+DA:7,12177
+DA:8,12177
+DA:9,12177
+LF:43
+LH:37
+BRF:6
+BRH:5
+FNF:14
+FNH:12
+end_of_record
+SF:/Code/Chess/src/Chess.Game/BoardItems/CellHistory.cs
+FN:6,System.Boolean Chess.Game.CellHistory::get_IsEmpty()
+FNDA:4,System.Boolean Chess.Game.CellHistory::get_IsEmpty()
+DA:7,4
+FN:7,System.Boolean Chess.Game.CellHistory::get_IsFirstMove()
+FNDA:9,System.Boolean Chess.Game.CellHistory::get_IsFirstMove()
+DA:8,9
+FN:11,System.Void Chess.Game.CellHistory::Push(Chess.Game.Cell)
+FNDA:685,System.Void Chess.Game.CellHistory::Push(Chess.Game.Cell)
+DA:12,685
+DA:13,685
+DA:14,685
+FN:16,Chess.Game.Cell Chess.Game.CellHistory::Pop()
+FNDA:4,Chess.Game.Cell Chess.Game.CellHistory::Pop()
+DA:17,4
+DA:18,4
+DA:19,4
+DA:20,0
+DA:22,4
+DA:23,4
+DA:24,4
+BRDA:19,16,0,0
+BRDA:19,16,1,4
+FN:26,Chess.Game.Cell Chess.Game.CellHistory::GetPrevious()
+FNDA:8,Chess.Game.Cell Chess.Game.CellHistory::GetPrevious()
+DA:27,8
+DA:29,8
+DA:30,0
+DA:32,8
+DA:33,0
+DA:34,8
+DA:35,8
+BRDA:29,17,0,0
+BRDA:29,17,1,8
+BRDA:32,51,0,0
+BRDA:32,51,1,8
+FN:37,Chess.Game.Cell Chess.Game.CellHistory::GetLast()
+FNDA:4,Chess.Game.Cell Chess.Game.CellHistory::GetLast()
+DA:38,4
+DA:39,4
+DA:40,0
+DA:42,4
+DA:43,4
+BRDA:39,17,0,0
+BRDA:39,17,1,4
+FN:45,Chess.Game.Cell Chess.Game.CellHistory::GetEmptyIfNotFound(System.Collections.Generic.LinkedListNode`1<Chess.Game.Cell>)
+FNDA:16,Chess.Game.Cell Chess.Game.CellHistory::GetEmptyIfNotFound(System.Collections.Generic.LinkedListNode`1<Chess.Game.Cell>)
+DA:46,16
+DA:47,16
+DA:49,16
+BRDA:47,2,0,16
+BRDA:47,2,1,0
+FN:4,System.Void Chess.Game.CellHistory::.ctor()
+FNDA:936,System.Void Chess.Game.CellHistory::.ctor()
+DA:5,936
+LF:28
+LH:24
+BRF:10
+BRH:5
+FNF:8
+FNH:8
+end_of_record
+SF:/Code/Chess/src/Chess.Game/BoardItems/Coordinate.cs
+FN:13,System.Int32 Chess.Game.Coordinate::get_X()
+FNDA:3357,System.Int32 Chess.Game.Coordinate::get_X()
+DA:14,3357
+FN:14,System.Int32 Chess.Game.Coordinate::get_Y()
+FNDA:3313,System.Int32 Chess.Game.Coordinate::get_Y()
+DA:15,3313
+FN:17,System.Void Chess.Game.Coordinate::ValidateCoordinate(System.Int32,System.String)
+FNDA:24816,System.Void Chess.Game.Coordinate::ValidateCoordinate(System.Int32,System.String)
+DA:18,24816
+DA:19,24816
+DA:20,0
+DA:21,24816
+BRDA:19,3,0,24816
+BRDA:19,3,1,0
+BRDA:19,14,0,0
+BRDA:19,14,1,24816
+FN:4,System.Void Chess.Game.Coordinate::.ctor(System.Int32,System.Int32)
+FNDA:12409,System.Void Chess.Game.Coordinate::.ctor(System.Int32,System.Int32)
+DA:5,12409
+DA:6,12409
+DA:7,12409
+DA:8,12409
+DA:10,12409
+DA:11,12409
+DA:12,12409
+LF:13
+LH:12
+BRF:4
+BRH:2
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/BoardItems/EmptyCell.cs
+FN:11,Chess.Game.EmptyCell Chess.Game.EmptyCell::get_Cell()
+FNDA:35,Chess.Game.EmptyCell Chess.Game.EmptyCell::get_Cell()
+DA:12,35
+FN:14,Chess.Game.Move Chess.Game.EmptyCell::Move(Chess.Game.Cell)
+FNDA:0,Chess.Game.Move Chess.Game.EmptyCell::Move(Chess.Game.Cell)
+DA:15,0
+DA:16,0
+DA:17,0
+FN:7,System.Void Chess.Game.EmptyCell::.ctor()
+FNDA:1,System.Void Chess.Game.EmptyCell::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+FN:4,System.Void Chess.Game.EmptyCell::.cctor()
+FNDA:1,System.Void Chess.Game.EmptyCell::.cctor()
+DA:5,1
+LF:8
+LH:5
+BRF:0
+BRH:0
+FNF:4
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/BoardItems/EmptyCoordinate.cs
+FN:11,Chess.Game.EmptyCoordinate Chess.Game.EmptyCoordinate::get_Coordinate()
+FNDA:1,Chess.Game.EmptyCoordinate Chess.Game.EmptyCoordinate::get_Coordinate()
+DA:12,1
+FN:14,System.Void Chess.Game.EmptyCoordinate::ValidateCoordinate(System.Int32,System.String)
+FNDA:2,System.Void Chess.Game.EmptyCoordinate::ValidateCoordinate(System.Int32,System.String)
+DA:15,2
+DA:17,2
+FN:7,System.Void Chess.Game.EmptyCoordinate::.ctor()
+FNDA:1,System.Void Chess.Game.EmptyCoordinate::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+FN:4,System.Void Chess.Game.EmptyCoordinate::.cctor()
+FNDA:1,System.Void Chess.Game.EmptyCoordinate::.cctor()
+DA:5,1
+LF:7
+LH:7
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/EmptySession.cs
+FN:11,Chess.Game.EmptySession Chess.Game.EmptySession::get_Session()
+FNDA:2,Chess.Game.EmptySession Chess.Game.EmptySession::get_Session()
+DA:12,2
+FN:7,System.Void Chess.Game.EmptySession::.ctor()
+FNDA:1,System.Void Chess.Game.EmptySession::.ctor()
+DA:8,1
+DA:9,1
+DA:10,1
+FN:4,System.Void Chess.Game.EmptySession::.cctor()
+FNDA:1,System.Void Chess.Game.EmptySession::.cctor()
+DA:5,1
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/EmptyWinner.cs
+FN:11,Chess.Game.EmptyWinner Chess.Game.EmptyWinner::get_Winner()
+FNDA:2,Chess.Game.EmptyWinner Chess.Game.EmptyWinner::get_Winner()
+DA:12,2
+FN:6,System.Void Chess.Game.EmptyWinner::.ctor()
+FNDA:1,System.Void Chess.Game.EmptyWinner::.ctor()
+DA:7,1
+DA:8,1
+DA:10,1
+FN:4,System.Void Chess.Game.EmptyWinner::.cctor()
+FNDA:1,System.Void Chess.Game.EmptyWinner::.cctor()
+DA:5,1
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/BlackForwardOnlyMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.BlackForwardOnlyMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:74,Chess.Game.MovePath Chess.Game.BlackForwardOnlyMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,74
+DA:14,74
+DA:15,10
+DA:17,64
+DA:18,74
+BRDA:14,30,0,10
+BRDA:14,30,1,64
+FN:6,System.Void Chess.Game.BlackForwardOnlyMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+FNDA:140,System.Void Chess.Game.BlackForwardOnlyMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+DA:7,140
+DA:8,140
+DA:9,140
+DA:10,140
+LF:9
+LH:9
+BRF:2
+BRH:2
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/BlackTwoVerticalSquaresInitialMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.BlackTwoVerticalSquaresInitialMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:77,Chess.Game.MovePath Chess.Game.BlackTwoVerticalSquaresInitialMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,77
+DA:14,77
+DA:15,45
+DA:17,32
+DA:18,77
+BRDA:14,13,0,45
+BRDA:14,13,1,32
+BRDA:14,37,0,45
+BRDA:14,37,1,32
+FN:6,System.Void Chess.Game.BlackTwoVerticalSquaresInitialMoveStrategy::.ctor(Chess.Game.VerticalMoveStrategy)
+FNDA:87,System.Void Chess.Game.BlackTwoVerticalSquaresInitialMoveStrategy::.ctor(Chess.Game.VerticalMoveStrategy)
+DA:7,87
+DA:8,87
+DA:9,87
+DA:10,87
+LF:9
+LH:9
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/CantMoveToTheSameCellStrategyDecorator.cs
+FN:12,Chess.Game.MovePath Chess.Game.CantMoveToTheCurrentCellStrategyDecorator::GetMovePath(Chess.Game.Move)
+FNDA:264,Chess.Game.MovePath Chess.Game.CantMoveToTheCurrentCellStrategyDecorator::GetMovePath(Chess.Game.Move)
+DA:13,264
+DA:14,264
+DA:15,1
+DA:17,263
+DA:18,264
+BRDA:14,23,0,113
+BRDA:14,23,1,151
+BRDA:14,54,0,1
+BRDA:14,54,1,263
+FN:6,System.Void Chess.Game.CantMoveToTheCurrentCellStrategyDecorator::.ctor(Chess.Game.IMoveStrategy)
+FNDA:339,System.Void Chess.Game.CantMoveToTheCurrentCellStrategyDecorator::.ctor(Chess.Game.IMoveStrategy)
+DA:7,339
+DA:8,339
+DA:9,339
+DA:10,339
+LF:9
+LH:9
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/CompositeMoveStrategy.cs
+FN:11,Chess.Game.MovePath Chess.Game.CompositeMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:223,Chess.Game.MovePath Chess.Game.CompositeMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:12,223
+DA:13,223
+DA:14,21
+DA:16,202
+DA:17,515
+DA:18,223
+BRDA:13,28,0,21
+BRDA:13,28,1,202
+FN:20,System.Boolean Chess.Game.CompositeMoveStrategy::NoneOfThePathsIsValid(Chess.Game.Move)
+FNDA:223,System.Boolean Chess.Game.CompositeMoveStrategy::NoneOfThePathsIsValid(Chess.Game.Move)
+DA:21,223
+DA:22,223
+DA:23,480
+DA:24,703
+DA:25,223
+FN:6,System.Void Chess.Game.CompositeMoveStrategy::.ctor(System.Collections.Generic.IEnumerable`1<Chess.Game.IMoveStrategy>)
+FNDA:298,System.Void Chess.Game.CompositeMoveStrategy::.ctor(System.Collections.Generic.IEnumerable`1<Chess.Game.IMoveStrategy>)
+DA:7,298
+DA:8,298
+DA:9,298
+DA:10,298
+LF:15
+LH:15
+BRF:2
+BRH:2
+FNF:3
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/DiagonalMoveStrategy.cs
+FN:5,Chess.Game.MovePath Chess.Game.DiagonalMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:156,Chess.Game.MovePath Chess.Game.DiagonalMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:6,156
+DA:7,156
+DA:8,21
+DA:10,135
+DA:12,156
+BRDA:7,30,0,21
+BRDA:7,30,1,135
+FN:29,System.Int32 Chess.Game.DiagonalMoveStrategy::GetXDifference(Chess.Game.Move)
+FNDA:215,System.Int32 Chess.Game.DiagonalMoveStrategy::GetXDifference(Chess.Game.Move)
+DA:30,215
+DA:31,215
+DA:32,215
+FN:34,System.Int32 Chess.Game.DiagonalMoveStrategy::GetYDifference(Chess.Game.Move)
+FNDA:215,System.Int32 Chess.Game.DiagonalMoveStrategy::GetYDifference(Chess.Game.Move)
+DA:35,215
+DA:36,215
+DA:37,215
+FN:14,System.Boolean Chess.Game.DiagonalMoveStrategy/<GetDiagonalCoordinates>d__1::MoveNext()
+FNDA:59,System.Boolean Chess.Game.DiagonalMoveStrategy/<GetDiagonalCoordinates>d__1::MoveNext()
+DA:15,59
+DA:16,59
+DA:17,59
+DA:18,59
+DA:19,59
+DA:20,59
+DA:21,59
+DA:23,194
+DA:24,42
+DA:25,42
+DA:26,38
+DA:27,55
+BRDA:20,121,0,29
+BRDA:20,121,1,30
+BRDA:21,140,0,29
+BRDA:21,140,1,30
+BRDA:23,266,1,42
+BRDA:23,266,0,55
+LF:23
+LH:23
+BRF:8
+BRH:8
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/EmptyMove.cs
+FN:10,Chess.Game.EmptyMove Chess.Game.EmptyMove::get_Move()
+FNDA:0,Chess.Game.EmptyMove Chess.Game.EmptyMove::get_Move()
+DA:11,0
+FN:6,System.Void Chess.Game.EmptyMove::.ctor()
+FNDA:0,System.Void Chess.Game.EmptyMove::.ctor()
+DA:7,0
+DA:8,0
+DA:9,0
+FN:4,System.Void Chess.Game.EmptyMove::.cctor()
+FNDA:0,System.Void Chess.Game.EmptyMove::.cctor()
+DA:5,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/EmptyMoveStrategy.cs
+FN:5,Chess.Game.MovePath Chess.Game.EmptyMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:0,Chess.Game.MovePath Chess.Game.EmptyMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:6,0
+DA:7,0
+DA:8,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/EnPassantMoveStrategy.cs
+FN:13,Chess.Game.MovePath Chess.Game.EnPassantMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:67,Chess.Game.MovePath Chess.Game.EnPassantMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:14,67
+DA:15,67
+DA:16,67
+DA:17,67
+DA:18,67
+DA:19,67
+DA:20,67
+DA:21,60
+DA:22,60
+DA:25,7
+DA:26,67
+BRDA:17,28,0,50
+BRDA:17,38,0,50
+BRDA:17,38,1,0
+BRDA:17,28,1,17
+BRDA:17,59,0,60
+BRDA:17,59,1,7
+FN:28,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetRightDiagonalPiece(Chess.Game.Move)
+FNDA:67,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetRightDiagonalPiece(Chess.Game.Move)
+DA:29,67
+DA:30,67
+DA:31,67
+FN:33,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetLeftDiagonalCell(Chess.Game.Move)
+FNDA:67,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetLeftDiagonalCell(Chess.Game.Move)
+DA:34,67
+DA:35,67
+DA:36,67
+FN:38,System.Boolean Chess.Game.EnPassantMoveStrategy::IsLeftMoveValid(Chess.Game.Move,Chess.Game.Cell)
+FNDA:50,System.Boolean Chess.Game.EnPassantMoveStrategy::IsLeftMoveValid(Chess.Game.Move,Chess.Game.Cell)
+DA:39,50
+DA:40,50
+DA:41,50
+DA:42,50
+DA:43,50
+DA:44,50
+DA:45,50
+BRDA:41,26,0,4
+BRDA:41,40,0,0
+BRDA:41,53,0,0
+BRDA:41,26,1,50
+BRDA:41,40,1,50
+BRDA:41,53,1,50
+FN:47,System.Boolean Chess.Game.EnPassantMoveStrategy::IsLeftCellValid(Chess.Game.Cell)
+FNDA:4,System.Boolean Chess.Game.EnPassantMoveStrategy::IsLeftCellValid(Chess.Game.Cell)
+DA:48,4
+DA:49,4
+DA:50,4
+DA:51,4
+DA:52,4
+DA:53,4
+BRDA:50,15,0,3
+BRDA:50,34,0,1
+BRDA:50,15,1,3
+BRDA:50,34,1,3
+FN:55,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetLeftNeighbourCell(Chess.Game.Cell)
+FNDA:54,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetLeftNeighbourCell(Chess.Game.Cell)
+DA:56,54
+DA:57,54
+DA:58,54
+FN:60,System.Boolean Chess.Game.EnPassantMoveStrategy::IsRightMoveValid(Chess.Game.Move,Chess.Game.Cell)
+FNDA:50,System.Boolean Chess.Game.EnPassantMoveStrategy::IsRightMoveValid(Chess.Game.Move,Chess.Game.Cell)
+DA:61,50
+DA:62,50
+DA:63,50
+DA:64,50
+DA:65,50
+DA:66,50
+DA:67,50
+BRDA:63,26,0,14
+BRDA:63,40,0,9
+BRDA:63,53,0,8
+BRDA:63,26,1,42
+BRDA:63,40,1,42
+BRDA:63,53,1,42
+FN:69,System.Boolean Chess.Game.EnPassantMoveStrategy::IsRightCellValid(Chess.Game.Cell)
+FNDA:14,System.Boolean Chess.Game.EnPassantMoveStrategy::IsRightCellValid(Chess.Game.Cell)
+DA:70,14
+DA:71,14
+DA:72,14
+DA:73,14
+DA:74,14
+DA:75,14
+BRDA:72,15,0,11
+BRDA:72,34,0,9
+BRDA:72,15,1,5
+BRDA:72,34,1,5
+FN:77,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetRightNeighbourCell(Chess.Game.Cell)
+FNDA:64,Chess.Game.Cell Chess.Game.EnPassantMoveStrategy::GetRightNeighbourCell(Chess.Game.Cell)
+DA:78,64
+DA:79,64
+DA:80,64
+FN:7,System.Void Chess.Game.EnPassantMoveStrategy::.ctor(Chess.Game.Board,Chess.Game.YDirection)
+FNDA:157,System.Void Chess.Game.EnPassantMoveStrategy::.ctor(Chess.Game.Board,Chess.Game.YDirection)
+DA:8,157
+DA:9,157
+DA:10,157
+DA:11,157
+DA:12,157
+FN:84,System.Void Chess.Game.WhiteEnPassantMoveStrategy::.ctor(Chess.Game.Board)
+FNDA:87,System.Void Chess.Game.WhiteEnPassantMoveStrategy::.ctor(Chess.Game.Board)
+DA:85,87
+DA:86,87
+DA:87,87
+FN:91,System.Void Chess.Game.BlackEnPassantMoveStrategy::.ctor(Chess.Game.Board)
+FNDA:70,System.Void Chess.Game.BlackEnPassantMoveStrategy::.ctor(Chess.Game.Board)
+DA:92,70
+DA:93,70
+DA:94,70
+LF:60
+LH:60
+BRF:26
+BRH:23
+FNF:12
+FNH:12
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/HorizontalMoveStrategy.cs
+FN:5,Chess.Game.MovePath Chess.Game.HorizontalMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:202,Chess.Game.MovePath Chess.Game.HorizontalMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:6,202
+DA:7,202
+DA:8,140
+DA:10,62
+DA:11,202
+BRDA:7,12,0,140
+BRDA:7,12,1,62
+FN:13,System.Boolean Chess.Game.HorizontalMoveStrategy/<GetHorizontalCoordinatesOnSameY>d__1::MoveNext()
+FNDA:26,System.Boolean Chess.Game.HorizontalMoveStrategy/<GetHorizontalCoordinatesOnSameY>d__1::MoveNext()
+DA:14,26
+DA:19,134
+DA:20,45
+DA:21,45
+DA:22,41
+DA:23,22
+BRDA:19,141,1,45
+BRDA:19,141,0,22
+LF:11
+LH:11
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/InvalidMove.cs
+FN:17,Chess.Game.InvalidMove Chess.Game.InvalidMove::get_Move()
+FNDA:0,Chess.Game.InvalidMove Chess.Game.InvalidMove::get_Move()
+DA:18,0
+FN:7,System.Void Chess.Game.InvalidMove::.ctor(Chess.Game.Cell,Chess.Game.Cell)
+FNDA:63,System.Void Chess.Game.InvalidMove::.ctor(Chess.Game.Cell,Chess.Game.Cell)
+DA:8,63
+DA:9,63
+DA:10,63
+FN:12,System.Void Chess.Game.InvalidMove::.ctor()
+FNDA:0,System.Void Chess.Game.InvalidMove::.ctor()
+DA:13,0
+DA:14,0
+DA:16,0
+FN:4,System.Void Chess.Game.InvalidMove::.cctor()
+FNDA:0,System.Void Chess.Game.InvalidMove::.cctor()
+DA:5,0
+LF:8
+LH:3
+BRF:0
+BRH:0
+FNF:4
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/LShapeMoveStrategy.cs
+FN:5,Chess.Game.MovePath Chess.Game.LShapeMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:56,Chess.Game.MovePath Chess.Game.LShapeMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:6,56
+DA:7,56
+DA:8,56
+DA:9,56
+DA:10,56
+DA:11,56
+DA:12,56
+DA:13,56
+DA:14,56
+DA:15,56
+DA:16,56
+DA:17,56
+DA:18,56
+DA:21,0
+DA:22,56
+BRDA:7,7,0,49
+BRDA:7,15,0,42
+BRDA:7,23,0,35
+BRDA:7,31,0,28
+BRDA:7,39,0,21
+BRDA:7,47,0,14
+BRDA:7,55,0,7
+BRDA:7,7,1,49
+BRDA:7,15,1,49
+BRDA:7,23,1,49
+BRDA:7,31,1,49
+BRDA:7,39,1,49
+BRDA:7,47,1,49
+BRDA:7,55,1,49
+BRDA:7,68,0,56
+BRDA:7,68,1,0
+FN:24,System.Boolean Chess.Game.LShapeMoveStrategy::TwoUpOneRight(Chess.Game.Move)
+FNDA:56,System.Boolean Chess.Game.LShapeMoveStrategy::TwoUpOneRight(Chess.Game.Move)
+DA:25,56
+DA:26,56
+DA:27,56
+BRDA:26,25,0,14
+BRDA:26,25,1,42
+FN:29,System.Boolean Chess.Game.LShapeMoveStrategy::TwoUpOneLeft(Chess.Game.Move)
+FNDA:49,System.Boolean Chess.Game.LShapeMoveStrategy::TwoUpOneLeft(Chess.Game.Move)
+DA:30,49
+DA:31,49
+DA:32,49
+BRDA:31,25,0,14
+BRDA:31,25,1,35
+FN:34,System.Boolean Chess.Game.LShapeMoveStrategy::OneUpTwoRight(Chess.Game.Move)
+FNDA:42,System.Boolean Chess.Game.LShapeMoveStrategy::OneUpTwoRight(Chess.Game.Move)
+DA:35,42
+DA:36,42
+DA:37,42
+BRDA:36,25,0,14
+BRDA:36,25,1,28
+FN:39,System.Boolean Chess.Game.LShapeMoveStrategy::OneUpTwoLeft(Chess.Game.Move)
+FNDA:35,System.Boolean Chess.Game.LShapeMoveStrategy::OneUpTwoLeft(Chess.Game.Move)
+DA:40,35
+DA:41,35
+DA:42,35
+BRDA:41,25,0,14
+BRDA:41,25,1,21
+FN:44,System.Boolean Chess.Game.LShapeMoveStrategy::TwoDownOneRight(Chess.Game.Move)
+FNDA:28,System.Boolean Chess.Game.LShapeMoveStrategy::TwoDownOneRight(Chess.Game.Move)
+DA:45,28
+DA:46,28
+DA:47,28
+BRDA:46,25,0,7
+BRDA:46,25,1,21
+FN:49,System.Boolean Chess.Game.LShapeMoveStrategy::TwoDownOneLeft(Chess.Game.Move)
+FNDA:21,System.Boolean Chess.Game.LShapeMoveStrategy::TwoDownOneLeft(Chess.Game.Move)
+DA:50,21
+DA:51,21
+DA:52,21
+BRDA:51,25,0,7
+BRDA:51,25,1,14
+FN:54,System.Boolean Chess.Game.LShapeMoveStrategy::OneDownTwoRight(Chess.Game.Move)
+FNDA:14,System.Boolean Chess.Game.LShapeMoveStrategy::OneDownTwoRight(Chess.Game.Move)
+DA:55,14
+DA:56,14
+DA:57,14
+BRDA:56,25,0,7
+BRDA:56,25,1,7
+FN:59,System.Boolean Chess.Game.LShapeMoveStrategy::OneDownTwoLeft(Chess.Game.Move)
+FNDA:7,System.Boolean Chess.Game.LShapeMoveStrategy::OneDownTwoLeft(Chess.Game.Move)
+DA:60,7
+DA:61,7
+DA:62,7
+BRDA:61,25,0,7
+BRDA:61,25,1,0
+LF:39
+LH:38
+BRF:32
+BRH:30
+FNF:9
+FNH:9
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/Move.cs
+FN:15,Chess.Game.Cell Chess.Game.Move::get_From()
+FNDA:4695,Chess.Game.Cell Chess.Game.Move::get_From()
+DA:16,4695
+FN:16,Chess.Game.Cell Chess.Game.Move::get_To()
+FNDA:4046,Chess.Game.Cell Chess.Game.Move::get_To()
+DA:17,4046
+FN:17,System.Boolean Chess.Game.Move::get_IsOnSameRow()
+FNDA:321,System.Boolean Chess.Game.Move::get_IsOnSameRow()
+DA:18,321
+FN:18,System.Boolean Chess.Game.Move::get_IsOnSameColumn()
+FNDA:471,System.Boolean Chess.Game.Move::get_IsOnSameColumn()
+DA:19,471
+FN:19,System.Int32 Chess.Game.Move::get_LowestColumn()
+FNDA:26,System.Int32 Chess.Game.Move::get_LowestColumn()
+DA:20,26
+FN:20,System.Int32 Chess.Game.Move::get_HighestColumn()
+FNDA:67,System.Int32 Chess.Game.Move::get_HighestColumn()
+DA:21,67
+FN:21,System.Int32 Chess.Game.Move::get_LowestRow()
+FNDA:74,System.Int32 Chess.Game.Move::get_LowestRow()
+DA:22,74
+FN:22,System.Int32 Chess.Game.Move::get_HighestRow()
+FNDA:156,System.Int32 Chess.Game.Move::get_HighestRow()
+DA:23,156
+FN:23,System.Boolean Chess.Game.Move::get_HasSameColor()
+FNDA:24,System.Boolean Chess.Game.Move::get_HasSameColor()
+DA:24,24
+FN:24,System.Boolean Chess.Game.Move::get_IsValid()
+FNDA:184,System.Boolean Chess.Game.Move::get_IsValid()
+DA:25,184
+FN:25,Chess.Game.Color Chess.Game.Move::get_Color()
+FNDA:94,Chess.Game.Color Chess.Game.Move::get_Color()
+DA:26,94
+BRDA:26,11,0,58
+BRDA:26,11,1,36
+FN:28,Chess.Game.Move Chess.Game.Move::Go()
+FNDA:149,Chess.Game.Move Chess.Game.Move::Go()
+DA:29,149
+DA:30,149
+DA:31,149
+DA:32,149
+FN:34,System.Void Chess.Game.Move::GoBack()
+FNDA:2,System.Void Chess.Game.Move::GoBack()
+DA:35,2
+DA:36,2
+DA:37,2
+DA:38,2
+FN:7,System.Void Chess.Game.Move::.ctor(Chess.Game.Cell,Chess.Game.Cell)
+FNDA:744,System.Void Chess.Game.Move::.ctor(Chess.Game.Cell,Chess.Game.Cell)
+DA:8,744
+DA:9,744
+DA:10,744
+DA:11,744
+DA:12,744
+DA:13,744
+DA:14,744
+LF:26
+LH:26
+BRF:2
+BRH:2
+FNF:14
+FNH:14
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/MovePath.cs
+FN:10,Chess.Game.Move Chess.Game.MovePath::get_Move()
+FNDA:0,Chess.Game.Move Chess.Game.MovePath::get_Move()
+DA:11,0
+FN:11,System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate> Chess.Game.MovePath::get_CoordinatesInPath()
+FNDA:500,System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate> Chess.Game.MovePath::get_CoordinatesInPath()
+DA:12,500
+FN:12,System.Boolean Chess.Game.MovePath::get_IsValid()
+FNDA:704,System.Boolean Chess.Game.MovePath::get_IsValid()
+DA:13,704
+FN:4,System.Void Chess.Game.MovePath::.ctor(Chess.Game.Move,System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate>)
+FNDA:1204,System.Void Chess.Game.MovePath::.ctor(Chess.Game.Move,System.Collections.Generic.IEnumerable`1<Chess.Game.Coordinate>)
+DA:5,1204
+DA:6,1204
+DA:7,1204
+DA:8,1204
+DA:9,1204
+FN:18,System.Void Chess.Game.InvalidMovePath::.ctor(Chess.Game.Move)
+FNDA:557,System.Void Chess.Game.InvalidMovePath::.ctor(Chess.Game.Move)
+DA:19,557
+DA:20,557
+DA:21,557
+LF:11
+LH:10
+BRF:0
+BRH:0
+FNF:5
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/OneSquareMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.OneSquareMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:175,Chess.Game.MovePath Chess.Game.OneSquareMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,175
+DA:14,175
+DA:15,30
+DA:17,145
+DA:18,175
+BRDA:14,12,0,30
+BRDA:14,12,1,145
+FN:20,System.Boolean Chess.Game.OneSquareMoveStrategy::OneSquareInAnyDirection(Chess.Game.Move)
+FNDA:175,System.Boolean Chess.Game.OneSquareMoveStrategy::OneSquareInAnyDirection(Chess.Game.Move)
+DA:21,175
+DA:22,175
+DA:23,175
+DA:24,175
+DA:25,175
+DA:26,175
+BRDA:22,7,0,119
+BRDA:22,15,0,105
+BRDA:22,7,1,70
+BRDA:22,15,1,70
+FN:28,System.Boolean Chess.Game.OneSquareMoveStrategy::IsDiagonalOneSquare(Chess.Game.Move)
+FNDA:105,System.Boolean Chess.Game.OneSquareMoveStrategy::IsDiagonalOneSquare(Chess.Game.Move)
+DA:29,105
+DA:30,105
+DA:31,105
+BRDA:30,28,0,77
+BRDA:30,28,1,28
+FN:33,System.Boolean Chess.Game.OneSquareMoveStrategy::IsHorizontalOneSquare(Chess.Game.Move)
+FNDA:119,System.Boolean Chess.Game.OneSquareMoveStrategy::IsHorizontalOneSquare(Chess.Game.Move)
+DA:34,119
+DA:35,119
+DA:36,119
+BRDA:35,7,0,18
+BRDA:35,7,1,101
+FN:38,System.Boolean Chess.Game.OneSquareMoveStrategy::IsVerticalOneSquare(Chess.Game.Move)
+FNDA:175,System.Boolean Chess.Game.OneSquareMoveStrategy::IsVerticalOneSquare(Chess.Game.Move)
+DA:39,175
+DA:40,175
+DA:41,175
+BRDA:40,7,0,76
+BRDA:40,7,1,99
+FN:43,System.Boolean Chess.Game.OneSquareMoveStrategy::CoordinateDiffIsOneSquare(System.Int32,System.Int32)
+FNDA:276,System.Boolean Chess.Game.OneSquareMoveStrategy::CoordinateDiffIsOneSquare(System.Int32,System.Int32)
+DA:44,276
+DA:45,276
+DA:46,276
+FN:6,System.Void Chess.Game.OneSquareMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+FNDA:353,System.Void Chess.Game.OneSquareMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+DA:7,353
+DA:8,353
+DA:9,353
+DA:10,353
+LF:27
+LH:27
+BRF:12
+BRH:12
+FNF:7
+FNH:7
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/OnlyAttackMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.OnlyAttackMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:62,Chess.Game.MovePath Chess.Game.OnlyAttackMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,62
+DA:14,62
+DA:15,43
+DA:17,19
+DA:18,62
+BRDA:14,12,0,24
+BRDA:14,12,1,38
+BRDA:14,25,0,43
+BRDA:14,25,1,19
+FN:6,System.Void Chess.Game.OnlyAttackMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+FNDA:150,System.Void Chess.Game.OnlyAttackMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+DA:7,150
+DA:8,150
+DA:9,150
+DA:10,150
+LF:9
+LH:9
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/VerticalMoveStrategy.cs
+FN:5,Chess.Game.MovePath Chess.Game.VerticalMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:296,Chess.Game.MovePath Chess.Game.VerticalMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:6,296
+DA:7,296
+DA:8,120
+DA:10,176
+DA:11,296
+BRDA:7,12,0,120
+BRDA:7,12,1,176
+FN:13,System.Boolean Chess.Game.VerticalMoveStrategy/<GetVerticalCoordinatesOnSameX>d__1::MoveNext()
+FNDA:74,System.Boolean Chess.Game.VerticalMoveStrategy/<GetVerticalCoordinatesOnSameX>d__1::MoveNext()
+DA:14,74
+DA:15,312
+DA:16,88
+DA:17,88
+DA:18,82
+DA:19,68
+BRDA:15,141,1,88
+BRDA:15,141,0,68
+LF:11
+LH:11
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/WhiteForwardOnlyMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.WhiteForwardOnlyMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:92,Chess.Game.MovePath Chess.Game.WhiteForwardOnlyMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,92
+DA:14,92
+DA:15,10
+DA:17,82
+DA:18,92
+BRDA:14,30,0,10
+BRDA:14,30,1,82
+FN:6,System.Void Chess.Game.WhiteForwardOnlyMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+FNDA:154,System.Void Chess.Game.WhiteForwardOnlyMoveStrategy::.ctor(Chess.Game.IMoveStrategy)
+DA:7,154
+DA:8,154
+DA:9,154
+DA:10,154
+LF:9
+LH:9
+BRF:2
+BRH:2
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/WhiteTwoVerticalSquaresInitialMoveStrategy.cs
+FN:12,Chess.Game.MovePath Chess.Game.WhiteTwoVerticalSquaresInitialMoveStrategy::GetMovePath(Chess.Game.Move)
+FNDA:88,Chess.Game.MovePath Chess.Game.WhiteTwoVerticalSquaresInitialMoveStrategy::GetMovePath(Chess.Game.Move)
+DA:13,88
+DA:14,88
+DA:15,56
+DA:17,32
+DA:18,88
+BRDA:14,13,0,45
+BRDA:14,13,1,43
+BRDA:14,37,0,56
+BRDA:14,37,1,32
+FN:6,System.Void Chess.Game.WhiteTwoVerticalSquaresInitialMoveStrategy::.ctor(Chess.Game.VerticalMoveStrategy)
+FNDA:94,System.Void Chess.Game.WhiteTwoVerticalSquaresInitialMoveStrategy::.ctor(Chess.Game.VerticalMoveStrategy)
+DA:7,94
+DA:8,94
+DA:9,94
+DA:10,94
+LF:9
+LH:9
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Moves/YDirection.cs
+FN:14,System.Int32 Chess.Game.YDirection::GetYCoordinate(System.Int32)
+FNDA:134,System.Int32 Chess.Game.YDirection::GetYCoordinate(System.Int32)
+DA:15,134
+FN:6,System.Void Chess.Game.YDirection::.ctor(System.Int32)
+FNDA:157,System.Void Chess.Game.YDirection::.ctor(System.Int32)
+DA:7,157
+DA:8,157
+DA:9,157
+DA:10,0
+DA:12,157
+DA:13,157
+BRDA:9,10,0,70
+BRDA:9,10,1,87
+BRDA:9,24,0,0
+BRDA:9,24,1,157
+FN:20,System.Void Chess.Game.BlackYDirection::.ctor()
+FNDA:70,System.Void Chess.Game.BlackYDirection::.ctor()
+DA:21,70
+DA:22,70
+DA:23,70
+FN:27,System.Void Chess.Game.WhiteYDirection::.ctor()
+FNDA:87,System.Void Chess.Game.WhiteYDirection::.ctor()
+DA:28,87
+DA:29,87
+DA:30,87
+LF:13
+LH:12
+BRF:4
+BRH:3
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Bishop.cs
+FN:5,System.Void Chess.Game.Bishop::.ctor()
+FNDA:40,System.Void Chess.Game.Bishop::.ctor()
+DA:6,40
+DA:7,40
+DA:9,40
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/BlackPieceDecorator.cs
+FN:9,Chess.Game.Color Chess.Game.BlackPieceDecorator::get_Color()
+FNDA:125,Chess.Game.Color Chess.Game.BlackPieceDecorator::get_Color()
+DA:10,125
+FN:5,System.Void Chess.Game.BlackPieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+FNDA:155,System.Void Chess.Game.BlackPieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+DA:6,155
+DA:7,155
+DA:8,155
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/BoardPieceDecorator.cs
+FN:19,System.Type Chess.Game.BoardPieceDecorator::get_PieceType()
+FNDA:12,System.Type Chess.Game.BoardPieceDecorator::get_PieceType()
+DA:20,12
+FN:21,System.Boolean Chess.Game.BoardPieceDecorator::get_IsEmpty()
+FNDA:366,System.Boolean Chess.Game.BoardPieceDecorator::get_IsEmpty()
+DA:22,366
+FN:23,System.Boolean Chess.Game.BoardPieceDecorator::HasSameColor(Chess.Game.IBoardPiece)
+FNDA:165,System.Boolean Chess.Game.BoardPieceDecorator::HasSameColor(Chess.Game.IBoardPiece)
+DA:24,165
+FN:26,System.Boolean Chess.Game.BoardPieceDecorator::CanMove(Chess.Game.Cell,Chess.Game.Cell)
+FNDA:172,System.Boolean Chess.Game.BoardPieceDecorator::CanMove(Chess.Game.Cell,Chess.Game.Cell)
+DA:27,172
+DA:28,172
+DA:29,172
+DA:30,172
+DA:31,172
+DA:32,172
+DA:33,172
+DA:34,172
+BRDA:28,7,0,171
+BRDA:28,16,0,170
+BRDA:28,41,0,141
+BRDA:28,51,0,127
+BRDA:28,7,1,45
+BRDA:28,16,1,45
+BRDA:28,41,1,45
+BRDA:28,51,1,45
+FN:36,System.Void Chess.Game.BoardPieceDecorator::RecordCurrentCellInHistory(Chess.Game.Cell)
+FNDA:685,System.Void Chess.Game.BoardPieceDecorator::RecordCurrentCellInHistory(Chess.Game.Cell)
+DA:37,685
+DA:38,685
+DA:39,685
+FN:41,Chess.Game.Cell Chess.Game.BoardPieceDecorator::PopLastCellFromHistory()
+FNDA:4,Chess.Game.Cell Chess.Game.BoardPieceDecorator::PopLastCellFromHistory()
+DA:42,4
+DA:43,4
+DA:44,0
+DA:46,4
+DA:47,4
+BRDA:43,14,0,0
+BRDA:43,14,1,4
+FN:48,System.Boolean Chess.Game.BoardPieceDecorator::get_IsFirstMove()
+FNDA:9,System.Boolean Chess.Game.BoardPieceDecorator::get_IsFirstMove()
+DA:49,9
+FN:49,Chess.Game.Cell Chess.Game.BoardPieceDecorator::get_PreviousCell()
+FNDA:8,Chess.Game.Cell Chess.Game.BoardPieceDecorator::get_PreviousCell()
+DA:50,8
+FN:52,System.Boolean Chess.Game.BoardPieceDecorator::ThereArentAnyBlockingPiecesInBetween(Chess.Game.Cell,Chess.Game.Cell)
+FNDA:141,System.Boolean Chess.Game.BoardPieceDecorator::ThereArentAnyBlockingPiecesInBetween(Chess.Game.Cell,Chess.Game.Cell)
+DA:53,141
+DA:54,141
+DA:55,141
+DA:56,141
+DA:57,141
+FN:58,System.Boolean Chess.Game.BoardPieceDecorator::get_IsTurnToPlay()
+FNDA:172,System.Boolean Chess.Game.BoardPieceDecorator::get_IsTurnToPlay()
+DA:59,172
+FN:7,System.Void Chess.Game.BoardPieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+FNDA:468,System.Void Chess.Game.BoardPieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+DA:8,468
+DA:10,468
+DA:11,468
+DA:12,468
+DA:13,468
+DA:14,468
+DA:15,468
+DA:16,468
+DA:17,468
+LF:36
+LH:35
+BRF:10
+BRH:9
+FNF:11
+FNH:11
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/EmptyBoardPiece.cs
+FN:12,Chess.Game.EmptyBoardPiece Chess.Game.EmptyBoardPiece::get_Piece()
+FNDA:12287,Chess.Game.EmptyBoardPiece Chess.Game.EmptyBoardPiece::get_Piece()
+DA:13,12287
+FN:14,Chess.Game.Color Chess.Game.EmptyBoardPiece::get_Color()
+FNDA:71,Chess.Game.Color Chess.Game.EmptyBoardPiece::get_Color()
+DA:15,71
+FN:8,System.Void Chess.Game.EmptyBoardPiece::.ctor()
+FNDA:1,System.Void Chess.Game.EmptyBoardPiece::.ctor()
+DA:9,1
+DA:10,1
+DA:11,1
+FN:4,System.Void Chess.Game.EmptyBoardPiece::.cctor()
+FNDA:1,System.Void Chess.Game.EmptyBoardPiece::.cctor()
+DA:5,1
+DA:6,1
+LF:7
+LH:7
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/EmptyPiece.cs
+FN:12,Chess.Game.EmptyPiece Chess.Game.EmptyPiece::get_Piece()
+FNDA:1,Chess.Game.EmptyPiece Chess.Game.EmptyPiece::get_Piece()
+DA:13,1
+FN:8,System.Void Chess.Game.EmptyPiece::.ctor()
+FNDA:1,System.Void Chess.Game.EmptyPiece::.ctor()
+DA:9,1
+DA:10,1
+DA:11,1
+FN:4,System.Void Chess.Game.EmptyPiece::.cctor()
+FNDA:1,System.Void Chess.Game.EmptyPiece::.cctor()
+DA:5,1
+DA:6,1
+LF:6
+LH:6
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/King.cs
+FN:5,System.Void Chess.Game.King::.ctor()
+FNDA:45,System.Void Chess.Game.King::.ctor()
+DA:6,45
+DA:7,45
+DA:8,45
+DA:9,45
+DA:10,45
+DA:11,45
+DA:13,45
+LF:7
+LH:7
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Knight.cs
+FN:5,System.Void Chess.Game.Knight::.ctor()
+FNDA:129,System.Void Chess.Game.Knight::.ctor()
+DA:6,129
+DA:7,129
+DA:9,129
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Pawn.cs
+FN:5,System.Void Chess.Game.Pawn::.ctor(Chess.Game.IMoveStrategy)
+FNDA:147,System.Void Chess.Game.Pawn::.ctor(Chess.Game.IMoveStrategy)
+DA:6,147
+DA:7,147
+DA:9,147
+FN:16,System.Void Chess.Game.WhitePawn::.ctor(Chess.Game.Board)
+FNDA:77,System.Void Chess.Game.WhitePawn::.ctor(Chess.Game.Board)
+DA:17,77
+DA:18,77
+DA:19,77
+DA:20,77
+DA:21,77
+DA:22,77
+DA:23,77
+DA:24,77
+DA:25,77
+DA:26,77
+DA:27,77
+DA:28,77
+DA:29,77
+DA:30,77
+DA:31,77
+DA:33,77
+FN:39,System.Void Chess.Game.BlackPawn::.ctor(Chess.Game.Board)
+FNDA:70,System.Void Chess.Game.BlackPawn::.ctor(Chess.Game.Board)
+DA:40,70
+DA:41,70
+DA:42,70
+DA:43,70
+DA:44,70
+DA:45,70
+DA:46,70
+DA:47,70
+DA:48,70
+DA:49,70
+DA:50,70
+DA:51,70
+DA:52,70
+DA:53,70
+DA:54,70
+DA:56,70
+LF:35
+LH:35
+BRF:0
+BRH:0
+FNF:3
+FNH:3
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Piece.cs
+FN:12,Chess.Game.MovePath Chess.Game.Piece::GetMovePath(Chess.Game.Move)
+FNDA:311,Chess.Game.MovePath Chess.Game.Piece::GetMovePath(Chess.Game.Move)
+DA:13,311
+DA:14,311
+DA:15,311
+FN:6,System.Void Chess.Game.Piece::.ctor(Chess.Game.IMoveStrategy)
+FNDA:468,System.Void Chess.Game.Piece::.ctor(Chess.Game.IMoveStrategy)
+DA:7,468
+DA:8,468
+DA:9,468
+DA:10,468
+LF:7
+LH:7
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Queen.cs
+FN:5,System.Void Chess.Game.Queen::.ctor()
+FNDA:39,System.Void Chess.Game.Queen::.ctor()
+DA:6,39
+DA:7,39
+DA:8,39
+DA:10,39
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/Rook.cs
+FN:5,System.Void Chess.Game.Rook::.ctor()
+FNDA:67,System.Void Chess.Game.Rook::.ctor()
+DA:6,67
+DA:7,67
+DA:8,67
+DA:10,67
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Pieces/WhitePieceDecorator.cs
+FN:9,Chess.Game.Color Chess.Game.WhitePieceDecorator::get_Color()
+FNDA:381,Chess.Game.Color Chess.Game.WhitePieceDecorator::get_Color()
+DA:10,381
+FN:5,System.Void Chess.Game.WhitePieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+FNDA:290,System.Void Chess.Game.WhitePieceDecorator::.ctor(Chess.Game.Piece,Chess.Game.Session,Chess.Game.Board,Chess.Game.CellHistory)
+DA:6,290
+DA:7,290
+DA:8,290
+LF:4
+LH:4
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/BlackPlayer.cs
+FN:5,System.Void Chess.Game.BlackPlayer::.ctor(Chess.Game.IClock,System.String)
+FNDA:213,System.Void Chess.Game.BlackPlayer::.ctor(Chess.Game.IClock,System.String)
+DA:6,213
+DA:7,213
+DA:8,213
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/Clock.cs
+FN:14,System.Void Chess.Game.Clock::Start()
+FNDA:46,System.Void Chess.Game.Clock::Start()
+DA:15,46
+DA:16,46
+DA:17,46
+DA:18,46
+DA:19,46
+FN:21,System.Void Chess.Game.Clock::Stop()
+FNDA:34,System.Void Chess.Game.Clock::Stop()
+DA:22,34
+DA:23,34
+DA:24,34
+DA:25,34
+DA:26,34
+FN:28,System.Void Chess.Game.Clock::Dispose()
+FNDA:8,System.Void Chess.Game.Clock::Dispose()
+DA:29,8
+DA:30,8
+DA:31,8
+FN:32,System.Boolean Chess.Game.Clock::get_Ticking()
+FNDA:86,System.Boolean Chess.Game.Clock::get_Ticking()
+DA:33,86
+FN:34,System.TimeSpan Chess.Game.Clock::get_ElapsedTime()
+FNDA:0,System.TimeSpan Chess.Game.Clock::get_ElapsedTime()
+DA:35,0
+FN:6,System.Void Chess.Game.Clock::.ctor(Chess.Game.ITimer)
+FNDA:424,System.Void Chess.Game.Clock::.ctor(Chess.Game.ITimer)
+DA:7,424
+DA:9,424
+DA:10,424
+DA:11,424
+DA:12,424
+LF:20
+LH:19
+BRF:0
+BRH:0
+FNF:6
+FNH:5
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/EmptyClock.cs
+FN:4,System.Int32 Chess.Game.EmptyClock::get_SecondsUsed()
+FNDA:0,System.Int32 Chess.Game.EmptyClock::get_SecondsUsed()
+DA:5,0
+FN:6,System.TimeSpan Chess.Game.EmptyClock::get_ElapsedTime()
+FNDA:0,System.TimeSpan Chess.Game.EmptyClock::get_ElapsedTime()
+DA:7,0
+FN:9,System.Void Chess.Game.EmptyClock::Start()
+FNDA:0,System.Void Chess.Game.EmptyClock::Start()
+DA:10,0
+DA:12,0
+FN:14,System.Void Chess.Game.EmptyClock::Stop()
+FNDA:0,System.Void Chess.Game.EmptyClock::Stop()
+DA:15,0
+DA:17,0
+FN:19,System.Void Chess.Game.EmptyClock::Dispose()
+FNDA:0,System.Void Chess.Game.EmptyClock::Dispose()
+DA:20,0
+DA:22,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/Player.cs
+FN:13,Chess.Game.Color Chess.Game.Player::get_Color()
+FNDA:173,Chess.Game.Color Chess.Game.Player::get_Color()
+DA:14,173
+FN:14,System.String Chess.Game.Player::get_Name()
+FNDA:0,System.String Chess.Game.Player::get_Name()
+DA:15,0
+FN:17,System.Void Chess.Game.Player::ResumePlaying()
+FNDA:46,System.Void Chess.Game.Player::ResumePlaying()
+DA:18,46
+DA:19,46
+DA:20,46
+FN:22,System.Void Chess.Game.Player::Wait()
+FNDA:34,System.Void Chess.Game.Player::Wait()
+DA:23,34
+DA:24,34
+DA:25,34
+FN:6,System.Void Chess.Game.Player::.ctor(Chess.Game.Color,Chess.Game.IClock,System.String)
+FNDA:426,System.Void Chess.Game.Player::.ctor(Chess.Game.Color,Chess.Game.IClock,System.String)
+DA:7,426
+DA:8,426
+DA:9,426
+DA:10,426
+DA:11,426
+DA:12,426
+LF:14
+LH:13
+BRF:0
+BRH:0
+FNF:5
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/TimerWrapper.cs
+FN:15,System.Void Chess.Game.TimerWrapper::Start()
+FNDA:46,System.Void Chess.Game.TimerWrapper::Start()
+DA:16,46
+DA:17,46
+DA:18,46
+FN:20,System.Void Chess.Game.TimerWrapper::Stop()
+FNDA:34,System.Void Chess.Game.TimerWrapper::Stop()
+DA:21,34
+DA:22,34
+DA:23,34
+FN:26,System.Void Chess.Game.TimerWrapper::Dispose()
+FNDA:8,System.Void Chess.Game.TimerWrapper::Dispose()
+DA:27,8
+DA:28,8
+DA:29,8
+FN:8,System.Void Chess.Game.TimerWrapper::.ctor()
+FNDA:424,System.Void Chess.Game.TimerWrapper::.ctor()
+DA:9,424
+DA:10,424
+DA:11,424
+DA:12,424
+DA:13,424
+LF:14
+LH:14
+BRF:0
+BRH:0
+FNF:4
+FNH:4
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Players/WhitePlayer.cs
+FN:5,System.Void Chess.Game.WhitePlayer::.ctor(Chess.Game.IClock,System.String)
+FNDA:213,System.Void Chess.Game.WhitePlayer::.ctor(Chess.Game.IClock,System.String)
+DA:6,213
+DA:7,213
+DA:8,213
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Session.cs
+FN:13,System.Boolean Chess.Game.Session::get_IsComplete()
+FNDA:1,System.Boolean Chess.Game.Session::get_IsComplete()
+DA:14,1
+FN:15,Chess.Game.Winner Chess.Game.Session::get_Winner()
+FNDA:1,Chess.Game.Winner Chess.Game.Session::get_Winner()
+DA:16,1
+FN:17,Chess.Game.Color Chess.Game.Session::get_PlayTurn()
+FNDA:172,Chess.Game.Color Chess.Game.Session::get_PlayTurn()
+DA:18,172
+FN:18,Chess.Game.Player Chess.Game.Session::get_CurrentPlayer()
+FNDA:241,Chess.Game.Player Chess.Game.Session::get_CurrentPlayer()
+DA:19,241
+DA:20,241
+DA:21,241
+BRDA:19,11,0,147
+BRDA:19,11,1,94
+BRDA:19,38,0,72
+BRDA:19,38,1,22
+FN:22,Chess.Game.Player Chess.Game.Session::get_WaitingPlayer()
+FNDA:34,Chess.Game.Player Chess.Game.Session::get_WaitingPlayer()
+DA:23,34
+DA:24,34
+DA:25,34
+BRDA:23,12,0,25
+BRDA:23,12,1,9
+FN:27,System.Void Chess.Game.Session::Start()
+FNDA:12,System.Void Chess.Game.Session::Start()
+DA:28,12
+DA:29,12
+DA:30,12
+FN:32,System.Void Chess.Game.Session::Next(Chess.Game.Move)
+FNDA:32,System.Void Chess.Game.Session::Next(Chess.Game.Move)
+DA:33,32
+DA:34,32
+DA:35,0
+DA:37,32
+DA:38,32
+DA:39,32
+BRDA:34,12,1,32
+BRDA:34,12,0,32
+FN:41,Chess.Game.Move Chess.Game.Session::Back()
+FNDA:2,Chess.Game.Move Chess.Game.Session::Back()
+DA:42,2
+DA:43,2
+DA:44,0
+DA:46,2
+DA:47,2
+DA:48,2
+DA:49,2
+DA:50,2
+BRDA:43,17,0,0
+BRDA:43,17,1,2
+FN:51,System.Collections.Generic.IEnumerable`1<Chess.Game.Move> Chess.Game.Session::get_MoveHistory()
+FNDA:6,System.Collections.Generic.IEnumerable`1<Chess.Game.Move> Chess.Game.Session::get_MoveHistory()
+DA:52,6
+FN:53,Chess.Game.WhitePlayer Chess.Game.Session::get_WhitePlayer()
+FNDA:240,Chess.Game.WhitePlayer Chess.Game.Session::get_WhitePlayer()
+DA:54,240
+FN:54,Chess.Game.BlackPlayer Chess.Game.Session::get_BlackPlayer()
+FNDA:81,Chess.Game.BlackPlayer Chess.Game.Session::get_BlackPlayer()
+DA:55,81
+FN:57,System.Void Chess.Game.Session::SwitchTurns()
+FNDA:34,System.Void Chess.Game.Session::SwitchTurns()
+DA:58,34
+DA:59,34
+DA:60,34
+DA:61,34
+FN:4,System.Void Chess.Game.Session::.ctor(Chess.Game.WhitePlayer,Chess.Game.BlackPlayer)
+FNDA:213,System.Void Chess.Game.Session::.ctor(Chess.Game.WhitePlayer,Chess.Game.BlackPlayer)
+DA:5,213
+DA:8,213
+DA:9,213
+DA:10,213
+DA:11,213
+DA:12,213
+LF:39
+LH:37
+BRF:10
+BRH:9
+FNF:13
+FNH:13
+end_of_record
+SF:/Code/Chess/src/Chess.Game/Winner.cs
+FN:4,System.Void Chess.Game.Winner::.ctor()
+FNDA:1,System.Void Chess.Game.Winner::.ctor()
+DA:5,1
+DA:6,1
+DA:8,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
