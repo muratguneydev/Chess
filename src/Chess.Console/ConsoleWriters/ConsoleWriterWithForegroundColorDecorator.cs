@@ -25,7 +25,6 @@ public class ConsoleWriterWithForegroundColorDecorator : IConsoleWriter
 
 	public void WriteLine()
 	{
-		//this.ChangeForegroundColor();
 		this.consoleWriter.WriteLine();
 	}
 

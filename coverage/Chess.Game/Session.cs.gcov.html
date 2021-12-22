@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - Chess.Game/Session.cs</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">Chess.Game</a> - Session.cs<span style="font-size: 80%;"> (source / <a href="Session.cs.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntryHi">94.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2021-12-22 21:07:10</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : namespace Chess.Game;</a>
+<a name="2"><span class="lineNum">       2 </span>            : </a>
+<span class="lineNum">       3 </span>            : public class Session
+<span class="lineNum">       4 </span>            : {
+<span class="lineNum">       5 </span><span class="lineCov">        213 :         private readonly Stack&lt;Move&gt; moves = new Stack&lt;Move&gt;();</span>
+<span class="lineNum">       6 </span>            :         public event Action&lt;Move&gt;? OnMove;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">        213 :         public Session(WhitePlayer whitePlayer, BlackPlayer blackPlayer)</span>
+<span class="lineNum">       9 </span><span class="lineCov">        213 :         {</span>
+<span class="lineNum">      10 </span><span class="lineCov">        213 :                 this.WhitePlayer = whitePlayer;</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        213 :                 this.BlackPlayer = blackPlayer;</span></a>
+<span class="lineNum">      12 </span><span class="lineCov">        213 :         }</span>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :         public bool IsComplete =&gt; false;</span>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :         public Winner Winner =&gt; EmptyWinner.Winner;</span></a>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineCov">        172 :         public Color PlayTurn =&gt; this.CurrentPlayer.Color;</span>
+<span class="lineNum">      19 </span><span class="lineCov">        241 :         public Player CurrentPlayer =&gt; this.moves.Any()</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        241 :                 ? this.moves.Peek().Color == Color.Black ? this.WhitePlayer : this.BlackPlayer</span></a>
+<span class="lineNum">      21 </span><span class="lineCov">        241 :                 : this.WhitePlayer;</span>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">         34 :         public Player WaitingPlayer =&gt; this.CurrentPlayer == this.WhitePlayer</span>
+<span class="lineNum">      24 </span><span class="lineCov">         34 :                 ? this.BlackPlayer</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">         34 :                 : this.WhitePlayer;</span></a>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            :         public void Start()
+<span class="lineNum">      28 </span><span class="lineCov">         12 :         {</span>
+<span class="lineNum">      29 </span><span class="lineCov">         12 :                 this.WhitePlayer.ResumePlaying();</span>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         12 :         }</span></a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            :         public void Next(Move move)
+<span class="lineNum">      33 </span><span class="lineCov">         32 :         {</span>
+<span class="lineNum">      34 </span><span class="lineCov">         32 :                 if (!move.IsValid)</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :                         return;</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineCov">         32 :                 this.moves.Push(move);</span>
+<span class="lineNum">      38 </span><span class="lineCov">         32 :                 this.SwitchTurns();</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">         32 :         }</span></a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            :         public Move Back()
+<span class="lineNum">      42 </span><span class="lineCov">          2 :         {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :                 if (!this.moves.Any())</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :                         return EmptyMove.Move;</span>
+<span class="lineNum">      45 </span>            :                 
+<span class="lineNum">      46 </span><span class="lineCov">          2 :                 var lastMove = this.moves.Pop();</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :                 lastMove.GoBack();</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :                 this.SwitchTurns();//TODO: add back tests then move this before goback() call.</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          2 :                 return lastMove;</span></a>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :         }</span>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          6 :         public IEnumerable&lt;Move&gt; MoveHistory =&gt; this.moves;</span></a>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">        240 :         public WhitePlayer WhitePlayer { get; }</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">         81 :         public BlackPlayer BlackPlayer { get; }</span></a>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :         private void SwitchTurns()
+<span class="lineNum">      58 </span><span class="lineCov">         34 :         {</span>
+<span class="lineNum">      59 </span><span class="lineCov">         34 :                 this.WaitingPlayer.Wait();</span>
+<span class="lineNum">      60 </span><span class="lineCov">         34 :                 this.CurrentPlayer.ResumePlaying();</span>
+<span class="lineNum">      61 </span><span class="lineCov">         34 :         }</span>
+<span class="lineNum">      62 </span>            : }
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

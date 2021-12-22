@@ -7,7 +7,6 @@ public class CellHistory
 	public bool IsEmpty => !this.history.Any();
 	public bool IsFirstMove => this.history.Count == 2;
 
-
 	public void Push(Cell cell)
 	{
 		this.history.AddLast(cell);

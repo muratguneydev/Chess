@@ -46,8 +46,14 @@
 			"problemMatcher": "$msCompile"
 		},
 		{
-			"label": "create chess tests coverage file",
+			"label": "create chess tests coverage lcov file",
 			"command": "coverlet ${workspaceFolder}/tests/Chess.Game.Tests/bin/debug/net6.0/Chess.Game.Tests.dll --target 'dotnet' --targetargs 'test ${workspaceFolder}/tests/Chess.Game.Tests/Chess.Game.Tests.csproj --no-build' --format lcov --exclude '[*.Helpers]*' --output ${workspaceFolder}/lcov.info",
+			"type": "shell",
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "create chess tests coverage html file",
+			"command": "${workspaceFolder}/genhtml.perl ${workspaceFolder}/lcov.info -o coverage",
 			"type": "shell",
 			"problemMatcher": "$msCompile"
 		},

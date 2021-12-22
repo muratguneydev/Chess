@@ -16,3 +16,11 @@ coverlet /Code/Chess/tests/Chess.Game.Tests/bin/Debug/net6.0/Chess.Game.Tests.dl
 dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info .\my.tests
 dotnet watch --project .\Chess.Game.Tests test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info 
 
+
+--html
+https://stackoverflow.com/questions/62184806/how-to-view-code-coverage-as-html-in-windows
+
+https://raw.githubusercontent.com/valbok/lcov/master/genhtml.perl
+
+chmod +x genhtml.perl
+./genhtml.perl ./lcov.info -o coverage
