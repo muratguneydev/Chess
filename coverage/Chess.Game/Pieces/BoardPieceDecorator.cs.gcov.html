@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-12-22 21:07:10</td>
+            <td class="headerValue">2022-01-01 10:36:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -67,38 +67,38 @@
 <a name="5"><span class="lineNum">       5 </span>            :         private readonly Piece originalPiece;</a>
 <span class="lineNum">       6 </span>            :         private readonly Session session;
 <span class="lineNum">       7 </span>            :         private readonly Board board;
-<span class="lineNum">       8 </span><span class="lineCov">        468 :         private readonly CellHistory cellHistory = new CellHistory();</span>
+<span class="lineNum">       8 </span><span class="lineCov">        500 :         private readonly CellHistory cellHistory = new CellHistory();</span>
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">        468 :         public BoardPieceDecorator(Piece originalPiece, Session session, Board board, CellHistory cellHistory)</span>
-<span class="lineNum">      11 </span><span class="lineCov">        468 :         {</span>
-<span class="lineNum">      12 </span><span class="lineCov">        468 :                 this.originalPiece = originalPiece;</span>
-<span class="lineNum">      13 </span><span class="lineCov">        468 :                 this.session = session;</span>
-<span class="lineNum">      14 </span><span class="lineCov">        468 :                 this.board = board;</span>
-<span class="lineNum">      15 </span><span class="lineCov">        468 :                 this.PieceType = originalPiece.GetType();</span>
-<span class="lineNum">      16 </span><span class="lineCov">        468 :                 this.cellHistory = cellHistory;</span>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        468 :         }</span></a>
+<span class="lineNum">      10 </span><span class="lineCov">        500 :         public BoardPieceDecorator(Piece originalPiece, Session session, Board board, CellHistory cellHistory)</span>
+<span class="lineNum">      11 </span><span class="lineCov">        500 :         {</span>
+<span class="lineNum">      12 </span><span class="lineCov">        500 :                 this.originalPiece = originalPiece;</span>
+<span class="lineNum">      13 </span><span class="lineCov">        500 :                 this.session = session;</span>
+<span class="lineNum">      14 </span><span class="lineCov">        500 :                 this.board = board;</span>
+<span class="lineNum">      15 </span><span class="lineCov">        500 :                 this.PieceType = originalPiece.GetType();</span>
+<span class="lineNum">      16 </span><span class="lineCov">        500 :                 this.cellHistory = cellHistory;</span>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        500 :         }</span></a>
 <span class="lineNum">      18 </span>            : 
 <a name="19"><span class="lineNum">      19 </span>            :         public abstract Color Color { get; }</a>
 <span class="lineNum">      20 </span><span class="lineCov">         12 :         public Type PieceType { get; }</span>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
-<span class="lineNum">      22 </span><span class="lineCov">        366 :         public bool IsEmpty =&gt; this is EmptyBoardPiece;</span>
+<span class="lineNum">      22 </span><span class="lineCov">        519 :         public bool IsEmpty =&gt; this is EmptyBoardPiece;</span>
 <span class="lineNum">      23 </span>            : 
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        165 :         public bool HasSameColor(IBoardPiece otherBoardPiece) =&gt; this.Color == otherBoardPiece.Color;</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        166 :         public bool HasSameColor(IBoardPiece otherBoardPiece) =&gt; this.Color == otherBoardPiece.Color;</span></a>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            :         public virtual bool CanMove(Cell from, Cell cellDestination)
-<span class="lineNum">      27 </span><span class="lineCov">        172 :         {</span>
-<span class="lineNum">      28 </span><span class="lineCov">        172 :                 return</span>
-<span class="lineNum">      29 </span><span class="lineCov">        172 :                         this.IsTurnToPlay</span>
-<span class="lineNum">      30 </span><span class="lineCov">        172 :                         &amp;&amp; !from.Equals(cellDestination)</span>
-<span class="lineNum">      31 </span><span class="lineCov">        172 :                         &amp;&amp; this.originalPiece.GetMovePath(new Move(from, cellDestination)).IsValid</span>
-<span class="lineNum">      32 </span><span class="lineCov">        172 :                         &amp;&amp; this.ThereArentAnyBlockingPiecesInBetween(from, cellDestination)</span>
-<span class="lineNum">      33 </span><span class="lineCov">        172 :                         &amp;&amp; !this.HasSameColor(cellDestination.Piece);</span>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        172 :         }</span></a>
+<span class="lineNum">      27 </span><span class="lineCov">        173 :         {</span>
+<span class="lineNum">      28 </span><span class="lineCov">        173 :                 return</span>
+<span class="lineNum">      29 </span><span class="lineCov">        173 :                         this.IsTurnToPlay</span>
+<span class="lineNum">      30 </span><span class="lineCov">        173 :                         &amp;&amp; !from.Equals(cellDestination)</span>
+<span class="lineNum">      31 </span><span class="lineCov">        173 :                         &amp;&amp; this.originalPiece.GetMovePath(new Move(from, cellDestination)).IsValid</span>
+<span class="lineNum">      32 </span><span class="lineCov">        173 :                         &amp;&amp; this.ThereArentAnyBlockingPiecesInBetween(from, cellDestination)</span>
+<span class="lineNum">      33 </span><span class="lineCov">        173 :                         &amp;&amp; !this.HasSameColor(cellDestination.Piece);</span>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        173 :         }</span></a>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            :         public void RecordCurrentCellInHistory(Cell cell)
-<span class="lineNum">      37 </span><span class="lineCov">        685 :         {</span>
-<span class="lineNum">      38 </span><span class="lineCov">        685 :                 this.cellHistory.Push(cell);</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        685 :         }</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">        719 :         {</span>
+<span class="lineNum">      38 </span><span class="lineCov">        719 :                 this.cellHistory.Push(cell);</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">        719 :         }</span></a>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            :         public Cell PopLastCellFromHistory()
 <span class="lineNum">      42 </span><span class="lineCov">          4 :         {</span>
@@ -112,13 +112,13 @@
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">          8 :         public Cell PreviousCell =&gt; this.cellHistory.GetPrevious();</span></a>
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            :         private bool ThereArentAnyBlockingPiecesInBetween(Cell from, Cell cellDestination)
-<span class="lineNum">      53 </span><span class="lineCov">        141 :         {</span>
-<span class="lineNum">      54 </span><span class="lineCov">        141 :                 var movePath = this.originalPiece.GetMovePath(new Move(from, cellDestination));</span>
-<span class="lineNum">      55 </span><span class="lineCov">        141 :                 return !this.board.GetPiecesInCoordinates(movePath.CoordinatesInPath)</span>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        141 :                                                         .Any();</span></a>
-<span class="lineNum">      57 </span><span class="lineCov">        141 :         }</span>
+<span class="lineNum">      53 </span><span class="lineCov">        142 :         {</span>
+<span class="lineNum">      54 </span><span class="lineCov">        142 :                 var movePath = this.originalPiece.GetMovePath(new Move(from, cellDestination));</span>
+<span class="lineNum">      55 </span><span class="lineCov">        142 :                 return !this.board.GetPiecesInCoordinates(movePath.CoordinatesInPath)</span>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">        142 :                                                         .Any();</span></a>
+<span class="lineNum">      57 </span><span class="lineCov">        142 :         }</span>
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">        172 :         private bool IsTurnToPlay =&gt; this.session.PlayTurn == this.Color;</span>
+<span class="lineNum">      59 </span><span class="lineCov">        173 :         private bool IsTurnToPlay =&gt; this.session.PlayTurn == this.Color;</span>
 <span class="lineNum">      60 </span>            : }
     </pre>
           </td>

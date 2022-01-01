@@ -22,9 +22,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
-				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
-				var session = new Session(whitePlayer, blackPlayer);
+				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+					SessionPlayerRegistrarTestHelper.Create());
 				session.Start();
 				Assert.IsTrue(whiteClock.Ticking);
 				Assert.IsFalse(blackClock.Ticking);
@@ -39,10 +38,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
-				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
-				var session = new Session(whitePlayer, blackPlayer);
-
+				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+					SessionPlayerRegistrarTestHelper.Create());
 				var board = BoardTestHelper.Create(session);
 				board.SetOpeningPosition();
 
@@ -67,10 +64,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
-				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
-				var session = new Session(whitePlayer, blackPlayer);
-
+				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+					SessionPlayerRegistrarTestHelper.Create());
 				var board = BoardTestHelper.Create(session);
 				board.SetOpeningPosition();
 
@@ -96,10 +91,8 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
-				var whitePlayer = PlayerTestHelper.CreateWhitePlayer(whiteClock);
-				var blackPlayer = PlayerTestHelper.CreateBlackPlayer(blackClock);
-				var session = new Session(whitePlayer, blackPlayer);
-
+				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+					SessionPlayerRegistrarTestHelper.Create());
 				var board = BoardTestHelper.Create(session);
 				board.SetOpeningPosition();
 
@@ -119,6 +112,56 @@ public class SessionTests
 				Assert.AreEqual(session.MoveHistory.First(), move);
 				Assert.AreEqual(moveToTakeBackLater, lastMove);
 			}
+		}
+	}
+
+	[Test]
+	public void ShouldInvokeMoveEventWhenAValidMoveIsMade()
+	{
+		bool isEventCallbackInvoked = false;
+		var session = SessionTestHelper.Create();
+		session.AddMoveEventCallback(move => isEventCallbackInvoked = true);
+
+		var board = BoardTestHelper.Create(session);
+		board.SetOpeningPosition();
+
+		session.Start();
+		
+		var move = board.a2.Move(board.a4);
+		session.Next(move);
+
+		Assert.IsTrue(isEventCallbackInvoked);
+	}
+
+	[Test]
+	public void ShouldCallRegister()
+	{
+		var sessionPlayerRegistrarSpy = new SessionPlayerRegistrarSpy();
+		var session = new Session(SessionPlayersTestHelper.CreateWithoutRegister(), sessionPlayerRegistrarSpy);
+		
+		using (var whiteClock = new Clock(new TimerWrapper()))
+		{
+			using (var blackClock = new Clock(new TimerWrapper()))
+			{
+				session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(blackClock));
+				session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer(whiteClock));
+			}
+		}
+	}
+
+	private class SessionPlayerRegistrarSpy : SessionPlayerRegistrar
+	{
+		public bool IsRegisterBlackCalled { get; private set; }
+		public bool IsRegisterWhiteCalled { get; private set; }
+
+		public override void RegisterBlackPlayer(BlackPlayer player)
+		{
+			this.IsRegisterBlackCalled = true;
+		}
+
+		public override void RegisterWhitePlayer(WhitePlayer player)
+		{
+			this.IsRegisterWhiteCalled = true;
 		}
 	}
 }

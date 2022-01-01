@@ -6,4 +6,19 @@ public class WhitePlayer : Player
 		: base(Color.White, clock, name)
 	{
 	}
+
+	public bool IsEmpty => this is EmptyWhitePlayer;
+}
+
+public class EmptyWhitePlayer : WhitePlayer
+{
+	private static EmptyWhitePlayer emptyWhitePlayer = new EmptyWhitePlayer();
+
+	private EmptyWhitePlayer()
+		: base(new EmptyClock(), EmptyPlayer.Player.Name)
+	{
+	}
+
+	public static EmptyWhitePlayer WhitePlayer => emptyWhitePlayer;
+	public override bool IsReady => false;
 }

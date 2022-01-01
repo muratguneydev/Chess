@@ -14,6 +14,8 @@ public abstract class Player
 	public Color Color { get; }
 	public string Name { get; }
 
+	public virtual bool IsReady { get; private set; }
+
 	public void ResumePlaying()
 	{
 		this.clock.Start();
@@ -22,5 +24,10 @@ public abstract class Player
 	public void Wait()
 	{
 		this.clock.Stop();
+	}
+
+	public void SetReady()
+	{
+		this.IsReady = true;
 	}
 }

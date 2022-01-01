@@ -2,22 +2,25 @@ namespace Chess.Game;
 
 public class Session
 {
-	private readonly Stack<Move> moves = new Stack<Move>();
-	public event Action<Move>? OnMove;
+	private readonly MoveHistory moves = new MoveHistory();
+	private readonly OnMoveEvent OnMove = new OnMoveEvent();
+	private readonly SessionPlayers sessionPlayers;
+	private readonly SessionPlayerRegistrar sessionPlayerRegistrar;
 
-	public Session(WhitePlayer whitePlayer, BlackPlayer blackPlayer)
+	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar)
 	{
-		this.WhitePlayer = whitePlayer;
-		this.BlackPlayer = blackPlayer;
+		this.sessionPlayers = sessionPlayers;
+		this.sessionPlayerRegistrar = sessionPlayerRegistrar;
 	}
 
 	public bool IsComplete => false;
-
+	public IEnumerable<Move> MoveHistory => this.moves;
+	public WhitePlayer WhitePlayer => this.sessionPlayers.WhitePlayer;
+	public BlackPlayer BlackPlayer => this.sessionPlayers.BlackPlayer;
 	public Winner Winner => EmptyWinner.Winner;
-
 	public Color PlayTurn => this.CurrentPlayer.Color;
-	public Player CurrentPlayer => this.moves.Any()
-		? this.moves.Peek().Color == Color.Black ? this.WhitePlayer : this.BlackPlayer
+	public Player CurrentPlayer => this.moves.LastMove.Color == Color.White
+		? this.BlackPlayer
 		: this.WhitePlayer;
 
 	public Player WaitingPlayer => this.CurrentPlayer == this.WhitePlayer
@@ -36,6 +39,7 @@ public class Session
 
 		this.moves.Push(move);
 		this.SwitchTurns();
+		this.OnMove.Invoke(move);
 	}
 
 	public Move Back()
@@ -49,10 +53,20 @@ public class Session
 		return lastMove;
 	}
 
-	public IEnumerable<Move> MoveHistory => this.moves;
+	public void AddMoveEventCallback(Action<Move> callback)
+	{
+		this.OnMove.MoveEvent += callback;
+	}
 
-	public WhitePlayer WhitePlayer { get; }
-	public BlackPlayer BlackPlayer { get; }
+	public void RegisterBlackPlayer(BlackPlayer player)
+	{
+		this.sessionPlayerRegistrar.RegisterBlackPlayer(player);
+	}
+
+	public void RegisterWhitePlayer(WhitePlayer player)
+	{
+		this.sessionPlayerRegistrar.RegisterWhitePlayer(player);
+	}
 
 	private void SwitchTurns()
 	{

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-12-22 21:07:10</td>
+            <td class="headerValue">2022-01-01 10:36:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">12</td>
@@ -64,26 +64,26 @@
 <a name="2"><span class="lineNum">       2 </span>            : </a>
 <span class="lineNum">       3 </span>            : public class Cell
 <span class="lineNum">       4 </span>            : {
-<span class="lineNum">       5 </span><span class="lineCov">      12177 :         public Cell(Coordinate coordinate)</span>
-<span class="lineNum">       6 </span><span class="lineCov">      12177 :         {</span>
-<span class="lineNum">       7 </span><span class="lineCov">      12177 :                 this.Coordinate = coordinate;</span>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">      12177 :                 this.Piece = EmptyBoardPiece.Piece;</span></a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">      12177 :         }</span></a>
+<span class="lineNum">       5 </span><span class="lineCov">      12241 :         public Cell(Coordinate coordinate)</span>
+<span class="lineNum">       6 </span><span class="lineCov">      12241 :         {</span>
+<span class="lineNum">       7 </span><span class="lineCov">      12241 :                 this.Coordinate = coordinate;</span>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">      12241 :                 this.Piece = EmptyBoardPiece.Piece;</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">      12241 :         }</span></a>
 <a name="10"><span class="lineNum">      10 </span>            : </a>
-<span class="lineNum">      11 </span><span class="lineCov">       3235 :         public int X =&gt; this.Coordinate.X;</span>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">       3191 :         public int Y =&gt; this.Coordinate.Y;</span></a>
-<span class="lineNum">      13 </span><span class="lineCov">      16019 :         public IBoardPiece Piece { get; private set; }</span>
+<span class="lineNum">      11 </span><span class="lineCov">       3254 :         public int X =&gt; this.Coordinate.X;</span>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">       3219 :         public int Y =&gt; this.Coordinate.Y;</span></a>
+<span class="lineNum">      13 </span><span class="lineCov">      16465 :         public IBoardPiece Piece { get; private set; }</span>
 <a name="14"><span class="lineNum">      14 </span>            : </a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">       6942 :         public Coordinate Coordinate { get; }</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">       6993 :         public Coordinate Coordinate { get; }</span></a>
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">        244 :         public bool IsOccupied =&gt; !this.Piece.IsEmpty;</span>
+<span class="lineNum">      17 </span><span class="lineCov">        396 :         public bool IsOccupied =&gt; !this.Piece.IsEmpty;</span>
 <a name="18"><span class="lineNum">      18 </span><span class="lineCov">         12 :         public bool IsEmpty =&gt; this is EmptyCell;</span></a>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            :         public void SetPiece(IBoardPiece piece)
-<span class="lineNum">      21 </span><span class="lineCov">        685 :         {</span>
-<span class="lineNum">      22 </span><span class="lineCov">        685 :                 this.Piece = piece;</span>
-<span class="lineNum">      23 </span><span class="lineCov">        685 :                 this.Piece.RecordCurrentCellInHistory(this);</span>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        685 :         }</span></a>
+<span class="lineNum">      21 </span><span class="lineCov">        719 :         {</span>
+<span class="lineNum">      22 </span><span class="lineCov">        719 :                 this.Piece = piece;</span>
+<span class="lineNum">      23 </span><span class="lineCov">        719 :                 this.Piece.RecordCurrentCellInHistory(this);</span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">        719 :         }</span></a>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            :         public void GoBack(IBoardPiece piece)
 <span class="lineNum">      27 </span><span class="lineCov">          4 :         {</span>
@@ -92,26 +92,26 @@
 <a name="30"><span class="lineNum">      30 </span><span class="lineCov">          4 :         }</span></a>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            :         public virtual Move Move(Cell destinationCell)
-<span class="lineNum">      33 </span><span class="lineCov">        172 :         {</span>
-<span class="lineNum">      34 </span><span class="lineCov">        172 :                 if (!this.Piece.CanMove(this, destinationCell))</span>
+<span class="lineNum">      33 </span><span class="lineCov">        173 :         {</span>
+<span class="lineNum">      34 </span><span class="lineCov">        173 :                 if (!this.Piece.CanMove(this, destinationCell))</span>
 <span class="lineNum">      35 </span><span class="lineCov">         63 :                         return new InvalidMove(this, destinationCell);</span>
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">        109 :                 var move = new Move(this, destinationCell);</span>
-<span class="lineNum">      38 </span><span class="lineCov">        109 :                 destinationCell.SetPiece(this.Piece);</span>
-<span class="lineNum">      39 </span><span class="lineCov">        109 :                 this.MakeEmpty();</span>
-<span class="lineNum">      40 </span><span class="lineCov">        109 :                 return move;</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        172 :         }</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">        110 :                 var move = new Move(this, destinationCell);</span>
+<span class="lineNum">      38 </span><span class="lineCov">        110 :                 destinationCell.SetPiece(this.Piece);</span>
+<span class="lineNum">      39 </span><span class="lineCov">        110 :                 this.MakeEmpty();</span>
+<span class="lineNum">      40 </span><span class="lineCov">        110 :                 return move;</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        173 :         }</span></a>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            :         public override bool Equals(object? obj)
-<span class="lineNum">      44 </span><span class="lineCov">        271 :         {</span>
-<span class="lineNum">      45 </span><span class="lineCov">        271 :                 if (obj == null || GetType() != obj.GetType())</span>
-<span class="lineNum">      46 </span><span class="lineCov">         15 :                 {</span>
-<span class="lineNum">      47 </span><span class="lineCov">         15 :                         return false;</span>
+<span class="lineNum">      44 </span><span class="lineCov">        274 :         {</span>
+<span class="lineNum">      45 </span><span class="lineCov">        274 :                 if (obj == null || GetType() != obj.GetType())</span>
+<span class="lineNum">      46 </span><span class="lineCov">         16 :                 {</span>
+<span class="lineNum">      47 </span><span class="lineCov">         16 :                         return false;</span>
 <span class="lineNum">      48 </span>            :                 }
 <span class="lineNum">      49 </span>            :                 
-<span class="lineNum">      50 </span><span class="lineCov">        256 :                 var otherCell = (Cell)obj;</span>
-<span class="lineNum">      51 </span><span class="lineCov">        256 :                 return this.Coordinate == otherCell.Coordinate;</span>
-<span class="lineNum">      52 </span><span class="lineCov">        271 :         }</span>
+<span class="lineNum">      50 </span><span class="lineCov">        258 :                 var otherCell = (Cell)obj;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        258 :                 return this.Coordinate == otherCell.Coordinate;</span>
+<span class="lineNum">      52 </span><span class="lineCov">        274 :         }</span>
 <a name="53"><span class="lineNum">      53 </span>            :         </a>
 <span class="lineNum">      54 </span>            :         
 <span class="lineNum">      55 </span>            :         public override int GetHashCode()
@@ -125,9 +125,9 @@
 <a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :         }</span></a>
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            :         private void MakeEmpty()
-<span class="lineNum">      66 </span><span class="lineCov">        109 :         {</span>
-<span class="lineNum">      67 </span><span class="lineCov">        109 :                 this.SetPiece(EmptyBoardPiece.Piece);</span>
-<span class="lineNum">      68 </span><span class="lineCov">        109 :         }</span>
+<span class="lineNum">      66 </span><span class="lineCov">        110 :         {</span>
+<span class="lineNum">      67 </span><span class="lineCov">        110 :                 this.SetPiece(EmptyBoardPiece.Piece);</span>
+<span class="lineNum">      68 </span><span class="lineCov">        110 :         }</span>
 <span class="lineNum">      69 </span>            : }
     </pre>
           </td>

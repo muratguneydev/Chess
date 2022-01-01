@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-12-22 21:07:10</td>
+            <td class="headerValue">2022-01-01 10:36:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -66,46 +66,46 @@
 <a name="4"><span class="lineNum">       4 </span>            : {</a>
 <span class="lineNum">       5 </span>            :         private readonly IMoveStrategy moveStrategy;
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span><span class="lineCov">        353 :         public OneSquareMoveStrategy(IMoveStrategy moveStrategy)</span>
-<span class="lineNum">       8 </span><span class="lineCov">        353 :         {</span>
-<span class="lineNum">       9 </span><span class="lineCov">        353 :                 this.moveStrategy = moveStrategy;</span>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        353 :         }</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">        387 :         public OneSquareMoveStrategy(IMoveStrategy moveStrategy)</span>
+<span class="lineNum">       8 </span><span class="lineCov">        387 :         {</span>
+<span class="lineNum">       9 </span><span class="lineCov">        387 :                 this.moveStrategy = moveStrategy;</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        387 :         }</span></a>
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            :         public MovePath GetMovePath(Move fromTo)
-<span class="lineNum">      13 </span><span class="lineCov">        175 :         {</span>
-<span class="lineNum">      14 </span><span class="lineCov">        175 :                 if (!OneSquareInAnyDirection(fromTo))</span>
-<span class="lineNum">      15 </span><span class="lineCov">         30 :                         return new InvalidMovePath(fromTo);</span>
+<span class="lineNum">      13 </span><span class="lineCov">        176 :         {</span>
+<span class="lineNum">      14 </span><span class="lineCov">        176 :                 if (!OneSquareInAnyDirection(fromTo))</span>
+<span class="lineNum">      15 </span><span class="lineCov">         31 :                         return new InvalidMovePath(fromTo);</span>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span><span class="lineCov">        145 :                 return this.moveStrategy.GetMovePath(fromTo);</span>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        175 :         }</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        176 :         }</span></a>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            :         private static bool OneSquareInAnyDirection(Move fromTo)
-<span class="lineNum">      21 </span><span class="lineCov">        175 :         {</span>
-<span class="lineNum">      22 </span><span class="lineCov">        175 :                 return</span>
-<span class="lineNum">      23 </span><span class="lineCov">        175 :                         IsVerticalOneSquare(fromTo)</span>
-<span class="lineNum">      24 </span><span class="lineCov">        175 :                         || IsHorizontalOneSquare(fromTo)</span>
-<span class="lineNum">      25 </span><span class="lineCov">        175 :                         || IsDiagonalOneSquare(fromTo);</span>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">        175 :         }</span></a>
+<span class="lineNum">      21 </span><span class="lineCov">        176 :         {</span>
+<span class="lineNum">      22 </span><span class="lineCov">        176 :                 return</span>
+<span class="lineNum">      23 </span><span class="lineCov">        176 :                         IsVerticalOneSquare(fromTo)</span>
+<span class="lineNum">      24 </span><span class="lineCov">        176 :                         || IsHorizontalOneSquare(fromTo)</span>
+<span class="lineNum">      25 </span><span class="lineCov">        176 :                         || IsDiagonalOneSquare(fromTo);</span>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">        176 :         }</span></a>
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            :         private static bool IsDiagonalOneSquare(Move fromTo)
-<span class="lineNum">      29 </span><span class="lineCov">        105 :         {</span>
-<span class="lineNum">      30 </span><span class="lineCov">        105 :                 return (CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X) &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));</span>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">        105 :         }</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">        106 :         {</span>
+<span class="lineNum">      30 </span><span class="lineCov">        106 :                 return (CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X) &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));</span>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">        106 :         }</span></a>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            :         private static bool IsHorizontalOneSquare(Move fromTo)
-<span class="lineNum">      34 </span><span class="lineCov">        119 :         {</span>
-<span class="lineNum">      35 </span><span class="lineCov">        119 :                 return (fromTo.IsOnSameRow &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X));</span>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        119 :         }</span></a>
+<span class="lineNum">      34 </span><span class="lineCov">        120 :         {</span>
+<span class="lineNum">      35 </span><span class="lineCov">        120 :                 return (fromTo.IsOnSameRow &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.X, fromTo.To.X));</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        120 :         }</span></a>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            :         private static bool IsVerticalOneSquare(Move fromTo)
-<span class="lineNum">      39 </span><span class="lineCov">        175 :         {</span>
-<span class="lineNum">      40 </span><span class="lineCov">        175 :                 return (fromTo.IsOnSameColumn &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        175 :         }</span></a>
+<span class="lineNum">      39 </span><span class="lineCov">        176 :         {</span>
+<span class="lineNum">      40 </span><span class="lineCov">        176 :                 return (fromTo.IsOnSameColumn &amp;&amp; CoordinateDiffIsOneSquare(fromTo.From.Y, fromTo.To.Y));</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">        176 :         }</span></a>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            :         private static bool CoordinateDiffIsOneSquare(int coordinatePartOne, int coordinatePart2)
-<span class="lineNum">      44 </span><span class="lineCov">        276 :         {</span>
-<span class="lineNum">      45 </span><span class="lineCov">        276 :                 return Math.Abs(coordinatePartOne - coordinatePart2) == 1;</span>
-<span class="lineNum">      46 </span><span class="lineCov">        276 :         }</span>
+<span class="lineNum">      44 </span><span class="lineCov">        278 :         {</span>
+<span class="lineNum">      45 </span><span class="lineCov">        278 :                 return Math.Abs(coordinatePartOne - coordinatePart2) == 1;</span>
+<span class="lineNum">      46 </span><span class="lineCov">        278 :         }</span>
 <span class="lineNum">      47 </span>            : }
     </pre>
           </td>

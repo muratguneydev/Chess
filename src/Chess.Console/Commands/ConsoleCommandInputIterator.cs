@@ -6,6 +6,7 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 {
 	private readonly IConsoleReader consoleReader;
 	private readonly ConsoleWriterFactory consoleWriterFactory;
+	private Dictionary<string, Func<ConsoleWriterFactory, BoardViewModel, string, ChessCommand>> commandFactory = new Dictionary<string, Func<ConsoleWriterFactory, BoardViewModel, string, ChessCommand>>();
 	private BoardViewModel boardViewModel;
 
 	private bool exitRequested;
@@ -16,6 +17,7 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 		this.consoleReader = consoleReader;
 		this.consoleWriterFactory = consoleWriterFactory;
 		this.boardViewModel = boardViewModel;
+		this.PopulateCommandFactory();
 	}
 
 	public ChessCommand Current => this.GetCommand();
@@ -39,16 +41,31 @@ public class ConsoleCommandInputIterator : IEnumerator<ChessCommand>
 
 	private ChessCommand GetCommand()
 	{
-		var moveString = this.consoleReader.ReadLine();
-		if (string.IsNullOrWhiteSpace(moveString))
-		{
-			this.exitRequested = true;
-			return new ExitCommand(this.consoleWriterFactory);
-		}
+		var moveString = this.consoleReader.ReadLine().Trim();
 
-		if (moveString == "back")
-			return new TakeBackCommand(this.consoleWriterFactory, this.boardViewModel);
+		var argumentArray = moveString.Split(":");
+		var command = argumentArray[0];
+		var arguments = argumentArray.Length < 2 ? string.Empty : argumentArray[1];
 
-		return new MoveCommand(this.consoleWriterFactory, this.boardViewModel, moveString);
+		this.exitRequested = string.IsNullOrWhiteSpace(command);
+
+		return commandFactory[command](this.consoleWriterFactory, this.boardViewModel, arguments);
 	}
+
+	private void PopulateCommandFactory()
+	{
+		this.commandFactory = new Dictionary<string, Func<ConsoleWriterFactory, BoardViewModel, string, ChessCommand>>
+		{
+			{ "", (consoleWriterFactory, boardViewModel, parameter) => new ExitCommand(consoleWriterFactory) },
+			{ "anonymous", (consoleWriterFactory, boardViewModel, parameter) => new RegisterAnonymousCommand(consoleWriterFactory) },
+			{ "back", (consoleWriterFactory, boardViewModel, parameter) => new TakeBackCommand(consoleWriterFactory, boardViewModel)},
+			{ "registerblack", (consoleWriterFactory, boardViewModel, parameter) => new RegisterBlackCommand(consoleWriterFactory, parameter)},
+			{ "registerwhite", (consoleWriterFactory, boardViewModel, parameter) => new RegisterWhiteCommand(consoleWriterFactory, parameter)},
+			{ "move", (consoleWriterFactory, boardViewModel, parameter) => new MoveCommand(consoleWriterFactory, boardViewModel, parameter)},
+		};
+	}
+//TODO: test/implement order of commands. ie. can't move before register/ready
+//implement ready command.
+//test all commands
+	
 }

@@ -26,9 +26,26 @@ public class ConsoleMoveInputTests
 	}
 
 	[TestCase("c8-d1", 2, 7, 3, 0)]
+	[TestCase("c8-d7", 2, 7, 3, 6)]
     public void ShouldParseFromToCellsCorrectlyFromMoveString(string moveString, int fromX, int fromY, int toX, int toY)
     {
 		var board = GetBoard();
+
+		var consoleMoveInput = new ConsoleMoveInput(moveString, board);
+        Assert.AreEqual(new Coordinate(fromX, fromY), consoleMoveInput.Move.From.Coordinate);
+        Assert.AreEqual(new Coordinate(toX, toY), consoleMoveInput.Move.To.Coordinate);
+    }
+
+	[Test]
+    public void ShouldParseFromToCellsCorrectlyFromMoveString2()
+    {
+		var board = GetBoard();
+
+		var moveString = "d7-c8";
+		var fromX = 3;
+		var fromY = 6;
+		var toX = 2;
+		var toY = 7;
 
 		var consoleMoveInput = new ConsoleMoveInput(moveString, board);
         Assert.AreEqual(new Coordinate(fromX, fromY), consoleMoveInput.Move.From.Coordinate);

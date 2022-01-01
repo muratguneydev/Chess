@@ -1,5 +1,5 @@
 namespace Chess.Game.Tests.Helpers;
-using System.Timers;
+
 public static class SessionTestHelper
 {
 	public static Session Create(WhitePlayer? playerWhite = default(WhitePlayer), BlackPlayer? playerBlack = default(BlackPlayer))
@@ -7,6 +7,11 @@ public static class SessionTestHelper
 		playerWhite = playerWhite ?? PlayerTestHelper.CreateWhitePlayer();
 		playerBlack = playerBlack ?? PlayerTestHelper.CreateBlackPlayer();
 
-		return new Session(playerWhite, playerBlack);
+		var sessionPlayers = new SessionPlayersTestBuilder()
+			.WithBlackPlayer(playerBlack)
+			.WithWhitePlayer(playerWhite)
+			.Build();
+
+		return new Session(sessionPlayers, SessionPlayerRegistrarTestHelper.Create());
 	}
 }

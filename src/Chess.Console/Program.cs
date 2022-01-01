@@ -6,19 +6,29 @@ class Program
 {
 	private static readonly ConsoleWriterFactory consoleWriterFactory = new ConsoleWriterFactory();
 	private static readonly IConsoleReader consoleReader = new ConsoleReader();
+	private static Session session;
+
+	static Program()
+	{
+		session = GetSession();
+	}
 	static void Main(string[] args)
 	{
-		using (var whiteClock = new Clock(new TimerWrapper()))
-		{
-			using (var blackClock = new Clock(new TimerWrapper()))
-			{
-				var session = GetSession(whiteClock, blackClock);
-				var boardViewModel = GetBoardViewModel(session);
-				DisplayFromWhiteSide(boardViewModel, session);
-				session.Start();
-				ProcessCommands(session, boardViewModel);
-			}
-		}
+		var boardViewModel = GetBoardViewModel(session);
+		DisplayFromWhiteSide(boardViewModel, session);
+		ProcessCommands(session, boardViewModel);
+		// using (var whiteClock = new Clock(new TimerWrapper()))
+		// {
+		// 	using (var blackClock = new Clock(new TimerWrapper()))
+		// 	{
+		// 		//var session = GetSession(whiteClock, blackClock);
+		// 		// session = GetSession();
+		// 		var boardViewModel = GetBoardViewModel(session);
+		// 		DisplayFromWhiteSide(boardViewModel, session);
+		// 		//session.Start();//on ready event
+		// 		ProcessCommands(session, boardViewModel);
+		// 	}
+		// }
 	}
 
 	private static void ProcessCommands(Session session, BoardViewModel boardViewModel)
@@ -43,12 +53,37 @@ class Program
 		return boardViewModel;
 	}
 
-	private static Session GetSession(IClock whiteClock, IClock blackClock)
+	// private static Session GetSession(IClock whiteClock, IClock blackClock)
+	// {
+	// 	var whitePlayer = new WhitePlayer(whiteClock, "Player White");
+	// 	var blackPlayer = new BlackPlayer(blackClock, "Player Black");
+	// 	var sessionPlayerRegistrar = new SessionPlayerRegistrar();
+	// 	var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
+	// 	sessionPlayerRegistrar.RegisterWhitePlayer(whitePlayer);
+	// 	sessionPlayers.SetWhitePlayerReady();
+	// 	sessionPlayerRegistrar.RegisterBlackPlayer(blackPlayer);
+	// 	sessionPlayers.SetBlackPlayerReady();
+	// 	var session = new Session(sessionPlayers, sessionPlayerRegistrar);
+	// 	return session;
+	// }
+
+	private static Session GetSession()
 	{
-		var whitePlayer = new WhitePlayer(whiteClock, "Player White");
-		var blackPlayer = new BlackPlayer(blackClock, "Player Black");
-		var session = new Session(whitePlayer, blackPlayer);
-		return session;
+		var sessionPlayerRegistrar = new SessionPlayerRegistrar();
+		sessionPlayerRegistrar.AddPlayersRegisteredEventCallback(AllPlayersRegisteredHandler);
+		var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
+		sessionPlayers.AddPlayersReadyEventCallback(AllPlayersReadyHandler);
+		return new Session(sessionPlayers, sessionPlayerRegistrar);
+	}
+
+	public static void AllPlayersRegisteredHandler(SessionPlayerRegistrar sessionPlayerRegistrar)
+	{
+
+	}
+
+	public static void AllPlayersReadyHandler(SessionPlayers sessionPlayers)
+	{
+		session.Start();
 	}
 
 	private static void DisplayFromWhiteSide(BoardViewModel boardViewModel, Session session)

@@ -22,20 +22,3 @@ public record ConsoleMoveInput
 
 	public Move Move { get; }
 }
-
-public class InvalidCellNameException : ArgumentException
-{
-	public InvalidCellNameException(string cellName)
-		: base($"'{cellName}' is not a valid cell name.")
-	{
-	}
-}
-
-public class InvalidMoveStringException : ArgumentException
-{
-	public InvalidMoveStringException(string moveString)
-		: base($"Provided move string '{moveString}' wasn't in the correct format. The format is: cellFrom-cellTo example: a1-a2")
-	{
-	}
-}
-

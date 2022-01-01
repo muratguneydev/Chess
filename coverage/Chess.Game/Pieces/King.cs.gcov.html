@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-12-22 21:07:10</td>
+            <td class="headerValue">2022-01-01 10:36:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -65,14 +65,14 @@
 <a name="3"><span class="lineNum">       3 </span>            : public class King : Piece</a>
 <span class="lineNum">       4 </span>            : {
 <span class="lineNum">       5 </span>            :         public King()
-<span class="lineNum">       6 </span><span class="lineCov">         45 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
-<span class="lineNum">       7 </span><span class="lineCov">         45 :                                         new OneSquareMoveStrategy(</span>
-<span class="lineNum">       8 </span><span class="lineCov">         45 :                                                 new CompositeMoveStrategy(</span>
-<span class="lineNum">       9 </span><span class="lineCov">         45 :                                                         new[] { new HorizontalMoveStrategy(), new VerticalMoveStrategy(), new DiagonalMoveStrategy() as IMoveStrategy })))</span>
-<span class="lineNum">      10 </span><span class="lineCov">         45 :                 )</span>
-<span class="lineNum">      11 </span><span class="lineCov">         45 :         {</span>
+<span class="lineNum">       6 </span><span class="lineCov">         47 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
+<span class="lineNum">       7 </span><span class="lineCov">         47 :                                         new OneSquareMoveStrategy(</span>
+<span class="lineNum">       8 </span><span class="lineCov">         47 :                                                 new CompositeMoveStrategy(</span>
+<span class="lineNum">       9 </span><span class="lineCov">         47 :                                                         new[] { new HorizontalMoveStrategy(), new VerticalMoveStrategy(), new DiagonalMoveStrategy() as IMoveStrategy })))</span>
+<span class="lineNum">      10 </span><span class="lineCov">         47 :                 )</span>
+<span class="lineNum">      11 </span><span class="lineCov">         47 :         {</span>
 <span class="lineNum">      12 </span>            :                 
-<span class="lineNum">      13 </span><span class="lineCov">         45 :         }</span>
+<span class="lineNum">      13 </span><span class="lineCov">         47 :         }</span>
 <span class="lineNum">      14 </span>            : }
     </pre>
           </td>
