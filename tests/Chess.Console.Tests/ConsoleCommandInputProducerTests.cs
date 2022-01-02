@@ -65,6 +65,30 @@ public class ConsoleCommandInputProducerTests
 		Assert.IsInstanceOf<ExitCommand>(commands[1]);
 	}
 
+	[Test]
+	public void ShouldReturnBlackPlayerReadyCommand()
+	{
+		var consoleReaderStub = new TestConsoleReader(new[] {"readyblack", string.Empty});
+		var consoleCommandInputProducer = new ConsoleCommandInputProducer(consoleReaderStub,
+			new ConsoleWriterFactory(), BoardViewModelTestHelper.Create());
+		
+		var commands = consoleCommandInputProducer.ToArray();
+		Assert.IsInstanceOf<ReadyBlackCommand>(commands[0]);
+		Assert.IsInstanceOf<ExitCommand>(commands[1]);
+	}
+
+	[Test]
+	public void ShouldReturnWhitePlayerReadyCommand()
+	{
+		var consoleReaderStub = new TestConsoleReader(new[] {"readywhite", string.Empty});
+		var consoleCommandInputProducer = new ConsoleCommandInputProducer(consoleReaderStub,
+			new ConsoleWriterFactory(), BoardViewModelTestHelper.Create());
+		
+		var commands = consoleCommandInputProducer.ToArray();
+		Assert.IsInstanceOf<ReadyWhiteCommand>(commands[0]);
+		Assert.IsInstanceOf<ExitCommand>(commands[1]);
+	}
+
 	private class TestConsoleReader : IConsoleReader
 	{
 		private int currentInputIndex;

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -66,32 +66,32 @@
 <a name="4"><span class="lineNum">       4 </span>            : </a>
 <span class="lineNum">       5 </span>            : public class MoveHistory : IEnumerable&lt;Move&gt;
 <span class="lineNum">       6 </span>            : {
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">        215 :         private readonly Stack&lt;Move&gt; moves = new Stack&lt;Move&gt;();</span></a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">        218 :         private readonly Stack&lt;Move&gt; moves = new Stack&lt;Move&gt;();</span></a>
 <span class="lineNum">       8 </span>            : 
 <span class="lineNum">       9 </span>            :         public void Push(Move move)
-<span class="lineNum">      10 </span><span class="lineCov">         33 :         {</span>
-<span class="lineNum">      11 </span><span class="lineCov">         33 :                 this.moves.Push(move);</span>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">         33 :         }</span></a>
+<span class="lineNum">      10 </span><span class="lineCov">         18 :         {</span>
+<span class="lineNum">      11 </span><span class="lineCov">         18 :                 this.moves.Push(move);</span>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">         18 :         }</span></a>
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            :         public Move Pop()
-<span class="lineNum">      15 </span><span class="lineCov">          2 :         {</span>
-<span class="lineNum">      16 </span><span class="lineCov">          2 :                 if (!this.moves.Any())</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :         {</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :                 if (!this.moves.Any())</span>
 <span class="lineNum">      17 </span><span class="lineNoCov">          0 :                         return EmptyMove.Move;</span>
 <span class="lineNum">      18 </span>            :                         
-<span class="lineNum">      19 </span><span class="lineCov">          2 :                 return this.moves.Pop();</span>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          2 :         }</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :                 return this.moves.Pop();</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :         }</span></a>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            :         public IEnumerator&lt;Move&gt; GetEnumerator()
-<span class="lineNum">      23 </span><span class="lineCov">          8 :         {</span>
-<span class="lineNum">      24 </span><span class="lineCov">          8 :                 return this.moves.GetEnumerator();</span>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          8 :         }</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">          3 :         {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 :                 return this.moves.GetEnumerator();</span>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          3 :         }</span></a>
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            :         IEnumerator IEnumerable.GetEnumerator()
 <span class="lineNum">      28 </span><span class="lineNoCov">          0 :         {</span>
 <a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 :                 return this.moves.GetEnumerator();</span></a>
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        244 :         public Move LastMove =&gt; this.moves.Any() ? this.moves.Peek() : EmptyMove.Move;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        209 :         public Move LastMove =&gt; this.moves.Any() ? this.moves.Peek() : EmptyMove.Move;</span>
 <span class="lineNum">      33 </span>            : }
     </pre>
           </td>

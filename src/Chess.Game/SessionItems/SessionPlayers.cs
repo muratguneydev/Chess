@@ -13,7 +13,7 @@ public class SessionPlayers
 	public WhitePlayer WhitePlayer => this.sessionPlayerRegistrar.WhitePlayer;
 	public BlackPlayer BlackPlayer => this.sessionPlayerRegistrar.BlackPlayer;
 
-	public void SetWhitePlayerReady()
+	public virtual void SetWhitePlayerReady()
 	{
 		this.WhitePlayer.SetReady();
 
@@ -21,7 +21,7 @@ public class SessionPlayers
 			this.OnPlayersReady.Invoke(this);
 	}
 
-	public void SetBlackPlayerReady()
+	public virtual void SetBlackPlayerReady()
 	{
 		this.BlackPlayer.SetReady();
 

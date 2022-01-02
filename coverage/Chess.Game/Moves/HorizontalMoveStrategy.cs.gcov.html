@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -65,24 +65,24 @@
 <a name="3"><span class="lineNum">       3 </span>            : public class HorizontalMoveStrategy : IMoveStrategy</a>
 <span class="lineNum">       4 </span>            : {
 <span class="lineNum">       5 </span>            :         public MovePath GetMovePath(Move move)
-<span class="lineNum">       6 </span><span class="lineCov">        202 :         {</span>
-<span class="lineNum">       7 </span><span class="lineCov">        202 :                 if (!move.IsOnSameRow)</span>
-<span class="lineNum">       8 </span><span class="lineCov">        140 :                         return new InvalidMovePath(move);</span>
+<span class="lineNum">       6 </span><span class="lineCov">         12 :         {</span>
+<span class="lineNum">       7 </span><span class="lineCov">         12 :                 if (!move.IsOnSameRow)</span>
+<span class="lineNum">       8 </span><span class="lineCov">          4 :                         return new InvalidMovePath(move);</span>
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">         62 :                 return new MovePath(move, GetHorizontalCoordinatesOnSameY(move));</span>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        202 :         }</span></a>
+<span class="lineNum">      10 </span><span class="lineCov">          8 :                 return new MovePath(move, GetHorizontalCoordinatesOnSameY(move));</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">         12 :         }</span></a>
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            :         private static IEnumerable&lt;Coordinate&gt; GetHorizontalCoordinatesOnSameY(Move fromTo)
-<span class="lineNum">      14 </span><span class="lineCov">         26 :         {</span>
+<span class="lineNum">      14 </span><span class="lineCov">          8 :         {</span>
 <span class="lineNum">      15 </span>            :                 // return Enumerable
 <span class="lineNum">      16 </span>            :                 //      .Range(fromTo.LowestRow+1,fromTo.HighestRow-fromTo.LowestRow-1)
 <span class="lineNum">      17 </span>            :                 //      .Select(x =&gt; new Coordinate(x, fromTo.From.Y));
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">        134 :                 for (var x = fromTo.LowestColumn+1; x &lt; fromTo.HighestColumn; x++)</span>
-<span class="lineNum">      20 </span><span class="lineCov">         45 :                 {</span>
-<span class="lineNum">      21 </span><span class="lineCov">         45 :                         yield return new Coordinate(x, fromTo.From.Y);</span>
-<span class="lineNum">      22 </span><span class="lineCov">         41 :                 }</span>
-<span class="lineNum">      23 </span><span class="lineCov">         22 :         }</span>
+<span class="lineNum">      19 </span><span class="lineCov">         50 :                 for (var x = fromTo.LowestColumn+1; x &lt; fromTo.HighestColumn; x++)</span>
+<span class="lineNum">      20 </span><span class="lineCov">         17 :                 {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         17 :                         yield return new Coordinate(x, fromTo.From.Y);</span>
+<span class="lineNum">      22 </span><span class="lineCov">         17 :                 }</span>
+<span class="lineNum">      23 </span><span class="lineCov">          8 :         }</span>
 <span class="lineNum">      24 </span>            : }
     </pre>
           </td>

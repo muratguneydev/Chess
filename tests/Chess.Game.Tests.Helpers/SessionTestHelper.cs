@@ -12,6 +12,6 @@ public static class SessionTestHelper
 			.WithWhitePlayer(playerWhite)
 			.Build();
 
-		return new Session(sessionPlayers, SessionPlayerRegistrarTestHelper.Create());
+		return new Session(sessionPlayers, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
 	}
 }

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -64,23 +64,23 @@
 <a name="2"><span class="lineNum">       2 </span>            : </a>
 <span class="lineNum">       3 </span>            : public record Coordinate
 <span class="lineNum">       4 </span>            : {
-<span class="lineNum">       5 </span><span class="lineCov">      12474 :         public Coordinate(int x, int y)</span>
-<span class="lineNum">       6 </span><span class="lineCov">      12474 :         {</span>
-<span class="lineNum">       7 </span><span class="lineCov">      12474 :                 this.ValidateCoordinate(x, nameof(x));</span>
-<span class="lineNum">       8 </span><span class="lineCov">      12474 :                 this.ValidateCoordinate(y, nameof(y));</span>
+<span class="lineNum">       5 </span><span class="lineCov">      12424 :         public Coordinate(int x, int y)</span>
+<span class="lineNum">       6 </span><span class="lineCov">      12424 :         {</span>
+<span class="lineNum">       7 </span><span class="lineCov">      12424 :                 this.ValidateCoordinate(x, nameof(x));</span>
+<span class="lineNum">       8 </span><span class="lineCov">      12424 :                 this.ValidateCoordinate(y, nameof(y));</span>
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">      12474 :                 this.X = x;</span>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">      12474 :                 this.Y = y;</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">      12474 :         }</span></a>
+<span class="lineNum">      10 </span><span class="lineCov">      12424 :                 this.X = x;</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">      12424 :                 this.Y = y;</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">      12424 :         }</span></a>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">       3377 :         public int X { get; }</span>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">       3342 :         public int Y { get; }</span></a>
+<span class="lineNum">      14 </span><span class="lineCov">        755 :         public int X { get; }</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">        913 :         public int Y { get; }</span></a>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            :         protected virtual void ValidateCoordinate(int coordinatePart, string coordinateName)
-<span class="lineNum">      18 </span><span class="lineCov">      24946 :         {</span>
-<span class="lineNum">      19 </span><span class="lineCov">      24946 :                 if (coordinatePart &lt; 0 || coordinatePart &gt; 7)</span>
+<span class="lineNum">      18 </span><span class="lineCov">      24846 :         {</span>
+<span class="lineNum">      19 </span><span class="lineCov">      24846 :                 if (coordinatePart &lt; 0 || coordinatePart &gt; 7)</span>
 <span class="lineNum">      20 </span><span class="lineNoCov">          0 :                         throw new ArgumentException($&quot;{coordinateName}:{coordinatePart} doesn't match the chessboard coordinate requirements 8x8.&quot;);</span>
-<span class="lineNum">      21 </span><span class="lineCov">      24946 :         }</span>
+<span class="lineNum">      21 </span><span class="lineCov">      24846 :         }</span>
 <span class="lineNum">      22 </span>            : }
     </pre>
           </td>

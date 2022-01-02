@@ -42,6 +42,7 @@ class Program
 			{
 				new ValidMoveView(new MoveViewModel(item), boardViewModel, consoleWriterFactory).Display();
 			}
+			consoleWriterFactory.Get().WriteLine(session.CurrentState.ToString());
 		}
 	}
 
@@ -73,7 +74,7 @@ class Program
 		sessionPlayerRegistrar.AddPlayersRegisteredEventCallback(AllPlayersRegisteredHandler);
 		var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
 		sessionPlayers.AddPlayersReadyEventCallback(AllPlayersReadyHandler);
-		return new Session(sessionPlayers, sessionPlayerRegistrar);
+		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine());
 	}
 
 	public static void AllPlayersRegisteredHandler(SessionPlayerRegistrar sessionPlayerRegistrar)

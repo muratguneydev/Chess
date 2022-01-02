@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -65,10 +65,10 @@
 <a name="3"><span class="lineNum">       3 </span>            : public abstract class Pawn : Piece</a>
 <span class="lineNum">       4 </span>            : {
 <span class="lineNum">       5 </span>            :         public Pawn(IMoveStrategy moveStrategy)
-<span class="lineNum">       6 </span><span class="lineCov">        163 :                 : base(moveStrategy)</span>
-<span class="lineNum">       7 </span><span class="lineCov">        163 :         {</span>
+<span class="lineNum">       6 </span><span class="lineCov">        179 :                 : base(moveStrategy)</span>
+<span class="lineNum">       7 </span><span class="lineCov">        179 :         {</span>
 <span class="lineNum">       8 </span>            :                 
-<span class="lineNum">       9 </span><span class="lineCov">        163 :         }</span>
+<span class="lineNum">       9 </span><span class="lineCov">        179 :         }</span>
 <span class="lineNum">      10 </span>            : 
 <span class="lineNum">      11 </span>            : }
 <span class="lineNum">      12 </span>            : 
@@ -76,46 +76,46 @@
 <a name="14"><span class="lineNum">      14 </span>            : public class WhitePawn : Pawn</a>
 <span class="lineNum">      15 </span>            : {
 <span class="lineNum">      16 </span>            :         public WhitePawn(Board board)
-<span class="lineNum">      17 </span><span class="lineCov">         85 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
-<span class="lineNum">      18 </span><span class="lineCov">         85 :                         new CompositeMoveStrategy(new[] {</span>
-<span class="lineNum">      19 </span><span class="lineCov">         85 :                                         new WhiteTwoVerticalSquaresInitialMoveStrategy(</span>
-<span class="lineNum">      20 </span><span class="lineCov">         85 :                                                 new VerticalMoveStrategy()),</span>
-<span class="lineNum">      21 </span><span class="lineCov">         85 :                                         new WhiteForwardOnlyMoveStrategy(</span>
-<span class="lineNum">      22 </span><span class="lineCov">         85 :                                                 new OneSquareMoveStrategy(</span>
-<span class="lineNum">      23 </span><span class="lineCov">         85 :                                                         new VerticalMoveStrategy())),</span>
-<span class="lineNum">      24 </span><span class="lineCov">         85 :                                         new WhiteForwardOnlyMoveStrategy(</span>
-<span class="lineNum">      25 </span><span class="lineCov">         85 :                                                 new OnlyAttackMoveStrategy(</span>
-<span class="lineNum">      26 </span><span class="lineCov">         85 :                                                         new OneSquareMoveStrategy(</span>
-<span class="lineNum">      27 </span><span class="lineCov">         85 :                                                                 new DiagonalMoveStrategy()))),</span>
-<span class="lineNum">      28 </span><span class="lineCov">         85 :                                         new WhiteEnPassantMoveStrategy(board) as IMoveStrategy</span>
-<span class="lineNum">      29 </span><span class="lineCov">         85 :                                 }))</span>
-<span class="lineNum">      30 </span><span class="lineCov">         85 :                 )</span>
-<span class="lineNum">      31 </span><span class="lineCov">         85 :         {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         93 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
+<span class="lineNum">      18 </span><span class="lineCov">         93 :                         new CompositeMoveStrategy(new[] {</span>
+<span class="lineNum">      19 </span><span class="lineCov">         93 :                                         new WhiteTwoVerticalSquaresInitialMoveStrategy(</span>
+<span class="lineNum">      20 </span><span class="lineCov">         93 :                                                 new VerticalMoveStrategy()),</span>
+<span class="lineNum">      21 </span><span class="lineCov">         93 :                                         new WhiteForwardOnlyMoveStrategy(</span>
+<span class="lineNum">      22 </span><span class="lineCov">         93 :                                                 new OneSquareMoveStrategy(</span>
+<span class="lineNum">      23 </span><span class="lineCov">         93 :                                                         new VerticalMoveStrategy())),</span>
+<span class="lineNum">      24 </span><span class="lineCov">         93 :                                         new WhiteForwardOnlyMoveStrategy(</span>
+<span class="lineNum">      25 </span><span class="lineCov">         93 :                                                 new OnlyAttackMoveStrategy(</span>
+<span class="lineNum">      26 </span><span class="lineCov">         93 :                                                         new OneSquareMoveStrategy(</span>
+<span class="lineNum">      27 </span><span class="lineCov">         93 :                                                                 new DiagonalMoveStrategy()))),</span>
+<span class="lineNum">      28 </span><span class="lineCov">         93 :                                         new WhiteEnPassantMoveStrategy(board) as IMoveStrategy</span>
+<span class="lineNum">      29 </span><span class="lineCov">         93 :                                 }))</span>
+<span class="lineNum">      30 </span><span class="lineCov">         93 :                 )</span>
+<span class="lineNum">      31 </span><span class="lineCov">         93 :         {</span>
 <span class="lineNum">      32 </span>            :                 
-<span class="lineNum">      33 </span><span class="lineCov">         85 :         }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         93 :         }</span>
 <span class="lineNum">      34 </span>            : 
 <span class="lineNum">      35 </span>            : }
 <span class="lineNum">      36 </span>            : 
 <a name="37"><span class="lineNum">      37 </span>            : public class BlackPawn : Pawn</a>
 <span class="lineNum">      38 </span>            : {
 <span class="lineNum">      39 </span>            :         public BlackPawn(Board board)
-<span class="lineNum">      40 </span><span class="lineCov">         78 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
-<span class="lineNum">      41 </span><span class="lineCov">         78 :                         new CompositeMoveStrategy(new[] {</span>
-<span class="lineNum">      42 </span><span class="lineCov">         78 :                                         new BlackTwoVerticalSquaresInitialMoveStrategy(</span>
-<span class="lineNum">      43 </span><span class="lineCov">         78 :                                                 new VerticalMoveStrategy()),</span>
-<span class="lineNum">      44 </span><span class="lineCov">         78 :                                         new BlackForwardOnlyMoveStrategy(</span>
-<span class="lineNum">      45 </span><span class="lineCov">         78 :                                                 new OneSquareMoveStrategy(</span>
-<span class="lineNum">      46 </span><span class="lineCov">         78 :                                                         new VerticalMoveStrategy())),</span>
-<span class="lineNum">      47 </span><span class="lineCov">         78 :                                         new BlackForwardOnlyMoveStrategy(</span>
-<span class="lineNum">      48 </span><span class="lineCov">         78 :                                                 new OnlyAttackMoveStrategy(</span>
-<span class="lineNum">      49 </span><span class="lineCov">         78 :                                                         new OneSquareMoveStrategy(</span>
-<span class="lineNum">      50 </span><span class="lineCov">         78 :                                                                 new DiagonalMoveStrategy()))),</span>
-<span class="lineNum">      51 </span><span class="lineCov">         78 :                                         new BlackEnPassantMoveStrategy(board) as IMoveStrategy</span>
-<span class="lineNum">      52 </span><span class="lineCov">         78 :                                 }))</span>
-<span class="lineNum">      53 </span><span class="lineCov">         78 :                 )</span>
-<span class="lineNum">      54 </span><span class="lineCov">         78 :         {</span>
+<span class="lineNum">      40 </span><span class="lineCov">         86 :                 : base(new CantMoveToTheCurrentCellStrategyDecorator(</span>
+<span class="lineNum">      41 </span><span class="lineCov">         86 :                         new CompositeMoveStrategy(new[] {</span>
+<span class="lineNum">      42 </span><span class="lineCov">         86 :                                         new BlackTwoVerticalSquaresInitialMoveStrategy(</span>
+<span class="lineNum">      43 </span><span class="lineCov">         86 :                                                 new VerticalMoveStrategy()),</span>
+<span class="lineNum">      44 </span><span class="lineCov">         86 :                                         new BlackForwardOnlyMoveStrategy(</span>
+<span class="lineNum">      45 </span><span class="lineCov">         86 :                                                 new OneSquareMoveStrategy(</span>
+<span class="lineNum">      46 </span><span class="lineCov">         86 :                                                         new VerticalMoveStrategy())),</span>
+<span class="lineNum">      47 </span><span class="lineCov">         86 :                                         new BlackForwardOnlyMoveStrategy(</span>
+<span class="lineNum">      48 </span><span class="lineCov">         86 :                                                 new OnlyAttackMoveStrategy(</span>
+<span class="lineNum">      49 </span><span class="lineCov">         86 :                                                         new OneSquareMoveStrategy(</span>
+<span class="lineNum">      50 </span><span class="lineCov">         86 :                                                                 new DiagonalMoveStrategy()))),</span>
+<span class="lineNum">      51 </span><span class="lineCov">         86 :                                         new BlackEnPassantMoveStrategy(board) as IMoveStrategy</span>
+<span class="lineNum">      52 </span><span class="lineCov">         86 :                                 }))</span>
+<span class="lineNum">      53 </span><span class="lineCov">         86 :                 )</span>
+<span class="lineNum">      54 </span><span class="lineCov">         86 :         {</span>
 <span class="lineNum">      55 </span>            :                 
-<span class="lineNum">      56 </span><span class="lineCov">         78 :         }</span>
+<span class="lineNum">      56 </span><span class="lineCov">         86 :         }</span>
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span>            : }
     </pre>

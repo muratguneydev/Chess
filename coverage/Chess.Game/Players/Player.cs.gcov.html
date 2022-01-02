@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -66,32 +66,32 @@
 <a name="4"><span class="lineNum">       4 </span>            : {</a>
 <span class="lineNum">       5 </span>            :         private readonly IClock clock;
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span><span class="lineCov">        445 :         public Player(Color color, IClock clock, string name)</span>
-<span class="lineNum">       8 </span><span class="lineCov">        445 :         {</span>
-<span class="lineNum">       9 </span><span class="lineCov">        445 :                 this.Color = color;</span>
-<span class="lineNum">      10 </span><span class="lineCov">        445 :                 this.clock = clock;</span>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        445 :                 this.Name = name;</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">        445 :         }</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">        449 :         public Player(Color color, IClock clock, string name)</span>
+<span class="lineNum">       8 </span><span class="lineCov">        449 :         {</span>
+<span class="lineNum">       9 </span><span class="lineCov">        449 :                 this.Color = color;</span>
+<span class="lineNum">      10 </span><span class="lineCov">        449 :                 this.clock = clock;</span>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">        449 :                 this.Name = name;</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">        449 :         }</span></a>
 <span class="lineNum">      13 </span>            : 
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        174 :         public Color Color { get; }</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        171 :         public Color Color { get; }</span></a>
 <span class="lineNum">      15 </span><span class="lineCov">          2 :         public string Name { get; }</span>
 <span class="lineNum">      16 </span>            : 
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">         21 :         public virtual bool IsReady { get; private set; }</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">         26 :         public virtual bool IsReady { get; private set; }</span></a>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            :         public void ResumePlaying()
-<span class="lineNum">      20 </span><span class="lineCov">         48 :         {</span>
-<span class="lineNum">      21 </span><span class="lineCov">         48 :                 this.clock.Start();</span>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         48 :         }</span></a>
+<span class="lineNum">      20 </span><span class="lineCov">         33 :         {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         33 :                 this.clock.Start();</span>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         33 :         }</span></a>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            :         public void Wait()
-<span class="lineNum">      25 </span><span class="lineCov">         35 :         {</span>
-<span class="lineNum">      26 </span><span class="lineCov">         35 :                 this.clock.Stop();</span>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">         35 :         }</span></a>
+<span class="lineNum">      25 </span><span class="lineCov">         19 :         {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         19 :                 this.clock.Stop();</span>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">         19 :         }</span></a>
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            :         public void SetReady()
-<span class="lineNum">      30 </span><span class="lineCov">          6 :         {</span>
-<span class="lineNum">      31 </span><span class="lineCov">          6 :                 this.IsReady = true;</span>
-<span class="lineNum">      32 </span><span class="lineCov">          6 :         }</span>
+<span class="lineNum">      30 </span><span class="lineCov">          8 :         {</span>
+<span class="lineNum">      31 </span><span class="lineCov">          8 :                 this.IsReady = true;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          8 :         }</span>
 <span class="lineNum">      33 </span>            : }
     </pre>
           </td>

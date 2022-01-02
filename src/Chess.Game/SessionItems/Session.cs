@@ -6,11 +6,13 @@ public class Session
 	private readonly OnMoveEvent OnMove = new OnMoveEvent();
 	private readonly SessionPlayers sessionPlayers;
 	private readonly SessionPlayerRegistrar sessionPlayerRegistrar;
+	private readonly SessionStateMachine sessionStateMachine;
 
-	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar)
+	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar, SessionStateMachine sessionStateMachine)
 	{
 		this.sessionPlayers = sessionPlayers;
 		this.sessionPlayerRegistrar = sessionPlayerRegistrar;
+		this.sessionStateMachine = sessionStateMachine;
 	}
 
 	public bool IsComplete => false;
@@ -19,9 +21,11 @@ public class Session
 	public BlackPlayer BlackPlayer => this.sessionPlayers.BlackPlayer;
 	public Winner Winner => EmptyWinner.Winner;
 	public Color PlayTurn => this.CurrentPlayer.Color;
-	public Player CurrentPlayer => this.moves.LastMove.Color == Color.White
-		? this.BlackPlayer
-		: this.WhitePlayer;
+	public SessionState CurrentState => this.sessionStateMachine.CurrentState;
+
+	public Player CurrentPlayer => this.moves.LastMove.Color == Color.Black
+		? this.WhitePlayer
+		: this.BlackPlayer;
 
 	public Player WaitingPlayer => this.CurrentPlayer == this.WhitePlayer
 		? this.BlackPlayer
@@ -37,6 +41,7 @@ public class Session
 		if (!move.IsValid)
 			return;
 
+		this.sessionStateMachine.Move();
 		this.moves.Push(move);
 		this.SwitchTurns();
 		this.OnMove.Invoke(move);
@@ -47,6 +52,7 @@ public class Session
 		if (!this.moves.Any())
 			return EmptyMove.Move;
 		
+		this.sessionStateMachine.Back();
 		var lastMove = this.moves.Pop();
 		lastMove.GoBack();
 		this.SwitchTurns();//TODO: add back tests then move this before goback() call.
@@ -60,12 +66,26 @@ public class Session
 
 	public void RegisterBlackPlayer(BlackPlayer player)
 	{
+		this.sessionStateMachine.RegisterBlack();
 		this.sessionPlayerRegistrar.RegisterBlackPlayer(player);
 	}
 
 	public void RegisterWhitePlayer(WhitePlayer player)
 	{
+		this.sessionStateMachine.RegisterWhite();
 		this.sessionPlayerRegistrar.RegisterWhitePlayer(player);
+	}
+
+	public void SetBlackPlayerReady()
+	{
+		this.sessionStateMachine.SetBlackReady();
+		this.sessionPlayers.SetBlackPlayerReady();
+	}
+
+	public void SetWhitePlayerReady()
+	{
+		this.sessionStateMachine.SetWhiteReady();
+		this.sessionPlayers.SetWhitePlayerReady();
 	}
 
 	private void SwitchTurns()

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -65,38 +65,38 @@
 <a name="3"><span class="lineNum">       3 </span>            : public class DiagonalMoveStrategy : IMoveStrategy</a>
 <span class="lineNum">       4 </span>            : {
 <span class="lineNum">       5 </span>            :         public MovePath GetMovePath(Move fromTo)
-<span class="lineNum">       6 </span><span class="lineCov">        156 :         {</span>
-<span class="lineNum">       7 </span><span class="lineCov">        156 :                 if (Math.Abs(GetYDifference(fromTo)) != Math.Abs(GetXDifference(fromTo)))</span>
-<span class="lineNum">       8 </span><span class="lineCov">         21 :                         return new InvalidMovePath(fromTo);</span>
+<span class="lineNum">       6 </span><span class="lineCov">         23 :         {</span>
+<span class="lineNum">       7 </span><span class="lineCov">         23 :                 if (Math.Abs(GetYDifference(fromTo)) != Math.Abs(GetXDifference(fromTo)))</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :                         return new InvalidMovePath(fromTo);</span>
 <span class="lineNum">       9 </span>            :                 
-<span class="lineNum">      10 </span><span class="lineCov">        135 :                 return new MovePath(fromTo, GetDiagonalCoordinates(fromTo));</span>
+<span class="lineNum">      10 </span><span class="lineCov">         22 :                 return new MovePath(fromTo, GetDiagonalCoordinates(fromTo));</span>
 <span class="lineNum">      11 </span>            : 
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">        156 :         }</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">         23 :         }</span></a>
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            :         private static IEnumerable&lt;Coordinate&gt; GetDiagonalCoordinates(Move fromTo)
-<span class="lineNum">      15 </span><span class="lineCov">         59 :         {</span>
-<span class="lineNum">      16 </span><span class="lineCov">         59 :                 var diffX = GetXDifference(fromTo);</span>
-<span class="lineNum">      17 </span><span class="lineCov">         59 :                 var diffY = GetYDifference(fromTo);</span>
-<span class="lineNum">      18 </span><span class="lineCov">         59 :                 var currentX = fromTo.From.X;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         59 :                 var currentY = fromTo.From.Y;</span>
-<span class="lineNum">      20 </span><span class="lineCov">         59 :                 var directionX = diffX &gt; 0 ? 1 : -1;</span>
-<span class="lineNum">      21 </span><span class="lineCov">         59 :                 var directionY = diffY &gt; 0 ? 1 : -1;</span>
+<span class="lineNum">      15 </span><span class="lineCov">         16 :         {</span>
+<span class="lineNum">      16 </span><span class="lineCov">         16 :                 var diffX = GetXDifference(fromTo);</span>
+<span class="lineNum">      17 </span><span class="lineCov">         16 :                 var diffY = GetYDifference(fromTo);</span>
+<span class="lineNum">      18 </span><span class="lineCov">         16 :                 var currentX = fromTo.From.X;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         16 :                 var currentY = fromTo.From.Y;</span>
+<span class="lineNum">      20 </span><span class="lineCov">         16 :                 var directionX = diffX &gt; 0 ? 1 : -1;</span>
+<span class="lineNum">      21 </span><span class="lineCov">         16 :                 var directionY = diffY &gt; 0 ? 1 : -1;</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        194 :                 for (var i=1;i &lt; Math.Abs(diffY);i++)</span>
-<span class="lineNum">      24 </span><span class="lineCov">         42 :                 {</span>
-<span class="lineNum">      25 </span><span class="lineCov">         42 :                         yield return new Coordinate(currentX+(i*directionX), currentY+(i*directionY));</span>
-<span class="lineNum">      26 </span><span class="lineCov">         38 :                 }</span>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">         55 :         }</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">         56 :                 for (var i=1;i &lt; Math.Abs(diffY);i++)</span>
+<span class="lineNum">      24 </span><span class="lineCov">         12 :                 {</span>
+<span class="lineNum">      25 </span><span class="lineCov">         12 :                         yield return new Coordinate(currentX+(i*directionX), currentY+(i*directionY));</span>
+<span class="lineNum">      26 </span><span class="lineCov">         12 :                 }</span>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">         16 :         }</span></a>
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            :         private static int GetXDifference(Move fromTo)
-<span class="lineNum">      30 </span><span class="lineCov">        215 :         {</span>
-<span class="lineNum">      31 </span><span class="lineCov">        215 :                 return fromTo.To.X - fromTo.From.X;</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">        215 :         }</span></a>
+<span class="lineNum">      30 </span><span class="lineCov">         39 :         {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         39 :                 return fromTo.To.X - fromTo.From.X;</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">         39 :         }</span></a>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            :         private static int GetYDifference(Move fromTo)
-<span class="lineNum">      35 </span><span class="lineCov">        215 :         {</span>
-<span class="lineNum">      36 </span><span class="lineCov">        215 :                 return fromTo.To.Y - fromTo.From.Y;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        215 :         }</span>
+<span class="lineNum">      35 </span><span class="lineCov">         39 :         {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         39 :                 return fromTo.To.Y - fromTo.From.Y;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         39 :         }</span>
 <span class="lineNum">      38 </span>            : }
     </pre>
           </td>

@@ -31,18 +31,18 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">44.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
               <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
             </table>
@@ -66,18 +66,18 @@
 <a name="4"><span class="lineNum">       4 </span>            : {</a>
 <span class="lineNum">       5 </span>            :         private readonly IMoveStrategy moveStrategy;
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span><span class="lineCov">        170 :         public WhiteForwardOnlyMoveStrategy(IMoveStrategy moveStrategy)</span>
-<span class="lineNum">       8 </span><span class="lineCov">        170 :         {</span>
-<span class="lineNum">       9 </span><span class="lineCov">        170 :                 this.moveStrategy = moveStrategy;</span>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        170 :         }</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">        186 :         public WhiteForwardOnlyMoveStrategy(IMoveStrategy moveStrategy)</span>
+<span class="lineNum">       8 </span><span class="lineCov">        186 :         {</span>
+<span class="lineNum">       9 </span><span class="lineCov">        186 :                 this.moveStrategy = moveStrategy;</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        186 :         }</span></a>
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            :         public MovePath GetMovePath(Move move)
-<span class="lineNum">      13 </span><span class="lineCov">         94 :         {</span>
-<span class="lineNum">      14 </span><span class="lineCov">         94 :                 if (move.From.Y &gt;= move.To.Y)</span>
-<span class="lineNum">      15 </span><span class="lineCov">         10 :                         return new InvalidMovePath(move);</span>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 :                 if (move.From.Y &gt;= move.To.Y)</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :                         return new InvalidMovePath(move);</span>
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">         84 :                 return this.moveStrategy.GetMovePath(move);</span>
-<span class="lineNum">      18 </span><span class="lineCov">         94 :         }</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :                 return this.moveStrategy.GetMovePath(move);</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      19 </span>            : }
     </pre>
           </td>

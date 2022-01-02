@@ -5,7 +5,7 @@ public class EmptySession : Session
 	private static EmptySession emptySession = new EmptySession();
 
 	private EmptySession()
-		: base(EmptySessionPlayers.SessionPlayers, new SessionPlayerRegistrar())
+		: base(EmptySessionPlayers.SessionPlayers, new SessionPlayerRegistrar(), new SessionStateMachine())
 	{
 	}
 

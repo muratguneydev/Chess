@@ -9,7 +9,7 @@ public class ConsoleCommandInputProducer : IEnumerable<ChessCommand>
 	public ConsoleCommandInputProducer(IConsoleReader consoleReader, ConsoleWriterFactory consoleWriterFactory,
 		BoardViewModel boardViewModel)
 	{
-		this.consoleCommandInputIterator = new ConsoleCommandInputIterator(consoleReader, consoleWriterFactory, boardViewModel);
+		this.consoleCommandInputIterator = new ConsoleCommandInputIterator(consoleReader, new CommandFactory(consoleWriterFactory, boardViewModel));
 	}
 
 	public IEnumerator<ChessCommand> GetEnumerator()

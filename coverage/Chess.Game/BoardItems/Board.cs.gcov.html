@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">59</td>
@@ -69,86 +69,86 @@
 <a name="7"><span class="lineNum">       7 </span>            :         private readonly Cell[,] cells;</a>
 <span class="lineNum">       8 </span>            :         private readonly Session session;
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">        188 :         public Board(Session session)</span>
-<span class="lineNum">      11 </span><span class="lineCov">        188 :         {</span>
-<span class="lineNum">      12 </span><span class="lineCov">        188 :                 this.session = session;</span>
-<span class="lineNum">      13 </span><span class="lineCov">        188 :                 this.cells = this.CreateCells();</span>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        188 :         }</span></a>
+<span class="lineNum">      10 </span><span class="lineCov">        189 :         public Board(Session session)</span>
+<span class="lineNum">      11 </span><span class="lineCov">        189 :         {</span>
+<span class="lineNum">      12 </span><span class="lineCov">        189 :                 this.session = session;</span>
+<span class="lineNum">      13 </span><span class="lineCov">        189 :                 this.cells = this.CreateCells();</span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        189 :         }</span></a>
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            :         public void SetOpeningPosition()
-<span class="lineNum">      17 </span><span class="lineCov">          7 :         {</span>
-<span class="lineNum">      18 </span><span class="lineCov">          7 :                 this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      19 </span><span class="lineCov">          7 :                 this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      20 </span><span class="lineCov">          7 :                 this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      21 </span><span class="lineCov">          7 :                 this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      22 </span><span class="lineCov">          7 :                 this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      23 </span><span class="lineCov">          7 :                 this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      24 </span><span class="lineCov">          7 :                 this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      25 </span><span class="lineCov">          7 :                 this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      17 </span><span class="lineCov">          8 :         {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          8 :                 this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      19 </span><span class="lineCov">          8 :                 this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      20 </span><span class="lineCov">          8 :                 this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      21 </span><span class="lineCov">          8 :                 this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      22 </span><span class="lineCov">          8 :                 this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      23 </span><span class="lineCov">          8 :                 this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      24 </span><span class="lineCov">          8 :                 this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      25 </span><span class="lineCov">          8 :                 this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">          7 :                 this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      28 </span><span class="lineCov">          7 :                 this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      29 </span><span class="lineCov">          7 :                 this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      30 </span><span class="lineCov">          7 :                 this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      31 </span><span class="lineCov">          7 :                 this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      32 </span><span class="lineCov">          7 :                 this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      33 </span><span class="lineCov">          7 :                 this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      34 </span><span class="lineCov">          7 :                 this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      27 </span><span class="lineCov">          8 :                 this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      28 </span><span class="lineCov">          8 :                 this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      29 </span><span class="lineCov">          8 :                 this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          8 :                 this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      31 </span><span class="lineCov">          8 :                 this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      32 </span><span class="lineCov">          8 :                 this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          8 :                 this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      34 </span><span class="lineCov">          8 :                 this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">          7 :                 this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      37 </span><span class="lineCov">          7 :                 this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      38 </span><span class="lineCov">          7 :                 this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      39 </span><span class="lineCov">          7 :                 this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      40 </span><span class="lineCov">          7 :                 this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      41 </span><span class="lineCov">          7 :                 this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      42 </span><span class="lineCov">          7 :                 this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      43 </span><span class="lineCov">          7 :                 this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      36 </span><span class="lineCov">          8 :                 this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      37 </span><span class="lineCov">          8 :                 this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      38 </span><span class="lineCov">          8 :                 this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      39 </span><span class="lineCov">          8 :                 this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      40 </span><span class="lineCov">          8 :                 this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      41 </span><span class="lineCov">          8 :                 this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      42 </span><span class="lineCov">          8 :                 this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      43 </span><span class="lineCov">          8 :                 this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">          7 :                 this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      46 </span><span class="lineCov">          7 :                 this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      47 </span><span class="lineCov">          7 :                 this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      48 </span><span class="lineCov">          7 :                 this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      49 </span><span class="lineCov">          7 :                 this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      50 </span><span class="lineCov">          7 :                 this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      51 </span><span class="lineCov">          7 :                 this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
-<span class="lineNum">      52 </span><span class="lineCov">          7 :                 this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          7 :         }</span></a>
+<span class="lineNum">      45 </span><span class="lineCov">          8 :                 this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      46 </span><span class="lineCov">          8 :                 this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      47 </span><span class="lineCov">          8 :                 this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          8 :                 this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      49 </span><span class="lineCov">          8 :                 this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      50 </span><span class="lineCov">          8 :                 this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      51 </span><span class="lineCov">          8 :                 this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));</span>
+<span class="lineNum">      52 </span><span class="lineCov">          8 :                 this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));</span>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          8 :         }</span></a>
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            :         public IEnumerable&lt;IBoardPiece&gt; GetPiecesInCoordinates(IEnumerable&lt;Coordinate&gt; coordinates)
-<span class="lineNum">      56 </span><span class="lineCov">        143 :         {</span>
-<span class="lineNum">      57 </span><span class="lineCov">        143 :                 return coordinates</span>
-<span class="lineNum">      58 </span><span class="lineCov">        123 :                         .Select(coordinate =&gt; this.cells[coordinate.X, coordinate.Y].Piece)</span>
-<span class="lineNum">      59 </span><span class="lineCov">        266 :                         .Where(piece =&gt; !piece.IsEmpty);</span>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        143 :         }</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">         13 :         {</span>
+<span class="lineNum">      57 </span><span class="lineCov">         13 :                 return coordinates</span>
+<span class="lineNum">      58 </span><span class="lineCov">          9 :                         .Select(coordinate =&gt; this.cells[coordinate.X, coordinate.Y].Piece)</span>
+<span class="lineNum">      59 </span><span class="lineCov">         22 :                         .Where(piece =&gt; !piece.IsEmpty);</span>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">         13 :         }</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <span class="lineNum">      62 </span>            :         //public Cell[,] Table =&gt; (Cell[,])this.cells.Clone();
-<span class="lineNum">      63 </span><span class="lineCov">        256 :         public int XSize =&gt; 8;</span>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        219 :         public int YSize =&gt; 8;</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">        109 :         public int XSize =&gt; 8;</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        106 :         public int YSize =&gt; 8;</span></a>
 <span class="lineNum">      65 </span>            : 
 <span class="lineNum">      66 </span>            :         public Cell GetCell(int x, int y)
-<span class="lineNum">      67 </span><span class="lineCov">        256 :         {</span>
-<span class="lineNum">      68 </span><span class="lineCov">        256 :                 if (x &gt;= this.XSize || x &lt; 0 || y &gt;= this.YSize || y &lt; 0)</span>
-<span class="lineNum">      69 </span><span class="lineCov">         37 :                         return EmptyCell.Cell;</span>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        219 :                 return this.cells[x, y];</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        256 :         }</span></a>
+<span class="lineNum">      67 </span><span class="lineCov">        109 :         {</span>
+<span class="lineNum">      68 </span><span class="lineCov">        109 :                 if (x &gt;= this.XSize || x &lt; 0 || y &gt;= this.YSize || y &lt; 0)</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 :                         return EmptyCell.Cell;</span>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">        106 :                 return this.cells[x, y];</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        109 :         }</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         41 :         public Cell a1 =&gt; cells[0, 0];</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         13 :         public Cell b1 =&gt; cells[1, 0];</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         10 :         public Cell c1 =&gt; cells[2, 0];</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          7 :         public Cell d1 =&gt; cells[3, 0];</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         17 :         public Cell e1 =&gt; cells[4, 0];</span></a>
-<span class="lineNum">      78 </span><span class="lineCov">         14 :         public Cell f1 =&gt; cells[5, 0];</span>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          7 :         public Cell g1 =&gt; cells[6, 0];</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          7 :         public Cell h1 =&gt; cells[7, 0];</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">         42 :         public Cell a1 =&gt; cells[0, 0];</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">         14 :         public Cell b1 =&gt; cells[1, 0];</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         11 :         public Cell c1 =&gt; cells[2, 0];</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          8 :         public Cell d1 =&gt; cells[3, 0];</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         18 :         public Cell e1 =&gt; cells[4, 0];</span></a>
+<span class="lineNum">      78 </span><span class="lineCov">         15 :         public Cell f1 =&gt; cells[5, 0];</span>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          8 :         public Cell g1 =&gt; cells[6, 0];</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          8 :         public Cell h1 =&gt; cells[7, 0];</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         29 :         public Cell a2 =&gt; cells[0, 1];</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         13 :         public Cell b2 =&gt; cells[1, 1];</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         13 :         public Cell c2 =&gt; cells[2, 1];</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         11 :         public Cell d2 =&gt; cells[3, 1];</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          9 :         public Cell e2 =&gt; cells[4, 1];</span></a>
-<span class="lineNum">      87 </span><span class="lineCov">          7 :         public Cell f2 =&gt; cells[5, 1];</span>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          7 :         public Cell g2 =&gt; cells[6, 1];</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          7 :         public Cell h2 =&gt; cells[7, 1];</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">         30 :         public Cell a2 =&gt; cells[0, 1];</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         14 :         public Cell b2 =&gt; cells[1, 1];</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         14 :         public Cell c2 =&gt; cells[2, 1];</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">         12 :         public Cell d2 =&gt; cells[3, 1];</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">         10 :         public Cell e2 =&gt; cells[4, 1];</span></a>
+<span class="lineNum">      87 </span><span class="lineCov">          8 :         public Cell f2 =&gt; cells[5, 1];</span>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          8 :         public Cell g2 =&gt; cells[6, 1];</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          8 :         public Cell h2 =&gt; cells[7, 1];</span></a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
 <a name="91"><span class="lineNum">      91 </span><span class="lineCov">         16 :         public Cell a3 =&gt; cells[0, 2];</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineCov">         14 :         public Cell b3 =&gt; cells[1, 2];</span></a>
@@ -169,7 +169,7 @@
 <a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 :         public Cell h4 =&gt; cells[7, 3];</span></a>
 <a name="108"><span class="lineNum">     108 </span>            :         </a>
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">         22 :         public Cell a5 =&gt; cells[0, 4];</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">         27 :         public Cell b5 =&gt; cells[1, 4];</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">         21 :         public Cell b5 =&gt; cells[1, 4];</span></a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">         18 :         public Cell c5 =&gt; cells[2, 4];</span></a>
 <a name="112"><span class="lineNum">     112 </span><span class="lineCov">         11 :         public Cell d5 =&gt; cells[3, 4];</span></a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">          4 :         public Cell e5 =&gt; cells[4, 4];</span></a>
@@ -187,38 +187,38 @@
 <a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :         public Cell g6 =&gt; cells[6, 5];</span></a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :         public Cell h6 =&gt; cells[7, 5];</span></a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         13 :         public Cell a7 =&gt; cells[0, 6];</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         14 :         public Cell b7 =&gt; cells[1, 6];</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         13 :         public Cell c7 =&gt; cells[2, 6];</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          7 :         public Cell d7 =&gt; cells[3, 6];</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          8 :         public Cell e7 =&gt; cells[4, 6];</span></a>
-<span class="lineNum">     133 </span><span class="lineCov">         14 :         public Cell f7 =&gt; cells[5, 6];</span>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          7 :         public Cell g7 =&gt; cells[6, 6];</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          7 :         public Cell h7 =&gt; cells[7, 6];</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         14 :         public Cell a7 =&gt; cells[0, 6];</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         10 :         public Cell b7 =&gt; cells[1, 6];</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">         14 :         public Cell c7 =&gt; cells[2, 6];</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          8 :         public Cell d7 =&gt; cells[3, 6];</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          9 :         public Cell e7 =&gt; cells[4, 6];</span></a>
+<span class="lineNum">     133 </span><span class="lineCov">         15 :         public Cell f7 =&gt; cells[5, 6];</span>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          8 :         public Cell g7 =&gt; cells[6, 6];</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          8 :         public Cell h7 =&gt; cells[7, 6];</span></a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          7 :         public Cell a8 =&gt; cells[0, 7];</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          7 :         public Cell b8 =&gt; cells[1, 7];</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          8 :         public Cell c8 =&gt; cells[2, 7];</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          7 :         public Cell d8 =&gt; cells[3, 7];</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          7 :         public Cell e8 =&gt; cells[4, 7];</span></a>
-<span class="lineNum">     142 </span><span class="lineCov">          7 :         public Cell f8 =&gt; cells[5, 7];</span>
-<span class="lineNum">     143 </span><span class="lineCov">          7 :         public Cell g8 =&gt; cells[6, 7];</span>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          7 :         public Cell h8 =&gt; cells[7, 7];</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          8 :         public Cell a8 =&gt; cells[0, 7];</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          8 :         public Cell b8 =&gt; cells[1, 7];</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          9 :         public Cell c8 =&gt; cells[2, 7];</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          8 :         public Cell d8 =&gt; cells[3, 7];</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          8 :         public Cell e8 =&gt; cells[4, 7];</span></a>
+<span class="lineNum">     142 </span><span class="lineCov">          8 :         public Cell f8 =&gt; cells[5, 7];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          8 :         public Cell g8 =&gt; cells[6, 7];</span>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          8 :         public Cell h8 =&gt; cells[7, 7];</span></a>
 <span class="lineNum">     145 </span>            : 
 <span class="lineNum">     146 </span>            :         private Cell[,] CreateCells()
-<span class="lineNum">     147 </span><span class="lineCov">        188 :         {</span>
-<span class="lineNum">     148 </span><span class="lineCov">        188 :                 return new [,]</span>
-<span class="lineNum">     149 </span><span class="lineCov">        188 :                         {</span>
-<span class="lineNum">     150 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(0, 0)), new Cell(new Coordinate(0, 1)), new Cell(new Coordinate(0, 2)), new Cell(new Coordinate(0, 3)), new Cell(new Coordinate(0, 4)), new Cell(new Coordinate(0, 5)), new Cell(new Coordinate(0, 6)), new Cell(new Coordinate(0, 7))},</span>
-<span class="lineNum">     151 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(1, 0)), new Cell(new Coordinate(1, 1)), new Cell(new Coordinate(1, 2)), new Cell(new Coordinate(1, 3)), new Cell(new Coordinate(1, 4)), new Cell(new Coordinate(1, 5)), new Cell(new Coordinate(1, 6)), new Cell(new Coordinate(1, 7))},</span>
-<span class="lineNum">     152 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(2, 0)), new Cell(new Coordinate(2, 1)), new Cell(new Coordinate(2, 2)), new Cell(new Coordinate(2, 3)), new Cell(new Coordinate(2, 4)), new Cell(new Coordinate(2, 5)), new Cell(new Coordinate(2, 6)), new Cell(new Coordinate(2, 7))},</span>
-<span class="lineNum">     153 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(3, 0)), new Cell(new Coordinate(3, 1)), new Cell(new Coordinate(3, 2)), new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(3, 5)), new Cell(new Coordinate(3, 6)), new Cell(new Coordinate(3, 7))},</span>
-<span class="lineNum">     154 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(4, 0)), new Cell(new Coordinate(4, 1)), new Cell(new Coordinate(4, 2)), new Cell(new Coordinate(4, 3)), new Cell(new Coordinate(4, 4)), new Cell(new Coordinate(4, 5)), new Cell(new Coordinate(4, 6)), new Cell(new Coordinate(4, 7))},</span>
-<span class="lineNum">     155 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(5, 0)), new Cell(new Coordinate(5, 1)), new Cell(new Coordinate(5, 2)), new Cell(new Coordinate(5, 3)), new Cell(new Coordinate(5, 4)), new Cell(new Coordinate(5, 5)), new Cell(new Coordinate(5, 6)), new Cell(new Coordinate(5, 7))},</span>
-<span class="lineNum">     156 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(6, 0)), new Cell(new Coordinate(6, 1)), new Cell(new Coordinate(6, 2)), new Cell(new Coordinate(6, 3)), new Cell(new Coordinate(6, 4)), new Cell(new Coordinate(6, 5)), new Cell(new Coordinate(6, 6)), new Cell(new Coordinate(6, 7))},</span>
-<span class="lineNum">     157 </span><span class="lineCov">        188 :                                 {new Cell(new Coordinate(7, 0)), new Cell(new Coordinate(7, 1)), new Cell(new Coordinate(7, 2)), new Cell(new Coordinate(7, 3)), new Cell(new Coordinate(7, 4)), new Cell(new Coordinate(7, 5)), new Cell(new Coordinate(7, 6)), new Cell(new Coordinate(7, 7))}</span>
-<span class="lineNum">     158 </span><span class="lineCov">        188 :                         };</span>
-<span class="lineNum">     159 </span><span class="lineCov">        188 :         }</span>
+<span class="lineNum">     147 </span><span class="lineCov">        189 :         {</span>
+<span class="lineNum">     148 </span><span class="lineCov">        189 :                 return new [,]</span>
+<span class="lineNum">     149 </span><span class="lineCov">        189 :                         {</span>
+<span class="lineNum">     150 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(0, 0)), new Cell(new Coordinate(0, 1)), new Cell(new Coordinate(0, 2)), new Cell(new Coordinate(0, 3)), new Cell(new Coordinate(0, 4)), new Cell(new Coordinate(0, 5)), new Cell(new Coordinate(0, 6)), new Cell(new Coordinate(0, 7))},</span>
+<span class="lineNum">     151 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(1, 0)), new Cell(new Coordinate(1, 1)), new Cell(new Coordinate(1, 2)), new Cell(new Coordinate(1, 3)), new Cell(new Coordinate(1, 4)), new Cell(new Coordinate(1, 5)), new Cell(new Coordinate(1, 6)), new Cell(new Coordinate(1, 7))},</span>
+<span class="lineNum">     152 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(2, 0)), new Cell(new Coordinate(2, 1)), new Cell(new Coordinate(2, 2)), new Cell(new Coordinate(2, 3)), new Cell(new Coordinate(2, 4)), new Cell(new Coordinate(2, 5)), new Cell(new Coordinate(2, 6)), new Cell(new Coordinate(2, 7))},</span>
+<span class="lineNum">     153 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(3, 0)), new Cell(new Coordinate(3, 1)), new Cell(new Coordinate(3, 2)), new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(3, 5)), new Cell(new Coordinate(3, 6)), new Cell(new Coordinate(3, 7))},</span>
+<span class="lineNum">     154 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(4, 0)), new Cell(new Coordinate(4, 1)), new Cell(new Coordinate(4, 2)), new Cell(new Coordinate(4, 3)), new Cell(new Coordinate(4, 4)), new Cell(new Coordinate(4, 5)), new Cell(new Coordinate(4, 6)), new Cell(new Coordinate(4, 7))},</span>
+<span class="lineNum">     155 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(5, 0)), new Cell(new Coordinate(5, 1)), new Cell(new Coordinate(5, 2)), new Cell(new Coordinate(5, 3)), new Cell(new Coordinate(5, 4)), new Cell(new Coordinate(5, 5)), new Cell(new Coordinate(5, 6)), new Cell(new Coordinate(5, 7))},</span>
+<span class="lineNum">     156 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(6, 0)), new Cell(new Coordinate(6, 1)), new Cell(new Coordinate(6, 2)), new Cell(new Coordinate(6, 3)), new Cell(new Coordinate(6, 4)), new Cell(new Coordinate(6, 5)), new Cell(new Coordinate(6, 6)), new Cell(new Coordinate(6, 7))},</span>
+<span class="lineNum">     157 </span><span class="lineCov">        189 :                                 {new Cell(new Coordinate(7, 0)), new Cell(new Coordinate(7, 1)), new Cell(new Coordinate(7, 2)), new Cell(new Coordinate(7, 3)), new Cell(new Coordinate(7, 4)), new Cell(new Coordinate(7, 5)), new Cell(new Coordinate(7, 6)), new Cell(new Coordinate(7, 7))}</span>
+<span class="lineNum">     158 </span><span class="lineCov">        189 :                         };</span>
+<span class="lineNum">     159 </span><span class="lineCov">        189 :         }</span>
 <span class="lineNum">     160 </span>            : }
     </pre>
           </td>

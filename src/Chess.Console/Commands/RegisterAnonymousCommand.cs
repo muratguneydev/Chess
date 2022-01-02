@@ -19,6 +19,9 @@ public class RegisterAnonymousCommand : ChessCommand
 		var whitePlayer = new WhitePlayer(new Clock(new TimerWrapper()), "Player White");
 		session.RegisterWhitePlayer(whitePlayer);
 
+		new ReadyBlackCommand(consoleWriterFactory).Execute(session);
+		new ReadyWhiteCommand(consoleWriterFactory).Execute(session);
+
 		return new InformationView(new InformationViewModel($"Black and white players registered anonymously."), this.consoleWriterFactory);
 	}
 }

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-01-01 10:36:53</td>
+            <td class="headerValue">2022-01-02 17:10:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -66,18 +66,18 @@
 <a name="4"><span class="lineNum">       4 </span>            : {</a>
 <span class="lineNum">       5 </span>            :         private readonly IMoveStrategy moveStrategy;
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span><span class="lineCov">        367 :         public CantMoveToTheCurrentCellStrategyDecorator(IMoveStrategy moveStrategy)</span>
-<span class="lineNum">       8 </span><span class="lineCov">        367 :         {</span>
-<span class="lineNum">       9 </span><span class="lineCov">        367 :                 this.moveStrategy = moveStrategy;</span>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        367 :         }</span></a>
+<span class="lineNum">       7 </span><span class="lineCov">        395 :         public CantMoveToTheCurrentCellStrategyDecorator(IMoveStrategy moveStrategy)</span>
+<span class="lineNum">       8 </span><span class="lineCov">        395 :         {</span>
+<span class="lineNum">       9 </span><span class="lineCov">        395 :                 this.moveStrategy = moveStrategy;</span>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">        395 :         }</span></a>
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            :         public MovePath GetMovePath(Move fromTo)
-<span class="lineNum">      13 </span><span class="lineCov">        266 :         {</span>
-<span class="lineNum">      14 </span><span class="lineCov">        266 :                 if (fromTo.From.X == fromTo.To.X &amp;&amp; fromTo.From.Y == fromTo.To.Y)</span>
+<span class="lineNum">      13 </span><span class="lineCov">         34 :         {</span>
+<span class="lineNum">      14 </span><span class="lineCov">         34 :                 if (fromTo.From.X == fromTo.To.X &amp;&amp; fromTo.From.Y == fromTo.To.Y)</span>
 <span class="lineNum">      15 </span><span class="lineCov">          1 :                         return new InvalidMovePath(fromTo);</span>
 <span class="lineNum">      16 </span>            :                 
-<span class="lineNum">      17 </span><span class="lineCov">        265 :                 return this.moveStrategy.GetMovePath(fromTo);</span>
-<span class="lineNum">      18 </span><span class="lineCov">        266 :         }</span>
+<span class="lineNum">      17 </span><span class="lineCov">         33 :                 return this.moveStrategy.GetMovePath(fromTo);</span>
+<span class="lineNum">      18 </span><span class="lineCov">         34 :         }</span>
 <span class="lineNum">      19 </span>            : }
     </pre>
           </td>
