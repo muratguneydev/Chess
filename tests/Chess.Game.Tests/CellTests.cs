@@ -8,7 +8,7 @@ public class CellTests
 	[Test]
 	public void ShouldNotBeAbleToMoveToTheSameCell()
 	{
-		var cell = new Cell(new Coordinate(0, 0));
+		var cell = CellTestHelper.Create(new Coordinate(0, 0));
 		var piece = new TestPiece();
 		cell.SetPiece(piece);
 
@@ -18,11 +18,11 @@ public class CellTests
 	[Test]
 	public void ShouldValidMoveClearCurrentCell()
 	{
-		var fromCell = new Cell(new Coordinate(0, 0));
+		var fromCell = CellTestHelper.Create(new Coordinate(0, 0));
 		var piece = new TestPiece();
 		fromCell.SetPiece(piece);
 
-		var toCell = new Cell(new Coordinate(0, 7));
+		var toCell = CellTestHelper.Create(new Coordinate(0, 7));
 
 		var move = fromCell.GetMove(toCell);
 		move.Go();
@@ -32,11 +32,11 @@ public class CellTests
 	[Test]
 	public void ShouldValidMovePopulateDestinationCell()
 	{
-		var fromCell = new Cell(new Coordinate(0, 0));
+		var fromCell = CellTestHelper.Create(new Coordinate(0, 0));
 		var piece = new TestPiece();
 		fromCell.SetPiece(piece);
 
-		var toCell = new Cell(new Coordinate(0, 7));
+		var toCell = CellTestHelper.Create(new Coordinate(0, 7));
 
 		var move = fromCell.GetMove(toCell);
 		move.Go();

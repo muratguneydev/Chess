@@ -9,6 +9,11 @@ public static class CellTestHelper
 		return new Cell(x, y);
 	}
 
+	public static Cell Create(Coordinate coordinate)
+	{
+		return new Cell(coordinate);
+	}
+
 	public static void AssertIsValidMove(Move move)
 	{
 		Assert.IsTrue(GetValidatedMove(move).IsValid);

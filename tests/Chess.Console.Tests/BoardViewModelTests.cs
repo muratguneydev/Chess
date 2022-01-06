@@ -1,4 +1,5 @@
 using Chess.Game;
+using Chess.Game.Tests.Helpers;
 using NUnit.Framework;
 
 namespace Chess.Console.Tests;
@@ -30,6 +31,6 @@ public class BoardViewModelTests
     {
 		var boardViewModel = BoardViewModelTestHelper.Create();
 
-		Assert.AreEqual(cellString, boardViewModel.GetCellName(new Cell(new Coordinate(x, y))));
+		Assert.AreEqual(cellString, boardViewModel.GetCellName(CellTestHelper.Create(new Coordinate(x, y))));
     }
 }

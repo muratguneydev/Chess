@@ -8,11 +8,11 @@ public class OnlyAttackMoveStrategyTests
 	[Test]
 	public void ShouldNotBeAllowedToMoveToEmptyCell()
 	{
-		var fromCell = new Cell(new Coordinate(1,1));
+		var fromCell = CellTestHelper.Create(new Coordinate(1,1));
 		var piece = new TestPiece();
 		fromCell.SetPiece(piece);
 		
-		var destinationCell = new Cell(new Coordinate(2,2));
+		var destinationCell = CellTestHelper.Create(new Coordinate(2,2));
 		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
 		CellTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
@@ -21,11 +21,11 @@ public class OnlyAttackMoveStrategyTests
 	[Test]
 	public void ShouldNotBeAllowedIfDestinationIsOccupiedBySameColor()
 	{
-		var fromCell = new Cell(new Coordinate(1,1));
+		var fromCell = CellTestHelper.Create(new Coordinate(1,1));
 		var piece = new TestPiece();
 		fromCell.SetPiece(piece);
 		
-		var destinationCell = new Cell(new Coordinate(2,2));
+		var destinationCell = CellTestHelper.Create(new Coordinate(2,2));
 		var pieceToBeAttacked = new TestPiece();
 		destinationCell.SetPiece(pieceToBeAttacked);
 
@@ -37,11 +37,11 @@ public class OnlyAttackMoveStrategyTests
 	[Test]
 	public void ShouldBeAllowedToMoveForForAttack()
 	{
-		var fromCell = new Cell(new Coordinate(1,1));
+		var fromCell = CellTestHelper.Create(new Coordinate(1,1));
 		var whitePiece = new TestPiece(Color.White);
 		fromCell.SetPiece(whitePiece);
 		
-		var destinationCell = new Cell(new Coordinate(2,2));
+		var destinationCell = CellTestHelper.Create(new Coordinate(2,2));
 		var pieceToBeAttacked = new TestPiece(Color.Black);
 		destinationCell.SetPiece(pieceToBeAttacked);
 
