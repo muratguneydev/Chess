@@ -17,7 +17,7 @@ public record ConsoleMoveInput
 		
 		var fromCell = boardViewModel.GetCell(fromCellString);
 		var toCell = boardViewModel.GetCell(toCellString);
-		this.Move = new Move(fromCell, toCell);
+		this.Move = fromCell.GetMove(toCell);// new Move(fromCell, toCell);
 	}
 
 	public Move Move { get; }

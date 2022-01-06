@@ -8,10 +8,10 @@ namespace Chess.Game.Tests;
 public class WhitePawnAttackTests
 {
 	[TestCaseSource(typeof(WhitePawnAttackTestDataCollection), nameof(WhitePawnAttackTestDataCollection.TestCases))]
-	public void ShouldBeAbleToAttack(Func<Board,Move> getFromToWithBoard)
+	public void ShouldBeAbleToAttack(Func<Board,Move> getMoveWithBoard)
 	{
-		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, board => new WhitePawn(board));
-		var cellToBeAttacked = fromTo.Move.To;;
+		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getMoveWithBoard, board => new WhitePawn(board));
+		var cellToBeAttacked = fromTo.Move.To;
 		cellToBeAttacked.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
 		
 		CellTestHelper.AssertIsValidMove(fromTo.Move);
@@ -32,10 +32,13 @@ public class WhitePawnAttackTests
 		board.a1.SetPiece(otherPiece);
 		session.Start();
 
-		session.Next(board.b4.Move(board.b5));
-		session.Next(board.c7.Move(board.c5));
+		var move = board.b4.GetMove(board.b5);
+		session.Move(move);
+
+		move = board.c7.GetMove(board.c5);
+		session.Move(move);
 		
-		var testMove = new Move(board.b5, board.c6);
+		var testMove = MoveTestHelper.Create(board.b5, board.c6);
 		CellTestHelper.AssertIsValidMove(testMove);
 	}
 
@@ -45,9 +48,9 @@ public class WhitePawnAttackTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.a2, board.b3))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a2, board.b3))
 					.SetName("Attack on first move a2-b3");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d5))
 					.SetName("Attack on later moves c4-d5");
 			}
 		}

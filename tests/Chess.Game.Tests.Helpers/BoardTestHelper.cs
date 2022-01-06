@@ -57,7 +57,7 @@ public static class BoardTestHelper
 		var fromDummyCell = new Cell(new Coordinate(3, 3));
 		var toDummyCell = new Cell(new Coordinate(4, 3));
 		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook(), session, board));
-		session.Next(new Move(fromDummyCell, toDummyCell));
+		session.Move(MoveTestHelper.Create(fromDummyCell, toDummyCell));
 		
 		var fromTo = fromToGetter(board);
 		
@@ -74,7 +74,7 @@ public static class BoardTestHelper
 		var fromDummyCell = new Cell(new Coordinate(3, 3));
 		var toDummyCell = new Cell(new Coordinate(4, 3));
 		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook(), session, board));
-		session.Next(new Move(fromDummyCell, toDummyCell));
+		session.Move(MoveTestHelper.Create(fromDummyCell, toDummyCell));
 		
 		var fromTo = fromToGetter(board);
 		

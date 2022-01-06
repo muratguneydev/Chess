@@ -23,13 +23,13 @@ public class BishopInvalidMoveTests
 		{
 			get
 			{
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.a6), board => board.b5)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a6), board => board.b5)
 					.SetName("Move up left not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.f7), board => board.e6)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f7), board => board.e6)
 					.SetName("Move up right not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.a2), board => board.b3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a2), board => board.b3)
 					.SetName("Move down left not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.f1), board => board.e2)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f1), board => board.e2)
 					.SetName("Move down right not allowed if blocked");
 			}
 		}

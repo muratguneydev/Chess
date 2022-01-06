@@ -7,7 +7,7 @@ public class VerticalMoveStrategy : IMoveStrategy
 		if (!fromTo.IsOnSameColumn)
 			return new InvalidMovePath(fromTo);
 
-		return new MovePath(fromTo, GetVerticalCoordinatesOnSameX(fromTo));
+		return new MovePath(fromTo, GetVerticalCoordinatesOnSameX(fromTo), this);
 	}
 
 	private static IEnumerable<Coordinate> GetVerticalCoordinatesOnSameX(Move fromTo)

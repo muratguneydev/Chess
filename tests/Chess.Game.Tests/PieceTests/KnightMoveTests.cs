@@ -21,22 +21,22 @@ public class KnightMoveTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d6))
 					.SetName("Move two up one right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.b6))
 					.SetName("Move two up one left");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.e5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.e5))
 					.SetName("Move one up two right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a5))
 					.SetName("Move one up two left");
 
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.d2))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d2))
 					.SetName("Move two down one right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.b2))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.b2))
 					.SetName("Move two down one left");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.e3))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.e3))
 					.SetName("Move one down two right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a3))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a3))
 					.SetName("Move one down two left");
 			}
 		}

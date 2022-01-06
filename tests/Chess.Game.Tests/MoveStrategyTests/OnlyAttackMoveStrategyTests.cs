@@ -13,7 +13,7 @@ public class OnlyAttackMoveStrategyTests
 		fromCell.SetPiece(piece);
 		
 		var destinationCell = new Cell(new Coordinate(2,2));
-		var move = new Move(fromCell, destinationCell);
+		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
 		CellTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}
@@ -29,7 +29,7 @@ public class OnlyAttackMoveStrategyTests
 		var pieceToBeAttacked = new TestPiece();
 		destinationCell.SetPiece(pieceToBeAttacked);
 
-		var move = new Move(fromCell, destinationCell);
+		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
 		CellTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}
@@ -45,7 +45,7 @@ public class OnlyAttackMoveStrategyTests
 		var pieceToBeAttacked = new TestPiece(Color.Black);
 		destinationCell.SetPiece(pieceToBeAttacked);
 
-		var move = new Move(fromCell, destinationCell);
+		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
 		CellTestHelper.AssertIsValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}

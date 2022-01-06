@@ -7,7 +7,7 @@ public class HorizontalMoveStrategy : IMoveStrategy
 		if (!move.IsOnSameRow)
 			return new InvalidMovePath(move);
 
-		return new MovePath(move, GetHorizontalCoordinatesOnSameY(move));
+		return new MovePath(move, GetHorizontalCoordinatesOnSameY(move), this);
 	}
 
 	private static IEnumerable<Coordinate> GetHorizontalCoordinatesOnSameY(Move fromTo)

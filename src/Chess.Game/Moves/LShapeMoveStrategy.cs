@@ -15,7 +15,7 @@ public class LShapeMoveStrategy : IMoveStrategy
 			|| OneDownTwoLeft(fromTo)
 		)
 		{
-			return new MovePath(fromTo, Enumerable.Empty<Coordinate>());
+			return new MovePath(fromTo, Enumerable.Empty<Coordinate>(), this);
 		}
 
 		return new InvalidMovePath(fromTo);

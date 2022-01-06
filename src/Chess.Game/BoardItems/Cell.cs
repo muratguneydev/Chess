@@ -8,9 +8,16 @@ public class Cell
 		this.Piece = EmptyBoardPiece.Piece;
 	}
 
+	public Cell(int x, int y)
+	{
+		this.Coordinate = new Coordinate(x, y);
+		this.Piece = EmptyBoardPiece.Piece;
+	}
+
 	public int X => this.Coordinate.X;
 	public int Y => this.Coordinate.Y;
 	public IBoardPiece Piece { get; private set; }
+	public Board Board => this.Piece.Board;
 
 	public Coordinate Coordinate { get; }
 
@@ -29,14 +36,15 @@ public class Cell
 		this.Piece.PopLastCellFromHistory();
 	}
 
-	public virtual Move Move(Cell destinationCell)
+	public virtual Move GetMove(Cell destinationCell)
 	{
-		if (!this.Piece.CanMove(this, destinationCell))
+		var move = new Move(this, destinationCell);
+		if (!this.Piece.CanMove(move))
 	 		return new InvalidMove(this, destinationCell);
 
-		var move = new Move(this, destinationCell);
-		destinationCell.SetPiece(this.Piece);
-		this.MakeEmpty();
+		if (this.Piece.GetMovePath(move).IsEnPassant)
+			return new EnPassantMove(this, destinationCell);
+
 		return move;
 	}
 
@@ -62,7 +70,7 @@ public class Cell
 		return $"{this.Piece.GetType().Name} {this.Coordinate}";
 	}
 
-	private void MakeEmpty()
+	public virtual void MakeEmpty()
 	{
 		this.SetPiece(EmptyBoardPiece.Piece);
 	}

@@ -20,7 +20,7 @@ public class EnPassantMoveStrategyTests
 
 		var toCell = board.b6;
 		
-		var move = new Move(fromCell, toCell);
+		var move = MoveTestHelper.Create(fromCell, toCell);
 		
 		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
 	}
@@ -40,12 +40,12 @@ public class EnPassantMoveStrategyTests
 		board.a1.SetPiece(otherPiece);
 		session.Start();
 
-		session.Next(board.b4.Move(board.b5));
-		session.Next(board.c7.Move(board.c6));
-		session.Next(board.a1.Move(board.a2));
-		session.Next(board.c6.Move(board.c5));
+		session.Move(board.b4.GetMove(board.b5));
+		session.Move(board.c7.GetMove(board.c6));
+		session.Move(board.a1.GetMove(board.a2));
+		session.Move(board.c6.GetMove(board.c5));
 		
-		var testMove = new Move(board.b5, board.c6);
+		var testMove = MoveTestHelper.Create(board.b5, board.c6);
 		
 		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(testMove));
 	}
@@ -65,10 +65,10 @@ public class EnPassantMoveStrategyTests
 		board.a1.SetPiece(otherPiece);
 		session.Start();
 
-		session.Next(board.b4.Move(board.b5));
-		session.Next(board.c7.Move(board.c5));
+		session.Move(board.b4.GetMove(board.b5));
+		session.Move(board.c7.GetMove(board.c5));
 		
-		var testMove = new Move(board.b5, board.c6);
+		var testMove = MoveTestHelper.Create(board.b5, board.c6);
 		
 		CellTestHelper.AssertIsValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(testMove));
 	}
@@ -86,7 +86,7 @@ public class EnPassantMoveStrategyTests
 		var blackPiece = new TestPiece(Color.Black);
 		toCell.SetPiece(blackPiece);
 		
-		var move = new Move(fromCell, toCell);
+		var move = MoveTestHelper.Create(fromCell, toCell);
 		
 		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
 	}

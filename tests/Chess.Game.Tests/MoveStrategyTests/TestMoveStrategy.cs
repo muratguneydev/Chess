@@ -4,8 +4,8 @@ namespace Chess.Game.Tests;
 
 public class TestMoveStrategy : IMoveStrategy
 {
-	public MovePath GetMovePath(Move fromTo)
+	public MovePath GetMovePath(Move move)
 	{
-		return new MovePath(fromTo, Enumerable.Empty<Coordinate>());
+		return new MovePath(move, Enumerable.Empty<Coordinate>(), new EmptyMoveStrategy());
 	}
 }

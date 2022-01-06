@@ -9,7 +9,7 @@ public class CantMoveToTheCurrentCellStrategyDecoratorTests
 	public void ShouldNotBeAllowedToMoveToTheCurrentCell()
 	{
 		var currentCell = new Cell(new Coordinate(1,1));
-		var fromToSameCell = new Move(currentCell, currentCell);
+		var fromToSameCell = MoveTestHelper.Create(currentCell, currentCell);
 		CellTestHelper.AssertIsNotValidMove(new CantMoveToTheCurrentCellStrategyDecorator(new TestMoveStrategy()).GetMovePath(fromToSameCell));
 	}
 }

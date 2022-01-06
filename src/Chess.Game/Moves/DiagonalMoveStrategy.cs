@@ -7,8 +7,7 @@ public class DiagonalMoveStrategy : IMoveStrategy
 		if (Math.Abs(GetYDifference(fromTo)) != Math.Abs(GetXDifference(fromTo)))
 			return new InvalidMovePath(fromTo);
 		
-		return new MovePath(fromTo, GetDiagonalCoordinates(fromTo));
-
+		return new MovePath(fromTo, GetDiagonalCoordinates(fromTo), this);
 	}
 
 	private static IEnumerable<Coordinate> GetDiagonalCoordinates(Move fromTo)

@@ -12,7 +12,7 @@ public class CellTests
 		var piece = new TestPiece();
 		cell.SetPiece(piece);
 
-		CellTestHelper.AssertIsNotValidMove(new Move(cell, cell));
+		CellTestHelper.AssertIsNotValidMove(MoveTestHelper.Create(cell, cell));
 	}
 
 	[Test]
@@ -24,7 +24,8 @@ public class CellTests
 
 		var toCell = new Cell(new Coordinate(0, 7));
 
-		fromCell.Move(toCell);
+		var move = fromCell.GetMove(toCell);
+		move.Go();
 		Assert.AreEqual(EmptyBoardPiece.Piece, fromCell.Piece);
 	}
 
@@ -37,7 +38,8 @@ public class CellTests
 
 		var toCell = new Cell(new Coordinate(0, 7));
 
-		fromCell.Move(toCell);
+		var move = fromCell.GetMove(toCell);
+		move.Go();
 		Assert.AreEqual(piece, toCell.Piece);
 	}
 }

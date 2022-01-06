@@ -31,22 +31,22 @@ public class KingInvalidMoveTests
 		{
 			get
 			{
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.b5), board => board.b5)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.b5), board => board.b5)
 					.SetName("Move up left not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.d5), board => board.d5)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d5), board => board.d5)
 					.SetName("Move up right not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.b3), board => board.b3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.b3), board => board.b3)
 					.SetName("Move down left not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.d3), board => board.d3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d3), board => board.d3)
 					.SetName("Move down right not allowed if blocked");
 
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.c5), board => board.c5)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.c5), board => board.c5)
 					.SetName("Move up not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.c3), board => board.c3)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.c3), board => board.c3)
 					.SetName("Move down not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.d4), board => board.d4)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.d4), board => board.d4)
 					.SetName("Move right not allowed if blocked");
-				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => new Move(board.c4, board.b4), board => board.b4)
+				yield return new MoveWithBlockingPieceInTheMiddleUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.b4), board => board.b4)
 					.SetName("Move left not allowed if blocked");
 			}
 		}
@@ -58,22 +58,22 @@ public class KingInvalidMoveTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a6))
 					.SetName("Move up left to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f7))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f7))
 					.SetName("Move up right to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a2))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a2))
 					.SetName("Move down left to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f1))
 					.SetName("Move down right to the edge if not blocked");
 
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.c8))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.c8))
 					.SetName("Move up to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.c1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.c1))
 					.SetName("Move down to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a4))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a4))
 					.SetName("Move left to the edge if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.h4))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.h4))
 					.SetName("Move  right to the edge if not blocked");
 			}
 		}

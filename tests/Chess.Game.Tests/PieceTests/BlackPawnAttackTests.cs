@@ -31,10 +31,14 @@ public class BlackPawnAttackTests
 		board.c2.SetPiece(attackedPawn);
 		session.Start();
 
-		session.Next(board.c2.Move(board.c4));
+		var move = board.c2.GetMove(board.c4);
+		session.Move(move);
 		
-		var testMove = new Move(board.b4, board.c3);
+		var testMove = board.b4.GetMove(board.c3);
 		CellTestHelper.AssertIsValidMove(testMove);
+
+		session.Move(testMove);
+		Assert.IsFalse(board.c4.IsOccupied);
 	}
 
 	[Test]
@@ -50,9 +54,10 @@ public class BlackPawnAttackTests
 		board.c2.SetPiece(attackedPawn);
 		session.Start();
 
-		session.Next(board.c2.Move(board.c3));
+		var move = board.c2.GetMove(board.c3);
+		session.Move(move);
 		
-		var testMove = new Move(board.b3, board.c2);
+		var testMove = MoveTestHelper.Create(board.b3, board.c2);
 		CellTestHelper.AssertIsNotValidMove(testMove);
 	}
 
@@ -62,9 +67,9 @@ public class BlackPawnAttackTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.b7, board.a6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.b7, board.a6))
 					.SetName("Attack on first move b7-a6");
-				yield return new MoveUsingBoardTestData(board => new Move(board.d5, board.c4))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.d5, board.c4))
 					.SetName("Attack on later moves d5-c4");
 			}
 		}

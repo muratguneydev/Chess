@@ -22,7 +22,7 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 			return new InvalidMovePath(move);
 		}
 
-		return new MovePath(move, Enumerable.Empty<Coordinate>());
+		return new MovePath(move, Enumerable.Empty<Coordinate>(), this);
 	}
 
 	private Cell GetRightDiagonalPiece(Move move)

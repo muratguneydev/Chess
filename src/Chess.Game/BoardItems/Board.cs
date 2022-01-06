@@ -5,12 +5,14 @@ namespace Chess.Game;
 public class Board
 {
 	private readonly Cell[,] cells;
+
 	private readonly Session session;
 
 	public Board(Session session)
 	{
 		this.session = session;
 		this.cells = this.CreateCells();
+		//this.EmptyBoardPiece = new EmptyBoardPiece(session, this);
 	}
 
 	public void SetOpeningPosition()
@@ -59,7 +61,8 @@ public class Board
 			.Where(piece => !piece.IsEmpty);
 	}
 
-	//public Cell[,] Table => (Cell[,])this.cells.Clone();
+	//public EmptyBoardPiece EmptyBoardPiece { get; }
+
 	public int XSize => 8;
 	public int YSize => 8;
 

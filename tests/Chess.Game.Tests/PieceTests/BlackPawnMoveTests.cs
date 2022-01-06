@@ -21,13 +21,13 @@ public class BlackPawnMoveTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.a7, board.a5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a7, board.a5))
 					.SetName("Move 2 squares as first move if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a7, board.a6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a7, board.a6))
 					.SetName("Move 1 square as first move if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a4, board.a3))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a4, board.a3))
 					.SetName("Move 1 square in later move a4-a3 if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a5, board.a4))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a5, board.a4))
 					.SetName("Move 1 square in later move a5-a4 if not blocked");
 			}
 		}

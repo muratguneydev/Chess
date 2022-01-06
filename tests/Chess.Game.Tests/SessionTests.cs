@@ -48,8 +48,8 @@ public class SessionTests
 				Assert.IsTrue(whiteClock.Ticking);
 				Assert.IsFalse(blackClock.Ticking);
 
-				var move = board.a2.Move(board.a4);
-				session.Next(move);
+				var move = board.a2.GetMove(board.a4);
+				session.Move(move);
 				
 				Assert.IsFalse(whiteClock.Ticking);
 				Assert.IsTrue(blackClock.Ticking);
@@ -71,13 +71,13 @@ public class SessionTests
 
 				session.Start();
 				
-				var move = board.a2.Move(board.a4);
-				session.Next(move);
+				var move = board.a2.GetMove(board.a4);
+				session.Move(move);
 				Assert.AreEqual(1, session.MoveHistory.Count());
 				Assert.AreEqual(session.MoveHistory.First(), move);
 
-				move = board.b7.Move(board.b5);
-				session.Next(move);
+				move = board.b7.GetMove(board.b5);
+				session.Move(move);
 				Assert.AreEqual(2, session.MoveHistory.Count());
 				Assert.AreEqual(session.MoveHistory.First(), move);
 			}
@@ -98,14 +98,14 @@ public class SessionTests
 
 				session.Start();
 				
-				var move = board.a2.Move(board.a4);
-				session.Next(move);
+				var move = board.a2.GetMove(board.a4);
+				session.Move(move);
 
-				move = board.b7.Move(board.b5);
-				session.Next(move);
+				move = board.b7.GetMove(board.b5);
+				session.Move(move);
 
-				var moveToTakeBackLater = board.a4.Move(board.b5);
-				session.Next(moveToTakeBackLater);
+				var moveToTakeBackLater = board.a4.GetMove(board.b5);
+				session.Move(moveToTakeBackLater);
 
 				var lastMove = session.Back();
 				Assert.AreEqual(2, session.MoveHistory.Count());
@@ -127,8 +127,8 @@ public class SessionTests
 
 		session.Start();
 		
-		var move = board.a2.Move(board.a4);
-		session.Next(move);
+		var move = board.a2.GetMove(board.a4);
+		session.Move(move);
 
 		Assert.IsTrue(isEventCallbackInvoked);
 	}
@@ -185,12 +185,12 @@ public class SessionTests
 				
 				Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
 
-				var move = board.a2.Move(board.a4);
-				session.Next(move);
+				var move = board.a2.GetMove(board.a4);
+				session.Move(move);
 				Assert.IsInstanceOf<SessionStateBlackMove>(session.CurrentState);
 				
-				move = board.b7.Move(board.b5);
-				session.Next(move);
+				move = board.b7.GetMove(board.b5);
+				session.Move(move);
 				Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
 
 				session.Back();

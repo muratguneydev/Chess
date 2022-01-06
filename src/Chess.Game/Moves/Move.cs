@@ -25,13 +25,15 @@ public record Move
 	public bool IsValid => !(this is InvalidMove);
 	public Color Color => this.From.IsOccupied ? this.From.Piece.Color : this.To.Piece.Color;
 
-	public Move Go()
+	public virtual Move Go()
 	{
-		var move = this.From.Move(this.To);
-		return move;
+		this.To.SetPiece(this.From.Piece);
+		this.From.MakeEmpty();
+
+		return this;
 	}
 
-	public void GoBack()
+	public virtual void GoBack()
 	{
 		this.From.GoBack(this.FromPiece);
 		this.To.GoBack(this.ToPiece);

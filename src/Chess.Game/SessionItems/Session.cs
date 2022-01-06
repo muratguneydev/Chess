@@ -23,9 +23,9 @@ public class Session
 	public Color PlayTurn => this.CurrentPlayer.Color;
 	public SessionState CurrentState => this.sessionStateMachine.CurrentState;
 
-	public Player CurrentPlayer => this.moves.LastMove.Color == Color.Black
-		? this.WhitePlayer
-		: this.BlackPlayer;
+	public Player CurrentPlayer => this.moves.LastMove.Color == Color.White
+		? this.BlackPlayer
+		: this.WhitePlayer;
 
 	public Player WaitingPlayer => this.CurrentPlayer == this.WhitePlayer
 		? this.BlackPlayer
@@ -36,11 +36,12 @@ public class Session
 		this.WhitePlayer.ResumePlaying();
 	}
 
-	public void Next(Move move)
+	public void Move(Move move)
 	{
 		if (!move.IsValid)
 			return;
 
+		move.Go();
 		this.sessionStateMachine.Move();
 		this.moves.Push(move);
 		this.SwitchTurns();

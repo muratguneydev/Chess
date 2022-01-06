@@ -40,15 +40,15 @@ public class BoardTests
 		var board = BoardTestHelper.Create(session);
 		board.SetOpeningPosition();
 
-		var move = board.a2.Move(board.a4);
-		CellTestHelper.AssertIsValidMove2(move);//a2-a4		
-		session.Next(move);
+		var move = board.a2.GetMove(board.a4);
+		CellTestHelper.AssertIsValidMove(move);//a2-a4		
+		session.Move(move);
 
-		move = board.b7.Move(board.b5);
-		CellTestHelper.AssertIsValidMove2(move);//b7-b5
-		session.Next(move);
+		move = board.b7.GetMove(board.b5);
+		CellTestHelper.AssertIsValidMove(move);//b7-b5
+		session.Move(move);
 
-		move = board.a4.Move(board.b5);
-		CellTestHelper.AssertIsValidMove2(move);//a4-b5
+		move = board.a4.GetMove(board.b5);
+		CellTestHelper.AssertIsValidMove(move);//a4-b5
 	}
 }

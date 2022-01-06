@@ -21,13 +21,13 @@ public class RookMoveTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.a5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a1, board.a5))
 					.SetName("Move up if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a5, board.a1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a5, board.a1))
 					.SetName("Move down if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.e1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a1, board.e1))
 					.SetName("Move right if not blocked");
-				yield return new MoveUsingBoardTestData(board => new Move(board.e1, board.a1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.e1, board.a1))
 					.SetName("Move left if not blocked");
 			}
 		}

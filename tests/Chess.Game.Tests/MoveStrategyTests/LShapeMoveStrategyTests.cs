@@ -22,22 +22,22 @@ public class LShapeMoveStrategyTests
 		{
 			get
 			{
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 5))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 5))))
 					.SetName("Two up one right");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(2, 5))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(2, 5))))
 					.SetName("Two up one left");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(5, 4))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(5, 4))))
 					.SetName("One up two right");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(1, 4))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(1, 4))))
 					.SetName("One up two left");
 				
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 1))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(4, 1))))
 					.SetName("Two down one right");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(2, 1))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(2, 1))))
 					.SetName("Two down one left");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(5, 2))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(5, 2))))
 					.SetName("One down two right");
-				yield return new MoveStrategyTestData(new Move(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(1, 2))))
+				yield return new MoveStrategyTestData(MoveTestHelper.Create(new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(1, 2))))
 					.SetName("One down two left");
 			}
 		}

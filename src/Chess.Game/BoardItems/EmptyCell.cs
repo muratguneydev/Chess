@@ -11,7 +11,7 @@ public class EmptyCell : Cell
 
 	public static EmptyCell Cell => emptyCell;
 
-	public override Move Move(Cell destinationCell)
+	public override Move GetMove(Cell destinationCell)
 	{
 		return new InvalidMove(this, destinationCell);
 	}

@@ -2,21 +2,16 @@ namespace Chess.Game;
 
 public class MovePath
 {
-	public MovePath(Move move, IEnumerable<Coordinate> coordinatesInPath)
+	public MovePath(Move move, IEnumerable<Coordinate> coordinatesInPath, IMoveStrategy strategy)
 	{
-		Move = move;
+		this.Move = move;
+		this.Strategy = strategy;
 		this.CoordinatesInPath = coordinatesInPath;
 	}
 
 	public Move Move { get; }
+	public IMoveStrategy Strategy { get; }
 	public IEnumerable<Coordinate> CoordinatesInPath { get; }
 	public bool IsValid => !(this is InvalidMovePath);
-}
-
-public class InvalidMovePath : MovePath
-{
-	public InvalidMovePath(Move move)
-		: base(move, Enumerable.Empty<Coordinate>())
-	{
-	}
+	public bool IsEnPassant => this.Strategy is EnPassantMoveStrategy;
 }

@@ -2,9 +2,9 @@ namespace Chess.Game.Tests.Helpers;
 
 public class MoveWithBoardAndSession
 {
-	public MoveWithBoardAndSession(Move fromTo, Board board, Session session)
+	public MoveWithBoardAndSession(Move move, Board board, Session session)
 	{
-		this.Move = fromTo;
+		this.Move = move;
 		this.Board = board;
 		this.Session = session;
 	}

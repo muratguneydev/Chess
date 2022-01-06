@@ -23,22 +23,22 @@ public class QueenAttackTests
 		{
 			get
 			{
-				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.a5))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a1, board.a5))
 					.SetName("Attack up");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a5, board.a1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a5, board.a1))
 					.SetName("Attack down");
-				yield return new MoveUsingBoardTestData(board => new Move(board.a1, board.e1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.a1, board.e1))
 					.SetName("Attack right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.e1, board.a1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.e1, board.a1))
 					.SetName("Attack left");
 
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a6))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a6))
 					.SetName("Attack up left");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f7))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f7))
 					.SetName("Attack up right");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.a2))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.a2))
 					.SetName("Attack down left");
-				yield return new MoveUsingBoardTestData(board => new Move(board.c4, board.f1))
+				yield return new MoveUsingBoardTestData(board => MoveTestHelper.Create(board.c4, board.f1))
 					.SetName("Attack down right");
 			}
 		}

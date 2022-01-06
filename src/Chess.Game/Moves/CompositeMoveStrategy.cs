@@ -8,19 +8,12 @@ public class CompositeMoveStrategy : IMoveStrategy
 	{
 		this.strategies = strategies;
 	}
-	public MovePath GetMovePath(Move fromTo)
-	{
-		if (NoneOfThePathsIsValid(fromTo))
-			return new InvalidMovePath(fromTo);
-
-		return new MovePath(fromTo,
-			this.strategies.SelectMany(strategy => strategy.GetMovePath(fromTo).CoordinatesInPath));
-	}
-
-	private bool NoneOfThePathsIsValid(Move fromTo)
+	public MovePath GetMovePath(Move move)
 	{
 		return this.strategies
-					.Select(moveStrategy => moveStrategy.GetMovePath(fromTo))
-					.All(movePath => !movePath.IsValid);
+			.Select(moveStrategy => moveStrategy.GetMovePath(move))
+			.Where(movePath => movePath.IsValid)
+			.DefaultIfEmpty(new InvalidMovePath(move))
+			.Single();//Note: Only one strategy can return a valid move path.
 	}
 }

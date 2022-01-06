@@ -28,11 +28,11 @@ public class MoveCommand : ChessCommand
 			return new ErrorView(new ErrorViewModel(ex.Message), this.consoleWriterFactory);
 		}
 
-		var executedMove = move.Go();
+		var executedMove = move;//.Go();
 		if (!executedMove.IsValid)
 			return new InvalidMoveView(new MoveViewModel(executedMove), this.boardViewModel, this.consoleWriterFactory);
 		
-		session.Next(executedMove);
+		session.Move(executedMove);
 		return new ValidMoveView(new MoveViewModel(executedMove), this.boardViewModel, this.consoleWriterFactory);
 	}
 }
