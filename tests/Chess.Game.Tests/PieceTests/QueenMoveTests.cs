@@ -12,7 +12,7 @@ public class QueenMoveTests
 	{
 		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, new Queen());
 
-		CellTestHelper.AssertIsValidMove(fromToForTest);
+		MoveTestHelper.AssertIsValidMove(fromToForTest);
 	}
 
 	private class QueenMoveTestDataCollection

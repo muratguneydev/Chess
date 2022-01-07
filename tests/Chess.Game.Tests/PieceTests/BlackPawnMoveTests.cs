@@ -12,7 +12,7 @@ public class BlackPawnMoveTests
 	{
 		var moveForTest = BoardTestHelper.InitializeBoardWithFromCell(getMoveWithBoard, board => new BlackPawn(board));
 
-		CellTestHelper.AssertIsValidMove(moveForTest);
+		MoveTestHelper.AssertIsValidMove(moveForTest);
 	}
 
 	private class BlackPawnMoveTestDataCollection

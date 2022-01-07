@@ -28,7 +28,7 @@ public class MoveCommand : ChessCommand
 			return new ErrorView(new ErrorViewModel(ex.Message), this.consoleWriterFactory);
 		}
 
-		var executedMove = move;//.Go();
+		var executedMove = move;
 		if (!executedMove.IsValid)
 			return new InvalidMoveView(new MoveViewModel(executedMove), this.boardViewModel, this.consoleWriterFactory);
 		

@@ -15,7 +15,7 @@ public class OnlyAttackMoveStrategyTests
 		var destinationCell = CellTestHelper.Create(new Coordinate(2,2));
 		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
-		CellTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}
 
 	[Test]
@@ -31,7 +31,7 @@ public class OnlyAttackMoveStrategyTests
 
 		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
-		CellTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}
 
 	[Test]
@@ -47,6 +47,6 @@ public class OnlyAttackMoveStrategyTests
 
 		var move = MoveTestHelper.Create(fromCell, destinationCell);
 		
-		CellTestHelper.AssertIsValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
+		MoveTestHelper.AssertIsValidMove(new OnlyAttackMoveStrategy(new TestMoveStrategy()).GetMovePath(move));
 	}
 }

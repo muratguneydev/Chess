@@ -12,9 +12,9 @@ public class RookInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getMoveWithBoard, new Rook());
 		var middleCellWithAnotherPiece = getMiddleCell(fromTo.Board);
-		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
+		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
 		
-		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
 
 	private class RookInvalidMoveTestDataCollection

@@ -12,7 +12,7 @@ public class BishopMoveTests
 	{
 		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, new Bishop());
 
-		CellTestHelper.AssertIsValidMove(fromToForTest);
+		MoveTestHelper.AssertIsValidMove(fromToForTest);
 	}
 
 	private class BishopMoveTestDataCollection

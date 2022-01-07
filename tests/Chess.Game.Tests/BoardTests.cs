@@ -8,19 +8,18 @@ public class BoardTests
 	[Test]
 	public void ShouldGetPiecesInCoordinatesCorrectly()
 	{
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = BoardTestHelper.Create();
 
-		var a1Piece = WhitePieceDecoratorTestHelper.Create(new Rook(), session, board);
+		var a1Piece = WhitePieceDecoratorTestHelper.Create(new Rook(), board);
 		board.a1.SetPiece(a1Piece);
 
-		var a3Piece = BlackPieceDecoratorTestHelper.Create(new Knight(), session, board);
+		var a3Piece = BlackPieceDecoratorTestHelper.Create(new Knight(), board);
 		board.a3.SetPiece(a3Piece);
 
-		var a5Piece = WhitePieceDecoratorTestHelper.Create(new King(), session, board);
+		var a5Piece = WhitePieceDecoratorTestHelper.Create(new King(), board);
 		board.a5.SetPiece(a5Piece);
 		
-		var a7Piece = BlackPieceDecoratorTestHelper.Create(new Queen(), session, board);
+		var a7Piece = BlackPieceDecoratorTestHelper.Create(new Queen(), board);
 		board.a7.SetPiece(a7Piece);
 
 		var actualPieces = board.GetPiecesInCoordinates(new[] {
@@ -37,18 +36,18 @@ public class BoardTests
 	public void ShouldUpdatePieceLocationsAfterMove()
 	{
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = BoardTestHelper.Create();
 		board.SetOpeningPosition();
 
 		var move = board.a2.GetMove(board.a4);
-		CellTestHelper.AssertIsValidMove(move);//a2-a4		
+		MoveTestHelper.AssertIsValidMove(move);//a2-a4		
 		session.Move(move);
 
 		move = board.b7.GetMove(board.b5);
-		CellTestHelper.AssertIsValidMove(move);//b7-b5
+		MoveTestHelper.AssertIsValidMove(move);//b7-b5
 		session.Move(move);
 
 		move = board.a4.GetMove(board.b5);
-		CellTestHelper.AssertIsValidMove(move);//a4-b5
+		MoveTestHelper.AssertIsValidMove(move);//a4-b5
 	}
 }

@@ -8,6 +8,8 @@ public interface IBoardPiece
 	bool IsFirstMove { get; }
 	Cell PreviousCell { get; }
 	Board Board { get; }
+	bool IsBlack { get; }
+	bool IsWhite { get; }
 
 	bool CanMove(Move move);
 	MovePath GetMovePath(Move move);

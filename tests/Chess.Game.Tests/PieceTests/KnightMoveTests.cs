@@ -12,7 +12,7 @@ public class KnightMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Knight());
 		
-		CellTestHelper.AssertIsValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}
 
 	private class KnightMoveTestDataCollection

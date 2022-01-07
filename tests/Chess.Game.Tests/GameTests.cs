@@ -23,10 +23,21 @@ public class GameTests
     public void ShouldNotLetTheBlackStartFirst()
     {
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = BoardTestHelper.Create();
 		board.SetOpeningPosition();
 		session.Start();
 
-		CellTestHelper.AssertIsNotValidMove(MoveTestHelper.Create(board.e7, board.e5));
+		SessionTestHelper.AssertIsNotValidMove(session.Move(MoveTestHelper.Create(board.e7, board.e5)));
+    }
+
+	[Test]
+    public void ShouldLetTheWhiteStartFirst()
+    {
+		var session = SessionTestHelper.Create();
+		var board = BoardTestHelper.Create();
+		board.SetOpeningPosition();
+		session.Start();
+
+		SessionTestHelper.AssertIsValidMove(session.Move(MoveTestHelper.Create(board.e2, board.e4)));
     }
 }

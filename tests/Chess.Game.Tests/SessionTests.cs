@@ -23,7 +23,8 @@ public class SessionTests
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
 				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
+					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
+					BoardTestHelper.Create());
 				session.Start();
 				Assert.IsTrue(whiteClock.Ticking);
 				Assert.IsFalse(blackClock.Ticking);
@@ -38,9 +39,9 @@ public class SessionTests
 		{
 			using (var blackClock = new Clock(new TimerWrapper()))
 			{
+				var board = BoardTestHelper.Create();
 				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
-				var board = BoardTestHelper.Create(session);
+					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
 				board.SetOpeningPosition();
 
 				session.Start();
@@ -64,9 +65,9 @@ public class SessionTests
 		{
 			using (var blackClock = ClockTestHelper.Create())
 			{
+				var board = BoardTestHelper.Create();
 				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
-				var board = BoardTestHelper.Create(session);
+					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
 				board.SetOpeningPosition();
 
 				session.Start();
@@ -91,9 +92,9 @@ public class SessionTests
 		{
 			using (var blackClock = ClockTestHelper.Create())
 			{
+				var board = BoardTestHelper.Create();
 				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
-				var board = BoardTestHelper.Create(session);
+					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
 				board.SetOpeningPosition();
 
 				session.Start();
@@ -119,10 +120,10 @@ public class SessionTests
 	public void ShouldInvokeMoveEventWhenAValidMoveIsMade()
 	{
 		bool isEventCallbackInvoked = false;
-		var session = SessionTestHelper.Create();
+		var board = BoardTestHelper.Create();
+		var session = SessionTestHelper.Create(board: board);
 		session.AddMoveEventCallback(move => isEventCallbackInvoked = true);
 
-		var board = BoardTestHelper.Create(session);
 		board.SetOpeningPosition();
 
 		session.Start();
@@ -137,7 +138,8 @@ public class SessionTests
 	public void ShouldCallRegister()
 	{
 		var sessionPlayerRegistrarSpy = new SessionPlayerRegistrarSpy();
-		var session = new Session(SessionPlayersTestHelper.CreateWithoutRegister(), sessionPlayerRegistrarSpy, SessionStateMachineTestHelper.CreateDummy());
+		var session = new Session(SessionPlayersTestHelper.CreateWithoutRegister(), sessionPlayerRegistrarSpy, SessionStateMachineTestHelper.CreateDummy(),
+			BoardTestHelper.Create());
 		
 		using (var whiteClock = ClockTestHelper.Create())
 		{
@@ -156,7 +158,8 @@ public class SessionTests
 	public void ShouldCallReady()
 	{
 		var sessionPlayersSpy = new SessionPlayersSpy();
-		var session = new Session(sessionPlayersSpy, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy());
+		var session = new Session(sessionPlayersSpy, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
+			BoardTestHelper.Create());
 		
 		session.SetBlackPlayerReady();
 		session.SetWhitePlayerReady();
@@ -172,9 +175,9 @@ public class SessionTests
 		{
 			using (var blackClock = ClockTestHelper.Create())
 			{
+				var board = BoardTestHelper.Create();
 				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create());
-				var board = BoardTestHelper.Create(session);
+					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board);
 				board.SetOpeningPosition();
 
 				session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(clock: blackClock));

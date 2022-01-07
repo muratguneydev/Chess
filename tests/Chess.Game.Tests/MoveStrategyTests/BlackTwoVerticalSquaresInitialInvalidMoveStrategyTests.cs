@@ -11,7 +11,7 @@ public class BlackTwoVerticalSquaresInitialInvalidMoveStrategyTests
 	{
 		var movePath = new BlackTwoVerticalSquaresInitialMoveStrategy(new VerticalMoveStrategy()).GetMovePath(fromTo);
 
-		CellTestHelper.AssertIsNotValidMove(movePath);
+		MoveTestHelper.AssertIsNotValidMove(movePath);
 	}
 
 	private class BlackTwoVerticalSquaresInitialInvalidMoveStrategyDataCollection

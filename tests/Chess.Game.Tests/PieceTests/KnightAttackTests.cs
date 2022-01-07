@@ -12,9 +12,9 @@ public class KnightAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Knight());
 		var blockingCellWithAnotherPiece = fromTo.Move.To;
-		blockingCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
+		blockingCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
 		
-		CellTestHelper.AssertIsValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}
 
 	private class KnightAttackTestDataCollection

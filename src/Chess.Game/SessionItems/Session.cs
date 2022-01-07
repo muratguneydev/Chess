@@ -2,21 +2,23 @@ namespace Chess.Game;
 
 public class Session
 {
-	private readonly MoveHistory moves = new MoveHistory();
+	private readonly MoveHistory moves;
 	private readonly OnMoveEvent OnMove = new OnMoveEvent();
 	private readonly SessionPlayers sessionPlayers;
 	private readonly SessionPlayerRegistrar sessionPlayerRegistrar;
 	private readonly SessionStateMachine sessionStateMachine;
 
-	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar, SessionStateMachine sessionStateMachine)
+	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar, SessionStateMachine sessionStateMachine,
+		Board board)
 	{
 		this.sessionPlayers = sessionPlayers;
 		this.sessionPlayerRegistrar = sessionPlayerRegistrar;
 		this.sessionStateMachine = sessionStateMachine;
+		this.moves = new MoveHistory(board);
 	}
 
 	public bool IsComplete => false;
-	public IEnumerable<Move> MoveHistory => this.moves;
+	public IEnumerable<Move> MoveHistory => this.moves.Select(x => x);
 	public WhitePlayer WhitePlayer => this.sessionPlayers.WhitePlayer;
 	public BlackPlayer BlackPlayer => this.sessionPlayers.BlackPlayer;
 	public Winner Winner => EmptyWinner.Winner;
@@ -36,22 +38,26 @@ public class Session
 		this.WhitePlayer.ResumePlaying();
 	}
 
-	public void Move(Move move)
+	public Move Move(Move move)
 	{
 		if (!move.IsValid)
-			return;
+			return move;
+		if (!this.CanMove(move))
+			return new InvalidMove(move);
 
 		move.Go();
 		this.sessionStateMachine.Move();
 		this.moves.Push(move);
 		this.SwitchTurns();
 		this.OnMove.Invoke(move);
+		
+		return move;
 	}
 
 	public Move Back()
 	{
 		if (!this.moves.Any())
-			return EmptyMove.Move;
+			throw new InvalidTakeBackMoveException();
 		
 		this.sessionStateMachine.Back();
 		var lastMove = this.moves.Pop();
@@ -88,6 +94,13 @@ public class Session
 		this.sessionStateMachine.SetWhiteReady();
 		this.sessionPlayers.SetWhitePlayerReady();
 	}
+
+	public bool CanMove(Move move)
+	{
+		return this.IsTurnToPlay(move.From.Piece);
+	}
+
+	private bool IsTurnToPlay(IBoardPiece piece) => this.PlayTurn == piece.Color;
 
 	private void SwitchTurns()
 	{

@@ -12,21 +12,22 @@ public class CellTests
 		var piece = new TestPiece();
 		cell.SetPiece(piece);
 
-		CellTestHelper.AssertIsNotValidMove(MoveTestHelper.Create(cell, cell));
+		MoveTestHelper.AssertIsNotValidMove(MoveTestHelper.Create(cell, cell));
 	}
 
 	[Test]
 	public void ShouldValidMoveClearCurrentCell()
 	{
-		var fromCell = CellTestHelper.Create(new Coordinate(0, 0));
+		var board = BoardTestHelper.Create();
+		var fromCell = CellTestHelper.Create(new Coordinate(0, 0), board);
 		var piece = new TestPiece();
 		fromCell.SetPiece(piece);
 
-		var toCell = CellTestHelper.Create(new Coordinate(0, 7));
+		var toCell = CellTestHelper.Create(new Coordinate(0, 7), board);
 
 		var move = fromCell.GetMove(toCell);
 		move.Go();
-		Assert.AreEqual(EmptyBoardPiece.Piece, fromCell.Piece);
+		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(board.EmptyBoardPiece, fromCell.Piece));
 	}
 
 	[Test]
@@ -40,6 +41,6 @@ public class CellTests
 
 		var move = fromCell.GetMove(toCell);
 		move.Go();
-		Assert.AreEqual(piece, toCell.Piece);
+		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(piece, toCell.Piece));
 	}
 }

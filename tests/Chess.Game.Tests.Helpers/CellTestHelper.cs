@@ -4,39 +4,15 @@ namespace Chess.Game.Tests.Helpers;
 
 public static class CellTestHelper
 {
-	public static Cell Create(int x = 0, int y = 0)
+	public static Cell Create(int x = 0, int y = 0, Board? board = null)
 	{
-		return new Cell(x, y);
+		board = board ?? BoardTestHelper.Create();
+		return new Cell(x, y, board);
 	}
 
-	public static Cell Create(Coordinate coordinate)
+	public static Cell Create(Coordinate coordinate, Board? board = null)
 	{
-		return new Cell(coordinate);
-	}
-
-	public static void AssertIsValidMove(Move move)
-	{
-		Assert.IsTrue(GetValidatedMove(move).IsValid);
-	}
-
-	public static void AssertIsNotValidMove(Move move)
-	{
-		//TODO:Temporary. Currently lots of tests make use of the invalidated move by using Move constructor rather than cell.GetMove.
-		Assert.IsFalse(GetValidatedMove(move).IsValid);
-	}
-
-	public static void AssertIsValidMove(MovePath movePath)
-	{
-		Assert.IsTrue(movePath.IsValid);
-	}
-
-	public static void AssertIsNotValidMove(MovePath movePath)
-	{
-		Assert.IsFalse(movePath.IsValid);
-	}
-
-	private static Move GetValidatedMove(Move move)
-	{
-		return move.From.GetMove(move.To);
+		board = board ?? BoardTestHelper.Create();
+		return new Cell(coordinate, board);
 	}
 }

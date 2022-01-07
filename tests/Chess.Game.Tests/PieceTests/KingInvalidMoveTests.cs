@@ -12,9 +12,9 @@ public class KingInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new King());
 		var middleCellWithAnotherPiece = getBlockingCell(fromTo.Board);
-		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
+		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
 		
-		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
 
 	[TestCaseSource(typeof(KingInvalidMoveMoreThanOneSquarTestDataCollection), nameof(KingInvalidMoveMoreThanOneSquarTestDataCollection.TestCases))]
@@ -22,7 +22,7 @@ public class KingInvalidMoveTests
 	{
 		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, new King());
 		
-		CellTestHelper.AssertIsNotValidMove(fromToForTest);
+		MoveTestHelper.AssertIsNotValidMove(fromToForTest);
 	}
 
 	private class KingInvalidMoveWhenBlockedTestDataCollection

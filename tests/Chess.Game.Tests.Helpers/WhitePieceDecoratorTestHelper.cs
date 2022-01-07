@@ -2,14 +2,13 @@ namespace Chess.Game.Tests.Helpers;
 
 public static class WhitePieceDecoratorTestHelper
 {
-	public static WhitePieceDecorator Create(Piece? originalPiece = null, Session? session = null,
+	public static WhitePieceDecorator Create(Piece? originalPiece = null,
 		Board? board = null, CellHistory? cellHistory = null)
 	{
 		originalPiece = originalPiece ?? new Rook();
-		session = session ?? SessionTestHelper.Create();
-		board = board ?? BoardTestHelper.Create(session);
+		board = board ?? BoardTestHelper.Create();
 		cellHistory = cellHistory ?? CellHistoryTestHelper.Create();
 
-		return new WhitePieceDecorator(originalPiece, session, board, cellHistory);
+		return new WhitePieceDecorator(originalPiece, board, cellHistory);
 	}
 }

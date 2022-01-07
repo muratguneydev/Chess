@@ -13,7 +13,7 @@ public class LShapeMoveStrategyTests
 	{
 		var movePath = new LShapeMoveStrategy().GetMovePath(fromTo);
 
-		CellTestHelper.AssertIsValidMove(movePath);
+		MoveTestHelper.AssertIsValidMove(movePath);
 	}
 
 	private class LShapeMoveStrategyDataCollection

@@ -5,6 +5,12 @@ namespace Chess.Game;
 public class MoveHistory : IEnumerable<Move>
 {
 	private readonly Stack<Move> moves = new Stack<Move>();
+	private readonly Board board;
+
+	public MoveHistory(Board board)
+	{
+		this.board = board;
+	}
 
 	public void Push(Move move)
 	{
@@ -14,7 +20,7 @@ public class MoveHistory : IEnumerable<Move>
 	public Move Pop()
 	{
 		if (!this.moves.Any())
-			return EmptyMove.Move;
+			return this.board.EmptyMove;
 			
 		return this.moves.Pop();
 	}
@@ -29,5 +35,5 @@ public class MoveHistory : IEnumerable<Move>
 		return this.moves.GetEnumerator();
 	}
 
-	public Move LastMove => this.moves.Any() ? this.moves.Peek() : EmptyMove.Move;
+	public Move LastMove => this.moves.Any() ? this.moves.Peek() : this.board.EmptyMove;
 }

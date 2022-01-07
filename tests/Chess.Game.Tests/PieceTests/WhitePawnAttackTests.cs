@@ -12,20 +12,20 @@ public class WhitePawnAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getMoveWithBoard, board => new WhitePawn(board));
 		var cellToBeAttacked = fromTo.Move.To;
-		cellToBeAttacked.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
+		cellToBeAttacked.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
 		
-		CellTestHelper.AssertIsValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}
 
 	[Test]
 	public void ShouldBeAllowedToAttackEnPassant()
 	{
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = BoardTestHelper.Create();
 		
-		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), session, board);
-		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), session, board);
-		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen(), session, board);
+		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), board);
+		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), board);
+		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen(), board);
 		
 		board.b4.SetPiece(attackingPawn);
 		board.c7.SetPiece(attackedPawn);
@@ -38,8 +38,11 @@ public class WhitePawnAttackTests
 		move = board.c7.GetMove(board.c5);
 		session.Move(move);
 		
-		var testMove = MoveTestHelper.Create(board.b5, board.c6);
-		CellTestHelper.AssertIsValidMove(testMove);
+		var testMove = board.b5.GetMove(board.c6);
+		MoveTestHelper.AssertIsValidMove(testMove);
+
+		session.Move(testMove);
+		Assert.IsFalse(board.c5.IsOccupied);
 	}
 
 	private class WhitePawnAttackTestDataCollection

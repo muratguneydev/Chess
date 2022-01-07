@@ -3,6 +3,12 @@ namespace Chess.Game;
 public class CellHistory
 {
 	private readonly LinkedList<Cell> history = new LinkedList<Cell>();
+	private readonly Board board;
+
+	public CellHistory(Board board)
+	{
+		this.board = board;
+	}
 
 	public bool IsEmpty => !this.history.Any();
 	public bool IsFirstMove => this.history.Count == 2;
@@ -26,24 +32,24 @@ public class CellHistory
 	{
 		//to avoid null warning
 		if (this.history.Last == null)
-			return EmptyCell.Cell;
+			return this.board.EmptyCell;
 
 		if (this.GetEmptyIfNotFound(this.history.Last).IsEmpty)
-			return EmptyCell.Cell;
+			return this.board.EmptyCell;
 		return this.GetEmptyIfNotFound(this.history.Last.Previous);
 	}
 
 	private Cell GetLast()
 	{
 		if (this.history.Last == null)
-			return EmptyCell.Cell;
+			return this.board.EmptyCell;
 		
 		return this.history.Last.Value;
 	}
 
 	private Cell GetEmptyIfNotFound(LinkedListNode<Cell>? historyNode)
 	{
-		return historyNode == null ? EmptyCell.Cell : historyNode.Value;
+		return historyNode == null ? this.board.EmptyCell : historyNode.Value;
 		
 	}
 }

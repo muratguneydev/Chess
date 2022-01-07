@@ -1,57 +1,59 @@
-using System.Collections;
-
 namespace Chess.Game;
 
 public class Board
 {
 	private readonly Cell[,] cells;
 
-	private readonly Session session;
+	//private readonly Session session;
 
-	public Board(Session session)
+	public Board()//Session session)
 	{
-		this.session = session;
+		//this.session = session;
 		this.cells = this.CreateCells();
-		//this.EmptyBoardPiece = new EmptyBoardPiece(session, this);
+		//this.EmptyBoardPiece = new EmptyBoardPiece(this);
 	}
+
+	public Cell EmptyCell => new EmptyCell(this);//return single instance per board?
+	public Move EmptyMove => new EmptyMove(this);//return single instance per board?
+	public BoardPieceDecorator EmptyBoardPiece => new EmptyBoardPiece(this);//return single instance per board?
 
 	public void SetOpeningPosition()
 	{
-		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));
-		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));
-		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));
-		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this.session, this, new CellHistory()));
-		this.e1.SetPiece(new WhitePieceDecorator(new King(), this.session, this, new CellHistory()));
-		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this.session, this, new CellHistory()));
-		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this.session, this, new CellHistory()));
-		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this.session, this, new CellHistory()));
+		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
+		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this, new CellHistory(this)));
+		this.e1.SetPiece(new WhitePieceDecorator(new King(), this, new CellHistory(this)));
+		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
 
-		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
-		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this.session, this, new CellHistory()));
+		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
 
-		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
-		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this.session, this, new CellHistory()));
+		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
 
-		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));
-		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));
-		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));
-		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this.session, this, new CellHistory()));
-		this.e8.SetPiece(new BlackPieceDecorator(new King(), this.session, this, new CellHistory()));
-		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this.session, this, new CellHistory()));
-		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this.session, this, new CellHistory()));
-		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this.session, this, new CellHistory()));
+		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
+		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this, new CellHistory(this)));
+		this.e8.SetPiece(new BlackPieceDecorator(new King(), this, new CellHistory(this)));
+		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
 	}
 
 	public IEnumerable<IBoardPiece> GetPiecesInCoordinates(IEnumerable<Coordinate> coordinates)
@@ -69,7 +71,7 @@ public class Board
 	public Cell GetCell(int x, int y)
 	{
 		if (x >= this.XSize || x < 0 || y >= this.YSize || y < 0)
-			return EmptyCell.Cell;
+			return this.EmptyCell;
 		return this.cells[x, y];
 	}
 
@@ -150,14 +152,14 @@ public class Board
 	{
 		return new [,]
 			{
-				{new Cell(new Coordinate(0, 0)), new Cell(new Coordinate(0, 1)), new Cell(new Coordinate(0, 2)), new Cell(new Coordinate(0, 3)), new Cell(new Coordinate(0, 4)), new Cell(new Coordinate(0, 5)), new Cell(new Coordinate(0, 6)), new Cell(new Coordinate(0, 7))},
-				{new Cell(new Coordinate(1, 0)), new Cell(new Coordinate(1, 1)), new Cell(new Coordinate(1, 2)), new Cell(new Coordinate(1, 3)), new Cell(new Coordinate(1, 4)), new Cell(new Coordinate(1, 5)), new Cell(new Coordinate(1, 6)), new Cell(new Coordinate(1, 7))},
-				{new Cell(new Coordinate(2, 0)), new Cell(new Coordinate(2, 1)), new Cell(new Coordinate(2, 2)), new Cell(new Coordinate(2, 3)), new Cell(new Coordinate(2, 4)), new Cell(new Coordinate(2, 5)), new Cell(new Coordinate(2, 6)), new Cell(new Coordinate(2, 7))},
-				{new Cell(new Coordinate(3, 0)), new Cell(new Coordinate(3, 1)), new Cell(new Coordinate(3, 2)), new Cell(new Coordinate(3, 3)), new Cell(new Coordinate(3, 4)), new Cell(new Coordinate(3, 5)), new Cell(new Coordinate(3, 6)), new Cell(new Coordinate(3, 7))},
-				{new Cell(new Coordinate(4, 0)), new Cell(new Coordinate(4, 1)), new Cell(new Coordinate(4, 2)), new Cell(new Coordinate(4, 3)), new Cell(new Coordinate(4, 4)), new Cell(new Coordinate(4, 5)), new Cell(new Coordinate(4, 6)), new Cell(new Coordinate(4, 7))},
-				{new Cell(new Coordinate(5, 0)), new Cell(new Coordinate(5, 1)), new Cell(new Coordinate(5, 2)), new Cell(new Coordinate(5, 3)), new Cell(new Coordinate(5, 4)), new Cell(new Coordinate(5, 5)), new Cell(new Coordinate(5, 6)), new Cell(new Coordinate(5, 7))},
-				{new Cell(new Coordinate(6, 0)), new Cell(new Coordinate(6, 1)), new Cell(new Coordinate(6, 2)), new Cell(new Coordinate(6, 3)), new Cell(new Coordinate(6, 4)), new Cell(new Coordinate(6, 5)), new Cell(new Coordinate(6, 6)), new Cell(new Coordinate(6, 7))},
-				{new Cell(new Coordinate(7, 0)), new Cell(new Coordinate(7, 1)), new Cell(new Coordinate(7, 2)), new Cell(new Coordinate(7, 3)), new Cell(new Coordinate(7, 4)), new Cell(new Coordinate(7, 5)), new Cell(new Coordinate(7, 6)), new Cell(new Coordinate(7, 7))}
+				{new Cell(new Coordinate(0, 0), this), new Cell(new Coordinate(0, 1), this), new Cell(new Coordinate(0, 2), this), new Cell(new Coordinate(0, 3), this), new Cell(new Coordinate(0, 4), this), new Cell(new Coordinate(0, 5), this), new Cell(new Coordinate(0, 6), this), new Cell(new Coordinate(0, 7), this)},
+				{new Cell(new Coordinate(1, 0), this), new Cell(new Coordinate(1, 1), this), new Cell(new Coordinate(1, 2), this), new Cell(new Coordinate(1, 3), this), new Cell(new Coordinate(1, 4), this), new Cell(new Coordinate(1, 5), this), new Cell(new Coordinate(1, 6), this), new Cell(new Coordinate(1, 7), this)},
+				{new Cell(new Coordinate(2, 0), this), new Cell(new Coordinate(2, 1), this), new Cell(new Coordinate(2, 2), this), new Cell(new Coordinate(2, 3), this), new Cell(new Coordinate(2, 4), this), new Cell(new Coordinate(2, 5), this), new Cell(new Coordinate(2, 6), this), new Cell(new Coordinate(2, 7), this)},
+				{new Cell(new Coordinate(3, 0), this), new Cell(new Coordinate(3, 1), this), new Cell(new Coordinate(3, 2), this), new Cell(new Coordinate(3, 3), this), new Cell(new Coordinate(3, 4), this), new Cell(new Coordinate(3, 5), this), new Cell(new Coordinate(3, 6), this), new Cell(new Coordinate(3, 7), this)},
+				{new Cell(new Coordinate(4, 0), this), new Cell(new Coordinate(4, 1), this), new Cell(new Coordinate(4, 2), this), new Cell(new Coordinate(4, 3), this), new Cell(new Coordinate(4, 4), this), new Cell(new Coordinate(4, 5), this), new Cell(new Coordinate(4, 6), this), new Cell(new Coordinate(4, 7), this)},
+				{new Cell(new Coordinate(5, 0), this), new Cell(new Coordinate(5, 1), this), new Cell(new Coordinate(5, 2), this), new Cell(new Coordinate(5, 3), this), new Cell(new Coordinate(5, 4), this), new Cell(new Coordinate(5, 5), this), new Cell(new Coordinate(5, 6), this), new Cell(new Coordinate(5, 7), this)},
+				{new Cell(new Coordinate(6, 0), this), new Cell(new Coordinate(6, 1), this), new Cell(new Coordinate(6, 2), this), new Cell(new Coordinate(6, 3), this), new Cell(new Coordinate(6, 4), this), new Cell(new Coordinate(6, 5), this), new Cell(new Coordinate(6, 6), this), new Cell(new Coordinate(6, 7), this)},
+				{new Cell(new Coordinate(7, 0), this), new Cell(new Coordinate(7, 1), this), new Cell(new Coordinate(7, 2), this), new Cell(new Coordinate(7, 3), this), new Cell(new Coordinate(7, 4), this), new Cell(new Coordinate(7, 5), this), new Cell(new Coordinate(7, 6), this), new Cell(new Coordinate(7, 7), this)}
 			};
 	}
 }

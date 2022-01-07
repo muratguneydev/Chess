@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public record EnPassantMove : Move
+public abstract record EnPassantMove : Move
 {
 	public EnPassantMove(Cell from, Cell to)
 		: base(from, to)
@@ -11,13 +11,10 @@ public record EnPassantMove : Move
 	{
 		this.To.SetPiece(this.From.Piece);
 		this.From.MakeEmpty();
-		GetAttackedCell().MakeEmpty();
+		this.AttackedCell.MakeEmpty();
 
 		return this;
 	}
 
-	private Cell GetAttackedCell()
-	{
-		return this.From.Board.GetCell(this.To.X, this.To.Y + 1);
-	}
+	protected abstract Cell AttackedCell { get; }
 }

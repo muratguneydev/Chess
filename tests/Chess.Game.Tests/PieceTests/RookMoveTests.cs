@@ -12,7 +12,7 @@ public class RookMoveTests
 	{
 		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, new Rook());
 
-		CellTestHelper.AssertIsValidMove(fromToForTest);
+		MoveTestHelper.AssertIsValidMove(fromToForTest);
 	}
 
 	private class RookMoveTestDataCollection

@@ -12,9 +12,9 @@ public class BishopInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Bishop());
 		var middleCellWithAnotherPiece = getBlockingCell(fromTo.Board);
-		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Session, fromTo.Board));
+		middleCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
 		
-		CellTestHelper.AssertIsNotValidMove(fromTo.Move);
+		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
 
 	private class BishopInvalidMoveTestDataCollection

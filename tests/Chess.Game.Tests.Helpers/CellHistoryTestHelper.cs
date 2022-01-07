@@ -2,8 +2,9 @@ namespace Chess.Game.Tests.Helpers;
 
 public static class CellHistoryTestHelper
 {
-	public static CellHistory Create()
+	public static CellHistory Create(Board? board = null)
 	{
-		return new CellHistory();
+		board = board ?? BoardTestHelper.Create();
+		return new CellHistory(board);
 	}
 }

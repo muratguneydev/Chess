@@ -3,19 +3,19 @@ namespace Chess.Game;
 public abstract class BoardPieceDecorator : IBoardPiece
 {
 	private readonly Piece originalPiece;
-	private readonly Session session;
-	private readonly CellHistory cellHistory = new CellHistory();
+	private readonly CellHistory cellHistory;
 
-	public BoardPieceDecorator(Piece originalPiece, Session session, Board board, CellHistory cellHistory)
+	public BoardPieceDecorator(Piece originalPiece, Board board, CellHistory cellHistory)
 	{
 		this.originalPiece = originalPiece;
-		this.session = session;
 		this.Board = board;
 		this.PieceType = originalPiece.GetType();
 		this.cellHistory = cellHistory;
 	}
 
 	public abstract Color Color { get; }
+	public bool IsBlack => this.Color == Color.Black;
+	public bool IsWhite => this.Color == Color.White;
 	public Type PieceType { get; }
 	public Board Board { get; }
 
@@ -26,9 +26,9 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	public virtual bool CanMove(Move move)
 	{
 		return
-			this.IsTurnToPlay
-			//&& !from.Equals(to)
-			&& this.GetMovePath(move).IsValid
+			//this.IsTurnToPlay
+			//&&
+			this.GetMovePath(move).IsValid
 			&& this.ThereArentAnyBlockingPiecesInBetween(move)
 			&& !this.HasSameColor(move.To.Piece);
 	}
@@ -46,7 +46,7 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	public Cell PopLastCellFromHistory()
 	{
 		if (this.cellHistory.IsEmpty)
-			return EmptyCell.Cell;
+			return this.Board.EmptyCell;
 
 		return this.cellHistory.Pop();
 	}
@@ -61,5 +61,5 @@ public abstract class BoardPieceDecorator : IBoardPiece
 							.Any();
 	}
 
-	private bool IsTurnToPlay => this.session.PlayTurn == this.Color;
+	//private bool IsTurnToPlay => this.session.PlayTurn == this.Color;
 }

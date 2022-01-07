@@ -2,22 +2,25 @@ namespace Chess.Game;
 
 public class Cell
 {
-	public Cell(Coordinate coordinate)
+	private readonly Board board;
+
+	public Cell(Coordinate coordinate, Board board)
 	{
 		this.Coordinate = coordinate;
-		this.Piece = EmptyBoardPiece.Piece;
+		this.board = board;
+		this.Piece = board.EmptyBoardPiece;
 	}
 
-	public Cell(int x, int y)
+	public Cell(int x, int y, Board board)
+		: this(new Coordinate(x, y), board)
 	{
-		this.Coordinate = new Coordinate(x, y);
-		this.Piece = EmptyBoardPiece.Piece;
+		
 	}
 
 	public int X => this.Coordinate.X;
+
 	public int Y => this.Coordinate.Y;
 	public IBoardPiece Piece { get; private set; }
-	public Board Board => this.Piece.Board;
 
 	public Coordinate Coordinate { get; }
 
@@ -42,8 +45,10 @@ public class Cell
 		if (!this.Piece.CanMove(move))
 	 		return new InvalidMove(this, destinationCell);
 
-		if (this.Piece.GetMovePath(move).IsEnPassant)
-			return new EnPassantMove(this, destinationCell);
+		if (this.Piece.GetMovePath(move).IsEnPassant && this.Piece.IsWhite)
+			return new WhiteEnPassantMove(this, destinationCell);
+		if (this.Piece.GetMovePath(move).IsEnPassant && this.Piece.IsBlack)
+			return new BlackEnPassantMove(this, destinationCell);
 
 		return move;
 	}
@@ -72,6 +77,11 @@ public class Cell
 
 	public virtual void MakeEmpty()
 	{
-		this.SetPiece(EmptyBoardPiece.Piece);
+		this.SetPiece(this.board.EmptyBoardPiece);
+	}
+
+	public Cell GetCellOnSameBoard(int x, int y)
+	{
+		return this.board.GetCell(x, y);
 	}
 }

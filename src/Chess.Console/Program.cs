@@ -7,14 +7,17 @@ class Program
 	private static readonly ConsoleWriterFactory consoleWriterFactory = new ConsoleWriterFactory();
 	private static readonly IConsoleReader consoleReader = new ConsoleReader();
 	private static Session session;
+	private static Board board;
 
 	static Program()
 	{
+		board = new Board();
+		board.SetOpeningPosition();
 		session = GetSession();
 	}
 	static void Main(string[] args)
 	{
-		var boardViewModel = GetBoardViewModel(session);
+		var boardViewModel = new BoardViewModel(board);
 		DisplayFromWhiteSide(boardViewModel, session);
 		ProcessCommands(session, boardViewModel);
 		// using (var whiteClock = new Clock(new TimerWrapper()))
@@ -46,14 +49,6 @@ class Program
 		}
 	}
 
-	private static BoardViewModel GetBoardViewModel(Session session)
-	{
-		var board = new Board(session);
-		board.SetOpeningPosition();
-		var boardViewModel = new BoardViewModel(board);
-		return boardViewModel;
-	}
-
 	// private static Session GetSession(IClock whiteClock, IClock blackClock)
 	// {
 	// 	var whitePlayer = new WhitePlayer(whiteClock, "Player White");
@@ -74,7 +69,7 @@ class Program
 		sessionPlayerRegistrar.AddPlayersRegisteredEventCallback(AllPlayersRegisteredHandler);
 		var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
 		sessionPlayers.AddPlayersReadyEventCallback(AllPlayersReadyHandler);
-		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine());
+		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board);
 	}
 
 	public static void AllPlayersRegisteredHandler(SessionPlayerRegistrar sessionPlayerRegistrar)

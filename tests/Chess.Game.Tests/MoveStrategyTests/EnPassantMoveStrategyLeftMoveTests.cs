@@ -22,7 +22,7 @@ public class EnPassantMoveStrategyLeftMoveTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
 	}
 
 	[Test]
@@ -40,7 +40,7 @@ public class EnPassantMoveStrategyLeftMoveTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
 	}
 
 	[Test]
@@ -60,6 +60,6 @@ public class EnPassantMoveStrategyLeftMoveTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		CellTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
 	}
 }

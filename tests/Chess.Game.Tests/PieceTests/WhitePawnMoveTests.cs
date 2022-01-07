@@ -12,7 +12,7 @@ public class WhitePawnMoveTests
 	{
 		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, board => new WhitePawn(board));
 
-		CellTestHelper.AssertIsValidMove(fromToForTest);
+		MoveTestHelper.AssertIsValidMove(fromToForTest);
 	}
 
 	private class WhitePawnMoveTestDataCollection

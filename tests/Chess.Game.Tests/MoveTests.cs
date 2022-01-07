@@ -9,7 +9,7 @@ public class MoveTests
     public void ShouldTakeBack()
     {
 		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create(session);
+		var board = BoardTestHelper.Create();
 		board.SetOpeningPosition();
 		session.Start();
 
@@ -28,27 +28,4 @@ public class MoveTests
 		Assert.IsFalse(board.b5.IsOccupied);
 		
     }
-
-	// [Test]
-	// public void ShouldBeAllowedToAttackEnPassant()
-	// {
-	// 	var session = SessionTestHelper.Create();
-	// 	var board = BoardTestHelper.Create(session);
-		
-	// 	var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), session, board);
-	// 	var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), session, board);
-		
-	// 	board.b4.SetPiece(attackingPawn);
-	// 	board.c2.SetPiece(attackedPawn);
-	// 	session.Start();
-
-	// 	var move = board.c2.GetMove(board.c4);
-	// 	session.Move(move);
-		
-	// 	var testMove = board.b4.GetMove(board.c3);
-	// 	//CellTestHelper.AssertIsValidMove(testMove);
-
-	// 	session.Move(testMove);
-	// 	Assert.IsFalse(board.c4.IsOccupied);
-	// }
 }
