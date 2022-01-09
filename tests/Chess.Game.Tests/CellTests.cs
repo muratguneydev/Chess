@@ -27,7 +27,7 @@ public class CellTests
 
 		var move = fromCell.GetMove(toCell);
 		move.Go();
-		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(board.EmptyBoardPiece, fromCell.Piece));
+		Assert.IsFalse(fromCell.IsOccupied);
 	}
 
 	[Test]

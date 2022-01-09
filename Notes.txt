@@ -1,3 +1,9 @@
+Certificate issue: 
+https://github.com/dotnet/sdk/issues/22544
+https://stackoverflow.com/questions/69916598/dotnet-run-not-working-after-update-to-dotnet-6
+<UseAppHost>false</UseAppHost>
+
+
 https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
 
 dotnet test --collect:"XPlat Code Coverage"

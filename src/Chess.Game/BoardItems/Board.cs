@@ -4,76 +4,16 @@ public class Board
 {
 	private readonly Cell[,] cells;
 
-	//private readonly Session session;
-
-	public Board()//Session session)
+	public Board()
 	{
-		//this.session = session;
 		this.cells = this.CreateCells();
-		//this.EmptyBoardPiece = new EmptyBoardPiece(this);
 	}
 
 	public Cell EmptyCell => new EmptyCell(this);//return single instance per board?
 	public Move EmptyMove => new EmptyMove(this);//return single instance per board?
 	public BoardPieceDecorator EmptyBoardPiece => new EmptyBoardPiece(this);//return single instance per board?
-
-	public void SetOpeningPosition()
-	{
-		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
-		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
-		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
-		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this, new CellHistory(this)));
-		this.e1.SetPiece(new WhitePieceDecorator(new King(), this, new CellHistory(this)));
-		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
-		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
-		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
-
-		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
-
-		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
-
-		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
-		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
-		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
-		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this, new CellHistory(this)));
-		this.e8.SetPiece(new BlackPieceDecorator(new King(), this, new CellHistory(this)));
-		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
-		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
-		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
-	}
-
-	public IEnumerable<IBoardPiece> GetPiecesInCoordinates(IEnumerable<Coordinate> coordinates)
-	{
-		return coordinates
-			.Select(coordinate => this.cells[coordinate.X, coordinate.Y].Piece)
-			.Where(piece => !piece.IsEmpty);
-	}
-
-	//public EmptyBoardPiece EmptyBoardPiece { get; }
-
 	public int XSize => 8;
 	public int YSize => 8;
-
-	public Cell GetCell(int x, int y)
-	{
-		if (x >= this.XSize || x < 0 || y >= this.YSize || y < 0)
-			return this.EmptyCell;
-		return this.cells[x, y];
-	}
 
 	public Cell a1 => cells[0, 0];
 	public Cell b1 => cells[1, 0];
@@ -148,6 +88,59 @@ public class Board
 	public Cell g8 => cells[6, 7];
 	public Cell h8 => cells[7, 7];
 
+	public void SetOpeningPosition()
+	{
+		this.a1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
+		this.b1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.c1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.d1.SetPiece(new WhitePieceDecorator(new Queen(), this, new CellHistory(this)));
+		this.e1.SetPiece(new WhitePieceDecorator(new King(), this, new CellHistory(this)));
+		this.f1.SetPiece(new WhitePieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.g1.SetPiece(new WhitePieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.h1.SetPiece(new WhitePieceDecorator(new Rook(), this, new CellHistory(this)));
+
+		this.a2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.b2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.c2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.d2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.e2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.f2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.g2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+		this.h2.SetPiece(new WhitePieceDecorator(new WhitePawn(this), this, new CellHistory(this)));
+
+		this.a7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.b7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.c7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.d7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.e7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.f7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.g7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+		this.h7.SetPiece(new BlackPieceDecorator(new BlackPawn(this), this, new CellHistory(this)));
+
+		this.a8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
+		this.b8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.c8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.d8.SetPiece(new BlackPieceDecorator(new Queen(), this, new CellHistory(this)));
+		this.e8.SetPiece(new BlackPieceDecorator(new King(), this, new CellHistory(this)));
+		this.f8.SetPiece(new BlackPieceDecorator(new Bishop(), this, new CellHistory(this)));
+		this.g8.SetPiece(new BlackPieceDecorator(new Knight(), this, new CellHistory(this)));
+		this.h8.SetPiece(new BlackPieceDecorator(new Rook(), this, new CellHistory(this)));
+	}
+
+	public IEnumerable<IBoardPiece> GetPiecesInCoordinates(IEnumerable<Coordinate> coordinates)
+	{
+		return coordinates
+			.Select(coordinate => this.cells[coordinate.X, coordinate.Y].Piece)
+			.Where(piece => !piece.IsEmpty);
+	}
+
+	public Cell GetCell(int x, int y)
+	{
+		if (x >= this.XSize || x < 0 || y >= this.YSize || y < 0)
+			return this.EmptyCell;
+		return this.cells[x, y];
+	}
+	
 	private Cell[,] CreateCells()
 	{
 		return new [,]

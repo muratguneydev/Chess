@@ -17,12 +17,10 @@ public class Cell
 		
 	}
 
+	public Coordinate Coordinate { get; }
 	public int X => this.Coordinate.X;
-
 	public int Y => this.Coordinate.Y;
 	public IBoardPiece Piece { get; private set; }
-
-	public Coordinate Coordinate { get; }
 
 	public bool IsOccupied => !this.Piece.IsEmpty;
 	public bool IsEmpty => this is EmptyCell;
@@ -63,7 +61,6 @@ public class Cell
 		var otherCell = (Cell)obj;
 		return this.Coordinate == otherCell.Coordinate;
 	}
-	
 	
 	public override int GetHashCode()
 	{

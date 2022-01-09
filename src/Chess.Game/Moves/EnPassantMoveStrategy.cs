@@ -47,9 +47,7 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 	private bool IsLeftCellValid(Cell fromCell)
 	{
 		var leftNeighbourCell = this.GetLeftNeighbourCell(fromCell);
-		return leftNeighbourCell.IsOccupied
-			&& !leftNeighbourCell.Piece.HasSameColor(fromCell.Piece)
-			&& leftNeighbourCell.Piece is Pawn;
+		return IsEnPassant(fromCell, leftNeighbourCell);
 	}
 
 	private Cell GetLeftNeighbourCell(Cell fromCell)
@@ -69,27 +67,18 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 	private bool IsRightCellValid(Cell fromCell)
 	{
 		var rightNeighbourCell = this.GetRightNeighbourCell(fromCell);
-		return rightNeighbourCell.IsOccupied
-			&& !rightNeighbourCell.Piece.HasSameColor(fromCell.Piece)
-			&& typeof(Pawn).IsAssignableFrom(rightNeighbourCell.Piece.PieceType);
+		return IsEnPassant(fromCell, rightNeighbourCell);
+	}
+
+	private static bool IsEnPassant(Cell fromCell, Cell neighbourCell)
+	{
+		return neighbourCell.IsOccupied
+			&& !neighbourCell.Piece.HasSameColor(fromCell.Piece)
+			&& neighbourCell.Piece.IsOfType(typeof(Pawn));
 	}
 
 	private Cell GetRightNeighbourCell(Cell fromCell)
 	{
 		return this.board.GetCell(fromCell.X + 1, fromCell.Y);
-	}
-}
-
-public class WhiteEnPassantMoveStrategy : EnPassantMoveStrategy
-{
-	public WhiteEnPassantMoveStrategy(Board board) : base(board, new WhiteYDirection())
-	{
-	}
-}
-
-public class BlackEnPassantMoveStrategy : EnPassantMoveStrategy
-{
-	public BlackEnPassantMoveStrategy(Board board) : base(board, new BlackYDirection())
-	{
 	}
 }

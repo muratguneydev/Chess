@@ -5,6 +5,22 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": ".NET Core Launch (Api)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build Api",
+			"program": "${workspaceFolder}/src/Chess.Api/bin/Debug/net6.0/Chess.Api.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach"
+		},
+		{
 			"name": ".NET Core Launch (console)",
 			"type": "coreclr",
 			"request": "launch",

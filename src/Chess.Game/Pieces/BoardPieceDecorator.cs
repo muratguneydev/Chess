@@ -9,25 +9,28 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	{
 		this.originalPiece = originalPiece;
 		this.Board = board;
-		this.PieceType = originalPiece.GetType();
 		this.cellHistory = cellHistory;
 	}
 
 	public abstract Color Color { get; }
-	public bool IsBlack => this.Color == Color.Black;
-	public bool IsWhite => this.Color == Color.White;
-	public Type PieceType { get; }
 	public Board Board { get; }
 
+	public bool IsBlack => this.Color == Color.Black;
+	public bool IsWhite => this.Color == Color.White;
 	public bool IsEmpty => this is EmptyBoardPiece;
-
+	public bool IsFirstMove => this.cellHistory.IsFirstMove;
+	public Cell PreviousCell => this.cellHistory.GetPrevious();
+	
 	public bool HasSameColor(IBoardPiece otherBoardPiece) => this.Color == otherBoardPiece.Color;
+
+	public bool IsOfType(Type type)
+	{
+		return type.IsAssignableFrom(this.originalPiece.GetType());
+	}
 
 	public virtual bool CanMove(Move move)
 	{
 		return
-			//this.IsTurnToPlay
-			//&&
 			this.GetMovePath(move).IsValid
 			&& this.ThereArentAnyBlockingPiecesInBetween(move)
 			&& !this.HasSameColor(move.To.Piece);
@@ -51,15 +54,10 @@ public abstract class BoardPieceDecorator : IBoardPiece
 		return this.cellHistory.Pop();
 	}
 
-	public bool IsFirstMove => this.cellHistory.IsFirstMove;
-	public Cell PreviousCell => this.cellHistory.GetPrevious();
-
 	private bool ThereArentAnyBlockingPiecesInBetween(Move move)
 	{
 		var movePath = this.originalPiece.GetMovePath(move);
 		return !this.Board.GetPiecesInCoordinates(movePath.CoordinatesInPath)
 							.Any();
 	}
-
-	//private bool IsTurnToPlay => this.session.PlayTurn == this.Color;
 }

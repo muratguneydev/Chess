@@ -20,18 +20,6 @@ class Program
 		var boardViewModel = new BoardViewModel(board);
 		DisplayFromWhiteSide(boardViewModel, session);
 		ProcessCommands(session, boardViewModel);
-		// using (var whiteClock = new Clock(new TimerWrapper()))
-		// {
-		// 	using (var blackClock = new Clock(new TimerWrapper()))
-		// 	{
-		// 		//var session = GetSession(whiteClock, blackClock);
-		// 		// session = GetSession();
-		// 		var boardViewModel = GetBoardViewModel(session);
-		// 		DisplayFromWhiteSide(boardViewModel, session);
-		// 		//session.Start();//on ready event
-		// 		ProcessCommands(session, boardViewModel);
-		// 	}
-		// }
 	}
 
 	private static void ProcessCommands(Session session, BoardViewModel boardViewModel)
@@ -48,20 +36,6 @@ class Program
 			consoleWriterFactory.Get().WriteLine(session.CurrentState.ToString());
 		}
 	}
-
-	// private static Session GetSession(IClock whiteClock, IClock blackClock)
-	// {
-	// 	var whitePlayer = new WhitePlayer(whiteClock, "Player White");
-	// 	var blackPlayer = new BlackPlayer(blackClock, "Player Black");
-	// 	var sessionPlayerRegistrar = new SessionPlayerRegistrar();
-	// 	var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
-	// 	sessionPlayerRegistrar.RegisterWhitePlayer(whitePlayer);
-	// 	sessionPlayers.SetWhitePlayerReady();
-	// 	sessionPlayerRegistrar.RegisterBlackPlayer(blackPlayer);
-	// 	sessionPlayers.SetBlackPlayerReady();
-	// 	var session = new Session(sessionPlayers, sessionPlayerRegistrar);
-	// 	return session;
-	// }
 
 	private static Session GetSession()
 	{

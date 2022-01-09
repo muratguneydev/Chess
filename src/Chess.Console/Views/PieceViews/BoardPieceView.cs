@@ -2,7 +2,7 @@ using Chess.Game;
 
 namespace Chess.Console;
 
-public class BoardPieceView : View
+public abstract class BoardPieceView : View
 {
 	private readonly BoardPieceViewModel boardPieceViewModel;
 	private readonly ConsoleWriterFactory consoleWriterFactory;
@@ -21,7 +21,7 @@ public class BoardPieceView : View
 			.Write(this.DisplayString);
 	}
 	
-	protected virtual string DisplayString => pieceSymbol[this.boardPieceViewModel.PieceType];// this.boardPieceViewModel.PieceType.Name.First().ToString();
+	protected abstract string DisplayString { get; }
 
 	private Dictionary<Color,IConsoleWriter> GetConsoleWriterMap()
 	{
@@ -32,18 +32,4 @@ public class BoardPieceView : View
 		
 		return colorConsoleWriterMap;
 	}
-
-	///We can create a view for each piece, like in EmptyBoardPieceView and override their DisplayString property.
-	//Then do the mapping in BoardCellView.
-	private static Dictionary<Type, string> pieceSymbol = new Dictionary<Type, string>
-	{
-		{ typeof(Rook), "R" },
-		{ typeof(Knight), "T" },
-		{ typeof(Bishop), "B" },
-		{ typeof(King), "K" },
-		{ typeof(Queen), "Q" },
-		{ typeof(BlackPawn), "P" },
-		{ typeof(WhitePawn), "P" }
-		//{ typeof(EmptyPiece), "-" }
-	};
 }
