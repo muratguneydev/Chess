@@ -1,9 +1,34 @@
-Certificate issue: 
+Certificate issue:
+==================
 https://github.com/dotnet/sdk/issues/22544
 https://stackoverflow.com/questions/69916598/dotnet-run-not-working-after-update-to-dotnet-6
 <UseAppHost>false</UseAppHost>
 
+Installing dotnet 6 on the container:
+=====================================
+Identify the operating system: cat /etc/os-release
+Find the dotnet sdk installation instructions for that system:
+	https://docs.microsoft.com/en-us/dotnet/core/install/linux-debian
+Install:
+Debian11:
+	sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-6.0
 
+Debian10:
+	sudo wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+	sudo dpkg -i packages-microsoft-prod.deb
+	sudo rm packages-microsoft-prod.deb
+
+	sudo apt-get update; \
+	sudo apt-get install -y apt-transport-https && \
+	sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+
+Code coverage:
+==============
 https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
 
 dotnet test --collect:"XPlat Code Coverage"
