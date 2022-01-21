@@ -26,6 +26,7 @@ Debian10:
 	sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-6.0
 
+To get tests available on Test Explorer restart the container.
 
 Code coverage:
 ==============
@@ -33,7 +34,7 @@ https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?
 
 dotnet test --collect:"XPlat Code Coverage"
 
---????
+--????????
 dotnet tool install -g dotnet-reportgenerator-globaltool
 reportgenerator -reports:"/Code/Chess/tests/Chess.Game.Tests/TestResults/4c11d6bf-d415-4c67-8d5d-09f143e57b52/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html
 
