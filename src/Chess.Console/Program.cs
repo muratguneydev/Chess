@@ -13,7 +13,7 @@ class Program
 	{
 		board = new Board();
 		board.SetOpeningPosition();
-		session = GetSession();
+		session = GetNewSession();
 	}
 	static void Main(string[] args)
 	{
@@ -37,7 +37,7 @@ class Program
 		}
 	}
 
-	private static Session GetSession()
+	private static Session GetNewSession()
 	{
 		var sessionPlayerRegistrar = new SessionPlayerRegistrar();
 		sessionPlayerRegistrar.AddPlayersRegisteredEventCallback(AllPlayersRegisteredHandler);

@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class EmptyBoardPiece : BoardPieceDecorator
+public record EmptyBoardPiece : BoardPieceDecorator
 {
 	public EmptyBoardPiece(Board board)
 		: base(EmptyPiece.Piece, board, new CellHistory(board))

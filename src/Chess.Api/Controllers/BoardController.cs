@@ -8,11 +8,13 @@ namespace Chess.Api.Controllers;
 [Route("[controller]")]
 public class BoardController : ControllerBase
 {
-    private readonly ILogger<BoardController> logger;
+	private readonly PieceDTOFactory pieceDTOFactory;
+	private readonly ILogger<BoardController> logger;
 
-    public BoardController(ILogger<BoardController> logger)
+    public BoardController(PieceDTOFactory pieceDTOFactory, ILogger<BoardController> logger)
     {
-        this.logger = logger;
+		this.pieceDTOFactory = pieceDTOFactory;
+		this.logger = logger;
     }
 
     [HttpGet]
@@ -20,6 +22,6 @@ public class BoardController : ControllerBase
     {
         var board = new Board();
 		board.SetOpeningPosition();
-		return new BoardDTO(board);
+		return new BoardDTO(board, this.pieceDTOFactory);
     }
 }

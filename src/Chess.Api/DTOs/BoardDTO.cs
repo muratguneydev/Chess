@@ -4,19 +4,11 @@ namespace Chess.Api.DTO;
 
 public class BoardDTO
 {
-	private readonly Dictionary<Type, Func<PieceDTO>> pieceFactory = new Dictionary<Type, Func<PieceDTO>>
-	{
-		{ typeof(EmptyPiece), () => new EmptyPieceDTO() },
-		{ typeof(Pawn), () => new PawnDTO() },
-		{ typeof(Rook), () => new RookDTO() },
-		{ typeof(Knight), () => new KnightDTO() },
-		{ typeof(Bishop), () => new BishopDTO() },
-		{ typeof(Queen), () => new QueenDTO() },
-		{ typeof(King), () => new KingDTO() }
-	};
+	private readonly PieceDTOFactory pieceDTOFactory;
 
-	public BoardDTO(Board board)
+	public BoardDTO(Board board, PieceDTOFactory pieceDTOFactory)
 	{
+		this.pieceDTOFactory = pieceDTOFactory;
 		this.Cells = this.GetCellsFromBoard(board).ToArray();
 	}
 
@@ -36,9 +28,7 @@ public class BoardDTO
 
 	private PieceDTO CreatePieceDTO(IBoardPiece piece)
 	{
-		var dto = pieceFactory
-			.Single(pieceTypeFactory => piece.IsOfType(pieceTypeFactory.Key))
-			.Value();
+		var dto = this.pieceDTOFactory.Get(piece);
 		
 		switch (piece.Color)
 		{

@@ -10,5 +10,18 @@ public class CellDTO
 	}
 	public int X { get; }
 	public int Y { get; }
+
+	public char Row => this.ConvertYToChar();
+	public char Column => this.ConvertXToChar();
 	public PieceDTO Piece { get; }
+
+	private char ConvertYToChar()
+	{
+		return (char)(this.Y+48+1);
+	}
+
+	private char ConvertXToChar()
+	{
+		return (char)(this.X+97);
+	}
 }

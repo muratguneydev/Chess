@@ -41,7 +41,7 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 		return move.To.Equals(leftDiagonalCell)
 			&& this.IsLeftCellValid(move.From)
 			&& leftNeighbourCell.Piece.IsFirstMove
-			&& Math.Abs(leftNeighbourCell.Piece.PreviousCell.Y - leftNeighbourCell.Y) == 2;
+			&& Math.Abs(leftNeighbourCell.Piece.PreviousCoordinate.Y - leftNeighbourCell.Y) == 2;
 	}
 
 	private bool IsLeftCellValid(Cell fromCell)
@@ -61,7 +61,7 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 		return move.To.Equals(rightDiagonalPiece)
 			&& this.IsRightCellValid(move.From)
 			&& rightNeighbourCell.Piece.IsFirstMove
-			&& Math.Abs(rightNeighbourCell.Piece.PreviousCell.Y - rightNeighbourCell.Y) == 2;
+			&& Math.Abs(rightNeighbourCell.Piece.PreviousCoordinate.Y - rightNeighbourCell.Y) == 2;
 	}
 
 	private bool IsRightCellValid(Cell fromCell)

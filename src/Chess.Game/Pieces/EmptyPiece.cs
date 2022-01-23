@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class EmptyPiece : Piece
+public record EmptyPiece : Piece
 {
 	private static EmptyPiece emptyPiece = new EmptyPiece();
 	

@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class Board
+public record Board
 {
 	private readonly Cell[,] cells;
 

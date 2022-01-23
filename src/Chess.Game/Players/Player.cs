@@ -13,7 +13,7 @@ public abstract class Player
 
 	public Color Color { get; }
 	public string Name { get; }
-
+	public TimeSpan ElapsedTime => this.clock.ElapsedTime;
 	public virtual bool IsReady { get; private set; }
 
 	public void ResumePlaying()

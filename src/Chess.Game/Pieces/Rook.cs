@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class Rook : Piece
+public record Rook : Piece
 {
 	public Rook()
 		: base(new CantMoveToTheCurrentCellStrategyDecorator(

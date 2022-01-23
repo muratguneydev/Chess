@@ -14,6 +14,7 @@ public class Session
 		this.sessionPlayers = sessionPlayers;
 		this.sessionPlayerRegistrar = sessionPlayerRegistrar;
 		this.sessionStateMachine = sessionStateMachine;
+		this.Board = board;
 		this.moves = new MoveHistory(board);
 	}
 
@@ -32,6 +33,9 @@ public class Session
 	public Player WaitingPlayer => this.CurrentPlayer == this.WhitePlayer
 		? this.BlackPlayer
 		: this.WhitePlayer;
+
+	//Used to be able to store the session as a whole.
+	public Board Board { get; }
 
 	public void Start()
 	{

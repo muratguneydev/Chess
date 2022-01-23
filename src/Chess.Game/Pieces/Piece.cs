@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public abstract class Piece
+public abstract record Piece
 {
 	private readonly IMoveStrategy moveStrategy;
 

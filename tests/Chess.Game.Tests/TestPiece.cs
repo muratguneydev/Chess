@@ -2,7 +2,7 @@ using Chess.Game.Tests.Helpers;
 
 namespace Chess.Game.Tests;
 
-internal class TestPiece : BoardPieceDecorator
+internal record TestPiece : BoardPieceDecorator
 {
 	private readonly Color color;
 	private static Board defaultBoard = BoardTestHelper.Create();

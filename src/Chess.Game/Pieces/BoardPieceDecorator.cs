@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public abstract class BoardPieceDecorator : IBoardPiece
+public abstract record BoardPieceDecorator : IBoardPiece
 {
 	private readonly Piece originalPiece;
 	private readonly CellHistory cellHistory;
@@ -13,13 +13,13 @@ public abstract class BoardPieceDecorator : IBoardPiece
 	}
 
 	public abstract Color Color { get; }
-	public Board Board { get; }
+	private Board Board { get; }
 
 	public bool IsBlack => this.Color == Color.Black;
 	public bool IsWhite => this.Color == Color.White;
 	public bool IsEmpty => this is EmptyBoardPiece;
 	public bool IsFirstMove => this.cellHistory.IsFirstMove;
-	public Cell PreviousCell => this.cellHistory.GetPrevious();
+	public Coordinate PreviousCoordinate => this.cellHistory.GetPrevious().Coordinate;
 	
 	public bool HasSameColor(IBoardPiece otherBoardPiece) => this.Color == otherBoardPiece.Color;
 

@@ -5,8 +5,7 @@ public interface IBoardPiece
 	Color Color { get; }
 	bool IsEmpty { get; }
 	bool IsFirstMove { get; }
-	Cell PreviousCell { get; }
-	Board Board { get; }
+	Coordinate PreviousCoordinate { get; }
 	bool IsBlack { get; }
 	bool IsWhite { get; }
 	bool CanMove(Move move);

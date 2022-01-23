@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class Cell
+public record Cell
 {
 	private readonly Board board;
 
@@ -51,21 +51,21 @@ public class Cell
 		return move;
 	}
 
-	public override bool Equals(object? obj)
-	{
-		if (obj == null || GetType() != obj.GetType())
-		{
-			return false;
-		}
+	// public override bool Equals(object? obj)
+	// {
+	// 	if (obj == null || GetType() != obj.GetType())
+	// 	{
+	// 		return false;
+	// 	}
 		
-		var otherCell = (Cell)obj;
-		return this.Coordinate == otherCell.Coordinate;
-	}
+	// 	var otherCell = (Cell)obj;
+	// 	return this.Coordinate == otherCell.Coordinate;
+	// }
 	
-	public override int GetHashCode()
-	{
-		return this.Coordinate.GetHashCode();
-	}
+	// public override int GetHashCode()
+	// {
+	// 	return this.Coordinate.GetHashCode();
+	// }
 
 	public override string ToString()
 	{
