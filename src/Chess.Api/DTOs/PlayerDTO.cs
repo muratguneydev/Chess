@@ -2,16 +2,12 @@ using Chess.Game;
 
 namespace Chess.Api.DTO;
 
-public class PlayerDTO
+public record PlayerDTO
 {
 	private readonly Player player;
 
 	public PlayerDTO(Player player)
 	{
-		// this.Color = player.Color;
-		// this.Name = player.Name;
-		// this.IsReady = player.IsReady;
-		// this.ElapsedSeconds = (int)player.ElapsedTime.TotalSeconds;
 		this.player = player;
 	}
 

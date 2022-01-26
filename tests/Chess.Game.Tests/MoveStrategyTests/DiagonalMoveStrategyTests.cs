@@ -11,7 +11,7 @@ public class DiagonalMoveStrategyTests
 	[TestCaseSource(typeof(DiagonalMoveStrategyDataCollection), nameof(DiagonalMoveStrategyDataCollection.TestCases))]
 	public IEnumerable<Coordinate> ShouldFindCoordinatesCorrectly(Move fromTo)
 	{
-		return new DiagonalMoveStrategy().GetMovePath(fromTo).CoordinatesInPath;
+		return new DiagonalMoveStrategy().GetMovePath(fromTo);
 	}
 
 	public class DiagonalMoveStrategyDataCollection

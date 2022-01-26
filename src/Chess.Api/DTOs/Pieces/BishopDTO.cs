@@ -1,6 +1,6 @@
 namespace Chess.Api.DTO;
 
-public class BishopDTO : PieceDTO
+public record BishopDTO : PieceDTO
 {
 	public override string Name => "Bishop";
 }

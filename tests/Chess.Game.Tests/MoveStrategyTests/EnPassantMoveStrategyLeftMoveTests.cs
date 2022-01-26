@@ -11,18 +11,18 @@ public class EnPassantMoveStrategyLeftMoveTests
 		var board = BoardTestHelper.Create();
 
 		var fromCell = board.c5;
-		var whitePiece = new TestPiece(new WhitePawn(board), Color.White);
+		var whitePiece = new TestPiece(new WhitePawn(), Color.White);
 		fromCell.SetPiece(whitePiece);
 		
 		var leftCell = board.b5;
-		var leftPiece = new TestPiece(new WhitePawn(board), Color.White);
+		var leftPiece = new TestPiece(new WhitePawn(), Color.White);
 		leftCell.SetPiece(leftPiece);
 
 		var toCell = board.b6;
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(move));
 	}
 
 	[Test]
@@ -31,7 +31,7 @@ public class EnPassantMoveStrategyLeftMoveTests
 		var board = BoardTestHelper.Create();
 
 		var fromCell = board.c5;
-		var whitePiece = new TestPiece(new WhitePawn(board), Color.White);
+		var whitePiece = new TestPiece(new WhitePawn(), Color.White);
 		fromCell.SetPiece(whitePiece);
 		
 		var leftEmptyCell = board.b5;
@@ -40,7 +40,7 @@ public class EnPassantMoveStrategyLeftMoveTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(move));
 	}
 
 	[Test]
@@ -49,7 +49,7 @@ public class EnPassantMoveStrategyLeftMoveTests
 		var board = BoardTestHelper.Create();
 
 		var fromCell = board.c5;
-		var whitePiece = new TestPiece(new WhitePawn(board), Color.White);
+		var whitePiece = new TestPiece(new WhitePawn(), Color.White);
 		fromCell.SetPiece(whitePiece);
 		
 		var leftCell = board.b5;
@@ -60,6 +60,6 @@ public class EnPassantMoveStrategyLeftMoveTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(move));
 	}
 }

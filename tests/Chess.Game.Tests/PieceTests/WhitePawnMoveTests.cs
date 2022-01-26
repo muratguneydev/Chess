@@ -10,7 +10,7 @@ public class WhitePawnMoveTests
 	[TestCaseSource(typeof(WhitePawnMoveTestDataCollection), nameof(WhitePawnMoveTestDataCollection.TestCases))]
 	public void ShouldBeAbleToMoveIfEmpty(Func<Board,Move> getFromToWithBoard)
 	{
-		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, board => new WhitePawn(board));
+		var fromToForTest = BoardTestHelper.InitializeBoardWithFromCell(getFromToWithBoard, board => new WhitePawn());
 
 		MoveTestHelper.AssertIsValidMove(fromToForTest);
 	}

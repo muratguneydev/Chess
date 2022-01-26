@@ -1,8 +1,21 @@
+using System.Text.Json.Serialization;
+
 namespace Chess.Game;
 
 public class SessionStateMachine
 {
-	public SessionState CurrentState { get; private set; } = new SessionStateRegistration();
+	public SessionStateMachine()
+	{
+		this.CurrentState = new SessionStateRegistration();
+	}
+
+	[JsonConstructor]
+	public SessionStateMachine(SessionState currentState)
+	{
+		this.CurrentState = currentState;
+	}
+
+	public SessionState CurrentState { get; private set; } //= new SessionStateRegistration();
 
 	public virtual SessionState SetWhiteReady()
 	{

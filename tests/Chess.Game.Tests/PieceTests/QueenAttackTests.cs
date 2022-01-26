@@ -12,7 +12,7 @@ public class QueenAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Queen());
 		var destinationCellWithAnotherPiece = fromTo.Move.To;
-		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}

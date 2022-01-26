@@ -2,7 +2,7 @@ using Chess.Game;
 
 namespace Chess.Api.DTO;
 
-public class BlackPieceDecoratorDTO : PieceDTO
+public record BlackPieceDecoratorDTO : PieceDTO
 {
 	private readonly PieceDTO piece;
 

@@ -10,9 +10,9 @@ public class BlackPawnInvalidMoveTests
 	[TestCaseSource(typeof(BlackPawnInvalidMoveWhenBlockedTestDataCollection), nameof(BlackPawnInvalidMoveWhenBlockedTestDataCollection.TestCases))]
 	public void ShouldNotBeAbleToMoveIfIfPathBlocked(Func<Board,Move> getFromToWithBoard, Func<Board, Cell> getMiddleCell)
 	{
-		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn(board));
+		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn());
 		var blockingCellWithAnotherPiece = getMiddleCell(fromTo.Board);
-		blockingCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		blockingCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
@@ -20,7 +20,7 @@ public class BlackPawnInvalidMoveTests
 	[TestCaseSource(typeof(BlackPawnInvalidMoveTestDataCollection), nameof(BlackPawnInvalidMoveTestDataCollection.TestCases))]
 	public void ShouldDetectInvalidMoveWhenNotBlocked(Func<Board,Move> getFromToWithBoard)
 	{
-		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn(board));
+		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn());
 		
 		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}
@@ -28,9 +28,9 @@ public class BlackPawnInvalidMoveTests
 	[TestCaseSource(typeof(BlackPawnInvalidAttackTestDataCollection), nameof(BlackPawnInvalidAttackTestDataCollection.TestCases))]
 	public void ShouldDetectInvalidAttack(Func<Board,Move> getFromToWithBoard)
 	{
-		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn(board));
+		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn());
 		var cellToAttack = fromTo.Move.To;
-		cellToAttack.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		cellToAttack.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}

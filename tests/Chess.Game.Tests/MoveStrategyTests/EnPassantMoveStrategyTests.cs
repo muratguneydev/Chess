@@ -15,14 +15,14 @@ public class EnPassantMoveStrategyTests
 		fromCell.SetPiece(whitePiece);
 		
 		var leftCell = board.b5;
-		var leftPiece = new TestPiece(new BlackPawn(board), Color.Black);
+		var leftPiece = new TestPiece(new BlackPawn(), Color.Black);
 		leftCell.SetPiece(leftPiece);
 
 		var toCell = board.b6;
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(move));
 	}
 
 	[Test]
@@ -31,9 +31,9 @@ public class EnPassantMoveStrategyTests
 		var session = SessionTestHelper.Create();
 		var board = BoardTestHelper.Create();
 		
-		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), board);
-		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), board);
-		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen(), board);
+		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
+		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
+		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen());
 		
 		board.b4.SetPiece(attackingPawn);
 		board.c7.SetPiece(attackedPawn);
@@ -47,7 +47,7 @@ public class EnPassantMoveStrategyTests
 		
 		var testMove = MoveTestHelper.Create(board.b5, board.c6);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(testMove));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(testMove));
 	}
 
 	[Test]
@@ -56,9 +56,9 @@ public class EnPassantMoveStrategyTests
 		var session = SessionTestHelper.Create();
 		var board = BoardTestHelper.Create();
 		
-		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), board);
-		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), board);
-		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen(), board);
+		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
+		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
+		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen());
 		
 		board.b4.SetPiece(attackingPawn);
 		board.c7.SetPiece(attackedPawn);
@@ -70,7 +70,7 @@ public class EnPassantMoveStrategyTests
 		
 		var testMove = MoveTestHelper.Create(board.b5, board.c6);
 		
-		MoveTestHelper.AssertIsValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(testMove));
+		MoveTestHelper.AssertIsValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(testMove));
 	}
 
 	[Test]
@@ -88,6 +88,6 @@ public class EnPassantMoveStrategyTests
 		
 		var move = MoveTestHelper.Create(fromCell, toCell);
 		
-		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy(board).GetMovePath(move));
+		MoveTestHelper.AssertIsNotValidMove(new WhiteEnPassantMoveStrategy().GetMovePath(move));
 	}
 }

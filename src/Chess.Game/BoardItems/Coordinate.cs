@@ -14,6 +14,8 @@ public record Coordinate
 	public int X { get; }
 	public int Y { get; }
 
+	public bool IsEmpty => this is EmptyCoordinate;
+
 	protected virtual void ValidateCoordinate(int coordinatePart, string coordinateName)
 	{
 		if (coordinatePart < 0 || coordinatePart > 7)

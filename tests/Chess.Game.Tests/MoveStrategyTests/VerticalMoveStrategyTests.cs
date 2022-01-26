@@ -11,7 +11,7 @@ public class VerticalMoveStrategyTests
 	[TestCaseSource(typeof(VerticalMoveStrategyDataCollection), nameof(VerticalMoveStrategyDataCollection.TestCases))]
 	public IEnumerable<Coordinate> ShouldFindCoordinatesCorrectly(Move fromTo)
 	{
-		return new VerticalMoveStrategy().GetMovePath(fromTo).CoordinatesInPath;
+		return new VerticalMoveStrategy().GetMovePath(fromTo);
 	}
 
 	private class VerticalMoveStrategyDataCollection

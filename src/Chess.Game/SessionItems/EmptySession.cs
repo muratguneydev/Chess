@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public class EmptySession : Session
+public record EmptySession : Session
 {
 	private static EmptySession emptySession = new EmptySession();
 

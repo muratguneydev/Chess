@@ -10,16 +10,16 @@ public class BoardTests
 	{
 		var board = BoardTestHelper.Create();
 
-		var a1Piece = WhitePieceDecoratorTestHelper.Create(new Rook(), board);
+		var a1Piece = WhitePieceDecoratorTestHelper.Create(new Rook());
 		board.a1.SetPiece(a1Piece);
 
-		var a3Piece = BlackPieceDecoratorTestHelper.Create(new Knight(), board);
+		var a3Piece = BlackPieceDecoratorTestHelper.Create(new Knight());
 		board.a3.SetPiece(a3Piece);
 
-		var a5Piece = WhitePieceDecoratorTestHelper.Create(new King(), board);
+		var a5Piece = WhitePieceDecoratorTestHelper.Create(new King());
 		board.a5.SetPiece(a5Piece);
 		
-		var a7Piece = BlackPieceDecoratorTestHelper.Create(new Queen(), board);
+		var a7Piece = BlackPieceDecoratorTestHelper.Create(new Queen());
 		board.a7.SetPiece(a7Piece);
 
 		var actualPieces = board.GetPiecesInCoordinates(new[] {

@@ -1,6 +1,6 @@
 namespace Chess.Api.DTO;
 
-public class EmptyPieceDTO : PieceDTO
+public record EmptyPieceDTO : PieceDTO
 {
 	public override string Name => string.Empty;
 }

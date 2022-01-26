@@ -2,7 +2,7 @@ namespace Chess.Game;
 
 public record BlackPawn : Pawn
 {
-	public BlackPawn(Board board)
+	public BlackPawn()
 		: base(new CantMoveToTheCurrentCellStrategyDecorator(
 			new CompositeMoveStrategy(new[] {
 					new BlackTwoVerticalSquaresInitialMoveStrategy(
@@ -14,7 +14,7 @@ public record BlackPawn : Pawn
 						new OnlyAttackMoveStrategy(
 							new OneSquareMoveStrategy(
 								new DiagonalMoveStrategy()))),
-					new BlackEnPassantMoveStrategy(board) as IMoveStrategy
+					new BlackEnPassantMoveStrategy() as IMoveStrategy
 				}))
 		)
 	{

@@ -13,7 +13,7 @@ public static class BoardTestHelper
 		var board = Create();
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.SetPiece(WhitePieceDecoratorTestHelper.Create(piece, board));
+		fromTo.From.SetPiece(WhitePieceDecoratorTestHelper.Create(piece));
 		return fromTo;
 	}
 
@@ -23,7 +23,7 @@ public static class BoardTestHelper
 		var board = Create();
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.SetPiece(WhitePieceDecoratorTestHelper.Create(getPiece(board), board));
+		fromTo.From.SetPiece(WhitePieceDecoratorTestHelper.Create(getPiece(board)));
 		return fromTo;
 	}
 
@@ -33,7 +33,7 @@ public static class BoardTestHelper
 		var board = Create();
 		var move = getMove(board);
 		
-		move.From.SetPiece(WhitePieceDecoratorTestHelper.Create(piece, board));
+		move.From.SetPiece(WhitePieceDecoratorTestHelper.Create(piece));
 		return new MoveWithBoardAndSession(move, board, session);
 	}
 
@@ -43,7 +43,7 @@ public static class BoardTestHelper
 		var board = Create();
 		var move = getMove(board);
 		
-		move.From.SetPiece(WhitePieceDecoratorTestHelper.Create(getPiece(board), board));
+		move.From.SetPiece(WhitePieceDecoratorTestHelper.Create(getPiece(board)));
 		return new MoveWithBoardAndSession(move, board, session);
 	}
 
@@ -55,12 +55,12 @@ public static class BoardTestHelper
 		
 		var fromDummyCell = CellTestHelper.Create(new Coordinate(3, 3));
 		var toDummyCell = CellTestHelper.Create(new Coordinate(4, 3));
-		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook(), board));
+		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook()));
 		session.Move(MoveTestHelper.Create(fromDummyCell, toDummyCell));
 		
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.SetPiece(BlackPieceDecoratorTestHelper.Create(piece, board));
+		fromTo.From.SetPiece(BlackPieceDecoratorTestHelper.Create(piece));
 		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 
@@ -72,12 +72,12 @@ public static class BoardTestHelper
 		
 		var fromDummyCell = CellTestHelper.Create(new Coordinate(3, 3));
 		var toDummyCell = CellTestHelper.Create(new Coordinate(4, 3));
-		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook(), board));
+		fromDummyCell.SetPiece(WhitePieceDecoratorTestHelper.Create(new Rook()));
 		session.Move(MoveTestHelper.Create(fromDummyCell, toDummyCell));
 		
 		var fromTo = fromToGetter(board);
 		
-		fromTo.From.SetPiece(BlackPieceDecoratorTestHelper.Create(getPiece(board), board));
+		fromTo.From.SetPiece(BlackPieceDecoratorTestHelper.Create(getPiece(board)));
 		return new MoveWithBoardAndSession(fromTo, board, session);
 	}
 }

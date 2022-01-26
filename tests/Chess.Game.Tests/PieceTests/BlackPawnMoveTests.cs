@@ -10,7 +10,7 @@ public class BlackPawnMoveTests
 	[TestCaseSource(typeof(BlackPawnMoveTestDataCollection), nameof(BlackPawnMoveTestDataCollection.TestCases))]
 	public void ShouldBeAbleToMoveIfEmpty(Func<Board,Move> getMoveWithBoard)
 	{
-		var moveForTest = BoardTestHelper.InitializeBoardWithFromCell(getMoveWithBoard, board => new BlackPawn(board));
+		var moveForTest = BoardTestHelper.InitializeBoardWithFromCell(getMoveWithBoard, board => new BlackPawn());
 
 		MoveTestHelper.AssertIsValidMove(moveForTest);
 	}

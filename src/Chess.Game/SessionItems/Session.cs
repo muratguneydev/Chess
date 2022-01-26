@@ -1,6 +1,8 @@
+using System.Text.Json.Serialization;
+
 namespace Chess.Game;
 
-public class Session
+public record Session
 {
 	private readonly MoveHistory moves;
 	private readonly OnMoveEvent OnMove = new OnMoveEvent();
@@ -8,6 +10,7 @@ public class Session
 	private readonly SessionPlayerRegistrar sessionPlayerRegistrar;
 	private readonly SessionStateMachine sessionStateMachine;
 
+	//[JsonConstructor]
 	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar, SessionStateMachine sessionStateMachine,
 		Board board)
 	{
@@ -34,8 +37,12 @@ public class Session
 		? this.BlackPlayer
 		: this.WhitePlayer;
 
-	//Used to be able to store the session as a whole.
+	//For serialization. Used to be able to store the session as a whole.
 	public Board Board { get; }
+	public SessionPlayers SessionPlayers => this.sessionPlayers;
+	public SessionPlayerRegistrar SessionPlayerRegistrar => this.sessionPlayerRegistrar;
+	public SessionStateMachine SessionStateMachine => this.sessionStateMachine;
+
 
 	public void Start()
 	{

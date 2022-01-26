@@ -22,12 +22,13 @@ public class ContextSession
     {
 		// JsonSerializerOptions options = new()
         //     {
-        //         ReferenceHandler = ReferenceHandler.Preserve,
-        //         WriteIndented = true,
-		// 		PropertyNamingPolicy = null
+        //         //ReferenceHandler = ReferenceHandler.Preserve,
+        //         //WriteIndented = true,
+		// 		//PropertyNamingPolicy = null
+		// 		Converters = { new BoardJsonConverter() }
         //     };
 			
-        this.contextSession.SetString(key, JsonSerializer.Serialize(value));//, options));
+        this.contextSession.SetString(key, JsonSerializer.Serialize(value));
 		await this.contextSession.CommitAsync();
     }
 
@@ -41,6 +42,7 @@ public class ContextSession
 				throw new ArgumentException("Default value provided was null.");
 			return defaultValue;
 		}
+
 		var deserializedValue = JsonSerializer.Deserialize<T>(value);
 		if (deserializedValue == null)
 			throw new ArgumentException("Deserialized value was null.");

@@ -8,14 +8,24 @@ public record Cell
 	{
 		this.Coordinate = coordinate;
 		this.board = board;
-		this.Piece = board.EmptyBoardPiece;
+		this.Piece = EmptyBoardPiece.BoardPiece;
+	}
+
+	//[JsonConstructor]
+	public Cell(int x, int y, Board board, IBoardPiece piece)
+		: this(new Coordinate(x, y), board)
+	{
+		this.Piece = piece;
 	}
 
 	public Cell(int x, int y, Board board)
 		: this(new Coordinate(x, y), board)
 	{
-		
+		this.Piece = EmptyBoardPiece.BoardPiece;
 	}
+
+	//For serialization. Used to be able to store the session as a whole.
+	//public Board Board => this.board;
 
 	public Coordinate Coordinate { get; }
 	public int X => this.Coordinate.X;
@@ -28,7 +38,7 @@ public record Cell
 	public void SetPiece(IBoardPiece piece)
 	{
 		this.Piece = piece;
-		this.Piece.RecordCurrentCellInHistory(this);
+		this.Piece.RecordCurrentCellInHistory(this.Coordinate);
 	}
 
 	public void GoBack(IBoardPiece piece)
@@ -51,22 +61,6 @@ public record Cell
 		return move;
 	}
 
-	// public override bool Equals(object? obj)
-	// {
-	// 	if (obj == null || GetType() != obj.GetType())
-	// 	{
-	// 		return false;
-	// 	}
-		
-	// 	var otherCell = (Cell)obj;
-	// 	return this.Coordinate == otherCell.Coordinate;
-	// }
-	
-	// public override int GetHashCode()
-	// {
-	// 	return this.Coordinate.GetHashCode();
-	// }
-
 	public override string ToString()
 	{
 		return $"{this.Piece.GetType().Name} {this.Coordinate}";
@@ -74,11 +68,18 @@ public record Cell
 
 	public virtual void MakeEmpty()
 	{
-		this.SetPiece(this.board.EmptyBoardPiece);
+		this.SetPiece(EmptyBoardPiece.BoardPiece);
 	}
 
 	public Cell GetCellOnSameBoard(int x, int y)
 	{
 		return this.board.GetCell(x, y);
 	}
+
+	public Cell GetCellOnSameBoard(Coordinate coordinate)
+	{
+		return this.GetCellOnSameBoard(coordinate.X, coordinate.Y);
+	}
+
+
 }

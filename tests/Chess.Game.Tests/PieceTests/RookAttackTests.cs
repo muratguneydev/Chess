@@ -12,7 +12,7 @@ public class RookAttackTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Rook());
 		var destinationCellWithAnotherPiece = fromTo.Move.To;
-		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		destinationCellWithAnotherPiece.SetPiece(BlackPieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}

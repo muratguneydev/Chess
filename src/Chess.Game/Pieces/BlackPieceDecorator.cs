@@ -2,8 +2,8 @@ namespace Chess.Game;
 
 public record BlackPieceDecorator : BoardPieceDecorator
 {
-	public BlackPieceDecorator(Piece originalPiece, Board board, CellHistory cellHistory)
-		: base(originalPiece, board, cellHistory)
+	public BlackPieceDecorator(Piece originalPiece, CellHistory cellHistory)
+		: base(originalPiece, cellHistory)
 	{
 	}
 

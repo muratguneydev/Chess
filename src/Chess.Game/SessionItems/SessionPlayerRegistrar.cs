@@ -3,8 +3,21 @@ namespace Chess.Game;
 public class SessionPlayerRegistrar
 {
 	private readonly OnPlayersRegisteredEvent OnPlayersRegistered = new OnPlayersRegisteredEvent();
-	public WhitePlayer WhitePlayer { get; private set; } = EmptyWhitePlayer.WhitePlayer;
-	public BlackPlayer BlackPlayer { get; private set; } = EmptyBlackPlayer.BlackPlayer;
+
+	public SessionPlayerRegistrar()
+	{
+		this.WhitePlayer = EmptyWhitePlayer.WhitePlayer;
+		this.BlackPlayer = EmptyBlackPlayer.BlackPlayer;
+	}
+
+	public SessionPlayerRegistrar(WhitePlayer whitePlayer, BlackPlayer blackPlayer)
+	{
+		this.WhitePlayer = whitePlayer;
+		this.BlackPlayer = blackPlayer;
+	}
+
+	public WhitePlayer WhitePlayer { get; private set; }
+	public BlackPlayer BlackPlayer { get; private set; }
 
 	public virtual void RegisterBlackPlayer(BlackPlayer player)
 	{

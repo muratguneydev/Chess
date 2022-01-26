@@ -24,11 +24,18 @@ public class SessionController : ControllerBase
     public async Task<SessionDTO> Post()
     {
 		var session = GetNewSession();
-		var sessionDTO = new SessionDTO(session, Guid.NewGuid(), this.pieceDTOFactory);
-		await this.chessSessionRepository.SetAsync(sessionDTO.Id.ToString(), session);
+		var sessionDTO = new SessionDTO(session, new SessionIdDTO(Guid.NewGuid()), this.pieceDTOFactory);
+		await this.chessSessionRepository.SetAsync(sessionDTO.Id, session);
 
 		return sessionDTO;
     }
+
+	[HttpGet]
+	public async Task<SessionDTO> Get(string sessionId)
+	{
+		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
+		return new SessionDTO(currentSession, new SessionIdDTO(sessionId), this.pieceDTOFactory);
+	}
 
 	private static Session GetNewSession()
 	{
@@ -43,4 +50,6 @@ public class SessionController : ControllerBase
 		
 		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board);
 	}
+
+	
 }

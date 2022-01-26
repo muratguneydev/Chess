@@ -2,7 +2,7 @@ namespace Chess.Game;
 
 public record WhitePawn : Pawn
 {
-	public WhitePawn(Board board)
+	public WhitePawn()
 		: base(new CantMoveToTheCurrentCellStrategyDecorator(
 			new CompositeMoveStrategy(new[] {
 					new WhiteTwoVerticalSquaresInitialMoveStrategy(
@@ -14,7 +14,7 @@ public record WhitePawn : Pawn
 						new OnlyAttackMoveStrategy(
 							new OneSquareMoveStrategy(
 								new DiagonalMoveStrategy()))),
-					new WhiteEnPassantMoveStrategy(board) as IMoveStrategy
+					new WhiteEnPassantMoveStrategy() as IMoveStrategy
 				}))
 		)
 	{

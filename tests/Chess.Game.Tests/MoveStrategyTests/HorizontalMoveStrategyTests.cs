@@ -11,7 +11,7 @@ public class HorizontalMoveStrategyTests
 	[TestCaseSource(typeof(HorizontalMoveStrategyDataCollection), nameof(HorizontalMoveStrategyDataCollection.TestCases))]
 	public IEnumerable<Coordinate> ShouldFindCoordinatesCorrectly(Move fromTo)
 	{
-		return new HorizontalMoveStrategy().GetMovePath(fromTo).CoordinatesInPath;
+		return new HorizontalMoveStrategy().GetMovePath(fromTo);
 	}
 
 	public class HorizontalMoveStrategyDataCollection

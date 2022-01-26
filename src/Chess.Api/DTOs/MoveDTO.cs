@@ -2,7 +2,7 @@ using Chess.Game;
 
 namespace Chess.Api.DTO;
 
-public class MoveDTO
+public record MoveDTO
 {
 	private readonly Move move;
 	private readonly PieceDTOFactory pieceDTOFactory;

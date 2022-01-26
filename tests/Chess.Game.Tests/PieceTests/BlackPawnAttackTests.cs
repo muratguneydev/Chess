@@ -11,9 +11,9 @@ public class BlackPawnAttackTests
 	[TestCaseSource(typeof(BlackPawnAttackTestDataCollection), nameof(BlackPawnAttackTestDataCollection.TestCases))]
 	public void ShouldBeAbleToAttack(Func<Board,Move> getFromToWithBoard)
 	{
-		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn(board));
+		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellBlackPiece(getFromToWithBoard, board => new BlackPawn());
 		var cellToBeAttacked = fromTo.Move.To;
-		cellToBeAttacked.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		cellToBeAttacked.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsValidMove(fromTo.Move);
 	}
@@ -24,8 +24,8 @@ public class BlackPawnAttackTests
 		var session = SessionTestHelper.Create();
 		var board = BoardTestHelper.Create();
 		
-		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), board);
-		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), board);
+		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
+		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
 		
 		board.b4.SetPiece(attackingPawn);
 		board.c2.SetPiece(attackedPawn);
@@ -47,8 +47,8 @@ public class BlackPawnAttackTests
 		var session = SessionTestHelper.Create();
 		var board = BoardTestHelper.Create();
 		
-		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn(board), board);
-		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn(board), board);
+		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
+		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
 		
 		board.b3.SetPiece(attackingPawn);
 		board.c2.SetPiece(attackedPawn);

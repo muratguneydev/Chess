@@ -17,7 +17,8 @@ builder.Services
 {
     // serialize enums as strings in api responses
     x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-	x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+	//x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+	//x.JsonSerializerOptions.Converters.Add(new BoardJsonConverter());
 });
 builder.Services.AddSwaggerGen(c =>
 {

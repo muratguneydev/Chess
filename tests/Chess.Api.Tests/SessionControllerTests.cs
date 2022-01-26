@@ -13,17 +13,39 @@ public class SessionControllerTests
 	public async Task ShouldPostCorrectly()
 	{
 		var sessionRepositoryStub = new TestChessSessionRepository();
-		var emptyLoggerFactory = new NullLoggerFactory();
-		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
-    
-		var controller = new SessionController(new PieceDTOFactory(), sessionRepositoryStub, emptyLogger);
+		var controller = GetSessionController(sessionRepositoryStub);
 		var resultSessionDTO = await controller.Post();
-		
-		var createdSession = await sessionRepositoryStub.GetAsync(resultSessionDTO.Id.ToString());
+
+		var createdSession = await sessionRepositoryStub.GetAsync(resultSessionDTO.Id.Value);
 
 		//SessionComparer.Compare();
 		Assert.IsInstanceOf<SessionStateRegistration>(createdSession.CurrentState);
 		Assert.AreEqual(typeof(SessionStateRegistration).Name, resultSessionDTO.CurrentState);
 	}
 
+	[Test]
+	public async Task ShouldGetCorrectly()
+	{
+		var sessionRepositoryStub = new TestChessSessionRepository();
+		var controller = GetSessionController(sessionRepositoryStub);
+		var postResultSessionDTO = await controller.Post();
+		var getResultSessionDTO = await controller.Get(postResultSessionDTO.Id.Value);
+
+		//var createdSession = await sessionRepositoryStub.GetAsync(postResultSessionDTO.Id.Value);
+
+		//SessionComparer.Compare();
+		//Assert.IsInstanceOf<SessionStateRegistration>(createdSession.CurrentState);
+		//Assert.AreEqual(typeof(SessionStateRegistration).Name, resultSessionDTO.CurrentState);
+	}
+
+	
+
+	private static SessionController GetSessionController(TestChessSessionRepository sessionRepositoryStub)
+	{
+		var emptyLoggerFactory = new NullLoggerFactory();
+		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
+
+		var controller = new SessionController(new PieceDTOFactory(), sessionRepositoryStub, emptyLogger);
+		return controller;
+	}
 }

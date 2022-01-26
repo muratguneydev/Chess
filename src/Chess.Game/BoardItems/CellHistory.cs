@@ -1,55 +1,64 @@
+using System.Collections;
+
 namespace Chess.Game;
 
-public class CellHistory
+public class CellHistory : IEnumerable<Coordinate>
 {
-	private readonly LinkedList<Cell> history = new LinkedList<Cell>();
-	private readonly Board board;
+	private readonly LinkedList<Coordinate> history;// = new LinkedList<Coordinate>();
 
-	public CellHistory(Board board)
+	public CellHistory()
 	{
-		this.board = board;
+		this.history = new LinkedList<Coordinate>();
+	}
+
+	public CellHistory(LinkedList<Coordinate> history)
+	{
+		this.history = history;
 	}
 
 	public bool IsEmpty => !this.history.Any();
 	public bool IsFirstMove => this.history.Count == 2;
 
-	public void Push(Cell cell)
+	public void Push(Coordinate cell)
 	{
 		this.history.AddLast(cell);
 	}
 
-	public Cell Pop()
+	public void Pop()
 	{
-		var last = this.GetLast();
-		if (last.IsEmpty)
-			return last;
+		if (this.IsEmpty)
+			return;
 
 		this.history.RemoveLast();
-		return last;
 	}
 
-	public Cell GetPrevious()
+	public Coordinate GetPrevious()
 	{
 		//to avoid null warning
 		if (this.history.Last == null)
-			return this.board.EmptyCell;
+			return EmptyCoordinate.Coordinate;
 
 		if (this.GetEmptyIfNotFound(this.history.Last).IsEmpty)
-			return this.board.EmptyCell;
+			return EmptyCoordinate.Coordinate;
 		return this.GetEmptyIfNotFound(this.history.Last.Previous);
 	}
 
-	private Cell GetLast()
+	private Coordinate GetEmptyIfNotFound(LinkedListNode<Coordinate>? historyNode)
 	{
-		if (this.history.Last == null)
-			return this.board.EmptyCell;
+		return historyNode == null ? EmptyCoordinate.Coordinate : historyNode.Value;
 		
-		return this.history.Last.Value;
 	}
 
-	private Cell GetEmptyIfNotFound(LinkedListNode<Cell>? historyNode)
+	public IEnumerator<Coordinate> GetEnumerator()
 	{
-		return historyNode == null ? this.board.EmptyCell : historyNode.Value;
-		
+		foreach (var coordinate in this.history)
+		{
+			yield return coordinate;
+		}
+	}
+
+	IEnumerator IEnumerable.GetEnumerator()
+	{
+		return this.GetEnumerator();
 	}
 }

@@ -10,7 +10,7 @@ public class BlackTwoVerticalSquaresInitialMoveStrategyTests
 	[TestCaseSource(typeof(BlackTwoVerticalSquaresInitialMoveStrategyDataCollection), nameof(BlackTwoVerticalSquaresInitialMoveStrategyDataCollection.TestCases))]
 	public IEnumerable<Coordinate> ShouldFindCoordinatesCorrectly(Move fromTo)
 	{
-		return new BlackTwoVerticalSquaresInitialMoveStrategy(new VerticalMoveStrategy()).GetMovePath(fromTo).CoordinatesInPath;
+		return new BlackTwoVerticalSquaresInitialMoveStrategy(new VerticalMoveStrategy()).GetMovePath(fromTo);
 	}
 
 	private class BlackTwoVerticalSquaresInitialMoveStrategyDataCollection

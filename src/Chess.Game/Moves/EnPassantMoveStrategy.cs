@@ -2,12 +2,12 @@ namespace Chess.Game;
 
 public abstract class EnPassantMoveStrategy : IMoveStrategy
 {
-	private readonly Board board;
+	//private readonly Board board;
 	private readonly YDirection yDirection;
 
-	public EnPassantMoveStrategy(Board board, YDirection yDirection)
+	public EnPassantMoveStrategy(YDirection yDirection)
 	{
-		this.board = board;
+		//this.board = board;
 		this.yDirection = yDirection;
 	}
 	public MovePath GetMovePath(Move move)
@@ -27,12 +27,14 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 
 	private Cell GetRightDiagonalPiece(Move move)
 	{
-		return this.board.GetCell(move.From.X + 1, this.yDirection.GetYCoordinate(move.From.Y));
+		return move.From.GetCellOnSameBoard(move.From.X + 1, this.yDirection.GetYCoordinate(move.From.Y));
+			//this.board.GetCell(move.From.X + 1, this.yDirection.GetYCoordinate(move.From.Y));
 	}
 
 	private Cell GetLeftDiagonalCell(Move move)
 	{
-		return this.board.GetCell(move.From.X - 1, this.yDirection.GetYCoordinate(move.From.Y));
+		return move.From.GetCellOnSameBoard(move.From.X - 1, this.yDirection.GetYCoordinate(move.From.Y));
+		//return this.board.GetCell(move.From.X - 1, this.yDirection.GetYCoordinate(move.From.Y));
 	}
 
 	private bool IsLeftMoveValid(Move move, Cell leftDiagonalCell)
@@ -52,7 +54,8 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 
 	private Cell GetLeftNeighbourCell(Cell fromCell)
 	{
-		return this.board.GetCell(fromCell.X - 1, fromCell.Y);
+		return fromCell.GetCellOnSameBoard(fromCell.X - 1, fromCell.Y);
+		//return this.board.GetCell(fromCell.X - 1, fromCell.Y);
 	}
 
 	private bool IsRightMoveValid(Move move, Cell rightDiagonalPiece)
@@ -79,6 +82,7 @@ public abstract class EnPassantMoveStrategy : IMoveStrategy
 
 	private Cell GetRightNeighbourCell(Cell fromCell)
 	{
-		return this.board.GetCell(fromCell.X + 1, fromCell.Y);
+		return fromCell.GetCellOnSameBoard(fromCell.X + 1, fromCell.Y);
+		//return this.board.GetCell(fromCell.X + 1, fromCell.Y);
 	}
 }

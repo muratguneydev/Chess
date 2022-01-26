@@ -1,6 +1,6 @@
 namespace Chess.Api.DTO;
 
-public class CellDTO
+public record CellDTO
 {
 	public CellDTO(int x, int y, PieceDTO piece)
 	{

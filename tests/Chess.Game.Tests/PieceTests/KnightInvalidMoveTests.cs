@@ -12,7 +12,7 @@ public class KnightInvalidMoveTests
 	{
 		var fromTo = BoardTestHelper.GetInitializedBoardWithFromCellWhitePiece(getFromToWithBoard, new Knight());
 		var blockingCellWithAnotherPiece = fromTo.Move.To;
-		blockingCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight(), fromTo.Board));
+		blockingCellWithAnotherPiece.SetPiece(WhitePieceDecoratorTestHelper.Create(new Knight()));
 		
 		MoveTestHelper.AssertIsNotValidMove(fromTo.Move);
 	}

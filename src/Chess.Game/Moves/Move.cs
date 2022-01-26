@@ -38,4 +38,13 @@ public record Move
 		this.From.GoBack(this.FromPiece);
 		this.To.GoBack(this.ToPiece);
 	}
+
+	public bool ThereArentAnyBlockingPiecesInBetween()
+	{
+		var movePath = this.FromPiece.GetMovePath(this);
+		return !movePath.Any(coordinate => this.From.GetCellOnSameBoard(coordinate).IsOccupied);
+
+		//return !this.From.Board.GetPiecesInCoordinates(movePath.CoordinatesInPath)
+		//					.Any();
+	}
 }

@@ -1,12 +1,12 @@
 using Chess.Game;
 
 namespace Chess.Api.DTO;
-public class SessionDTO
+public record SessionDTO
 {
 	private readonly Session session;
 	private readonly PieceDTOFactory pieceDTOFactory;
 
-	public SessionDTO(Session session, Guid id, PieceDTOFactory pieceDTOFactory)
+	public SessionDTO(Session session, SessionIdDTO id, PieceDTOFactory pieceDTOFactory)
 	{
 		this.session = session;
 		this.Id = id;
@@ -21,5 +21,5 @@ public class SessionDTO
 	public PlayerDTO WaitingPlayer => new PlayerDTO(this.session.WaitingPlayer);
 	public Color PlayTurnColor => this.session.PlayTurn;
 	public string CurrentState => this.session.CurrentState.GetType().Name;
-	public Guid Id { get; }
+	public SessionIdDTO Id { get; }
 }
