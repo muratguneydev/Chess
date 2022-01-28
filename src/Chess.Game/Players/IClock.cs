@@ -1,6 +1,6 @@
 namespace Chess.Game;
 
-public interface IClock : IDisposable
+public interface IClock
 {
 	void Start();
 	void Stop();

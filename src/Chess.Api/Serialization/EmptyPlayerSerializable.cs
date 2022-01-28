@@ -7,7 +7,7 @@ public record EmptyPlayerSerializable : PlayerSerializable
 	private static EmptyPlayerSerializable emptyPlayerSerializable = new EmptyPlayerSerializable();
 
 	private EmptyPlayerSerializable()
-		: base(Color.None, string.Empty)
+		: base(Color.None, string.Empty, default(int))
 	{
 	}
 

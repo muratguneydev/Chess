@@ -39,6 +39,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ContextSession, ContextSession>();
 builder.Services.AddSingleton<ChessSessionRepository, ChessSessionRepository>();
 builder.Services.AddSingleton<PieceDTOFactory, PieceDTOFactory>();
+builder.Services.AddSingleton<SessionIdDTOFactory, SessionIdDTOFactory>();
 
 var app = builder.Build();
 

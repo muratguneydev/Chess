@@ -18,102 +18,82 @@ public class SessionTests
 	[Test]
 	public void ShouldStartWhitePlayerClockWhenGameStarts()
 	{
-		using (var whiteClock = new Clock(new TimerWrapper()))
-		{
-			using (var blackClock = new Clock(new TimerWrapper()))
-			{
-				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
-					BoardTestHelper.Create());
-				session.Start();
-				Assert.IsTrue(whiteClock.Ticking);
-				Assert.IsFalse(blackClock.Ticking);
-			}
-		}
+		var whiteClock = new Clock();
+		var blackClock = new Clock();
+		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
+			BoardTestHelper.Create());
+		session.Start();
+		Assert.IsTrue(whiteClock.Ticking);
+		Assert.IsFalse(blackClock.Ticking);
 	}
 
 	[Test]
 	public void ShouldStartCorrectPlayerClockWhenItIsTheirTurn()
 	{
-		using (var whiteClock = new Clock(new TimerWrapper()))
-		{
-			using (var blackClock = new Clock(new TimerWrapper()))
-			{
-				var board = BoardTestHelper.Create();
-				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
-				board.SetOpeningPosition();
+		var whiteClock = new Clock();
+		var blackClock = new Clock();
+		var board = BoardTestHelper.Create();
+		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+		board.SetOpeningPosition();
 
-				session.Start();
-				
-				Assert.IsTrue(whiteClock.Ticking);
-				Assert.IsFalse(blackClock.Ticking);
+		session.Start();
+		
+		Assert.IsTrue(whiteClock.Ticking);
+		Assert.IsFalse(blackClock.Ticking);
 
-				var move = board.a2.GetMove(board.a4);
-				session.Move(move);
-				
-				Assert.IsFalse(whiteClock.Ticking);
-				Assert.IsTrue(blackClock.Ticking);
-			}
-		}
+		var move = board.a2.GetMove(board.a4);
+		session.Move(move);
+		
+		Assert.IsFalse(whiteClock.Ticking);
+		Assert.IsTrue(blackClock.Ticking);
 	}
 
 	[Test]
 	public void ShouldStoreMovesWhenNextCalled()
 	{
-		using (var whiteClock = ClockTestHelper.Create())
-		{
-			using (var blackClock = ClockTestHelper.Create())
-			{
-				var board = BoardTestHelper.Create();
-				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
-				board.SetOpeningPosition();
+		var board = BoardTestHelper.Create();
+		var session = new Session(SessionPlayersTestHelper.Create(),
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+		board.SetOpeningPosition();
 
-				session.Start();
-				
-				var move = board.a2.GetMove(board.a4);
-				session.Move(move);
-				Assert.AreEqual(1, session.MoveHistory.Count());
-				Assert.AreEqual(session.MoveHistory.First(), move);
+		session.Start();
+		
+		var move = board.a2.GetMove(board.a4);
+		session.Move(move);
+		Assert.AreEqual(1, session.MoveHistory.Count());
+		Assert.AreEqual(session.MoveHistory.First(), move);
 
-				move = board.b7.GetMove(board.b5);
-				session.Move(move);
-				Assert.AreEqual(2, session.MoveHistory.Count());
-				Assert.AreEqual(session.MoveHistory.First(), move);
-			}
-		}
+		move = board.b7.GetMove(board.b5);
+		session.Move(move);
+		Assert.AreEqual(2, session.MoveHistory.Count());
+		Assert.AreEqual(session.MoveHistory.First(), move);
 	}
 
 	[Test]
 	public void ShouldRemoveMovesWhenBackCalled()
 	{
-		using (var whiteClock = ClockTestHelper.Create())
-		{
-			using (var blackClock = ClockTestHelper.Create())
-			{
-				var board = BoardTestHelper.Create();
-				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
-				board.SetOpeningPosition();
+		var board = BoardTestHelper.Create();
+		var session = new Session(SessionPlayersTestHelper.Create(),
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+		board.SetOpeningPosition();
 
-				session.Start();
-				
-				var move = board.a2.GetMove(board.a4);
-				session.Move(move);
+		session.Start();
+		
+		var move = board.a2.GetMove(board.a4);
+		session.Move(move);
 
-				move = board.b7.GetMove(board.b5);
-				session.Move(move);
+		move = board.b7.GetMove(board.b5);
+		session.Move(move);
 
-				var moveToTakeBackLater = board.a4.GetMove(board.b5);
-				session.Move(moveToTakeBackLater);
+		var moveToTakeBackLater = board.a4.GetMove(board.b5);
+		session.Move(moveToTakeBackLater);
 
-				var lastMove = session.Back();
-				Assert.AreEqual(2, session.MoveHistory.Count());
-				Assert.AreEqual(session.MoveHistory.First(), move);
-				Assert.AreEqual(moveToTakeBackLater, lastMove);
-			}
-		}
+		var lastMove = session.Back();
+		Assert.AreEqual(2, session.MoveHistory.Count());
+		Assert.AreEqual(session.MoveHistory.First(), move);
+		Assert.AreEqual(moveToTakeBackLater, lastMove);
 	}
 
 	[Test]
@@ -140,15 +120,8 @@ public class SessionTests
 		var sessionPlayerRegistrarSpy = new SessionPlayerRegistrarSpy();
 		var session = new Session(SessionPlayersTestHelper.CreateWithoutRegister(), sessionPlayerRegistrarSpy, SessionStateMachineTestHelper.CreateDummy(),
 			BoardTestHelper.Create());
-		
-		using (var whiteClock = ClockTestHelper.Create())
-		{
-			using (var blackClock = ClockTestHelper.Create())
-			{
-				session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(blackClock));
-				session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer(whiteClock));
-			}
-		}
+		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer());
+				session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer());
 
 		Assert.IsTrue(sessionPlayerRegistrarSpy.IsRegisterBlackCalled);
 		Assert.IsTrue(sessionPlayerRegistrarSpy.IsRegisterWhiteCalled);
@@ -171,35 +144,31 @@ public class SessionTests
 	[Test]
 	public void ShouldTransitionToTheCorrectStatesWhenPlayersRegisterAndMove()
 	{
-		using (var whiteClock = ClockTestHelper.Create())
-		{
-			using (var blackClock = ClockTestHelper.Create())
-			{
-				var board = BoardTestHelper.Create();
-				var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-					SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board);
-				board.SetOpeningPosition();
+		var whiteClock = new Clock();
+		var blackClock = new Clock();
+		var board = BoardTestHelper.Create();
+		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board);
+		board.SetOpeningPosition();
 
-				session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(clock: blackClock));
-				session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer(clock: whiteClock));
-				session.SetBlackPlayerReady();
-				session.SetWhitePlayerReady();
-				session.Start();
-				
-				Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
+		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(clock: blackClock));
+		session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer(clock: whiteClock));
+		session.SetBlackPlayerReady();
+		session.SetWhitePlayerReady();
+		session.Start();
+		
+		Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
 
-				var move = board.a2.GetMove(board.a4);
-				session.Move(move);
-				Assert.IsInstanceOf<SessionStateBlackMove>(session.CurrentState);
-				
-				move = board.b7.GetMove(board.b5);
-				session.Move(move);
-				Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
+		var move = board.a2.GetMove(board.a4);
+		session.Move(move);
+		Assert.IsInstanceOf<SessionStateBlackMove>(session.CurrentState);
+		
+		move = board.b7.GetMove(board.b5);
+		session.Move(move);
+		Assert.IsInstanceOf<SessionStateWhiteMove>(session.CurrentState);
 
-				session.Back();
-				Assert.IsInstanceOf<SessionStateBlackMove>(session.CurrentState);
-			}
-		}
+		session.Back();
+		Assert.IsInstanceOf<SessionStateBlackMove>(session.CurrentState);
 	}
 
 	private class SessionPlayerRegistrarSpy : SessionPlayerRegistrar

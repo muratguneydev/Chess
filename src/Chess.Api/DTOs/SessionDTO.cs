@@ -1,3 +1,4 @@
+using Chess.Api.Requests;
 using Chess.Game;
 
 namespace Chess.Api.DTO;
@@ -6,11 +7,20 @@ public record SessionDTO
 	private readonly Session session;
 	private readonly PieceDTOFactory pieceDTOFactory;
 
-	public SessionDTO(Session session, SessionIdDTO id, PieceDTOFactory pieceDTOFactory)
+	// public SessionDTO(Session session, SessionIdDTO id, PieceDTOFactory pieceDTOFactory)
+	// {
+	// 	this.session = session;
+	// 	this.Id = id;
+	// 	this.pieceDTOFactory = pieceDTOFactory;
+	// 	this.LastRequest = new SuccessfulRequestResult(new CreateSessionRequest(new SessionId(id.Value)));
+	// }
+
+	public SessionDTO(Session session, SessionIdDTO id, PieceDTOFactory pieceDTOFactory, RequestResult lastRequestResult)
 	{
 		this.session = session;
 		this.Id = id;
 		this.pieceDTOFactory = pieceDTOFactory;
+		this.LastRequest = lastRequestResult;
 	}
 
 	public BoardDTO Board => new BoardDTO(this.session.Board, this.pieceDTOFactory);
@@ -22,4 +32,5 @@ public record SessionDTO
 	public Color PlayTurnColor => this.session.PlayTurn;
 	public string CurrentState => this.session.CurrentState.GetType().Name;
 	public SessionIdDTO Id { get; }
+	public RequestResult LastRequest { get; }
 }

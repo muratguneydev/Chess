@@ -2,9 +2,9 @@ namespace Chess.Game.Tests.Helpers;
 
 public static class ClockTestHelper
 {
-	public static Clock Create(TimerWrapper? timerWrapper = null)
+	public static Clock Create(TimeSpan? timeSpan = null)
 	{
-		timerWrapper = timerWrapper ?? new TimerWrapper();
-		return new Clock(timerWrapper);
+		timeSpan = timeSpan ?? TimeSpan.Zero;
+		return new Clock(timeSpan.Value);
 	}
 }

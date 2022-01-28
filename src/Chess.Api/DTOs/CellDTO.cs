@@ -8,6 +8,13 @@ public record CellDTO
 		this.Y = y;
 		this.Piece = piece;
 	}
+
+	public CellDTO(int x, int y)
+		: this(x, y, new EmptyPieceDTO())
+	{
+		
+	}
+
 	public int X { get; }
 	public int Y { get; }
 

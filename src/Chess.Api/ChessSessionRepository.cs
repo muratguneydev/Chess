@@ -13,21 +13,26 @@ public class ChessSessionRepository
 	}
 
 	public virtual Task SetAsync(SessionIdDTO sessionIdDTO, Session session)
-    {
+	{
 		var serializableSession = new SessionSerializable(
-			whitePlayer: session.WhitePlayer.IsEmpty ? EmptyPlayerSerializable.PlayerSerializable : new PlayerSerializable(session.WhitePlayer.Color, session.WhitePlayer.Name),
-			blackPlayer: session.BlackPlayer.IsEmpty ? EmptyPlayerSerializable.PlayerSerializable : new PlayerSerializable(session.BlackPlayer.Color, session.BlackPlayer.Name),
+			whitePlayer: session.WhitePlayer.IsEmpty ? EmptyPlayerSerializable.PlayerSerializable : GetSerializablePlayer(session.WhitePlayer),
+			blackPlayer: session.BlackPlayer.IsEmpty ? EmptyPlayerSerializable.PlayerSerializable : GetSerializablePlayer(session.BlackPlayer),
 			board: new BoardSerializable(this.GetCells(session.Board.Cells)),
 			currentState: new SessionStateSerializable(session.CurrentState.GetType().FullName)
 		);
-		return this.contextSession.SetAsync(sessionIdDTO.Value, serializableSession);		
-    }
+		return this.contextSession.SetAsync(sessionIdDTO.Value, serializableSession);
+	}
+
+	private static PlayerSerializable GetSerializablePlayer(Player player)
+	{
+		return new PlayerSerializable(player.Color, player.Name, (int)player.ElapsedTime.TotalSeconds);
+	}
 
 	public virtual async Task<Session> GetAsync(string key)
     {
         var serializedSession = await this.contextSession.GetAsync<SessionSerializable>(key, EmptySessionSerializable.SessionSerializable);
-		var whitePlayer = serializedSession.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(new Clock(new TimerWrapper()), serializedSession.WhitePlayer.Name);
-		var blackPlayer = serializedSession.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(new Clock(new TimerWrapper()), serializedSession.BlackPlayer.Name);
+		var whitePlayer = serializedSession.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.WhitePlayer.Name);
+		var blackPlayer = serializedSession.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.BlackPlayer.Name);
 		var registrar = new SessionPlayerRegistrar(whitePlayer, blackPlayer);
 		return new Session(new SessionPlayers(registrar), registrar, new SessionStateMachine(serializedSession.CurrentState.Convert()),
 			new Board(serializedSession.Board.GetCells()));

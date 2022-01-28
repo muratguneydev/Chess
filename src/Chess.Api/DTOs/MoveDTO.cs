@@ -9,8 +9,6 @@ public record MoveDTO
 
 	public MoveDTO(Move move, PieceDTOFactory pieceDTOFactory)
 	{
-		//this.From = new CellDTO(move.From.X, move.From.Y, pieceDTOFactory.Get(move.From.Piece));
-		//this.To = new CellDTO(move.To.X, move.To.Y, pieceDTOFactory.Get(move.To.Piece));
 		this.move = move;
 		this.pieceDTOFactory = pieceDTOFactory;
 	}

@@ -11,7 +11,6 @@ public record Cell
 		this.Piece = EmptyBoardPiece.BoardPiece;
 	}
 
-	//[JsonConstructor]
 	public Cell(int x, int y, Board board, IBoardPiece piece)
 		: this(new Coordinate(x, y), board)
 	{
@@ -23,9 +22,6 @@ public record Cell
 	{
 		this.Piece = EmptyBoardPiece.BoardPiece;
 	}
-
-	//For serialization. Used to be able to store the session as a whole.
-	//public Board Board => this.board;
 
 	public Coordinate Coordinate { get; }
 	public int X => this.Coordinate.X;
