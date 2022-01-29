@@ -2,12 +2,14 @@ namespace Chess.Api.Requests;
 
 public record RegisterRequest : Request
 {
-	public RegisterRequest(SessionId sessionId)
+	public RegisterRequest(SessionIdRequest sessionId, string whitePlayerName, string blackPlayerName)
 	{
 		this.SessionId = sessionId;
-		
+		this.WhitePlayerName = whitePlayerName;
+		this.BlackPlayerName = blackPlayerName;
 	}
 
-	public override SessionId SessionId { get; }
-	
+	public override SessionIdRequest SessionId { get; }
+	public string WhitePlayerName { get; }
+	public string BlackPlayerName { get; }
 }

@@ -12,7 +12,7 @@ public class ChessSessionRepository
 		this.contextSession = contextSession;
 	}
 
-	public virtual Task SetAsync(SessionIdDTO sessionIdDTO, Session session)
+	public virtual Task SetAsync(SessionId sessionId, Session session)
 	{
 		var serializableSession = new SessionSerializable(
 			whitePlayer: session.WhitePlayer.IsEmpty ? EmptyPlayerSerializable.PlayerSerializable : GetSerializablePlayer(session.WhitePlayer),
@@ -20,17 +20,12 @@ public class ChessSessionRepository
 			board: new BoardSerializable(this.GetCells(session.Board.Cells)),
 			currentState: new SessionStateSerializable(session.CurrentState.GetType().FullName)
 		);
-		return this.contextSession.SetAsync(sessionIdDTO.Value, serializableSession);
+		return this.contextSession.SetAsync(sessionId.Value, serializableSession);
 	}
 
-	private static PlayerSerializable GetSerializablePlayer(Player player)
-	{
-		return new PlayerSerializable(player.Color, player.Name, (int)player.ElapsedTime.TotalSeconds);
-	}
-
-	public virtual async Task<Session> GetAsync(string key)
+	public virtual async Task<Session> GetAsync(SessionId sessionId)
     {
-        var serializedSession = await this.contextSession.GetAsync<SessionSerializable>(key, EmptySessionSerializable.SessionSerializable);
+        var serializedSession = await this.contextSession.GetAsync<SessionSerializable>(sessionId.Value, EmptySessionSerializable.SessionSerializable);
 		var whitePlayer = serializedSession.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.WhitePlayer.Name);
 		var blackPlayer = serializedSession.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.BlackPlayer.Name);
 		var registrar = new SessionPlayerRegistrar(whitePlayer, blackPlayer);
@@ -50,9 +45,8 @@ public class ChessSessionRepository
 		}
 	}
 
-	// private static LinkedList<CellSerializable> GetCellHistory(IBoardPiece piece)
-	// {
-	// 	return new LinkedList<CellSerializable>(piece.CellHistory
-	// 		.Select(cell => new CellSerializable(cell.X, cell.Y, EmptyPieceSerializable.PieceSerializable)));
-	// }
+	private static PlayerSerializable GetSerializablePlayer(Player player)
+	{
+		return new PlayerSerializable(player.Color, player.Name, (int)player.ElapsedTime.TotalSeconds);
+	}
 }

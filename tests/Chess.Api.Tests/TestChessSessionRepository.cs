@@ -14,12 +14,12 @@ public class TestChessSessionRepository : ChessSessionRepository
 		this.sessionToReturn = EmptySession.Session;
 	}
 
-	public override Task<Session> GetAsync(string key)
+	public override Task<Session> GetAsync(SessionId sessionId)
 	{
 		return Task.FromResult(this.sessionToReturn);
 	}
 
-	public override Task SetAsync(SessionIdDTO sessionIdDTO, Session session)
+	public override Task SetAsync(SessionId sessionId, Session session)
 	{
 		this.sessionToReturn = session;
 		return Task.CompletedTask;

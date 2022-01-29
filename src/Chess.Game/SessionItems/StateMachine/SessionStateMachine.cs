@@ -15,7 +15,7 @@ public class SessionStateMachine
 		this.CurrentState = currentState;
 	}
 
-	public SessionState CurrentState { get; private set; } //= new SessionStateRegistration();
+	public SessionState CurrentState { get; private set; }
 
 	public virtual SessionState SetWhiteReady()
 	{

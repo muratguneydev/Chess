@@ -4,8 +4,8 @@ namespace Chess.Api.Controllers;
 
 public class SessionIdDTOFactory
 {
-	public virtual SessionIdDTO Get()
+	public virtual SessionId Get()
 	{
-		return new SessionIdDTO(Guid.NewGuid());
+		return new SessionId(Guid.NewGuid());
 	}
 }

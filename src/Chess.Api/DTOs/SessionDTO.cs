@@ -15,10 +15,10 @@ public record SessionDTO
 	// 	this.LastRequest = new SuccessfulRequestResult(new CreateSessionRequest(new SessionId(id.Value)));
 	// }
 
-	public SessionDTO(Session session, SessionIdDTO id, PieceDTOFactory pieceDTOFactory, RequestResult lastRequestResult)
+	public SessionDTO(Session session, SessionId id, PieceDTOFactory pieceDTOFactory, RequestResult lastRequestResult)
 	{
 		this.session = session;
-		this.Id = id;
+		this.Id = new SessionIdDTO(id);
 		this.pieceDTOFactory = pieceDTOFactory;
 		this.LastRequest = lastRequestResult;
 	}

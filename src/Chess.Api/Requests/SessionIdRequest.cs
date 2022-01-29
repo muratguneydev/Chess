@@ -1,8 +1,8 @@
 namespace Chess.Api.Requests;
 
-public record SessionId
+public record SessionIdRequest
 {
-	public SessionId(string value)
+	public SessionIdRequest(string value)
 	{
 		this.Value = value;
 	}

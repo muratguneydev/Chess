@@ -12,5 +12,10 @@ public record SessionIdDTO
 		this.Value = idString;
 	}
 
+	public SessionIdDTO(SessionId sessionId)
+	{
+		this.Value = sessionId.Value;
+	}
+
 	public string Value { get; }
 }

@@ -5,18 +5,18 @@ namespace Chess.Api.Tests;
 
 public class TestSessionIdDTOFactory : SessionIdDTOFactory
 {
-	private readonly SessionIdDTO sessionIdDTOToReturn;
+	private readonly SessionId sessionIdDTOToReturn;
 
 	public TestSessionIdDTOFactory()
 	{
-		this.sessionIdDTOToReturn = new SessionIdDTO(Guid.NewGuid());
+		this.sessionIdDTOToReturn = new SessionId(Guid.NewGuid());
 	}
 
-	public TestSessionIdDTOFactory(SessionIdDTO sessionIdDTOToReturn)
+	public TestSessionIdDTOFactory(SessionId sessionIdDTOToReturn)
 	{
 		this.sessionIdDTOToReturn = sessionIdDTOToReturn;
 	}
-	public override SessionIdDTO Get()
+	public override SessionId Get()
 	{
 		return this.sessionIdDTOToReturn;
 	}

@@ -2,10 +2,10 @@ namespace Chess.Api.Requests;
 
 public record CreateSessionRequest : Request
 {
-	public CreateSessionRequest(SessionId sessionId)
+	public CreateSessionRequest(SessionIdRequest sessionId)
 	{
 		this.SessionId = sessionId;
 	}
 
-	public override SessionId SessionId { get; }
+	public override SessionIdRequest SessionId { get; }
 }

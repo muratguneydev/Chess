@@ -29,8 +29,8 @@ public class SessionController : ControllerBase
 		var session = GetNewSession();
 		var sessionId = this.sessionIdDTOFactory.Get();
 		var sessionDTO = new SessionDTO(session, sessionId, this.pieceDTOFactory,
-			new SuccessfulRequestResult(new CreateSessionRequest(new SessionId(sessionId.Value))));
-		await this.chessSessionRepository.SetAsync(sessionDTO.Id, session);
+			new SuccessfulRequestResult(new CreateSessionRequest(new Requests.SessionIdRequest(sessionId.Value))));
+		await this.chessSessionRepository.SetAsync(sessionId, session);
 
 		return sessionDTO;
     }
@@ -38,46 +38,54 @@ public class SessionController : ControllerBase
 	[HttpGet]
 	public async Task<SessionDTO> Get(string sessionId)
 	{
-		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
-		return new SessionDTO(currentSession, new SessionIdDTO(sessionId), this.pieceDTOFactory,
-			new SuccessfulRequestResult(new GetSessionRequest(new SessionId(sessionId))));
+		var currentSession = await this.chessSessionRepository.GetAsync(new SessionId(sessionId));
+		return new SessionDTO(currentSession, new SessionId(sessionId), this.pieceDTOFactory,
+			new SuccessfulRequestResult(new GetSessionRequest(new Requests.SessionIdRequest(sessionId))));
 	}
 
-	// [HttpPut]
-	// public async Task<SessionDTO> Register(RegisterRequest registerRequest)
-	// {
-	// 	var currentSession = await this.chessSessionRepository.GetAsync(registerRequest.SessionId.Value);
-	// 	//currentSession.RegisterBlackPlayer(new BlackPlayer())
-		
-	// 	var move = new Move(GetCell(registerRequest.From, currentSession), GetCell(registerRequest.To, currentSession));
-	// 	var moveResult = currentSession.Move(move);
-		
-	// 	var requestResult = moveResult.IsValid ? new SuccessfulRequestResult(registerRequest) : new FailedRequestResult(registerRequest) as RequestResult;
+	[HttpPut("register")]
+	public async Task<SessionDTO> Register(RegisterRequest registerRequest)
+	{
+		var sessionId = new SessionId(registerRequest.SessionId);
+		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
+		currentSession.RegisterWhitePlayer(new WhitePlayer(new Clock(), registerRequest.WhitePlayerName));
+		currentSession.RegisterBlackPlayer(new BlackPlayer(new Clock(), registerRequest.BlackPlayerName));
+		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
+		var requestResult = new SuccessfulRequestResult(registerRequest);
 
-	// 	return new SessionDTO(currentSession, new SessionIdDTO(registerRequest.SessionId.Value), this.pieceDTOFactory, requestResult);
-	// }
+		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
+	}
 
-	[HttpPut]
+	[HttpPut("ready")]
+	public async Task<SessionDTO> Ready(ReadyRequest readyRequest)
+	{
+		var sessionId = new SessionId(readyRequest.SessionId);
+		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
+		currentSession.SetWhitePlayerReady();
+		currentSession.SetBlackPlayerReady();
+		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
+		var requestResult = new SuccessfulRequestResult(readyRequest);
+
+		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
+	}
+
+	[HttpPut("move")]
 	public async Task<SessionDTO> Move(MoveRequest moveRequest)
 	{
-		var currentSession = await this.chessSessionRepository.GetAsync(moveRequest.SessionId.Value);
+		var sessionId = new SessionId(moveRequest.SessionId);
+		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
 		var move = new Move(GetCell(moveRequest.From, currentSession), GetCell(moveRequest.To, currentSession));
 		var moveResult = currentSession.Move(move);
 		
 		var requestResult = moveResult.IsValid ? new SuccessfulRequestResult(moveRequest) : new FailedRequestResult(moveRequest) as RequestResult;
 
-		return new SessionDTO(currentSession, new SessionIdDTO(moveRequest.SessionId.Value), this.pieceDTOFactory, requestResult);
+		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
 	}
 
 	private static Cell GetCell(CellRequest cellRequest, Session currentSession)
 	{
-		return currentSession.Board.GetCell(cellRequest.X, cellRequest.Y);// new Cell(GetCoordinateFromCellRequest(cellRequest), currentSession.Board);
+		return currentSession.Board.GetCell(cellRequest.X, cellRequest.Y);
 	}
-
-	// private static Coordinate GetCoordinateFromCellRequest(CellRequest cellRequest)
-	// {
-	// 	return new Coordinate(cellRequest.X, cellRequest.Y);
-	// }
 
 	private static Session GetNewSession()
 	{

@@ -29,11 +29,11 @@ public class SessionStateMachineTests
 		var sessionStateMachine = new SessionStateMachine();
 		Assert.IsInstanceOf<SessionStateRegistration>(sessionStateMachine.CurrentState);
 		sessionStateMachine.RegisterBlack();
-		Assert.IsInstanceOf<SessionStateRegistration>(sessionStateMachine.CurrentState);
+		Assert.IsInstanceOf<SessionStateBlackRegistered>(sessionStateMachine.CurrentState);
 		sessionStateMachine.RegisterWhite();
 		Assert.IsInstanceOf<SessionStateGettingReady>(sessionStateMachine.CurrentState);
 		sessionStateMachine.SetBlackReady();
-		Assert.IsInstanceOf<SessionStateGettingReady>(sessionStateMachine.CurrentState);
+		Assert.IsInstanceOf<SessionStateBlackReady>(sessionStateMachine.CurrentState);
 		sessionStateMachine.SetWhiteReady();
 		Assert.IsInstanceOf<SessionStateWhiteMove>(sessionStateMachine.CurrentState);
 		sessionStateMachine.Move();

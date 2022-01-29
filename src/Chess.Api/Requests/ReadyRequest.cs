@@ -1,8 +1,8 @@
 namespace Chess.Api.Requests;
 
-public record GetSessionRequest : Request
+public record ReadyRequest : Request
 {
-	public GetSessionRequest(SessionIdRequest sessionId)
+	public ReadyRequest(SessionIdRequest sessionId)
 	{
 		this.SessionId = sessionId;
 	}
