@@ -2,9 +2,11 @@ namespace Chess.Game.Tests.Helpers;
 
 public static class ClockTestHelper
 {
-	public static Clock Create(TimeSpan? timeSpan = null)
+	public static Clock Create(TimeSpan? previousElapsedTime = null, DateTime? startDateTime = null, bool ticking = false, DateTimeProvider? dateTimeProvider = null)
 	{
-		timeSpan = timeSpan ?? TimeSpan.Zero;
-		return new Clock(timeSpan.Value);
+		dateTimeProvider = dateTimeProvider ?? new DateTimeProvider();
+		previousElapsedTime = previousElapsedTime ?? TimeSpan.Zero;
+		startDateTime = startDateTime ?? dateTimeProvider.UtcNow;
+		return new Clock(previousElapsedTime.Value, startDateTime.Value, ticking, dateTimeProvider);
 	}
 }

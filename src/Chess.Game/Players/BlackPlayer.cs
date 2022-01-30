@@ -15,7 +15,7 @@ public class EmptyBlackPlayer : BlackPlayer
 	private static EmptyBlackPlayer emptyBlackPlayer = new EmptyBlackPlayer();
 
 	private EmptyBlackPlayer()
-		: base(new EmptyClock(), EmptyPlayer.Player.Name)
+		: base(EmptyClock.Clock, EmptyPlayer.Player.Name)
 	{
 	}
 

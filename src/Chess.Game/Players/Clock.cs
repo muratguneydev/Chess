@@ -1,70 +1,38 @@
-using System.Diagnostics;
-
 namespace Chess.Game;
 
 public class Clock : IClock
 {
-	private readonly Stopwatch stopwatch = new Stopwatch();
-	private readonly TimeSpan currentTimeSpan;
+	private readonly DateTimeProvider dateTimeProvider;
 
-	public Clock()
+	public Clock(DateTimeProvider dateTimeProvider)
 	{
-		this.currentTimeSpan = TimeSpan.Zero;
+		this.PreviousElapsedTime = TimeSpan.Zero;
+		this.dateTimeProvider = dateTimeProvider;
+		this.StartDateTimeUtc = dateTimeProvider.UtcNow;
 	}
 
-	public Clock(TimeSpan currentTimeSpan)
+	public Clock(TimeSpan previousElapsedTime, DateTime startDateTimeUtc, bool ticking, DateTimeProvider dateTimeProvider)
 	{
-		this.currentTimeSpan = currentTimeSpan;
+		this.PreviousElapsedTime = previousElapsedTime;
+		this.StartDateTimeUtc = startDateTimeUtc;
+		this.Ticking = ticking;
+		this.dateTimeProvider = dateTimeProvider;
 	}
 
 	public void Start()
 	{
-		this.stopwatch.Start();
 		this.Ticking = true;
+		this.StartDateTimeUtc = this.dateTimeProvider.UtcNow;
 	}
 
 	public void Stop()
 	{
-		this.stopwatch.Stop();
+		this.PreviousElapsedTime = this.PreviousElapsedTime + this.dateTimeProvider.ElapsedSince(this.StartDateTimeUtc);
 		this.Ticking = false;
 	}
 
 	public bool Ticking { get; private set; }
-
-	public TimeSpan ElapsedTime => this.currentTimeSpan + this.stopwatch.Elapsed;
+	public TimeSpan PreviousElapsedTime { get; private set; }
+	public DateTime StartDateTimeUtc { get; private set; }
+	public TimeSpan CurrentElapsedTime => this.PreviousElapsedTime + (!this.Ticking ? TimeSpan.Zero : this.dateTimeProvider.ElapsedSince(this.StartDateTimeUtc));
 }
-
-
-// public class Clock : IClock
-// {
-// 	private readonly ITimer timer;
-// 	private readonly Stopwatch stopwatch = new Stopwatch();
-
-// 	public Clock(ITimer timer)
-// 	{
-// 		this.timer = timer;
-// 	}
-
-// 	public void Start()
-// 	{
-// 		this.timer.Start();
-// 		this.stopwatch.Start();
-// 		this.Ticking = true;
-// 	}
-
-// 	public void Stop()
-// 	{
-// 		this.timer.Stop();
-// 		this.stopwatch.Stop();
-// 		this.Ticking = false;
-// 	}
-
-// 	public void Dispose()
-// 	{
-// 		this.timer.Dispose();
-// 	}
-
-// 	public bool Ticking { get; private set; }
-
-// 	public TimeSpan ElapsedTime => this.stopwatch.Elapsed;
-// }

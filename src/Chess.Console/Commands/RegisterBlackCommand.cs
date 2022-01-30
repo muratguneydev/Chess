@@ -15,7 +15,7 @@ public class RegisterBlackCommand : ChessCommand
 
 	public override View Execute(Session session)
 	{
-		var blackPlayer = new BlackPlayer(new Clock(), this.name);
+		var blackPlayer = new BlackPlayer(new Clock(new DateTimeProvider()), this.name);
 		session.RegisterBlackPlayer(blackPlayer);
 		return new InformationView(new InformationViewModel($"Black player {this.name} registered."), this.consoleWriterFactory);
 	}

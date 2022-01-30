@@ -13,10 +13,10 @@ public class RegisterAnonymousCommand : ChessCommand
 
 	public override View Execute(Session session)
 	{
-		var blackPlayer = new BlackPlayer(new Clock(), "Player Black");
+		var blackPlayer = new BlackPlayer(new Clock(new DateTimeProvider()), "Player Black");
 		session.RegisterBlackPlayer(blackPlayer);
 
-		var whitePlayer = new WhitePlayer(new Clock(), "Player White");
+		var whitePlayer = new WhitePlayer(new Clock(new DateTimeProvider()), "Player White");
 		session.RegisterWhitePlayer(whitePlayer);
 
 		new ReadyBlackCommand(consoleWriterFactory).Execute(session);

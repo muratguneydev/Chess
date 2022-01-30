@@ -2,28 +2,27 @@ namespace Chess.Game;
 
 public abstract class Player
 {
-	private readonly IClock clock;
-
 	public Player(Color color, IClock clock, string name)
 	{
 		this.Color = color;
-		this.clock = clock;
+		this.Clock = clock;
 		this.Name = name;
 	}
 
 	public Color Color { get; }
+	public IClock Clock { get; }
 	public string Name { get; }
-	public TimeSpan ElapsedTime => this.clock.ElapsedTime;
+	public TimeSpan ElapsedTime => this.Clock.CurrentElapsedTime;
 	public virtual bool IsReady { get; private set; }
 
 	public void ResumePlaying()
 	{
-		this.clock.Start();
+		this.Clock.Start();
 	}
 
 	public void Wait()
 	{
-		this.clock.Stop();
+		this.Clock.Stop();
 	}
 
 	public void SetReady()

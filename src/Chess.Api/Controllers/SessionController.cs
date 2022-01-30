@@ -48,8 +48,8 @@ public class SessionController : ControllerBase
 	{
 		var sessionId = new SessionId(registerRequest.SessionId);
 		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
-		currentSession.RegisterWhitePlayer(new WhitePlayer(new Clock(), registerRequest.WhitePlayerName));
-		currentSession.RegisterBlackPlayer(new BlackPlayer(new Clock(), registerRequest.BlackPlayerName));
+		currentSession.RegisterWhitePlayer(new WhitePlayer(new Clock(new DateTimeProvider()), registerRequest.WhitePlayerName));
+		currentSession.RegisterBlackPlayer(new BlackPlayer(new Clock(new DateTimeProvider()), registerRequest.BlackPlayerName));
 		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
 		var requestResult = new SuccessfulRequestResult(registerRequest);
 

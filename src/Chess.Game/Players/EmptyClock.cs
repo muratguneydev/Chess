@@ -1,23 +1,39 @@
 namespace Chess.Game;
 
-public class EmptyClock : IClock
+public class EmptyClock : Clock
 {
-	public int SecondsUsed => throw new NotImplementedException();
+	private static EmptyClock emptyClock = new EmptyClock();
 
-	public TimeSpan ElapsedTime => TimeSpan.MinValue;
-
-	public void Start()
+	private EmptyClock()
+		: base(new DateTimeProvider())
 	{
-		
 	}
 
-	public void Stop()
-	{
-		
-	}
-
-	public void Dispose()
-	{
-	
-	}
+	public static EmptyClock Clock => emptyClock;
 }
+
+// public class EmptyClock : IClock
+// {
+// 	public int SecondsUsed => throw new NotImplementedException();
+
+// 	public TimeSpan CurrentElapsedTime => TimeSpan.Zero;
+
+// 	public TimeSpan PreviousElapsedTime => throw new NotImplementedException();
+
+// 	public DateTime StartDateTimeUtc => throw new NotImplementedException();
+
+// 	public void Start()
+// 	{
+		
+// 	}
+
+// 	public void Stop()
+// 	{
+		
+// 	}
+
+// 	public void Dispose()
+// 	{
+	
+// 	}
+// }

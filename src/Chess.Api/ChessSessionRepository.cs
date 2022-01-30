@@ -1,4 +1,3 @@
-using Chess.Api.DTO;
 using Chess.Game;
 
 namespace Chess.Api.Controllers;
@@ -26,8 +25,8 @@ public class ChessSessionRepository
 	public virtual async Task<Session> GetAsync(SessionId sessionId)
     {
         var serializedSession = await this.contextSession.GetAsync<SessionSerializable>(sessionId.Value, EmptySessionSerializable.SessionSerializable);
-		var whitePlayer = serializedSession.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.WhitePlayer.Name);
-		var blackPlayer = serializedSession.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(new Clock(TimeSpan.FromSeconds(serializedSession.WhitePlayer.ElapsedTimeInSeconds)), serializedSession.BlackPlayer.Name);
+		var whitePlayer = serializedSession.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(serializedSession.WhitePlayer.Clock.Convert(), serializedSession.WhitePlayer.Name);
+		var blackPlayer = serializedSession.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(serializedSession.BlackPlayer.Clock.Convert(), serializedSession.BlackPlayer.Name);
 		var registrar = new SessionPlayerRegistrar(whitePlayer, blackPlayer);
 		return new Session(new SessionPlayers(registrar), registrar, new SessionStateMachine(serializedSession.CurrentState.Convert()),
 			new Board(serializedSession.Board.GetCells()));
@@ -47,6 +46,6 @@ public class ChessSessionRepository
 
 	private static PlayerSerializable GetSerializablePlayer(Player player)
 	{
-		return new PlayerSerializable(player.Color, player.Name, (int)player.ElapsedTime.TotalSeconds);
+		return new PlayerSerializable(player.Color, player.Name, ClockSerializable.Create(player.Clock));
 	}
 }

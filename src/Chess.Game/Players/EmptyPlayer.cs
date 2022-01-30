@@ -5,7 +5,7 @@ public class EmptyPlayer : Player
 	private static EmptyPlayer emptyPlayer = new EmptyPlayer();
 
 	private EmptyPlayer()
-		: base(Color.None, new EmptyClock(), "-")
+		: base(Color.None, EmptyClock.Clock, "-")
 	{
 	}
 

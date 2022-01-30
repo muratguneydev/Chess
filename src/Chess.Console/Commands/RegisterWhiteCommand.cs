@@ -15,7 +15,7 @@ public class RegisterWhiteCommand : ChessCommand
 
 	public override View Execute(Session session)
 	{
-		var whitePlayer = new WhitePlayer(new Clock(), this.name);
+		var whitePlayer = new WhitePlayer(new Clock(new DateTimeProvider()), this.name);
 		session.RegisterWhitePlayer(whitePlayer);
 		return new InformationView(new InformationViewModel($"White player {this.name} registered."), this.consoleWriterFactory);
 	}

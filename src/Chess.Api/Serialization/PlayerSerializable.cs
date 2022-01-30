@@ -6,16 +6,16 @@ namespace Chess.Api.Controllers;
 public record PlayerSerializable
 {
 	[JsonConstructor]
-	public PlayerSerializable(Color color, string name, int elapsedTimeInSeconds)
+	public PlayerSerializable(Color color, string name, ClockSerializable clock)
 	{
 		this.Color = color;
 		this.Name = name;
-		this.ElapsedTimeInSeconds = elapsedTimeInSeconds;
+		this.Clock = clock;
 	}
 
 	public Color Color { get; }
 	public string Name { get; }
-	public int ElapsedTimeInSeconds { get; }
+	public ClockSerializable Clock { get; }
 
 	public virtual bool IsEmpty => this.Color == EmptyPlayerSerializable.PlayerSerializable.Color && this.Name == EmptyPlayerSerializable.PlayerSerializable.Name;
 }

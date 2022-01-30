@@ -18,8 +18,8 @@ public class SessionTests
 	[Test]
 	public void ShouldStartWhitePlayerClockWhenGameStarts()
 	{
-		var whiteClock = new Clock();
-		var blackClock = new Clock();
+		var whiteClock = new Clock(new TestDateTimeProvider());
+		var blackClock = new Clock(new TestDateTimeProvider());
 		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
 			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
 			BoardTestHelper.Create());
@@ -31,8 +31,8 @@ public class SessionTests
 	[Test]
 	public void ShouldStartCorrectPlayerClockWhenItIsTheirTurn()
 	{
-		var whiteClock = new Clock();
-		var blackClock = new Clock();
+		var whiteClock = new Clock(new TestDateTimeProvider());
+		var blackClock = new Clock(new TestDateTimeProvider());
 		var board = BoardTestHelper.Create();
 		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
 			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
@@ -144,15 +144,13 @@ public class SessionTests
 	[Test]
 	public void ShouldTransitionToTheCorrectStatesWhenPlayersRegisterAndMove()
 	{
-		var whiteClock = new Clock();
-		var blackClock = new Clock();
 		var board = BoardTestHelper.Create();
-		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
+		var session = new Session(SessionPlayersTestHelper.Create(),
 			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board);
 		board.SetOpeningPosition();
 
-		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer(clock: blackClock));
-		session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer(clock: whiteClock));
+		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer());
+		session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer());
 		session.SetBlackPlayerReady();
 		session.SetWhitePlayerReady();
 		session.Start();
