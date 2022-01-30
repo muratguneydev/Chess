@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using Chess.Api.Controllers;
 using Chess.Api.DTO;
 using Chess.Api.Requests;
@@ -17,14 +18,11 @@ public class SessionControllerTests
 		var controller = GetSessionController(sessionRepositoryStub, GetSessionDTOFactoryStub());
 		var resultSessionDTO = await controller.Post();
 
-		var resultDTOString = JsonSerializer.Serialize(resultSessionDTO);
-		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionPost.json");
+		var resultDTOString = Serialize(resultSessionDTO);
+		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionCreateResult.json");
 
 		Assert.AreEqual(expectedDTOString, resultDTOString);
 		//var createdSession = await sessionRepositoryStub.GetAsync(resultSessionDTO.Id.Value);
-
-		// var moveRequest = new MoveRequest(new SessionId("5b0fcca9-d48c-47d7-ad4c-dc4ad232b204"), new CellRequest(1,1), new CellRequest(2,2));
-		// var a = JsonSerializer.Serialize(moveRequest);
 	}
 
 	[Test]
@@ -35,8 +33,8 @@ public class SessionControllerTests
 		var postResultSessionDTO = await controller.Post();
 		var getResultSessionDTO = await controller.Get(postResultSessionDTO.Id.Value);
 
-		var getResultDTOString = JsonSerializer.Serialize(getResultSessionDTO);
-		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionGet.json");
+		var getResultDTOString = Serialize(getResultSessionDTO);
+		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionGetResult.json");
 
 		Assert.AreEqual(expectedDTOString, getResultDTOString);
 	}
@@ -49,8 +47,8 @@ public class SessionControllerTests
 		var postResultSessionDTO = await controller.Post();
 		var registerResultSessionDTO = await controller.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
 
-		var registerResultDTOString = JsonSerializer.Serialize(registerResultSessionDTO);
-		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionRegister.json");
+		var registerResultDTOString = Serialize(registerResultSessionDTO);
+		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionRegisterResult.json");
 
 		Assert.AreEqual(expectedDTOString, registerResultDTOString);
 	}
@@ -64,8 +62,8 @@ public class SessionControllerTests
 		await controller.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
 		var setReadySessionDTO = await controller.Ready(new ReadyRequest(new SessionIdRequest(postResultSessionDTO.Id.Value)));
 
-		var setReadyResultDTOString = JsonSerializer.Serialize(setReadySessionDTO);
-		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionReady.json");
+		var setReadyResultDTOString = Serialize(setReadySessionDTO);
+		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionReadyResult.json");
 
 		Assert.AreEqual(expectedDTOString, setReadyResultDTOString);
 	}
@@ -81,10 +79,10 @@ public class SessionControllerTests
 		var moveSessionDTO = await controller.Move(new MoveRequest(new SessionIdRequest(postResultSessionDTO.Id.Value),
 			new CellRequest(1, 1), new CellRequest(1, 3)));
 
-		var setReadyResultDTOString = JsonSerializer.Serialize(moveSessionDTO);
-		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionMove.json");
+		var moveResultDTOString = Serialize(moveSessionDTO);
+		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionMoveResult.json");
 
-		Assert.AreEqual(expectedDTOString, setReadyResultDTOString);
+		Assert.AreEqual(expectedDTOString, moveResultDTOString);
 	}
 
 	private static SessionController GetSessionController(TestChessSessionRepository sessionRepositoryStub,
@@ -101,5 +99,15 @@ public class SessionControllerTests
 	private static TestSessionIdDTOFactory GetSessionDTOFactoryStub()
 	{
 		return new TestSessionIdDTOFactory(new SessionId(Guid.Parse("5b0fcca9-d48c-47d7-ad4c-dc4ad232b204")));
+	}
+
+	private static string Serialize<T>(T dto)
+	{
+		JsonSerializerOptions options = new()
+            {
+                Converters = { new JsonStringEnumConverter() }
+            };
+
+		return JsonSerializer.Serialize(dto, options);
 	}
 }
