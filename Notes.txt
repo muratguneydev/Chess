@@ -28,6 +28,13 @@ Debian10:
 
 To get tests available on Test Explorer restart the container.
 
+Installing npm and node.js:
+===========================
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+apt-get install -y nodejs
+
+
 Code coverage:
 ==============
 https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
