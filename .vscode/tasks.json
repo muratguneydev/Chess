@@ -50,6 +50,22 @@
 			}
 		},
 		{
+			"label": "build Api Request library",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"${workspaceFolder}/src/Chess.Api.Request/Chess.Api.Request.csproj",
+				"/property:GenerateFullPaths=true",
+				"/consoleloggerparameters:NoSummary"
+			],
+			"problemMatcher": "$msCompile",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
 			"label": "build chess tests",
 			"command": "dotnet",
 			"type": "process",

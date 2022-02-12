@@ -1,5 +1,4 @@
-using Chess.Api.DTO;
-using Chess.Api.Requests;
+using Chess.Api.Request;
 
 namespace Chess.Api;
 

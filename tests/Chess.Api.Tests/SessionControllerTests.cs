@@ -1,8 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using Chess.Api.Controllers;
-using Chess.Api.DTO;
-using Chess.Api.Requests;
+using Chess.Api.Request;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using NUnit.Framework;
@@ -92,7 +91,10 @@ public class SessionControllerTests
 		var emptyLoggerFactory = new NullLoggerFactory();
 		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
 
-		var controller = new SessionController(new PieceDTOFactory(), sessionRepositoryStub, sessionIdDTOFactory, emptyLogger);
+		var pieceDTOFactory = new PieceDTOFactory();
+		var controller = new SessionController(new SessionDTOFactory(new BoardDTOFactory(pieceDTOFactory),
+				new PlayerDTOFactory(), new PieceDTOFactory(), new MoveDTOFactory(pieceDTOFactory)),
+			pieceDTOFactory, sessionRepositoryStub, sessionIdDTOFactory, emptyLogger);
 		return controller;
 	}
 

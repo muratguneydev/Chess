@@ -14,6 +14,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="../Chess.Game/Chess.Game.csproj" />
+		<ProjectReference Include="../Chess.Api.Request/Chess.Api.Request.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -10,12 +10,22 @@
 			"request": "launch",
 			"preLaunchTask": "build Api",
 			"program": "${workspaceFolder}/src/Chess.Api/bin/Debug/net6.0/Chess.Api.dll",
-			"args": [],
+			"args": ["--urls", "http://localhost:6123;https://localhost:6124"],
 			"cwd": "${workspaceFolder}",
 			"stopAtEntry": false,
 			"console": "internalConsole"
 		},
 		{
+			"name": "Angular client",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build Api",
+			"program": "${workspaceFolder}/src/Chess.Angular/bin/Debug/net6.0/Chess.Angular.dll",
+			"args": ["--urls", "http://localhost:5123;https://localhost:5124"],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		},{
 			"name": ".NET Core Attach",
 			"type": "coreclr",
 			"request": "attach"
@@ -31,6 +41,5 @@
 			"stopAtEntry": false,
 			"console": "integratedTerminal"
 		}
-
 	]
 }

@@ -1,11 +1,5 @@
 using System.Text.Json.Serialization;
 using Chess.Api.Controllers;
-using Chess.Api.DTO;
-
-// class Program
-// {
-
-// }
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,5 +1,4 @@
 using Chess.Api.Controllers;
-using Chess.Api.DTO;
 
 namespace Chess.Api.Tests;
 

@@ -1,5 +1,4 @@
-using Chess.Api.DTO;
-using Chess.Api.Requests;
+using Chess.Api.Request;
 using Chess.Game;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +8,16 @@ namespace Chess.Api.Controllers;
 [Route("[controller]")]
 public class SessionController : ControllerBase
 {
+	private readonly SessionDTOFactory sessionDTOFactory;
 	private readonly PieceDTOFactory pieceDTOFactory;
 	private readonly ChessSessionRepository chessSessionRepository;
 	private readonly SessionIdDTOFactory sessionIdDTOFactory;
 	private readonly ILogger<SessionController> logger;
 
-    public SessionController(PieceDTOFactory pieceDTOFactory, ChessSessionRepository chessSessionRepository,
-		SessionIdDTOFactory sessionIdDTOFactory, ILogger<SessionController> logger)
+    public SessionController(SessionDTOFactory sessionDTOFactory, PieceDTOFactory pieceDTOFactory,
+		ChessSessionRepository chessSessionRepository, SessionIdDTOFactory sessionIdDTOFactory, ILogger<SessionController> logger)
     {
+		this.sessionDTOFactory = sessionDTOFactory;
 		this.pieceDTOFactory = pieceDTOFactory;
 		this.chessSessionRepository = chessSessionRepository;
 		this.sessionIdDTOFactory = sessionIdDTOFactory;
@@ -28,8 +29,8 @@ public class SessionController : ControllerBase
     {
 		var session = GetNewSession();
 		var sessionId = this.sessionIdDTOFactory.Get();
-		var sessionDTO = new SessionDTO(session, sessionId, this.pieceDTOFactory,
-			new SuccessfulRequestResult(new CreateSessionRequest(new Requests.SessionIdRequest(sessionId.Value))));
+		var lastRequestResult = new SuccessfulRequestResult(new CreateSessionRequest(new SessionIdRequest(sessionId.Value)));
+		var sessionDTO = this.sessionDTOFactory.Get(session, sessionId, lastRequestResult);
 		await this.chessSessionRepository.SetAsync(sessionId, session);
 
 		return sessionDTO;
@@ -39,8 +40,8 @@ public class SessionController : ControllerBase
 	public async Task<SessionDTO> Get(string sessionId)
 	{
 		var currentSession = await this.chessSessionRepository.GetAsync(new SessionId(sessionId));
-		return new SessionDTO(currentSession, new SessionId(sessionId), this.pieceDTOFactory,
-			new SuccessfulRequestResult(new GetSessionRequest(new Requests.SessionIdRequest(sessionId))));
+		return this.sessionDTOFactory.Get(currentSession, new SessionId(sessionId),
+			new SuccessfulRequestResult(new GetSessionRequest(new SessionIdRequest(sessionId))));
 	}
 
 	[HttpPut("register")]
@@ -53,7 +54,7 @@ public class SessionController : ControllerBase
 		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
 		var requestResult = new SuccessfulRequestResult(registerRequest);
 
-		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
+		return this.sessionDTOFactory.Get(currentSession, sessionId, requestResult);
 	}
 
 	[HttpPut("ready")]
@@ -66,7 +67,7 @@ public class SessionController : ControllerBase
 		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
 		var requestResult = new SuccessfulRequestResult(readyRequest);
 
-		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
+		return this.sessionDTOFactory.Get(currentSession, sessionId, requestResult);
 	}
 
 	[HttpPut("move")]
@@ -79,7 +80,7 @@ public class SessionController : ControllerBase
 		
 		var requestResult = moveResult.IsValid ? new SuccessfulRequestResult(moveRequest) : new FailedRequestResult(moveRequest) as RequestResult;
 
-		return new SessionDTO(currentSession, sessionId, this.pieceDTOFactory, requestResult);
+		return this.sessionDTOFactory.Get(currentSession, sessionId, requestResult);
 	}
 
 	private static Cell GetCell(CellRequest cellRequest, Session currentSession)
