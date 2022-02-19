@@ -1,4 +1,4 @@
-namespace Chess.Api.Controllers;
+namespace Chess.Api;
 
 public class SessionIdDTOFactory
 {

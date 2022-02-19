@@ -5,15 +5,15 @@ import { PlayerDTO } from "./PlayerDTO";
 export class EmptyPlayerDTO implements PlayerDTO {
 
 	constructor() {
-		this.Color = Color.None;
-		this.Name = "-";
-		this.IsReady = false;
-		this.ElapsedSeconds = 0;
+		this.color = Color.None;
+		this.name = "-";
+		this.isReady = false;
+		this.elapsedSeconds = 0;
 	}
 
-	Color: Color;
-	Name: string;
-	IsReady: boolean;
-	ElapsedSeconds: number;
+	color: Color;
+	name: string;
+	isReady: boolean;
+	elapsedSeconds: number;
 
 }

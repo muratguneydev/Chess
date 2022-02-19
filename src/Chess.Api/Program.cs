@@ -1,7 +1,14 @@
 using System.Text.Json.Serialization;
+using Chess.Api;
 using Chess.Api.Controllers;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    .WriteTo.Seq("http://localhost:5341"));
+
 
 // Add services to the container.
 
@@ -20,20 +27,28 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 //session
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(300);
-    //options.Cookie.HttpOnly = true;
-    //options.Cookie.IsEssential = true;
-});
+// builder.Services.AddSession(options =>
+// {
+//     options.IdleTimeout = TimeSpan.FromSeconds(300);
+//     //options.Cookie.HttpOnly = true;
+// 	options.Cookie.Name = ".Chess.Session";
+//     options.Cookie.IsEssential = true;
+// });
 //
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddSingleton<ContextSession, ContextSession>();
-builder.Services.AddSingleton<ChessSessionRepository, ChessSessionRepository>();
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+//builder.Services.AddScoped<ContextSession, ContextSession>();
+builder.Services.AddScoped<ChessSessionRepository, ChessSessionRepository>();
+//DTO factories
+builder.Services.AddSingleton<SessionDTOFactory, SessionDTOFactory>();
 builder.Services.AddSingleton<PieceDTOFactory, PieceDTOFactory>();
 builder.Services.AddSingleton<SessionIdDTOFactory, SessionIdDTOFactory>();
+builder.Services.AddSingleton<BoardDTOFactory, BoardDTOFactory>();
+builder.Services.AddSingleton<MoveDTOFactory, MoveDTOFactory>();
+builder.Services.AddSingleton<PlayerDTOFactory, PlayerDTOFactory>();
 
 var app = builder.Build();
 
@@ -46,7 +61,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-app.UseSession();
+//app.UseSession();
 
 app.UseAuthorization();
 

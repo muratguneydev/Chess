@@ -3,8 +3,8 @@ import { SessionIdRequest } from "./SessionIdRequest";
 
 export class EmptySessionIdRequest implements SessionIdRequest {
 	constructor() {
-		this.Value = "-";
+		this.value = "-";
 	}
 
-	Value: string;
+	value: string;
 }

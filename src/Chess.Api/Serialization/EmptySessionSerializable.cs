@@ -6,7 +6,7 @@ public record EmptySessionSerializable : SessionSerializable
 
 	private EmptySessionSerializable()
 		: base(EmptyPlayerSerializable.PlayerSerializable, EmptyPlayerSerializable.PlayerSerializable, EmptyBoardSerializable.BoardSerializable,
-			new SessionStateSerializable("SessionStateRegistration"))
+			new SessionStateSerializable("SessionStateRegistration"), Enumerable.Empty<MoveSerializable>())
 	{
 	}
 

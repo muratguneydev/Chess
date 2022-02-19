@@ -2,10 +2,11 @@ import { SessionIdRequest } from "./SessionIdRequest";
 import { Request } from "./Request";
 
 
-export interface RegisterRequest extends Request {
-	new(sessionId: SessionIdRequest, whitePlayerName: string, blackPlayerName: string): RegisterRequest;
+export class RegisterRequest implements Request {
+	//new(sessionId: SessionIdRequest, whitePlayerName: string, blackPlayerName: string): RegisterRequest;
+	constructor(public sessionId: SessionIdRequest, public whitePlayerName: string, public 	blackPlayerName: string) {
+		
+	}
 
-	SessionId: SessionIdRequest;
-	WhitePlayerName: string;
-	BlackPlayerName: string;
+	requestType: string = "RegisterRequest";
 }

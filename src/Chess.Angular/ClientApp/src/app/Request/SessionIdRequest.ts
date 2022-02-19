@@ -1,5 +1,11 @@
 
-export interface SessionIdRequest {
+export class SessionIdRequest {
 	//new(value: string): SessionIdRequest;
-	Value: string;
+	/**
+	 *
+	 */
+	constructor(public value: string) {
+		
+	}
+	//value: string;
 }

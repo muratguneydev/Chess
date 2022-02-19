@@ -22,6 +22,8 @@ public class SessionControllerTests
 
 		Assert.AreEqual(expectedDTOString, resultDTOString);
 		//var createdSession = await sessionRepositoryStub.GetAsync(resultSessionDTO.Id.Value);
+
+		ShouldSaveSession(sessionRepositoryStub, 1);
 	}
 
 	[Test]
@@ -42,14 +44,17 @@ public class SessionControllerTests
 	public async Task ShouldRegisterCorrectly()
 	{
 		var sessionRepositoryStub = new TestChessSessionRepository();
-		var controller = GetSessionController(sessionRepositoryStub, GetSessionDTOFactoryStub());
-		var postResultSessionDTO = await controller.Post();
-		var registerResultSessionDTO = await controller.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
+		var sessionController = GetSessionController(sessionRepositoryStub, GetSessionDTOFactoryStub());
+		var postResultSessionDTO = await sessionController.Post();
+
+		var registerController = GetRegisterController(sessionRepositoryStub);
+		var registerResultSessionDTO = await registerController.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
 
 		var registerResultDTOString = Serialize(registerResultSessionDTO);
 		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionRegisterResult.json");
 
 		Assert.AreEqual(expectedDTOString, registerResultDTOString);
+		ShouldSaveSession(sessionRepositoryStub, 2);
 	}
 
 	[Test]
@@ -58,13 +63,18 @@ public class SessionControllerTests
 		var sessionRepositoryStub = new TestChessSessionRepository();
 		var controller = GetSessionController(sessionRepositoryStub, GetSessionDTOFactoryStub());
 		var postResultSessionDTO = await controller.Post();
-		await controller.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
-		var setReadySessionDTO = await controller.Ready(new ReadyRequest(new SessionIdRequest(postResultSessionDTO.Id.Value)));
+		
+		var registerController = GetRegisterController(sessionRepositoryStub);
+		await registerController.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
+		
+		var readyController = GetReadyController(sessionRepositoryStub);
+		var setReadySessionDTO = await readyController.Ready(new ReadyRequest(new SessionIdRequest(postResultSessionDTO.Id.Value)));
 
 		var setReadyResultDTOString = Serialize(setReadySessionDTO);
 		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionReadyResult.json");
 
 		Assert.AreEqual(expectedDTOString, setReadyResultDTOString);
+		ShouldSaveSession(sessionRepositoryStub, 3);
 	}
 
 	[Test]
@@ -73,15 +83,23 @@ public class SessionControllerTests
 		var sessionRepositoryStub = new TestChessSessionRepository();
 		var controller = GetSessionController(sessionRepositoryStub, GetSessionDTOFactoryStub());
 		var postResultSessionDTO = await controller.Post();
-		await controller.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
-		await controller.Ready(new ReadyRequest(new SessionIdRequest(postResultSessionDTO.Id.Value)));
-		var moveSessionDTO = await controller.Move(new MoveRequest(new SessionIdRequest(postResultSessionDTO.Id.Value),
+		
+		
+		var registerController = GetRegisterController(sessionRepositoryStub);
+		await registerController.Register(new RegisterRequest(new SessionIdRequest(postResultSessionDTO.Id.Value), "WhitePlayer123", "BlackPlayer123"));
+		
+		var readyController = GetReadyController(sessionRepositoryStub);
+		await readyController.Ready(new ReadyRequest(new SessionIdRequest(postResultSessionDTO.Id.Value)));
+		
+		var moveController = GetMoveController(sessionRepositoryStub);
+		var moveSessionDTO = await moveController.Move(new MoveRequest(new SessionIdRequest(postResultSessionDTO.Id.Value),
 			new CellRequest(1, 1), new CellRequest(1, 3)));
 
 		var moveResultDTOString = Serialize(moveSessionDTO);
 		var expectedDTOString = await File.ReadAllTextAsync("../../../ResultJson/SessionMoveResult.json");
 
 		Assert.AreEqual(expectedDTOString, moveResultDTOString);
+		ShouldSaveSession(sessionRepositoryStub, 4);
 	}
 
 	private static SessionController GetSessionController(TestChessSessionRepository sessionRepositoryStub,
@@ -98,6 +116,42 @@ public class SessionControllerTests
 		return controller;
 	}
 
+	private static RegisterController GetRegisterController(TestChessSessionRepository sessionRepositoryStub)
+	{
+		var emptyLoggerFactory = new NullLoggerFactory();
+		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
+
+		var pieceDTOFactory = new PieceDTOFactory();
+		var controller = new RegisterController(new SessionDTOFactory(new BoardDTOFactory(pieceDTOFactory),
+				new PlayerDTOFactory(), new PieceDTOFactory(), new MoveDTOFactory(pieceDTOFactory)),
+			sessionRepositoryStub, emptyLogger);
+		return controller;
+	}
+
+	private static ReadyController GetReadyController(TestChessSessionRepository sessionRepositoryStub)
+	{
+		var emptyLoggerFactory = new NullLoggerFactory();
+		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
+
+		var pieceDTOFactory = new PieceDTOFactory();
+		var controller = new ReadyController(new SessionDTOFactory(new BoardDTOFactory(pieceDTOFactory),
+				new PlayerDTOFactory(), new PieceDTOFactory(), new MoveDTOFactory(pieceDTOFactory)),
+			sessionRepositoryStub, emptyLogger);
+		return controller;
+	}
+
+	private static MoveController GetMoveController(TestChessSessionRepository sessionRepositoryStub)
+	{
+		var emptyLoggerFactory = new NullLoggerFactory();
+		var emptyLogger = emptyLoggerFactory.CreateLogger<SessionController>();
+
+		var pieceDTOFactory = new PieceDTOFactory();
+		var controller = new MoveController(new SessionDTOFactory(new BoardDTOFactory(pieceDTOFactory),
+				new PlayerDTOFactory(), new PieceDTOFactory(), new MoveDTOFactory(pieceDTOFactory)),
+			sessionRepositoryStub, emptyLogger);
+		return controller;
+	}
+
 	private static TestSessionIdDTOFactory GetSessionDTOFactoryStub()
 	{
 		return new TestSessionIdDTOFactory(new SessionId(Guid.Parse("5b0fcca9-d48c-47d7-ad4c-dc4ad232b204")));
@@ -111,5 +165,10 @@ public class SessionControllerTests
             };
 
 		return JsonSerializer.Serialize(dto, options);
+	}
+
+	private static void ShouldSaveSession(TestChessSessionRepository sessionRepositoryStub, int expectedNumberOfTimes)
+	{
+		Assert.AreEqual(sessionRepositoryStub.SetAsyncCallCount, expectedNumberOfTimes);
 	}
 }

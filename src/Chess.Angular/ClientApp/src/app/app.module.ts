@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { CreateSessionComponent } from './create-session/create-session.component';
+import { ChessSessionComponent } from './chess-session/chess-session.component';
+import { ChessBoardComponent } from './chess-board/chess-board.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-	CreateSessionComponent
+	ChessSessionComponent,
+	ChessBoardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +32,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'create-session', component: CreateSessionComponent },
+      { path: 'chess-session', component: ChessSessionComponent },
+      { path: 'chess-board', component: ChessBoardComponent },
     ])
   ],
   providers: [],

@@ -6,16 +6,16 @@ import { CellDTO } from "./CellDTO";
 export class EmptyCellDTO implements CellDTO {
 
 	constructor() {
-		this.X = 0;
-		this.Y = 0;
-		this.Row = "-";
-		this.Column = "-";
-		this.Piece = new EmptyPieceDTO();
+		this.x = 0;
+		this.y = 0;
+		this.row = "-";
+		this.column = "-";
+		this.piece = new EmptyPieceDTO();
 	}
-	X: number;
-	Y: number;
-	Row: string;
-	Column: string;
-	Piece: PieceDTO;
+	x: number;
+	y: number;
+	row: string;
+	column: string;
+	piece: PieceDTO;
 
 }

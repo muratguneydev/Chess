@@ -1,0 +1,27 @@
+<h1 id="tableLabel">Chess session</h1>
+<p>{{ session.id.value }}</p>
+<button class="btn btn-primary" (click)="createSession()">New chess session</button>
+
+<p *ngIf="session.isEmpty; else sessionCreated"><em>Loading...</em></p>
+<ng-template #sessionCreated>
+	
+		
+		<div class="col-sm-3"><label>White Player:</label></div><div class="col-sm-9"><input [(ngModel)]="whitePlayerName" #details="ngModel" /></div>
+		<div class="col-sm-3"><label>Black Player:</label></div><div class="col-sm-9"><input [(ngModel)]="blackPlayerName" #details="ngModel" /></div>
+		<button class="btn btn-primary" (click)="register()">Register</button>
+
+		<button class="btn btn-primary" (click)="ready()">Ready</button>
+
+		<div class="col-sm-3"><label>Move:</label></div><div class="col-sm-9"><input [(ngModel)]="moveExpression" #details="ngModel" /></div>
+		<button class="btn btn-primary" (click)="move()">Move</button>
+		
+		<app-chess-board [board]="board"></app-chess-board>
+		
+
+</ng-template>
+
+
+
+
+
+

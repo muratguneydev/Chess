@@ -1,7 +1,7 @@
 import { SessionIdRequest } from "./SessionIdRequest";
 
 export interface Request {
-	SessionId: SessionIdRequest;
-	RequestType: string;
+	sessionId: SessionIdRequest;
+	requestType: string;
 }
 

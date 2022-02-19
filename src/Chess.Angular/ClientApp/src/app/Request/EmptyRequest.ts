@@ -1,14 +1,14 @@
-import { EmptySessionIdDTO } from "../DTO/EmptySessionIdDTO";
 import { SessionIdRequest } from "./SessionIdRequest";
 import { Request } from "./Request";
+import { EmptySessionIdRequest } from "./EmptySessionIdRequest";
 
 
 export class EmptyRequest implements Request {
 	constructor() {
-		this.SessionId = new EmptySessionIdDTO();
-		this.RequestType = "-";
+		this.sessionId = new EmptySessionIdRequest();
+		this.requestType = "-";
 	}
 
-	SessionId: SessionIdRequest;
-	RequestType: string;
+	sessionId: SessionIdRequest;
+	requestType: string;
 }

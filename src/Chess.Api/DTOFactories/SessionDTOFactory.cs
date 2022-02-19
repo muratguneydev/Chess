@@ -1,7 +1,7 @@
 using Chess.Api.Request;
 using Chess.Game;
 
-namespace Chess.Api.Controllers;
+namespace Chess.Api;
 
 public class SessionDTOFactory
 {

@@ -4,9 +4,9 @@ import { PieceDTO } from "./PieceDTO";
 
 export class EmptyPieceDTO implements PieceDTO {
 	constructor() {
-		this.Name = "-";
-		this.Color = Color.None;
+		this.name = "-";
+		this.color = Color.None;
 	}
-	Name: string;
-	Color: Color;
+	name: string;
+	color: Color;
 }

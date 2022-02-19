@@ -6,10 +6,10 @@ import { RequestResult } from "./RequestResult";
 export class EmptyRequestResult implements RequestResult {
 
 	constructor() {
-		this.Request = new EmptyRequest();
-		this.Result = "-";
+		this.request = new EmptyRequest();
+		this.result = "-";
 	}
 
-	Request: Request;
-	Result: string;
+	request: Request;
+	result: string;
 }

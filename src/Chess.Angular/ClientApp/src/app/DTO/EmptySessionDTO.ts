@@ -15,27 +15,27 @@ export class EmptySessionDTO implements SessionDTO {
 
 	constructor() {
 		var emptyPlayer = new EmptyPlayerDTO();
-		this.Board = new EmptyBoardDTO();
-		this.MoveHistory = [];
-		this.WhitePlayer = emptyPlayer;
-		this.BlackPlayer = emptyPlayer;
-		this.CurrentPlayer = emptyPlayer;
-		this.WaitingPlayer = emptyPlayer;
-		this.PlayTurnColor = Color.None;
-		this.CurrentState = "-";
-		this.Id = new EmptySessionIdDTO();
-		this.LastRequest = new EmptyRequestResult();
+		this.board = new EmptyBoardDTO();
+		this.moveHistory = [];
+		this.whitePlayer = emptyPlayer;
+		this.blackPlayer = emptyPlayer;
+		this.currentPlayer = emptyPlayer;
+		this.waitingPlayer = emptyPlayer;
+		this.playTurnColor = Color.None;
+		this.currentState = "-";
+		this.id = new EmptySessionIdDTO();
+		this.lastRequest = new EmptyRequestResult();
 	}
 
-	Board: BoardDTO;
-	MoveHistory: MoveDTO[];
-	WhitePlayer: PlayerDTO;
-	BlackPlayer: PlayerDTO;
-	CurrentPlayer: PlayerDTO;
-	WaitingPlayer: PlayerDTO;
-	PlayTurnColor: Color;
-	CurrentState: string;
-	Id: SessionIdDTO;
-	LastRequest: RequestResult;
-	IsEmpty: boolean = true;
+	board: BoardDTO;
+	moveHistory: MoveDTO[];
+	whitePlayer: PlayerDTO;
+	blackPlayer: PlayerDTO;
+	currentPlayer: PlayerDTO;
+	waitingPlayer: PlayerDTO;
+	playTurnColor: Color;
+	currentState: string;
+	id: SessionIdDTO;
+	lastRequest: RequestResult;
+	isEmpty: boolean = true;
 }

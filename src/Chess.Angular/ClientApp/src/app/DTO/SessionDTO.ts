@@ -7,15 +7,15 @@ import { SessionIdDTO } from "./SessionIdDTO";
 
 
 export interface SessionDTO {
-	Board: BoardDTO;
-	MoveHistory: MoveDTO[];
-	WhitePlayer: PlayerDTO;
-	BlackPlayer: PlayerDTO;
-	CurrentPlayer: PlayerDTO;
-	WaitingPlayer: PlayerDTO;
-	PlayTurnColor: Color;
-	CurrentState: string;
-	Id: SessionIdDTO;
-	LastRequest: RequestResult;
-	IsEmpty: boolean;
+	board: BoardDTO;
+	moveHistory: MoveDTO[];
+	whitePlayer: PlayerDTO;
+	blackPlayer: PlayerDTO;
+	currentPlayer: PlayerDTO;
+	waitingPlayer: PlayerDTO;
+	playTurnColor: Color;
+	currentState: string;
+	id: SessionIdDTO;
+	lastRequest: RequestResult;
+	isEmpty: boolean;
 }

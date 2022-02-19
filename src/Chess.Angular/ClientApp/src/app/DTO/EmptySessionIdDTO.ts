@@ -4,7 +4,7 @@ import { SessionIdDTO } from "./SessionIdDTO";
 export class EmptySessionIdDTO implements SessionIdDTO {
 
 	constructor() {
-		this.Value = "-";
+		this.value = "-";
 	}
-	Value: string;
+	value: string;
 }

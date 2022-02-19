@@ -1,23 +1,23 @@
 ###POST
-POST https://localhost:5001/session
+POST https://localhost:7043/session
 
 ###GET
-https://localhost:5001/session?sessionId=43837846-0443-4200-95b6-721c22610e01
+https://localhost:7043/session?sessionId=8cc9216a-db6b-46de-b7b9-aa149093ce93
 
 ###Register
-PUT https://localhost:5001/session/register HTTP/1.1
+PUT https://localhost:7043/register HTTP/1.1
 Content-Type: application/json
 
-{"SessionId":{"Value":"bc673aa1-3a4a-41b2-963d-81b2d1df33ec"},"WhitePlayerName":"Murat","BlackPlayerName":"Ali","RequestType":"RegisterRequest"}
+{"SessionId":{"Value":"2d6ed9ad-d280-47f5-8313-aef3b3dcb0a6"},"WhitePlayerName":"Murat","BlackPlayerName":"Ali","RequestType":"RegisterRequest"}
 
 ###Ready
-PUT https://localhost:5001/session/ready HTTP/1.1
+PUT https://localhost:5001/ready HTTP/1.1
 Content-Type: application/json
 
 {"SessionId":{"Value":"bc673aa1-3a4a-41b2-963d-81b2d1df33ec"}, "RequestType":"ReadyRequest"}
 
 ###Move
-PUT https://localhost:5001/session/move HTTP/1.1
+PUT https://localhost:5001/move HTTP/1.1
 Content-Type: application/json
 
 {"SessionId":{"Value":"bc673aa1-3a4a-41b2-963d-81b2d1df33ec"},"From":{"X":1,"Y":1},"To":{"X":1,"Y":3},"RequestType":"MoveRequest"}

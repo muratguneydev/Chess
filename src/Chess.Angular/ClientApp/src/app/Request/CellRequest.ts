@@ -1,6 +1,12 @@
 
-export interface CellRequest {
+export class CellRequest {
 	//new(x: number, y: number): CellRequest;
-	X: number;
-	Y: number;
+	// x: number;
+	// y: number;
+	/**
+	 *
+	 */
+	constructor(public x: number, public y: number) {
+		
+	}
 }

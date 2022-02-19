@@ -5,8 +5,8 @@ import { BoardDTO } from "./BoardDTO";
 export class EmptyBoardDTO implements BoardDTO {
 
 	constructor() {
-		this.Cells = [];
+		this.cells = [];
 	}
 
-	Cells: CellDTO[];
+	cells: CellDTO[];
 }

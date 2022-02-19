@@ -8,7 +8,7 @@ public class TestChessSessionRepository : ChessSessionRepository
 	private Session sessionToReturn;
 
 	public TestChessSessionRepository()
-		: base(new TestContextSession(EmptySession.Session))
+		: base(new TestDistributedCache())
 	{
 		this.sessionToReturn = EmptySession.Session;
 	}
@@ -20,7 +20,10 @@ public class TestChessSessionRepository : ChessSessionRepository
 
 	public override Task SetAsync(SessionId sessionId, Session session)
 	{
+		this.SetAsyncCallCount++;
 		this.sessionToReturn = session;
 		return Task.CompletedTask;
 	}
+
+	public int SetAsyncCallCount { get; private set; }
 }
