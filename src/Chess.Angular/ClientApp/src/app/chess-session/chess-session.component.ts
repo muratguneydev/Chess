@@ -63,7 +63,7 @@ export class ChessSessionComponent {
   	}
 
   	public move() {
-		var moveRequest = new MoveRequest(new SessionIdRequest(this.session.id.value), new CellRequest(0, 1), new CellRequest(0, 3));
+		var moveRequest = this.GetMoveRequest();
 		console.log(moveRequest);
 		this.http
 				.put<SessionDTO>(this.baseUrl + 'move', moveRequest)
@@ -74,5 +74,42 @@ export class ChessSessionComponent {
 							},
 							error => console.error(error));
   	}
+
+	private GetMoveRequest() : MoveRequest
+	{
+		// if (moveString == null)
+		// 	throw new InvalidMoveStringException(string.Empty);
+		var moveStringParts = this.moveExpression.split("-");
+		// if (moveStringParts.length != 2)
+		// 	throw new InvalidMoveStringException(moveString);
+		
+		var fromCellString = moveStringParts[0];
+		var toCellString = moveStringParts[1];
+		
+		var fromCell = this.GetCellRequest(fromCellString);
+		var toCell = this.GetCellRequest(toCellString);
+
+		return new MoveRequest(new SessionIdRequest(this.session.id.value), fromCell, toCell);
+	}
+
+	private GetCellRequest(cellName: string) : CellRequest
+	{
+		// if (cellName.Length != 2)
+		// 	throw new InvalidCellNameException(cellName);
+		// var xName = cellName[0];
+		// var yName = cellName[1];
+
+		// if (xName < 97 || xName > 104) //a -> h
+		// 	throw new InvalidCellNameException(cellName);
+		// if (yName < 49 || yName > 56) //1 -> 8
+		// 	throw new InvalidCellNameException(cellName);
+
+		// var x = xName - 97;
+		// var y = yName - 49;
+		var x = cellName.charCodeAt(0) - 97;//a -> h
+		var y = cellName.charCodeAt(1) - 49;//1 -> 8
+
+		return new CellRequest(x, y)
+	}
 }
 

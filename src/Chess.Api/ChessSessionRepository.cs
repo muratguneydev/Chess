@@ -40,8 +40,10 @@ public class ChessSessionRepository
 		var whitePlayer = sessionSerializable.WhitePlayer.IsEmpty ? EmptyWhitePlayer.WhitePlayer : new WhitePlayer(sessionSerializable.WhitePlayer.Clock.Convert(), sessionSerializable.WhitePlayer.Name);
 		var blackPlayer = sessionSerializable.BlackPlayer.IsEmpty ? EmptyBlackPlayer.BlackPlayer : new BlackPlayer(sessionSerializable.BlackPlayer.Clock.Convert(), sessionSerializable.BlackPlayer.Name);
 		var registrar = new SessionPlayerRegistrar(whitePlayer, blackPlayer);
+		var board = sessionSerializable.Board.Convert();
+		var moveHistory = new MoveHistory(board, sessionSerializable.MoveHistory.Select(moveSerializable => moveSerializable.Convert(board)));
 		return new Session(new SessionPlayers(registrar), registrar, new SessionStateMachine(sessionSerializable.CurrentState.Convert()),
-			new Board(sessionSerializable.Board.GetCells()));
+			board, moveHistory);
 	}
 
 	private IEnumerable<CellSerializable> GetCells(Cell[,] cells)

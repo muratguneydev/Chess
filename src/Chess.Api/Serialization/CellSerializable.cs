@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Chess.Game;
 
 namespace Chess.Api.Controllers;
 
@@ -15,4 +16,9 @@ public record CellSerializable
 	public int X { get; }
 	public int Y { get; }
 	public PieceSerializable Piece { get; }
+
+	public Cell Convert(Board board)
+	{
+		return new Cell(this.X, this.Y, board, this.Piece.Convert());
+	}
 }

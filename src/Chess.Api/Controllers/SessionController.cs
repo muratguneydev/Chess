@@ -56,7 +56,7 @@ public class SessionController : ControllerBase
 		var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
 		sessionPlayers.AddPlayersReadyEventCallback(sessionPlayers => {});
 		
-		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board);
+		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board, new MoveHistory(board));
 	}
 
 	

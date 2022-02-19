@@ -5,18 +5,20 @@ namespace Chess.Game.Tests.Helpers;
 public static class SessionTestHelper
 {
 	public static Session Create(WhitePlayer? playerWhite = default(WhitePlayer), BlackPlayer? playerBlack = default(BlackPlayer),
-		Board? board = null)
+		Board? board = null, MoveHistory? moveHistory = null)
 	{
 		playerWhite = playerWhite ?? PlayerTestHelper.CreateWhitePlayer();
 		playerBlack = playerBlack ?? PlayerTestHelper.CreateBlackPlayer();
 		board = board ?? BoardTestHelper.Create();
+		moveHistory = moveHistory ?? MoveHistoryTestHelper.Create(board);
 
 		var sessionPlayers = new SessionPlayersTestBuilder()
 			.WithBlackPlayer(playerBlack)
 			.WithWhitePlayer(playerWhite)
 			.Build();
 
-		return new Session(sessionPlayers, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+		return new Session(sessionPlayers, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
+			board, moveHistory);
 	}
 
 	public static void AssertIsNotValidMove(Move move)

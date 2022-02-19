@@ -10,7 +10,9 @@ public class SessionStateMachineTests
 	{
 		var sessionPlayers = SessionPlayersTestHelper.CreateWithoutRegister();
 		var sessionPlayerRegistrar = SessionPlayerRegistrarTestHelper.Create();
-		var session = new Session(sessionPlayers, sessionPlayerRegistrar, SessionStateMachineTestHelper.Create(), BoardTestHelper.Create());
+		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
+		var session = new Session(sessionPlayers, sessionPlayerRegistrar, SessionStateMachineTestHelper.Create(), board, moveHistory);
 
 		Assert.Throws<InvalidSessionStateTransitionException>(() => session.SetWhitePlayerReady());
 	}

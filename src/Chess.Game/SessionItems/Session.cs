@@ -10,15 +10,14 @@ public record Session
 	private readonly SessionPlayerRegistrar sessionPlayerRegistrar;
 	private readonly SessionStateMachine sessionStateMachine;
 
-	//[JsonConstructor]
 	public Session(SessionPlayers sessionPlayers, SessionPlayerRegistrar sessionPlayerRegistrar, SessionStateMachine sessionStateMachine,
-		Board board)
+		Board board, MoveHistory moveHistory)
 	{
 		this.sessionPlayers = sessionPlayers;
 		this.sessionPlayerRegistrar = sessionPlayerRegistrar;
 		this.sessionStateMachine = sessionStateMachine;
 		this.Board = board;
-		this.moves = new MoveHistory(board);
+		this.moves = moveHistory;//new MoveHistory(board);
 	}
 
 	public bool IsComplete => false;

@@ -21,6 +21,11 @@ public record MoveSerializable
 	public CellSerializable From { get; }
 	public CellSerializable To { get; }
 
+	public Move Convert(Board board)
+	{
+		return new Move(this.From.Convert(board), this.To.Convert(board));
+	}
+
 	private static CellSerializable GetCell(Cell cell)
 	{
 		return new CellSerializable(cell.X, cell.Y, new PieceSerializable(cell.Piece.OriginalPieceType.FullName, cell.Piece.Color, cell.Piece.CellHistory));

@@ -13,17 +13,20 @@ public record BoardSerializable
 
 	public IEnumerable<CellSerializable> Cells { get; }
 
-	public Cell[,] GetCells()
+	public Board Convert()
 	{
-		const int size = 8;
-		var cells = new Cell[size, size];
+		return new Board(this.GetCells());
+	}
+
+	private Cell[,] GetCells()
+	{
+		var dummyBoard = new Board();
+		var cells = new Cell[8, 8];
 		foreach (var cell in this.Cells)
 		{
-			cells[cell.X, cell.Y] = new Cell(cell.X, cell.Y, new Board(), cell.Piece.Convert());
+			cells[cell.X, cell.Y] = cell.Convert(dummyBoard);
 		}
 
 		return cells;
 	}
-
-	
 }

@@ -13,7 +13,7 @@ public record SessionSerializable
 		this.BlackPlayer = blackPlayer;
 		this.Board = board;
 		this.CurrentState = currentState;
-		MoveHistory = moveHistory;
+		this.MoveHistory = moveHistory;
 	}
 
 	public PlayerSerializable WhitePlayer { get; }

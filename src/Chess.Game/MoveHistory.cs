@@ -12,6 +12,12 @@ public class MoveHistory : IEnumerable<Move>
 		this.board = board;
 	}
 
+	public MoveHistory(Board board, IEnumerable<Move> moveCollection)
+		: this(board)
+	{
+		moveCollection.ToList().ForEach(move => this.Push(move));
+	}
+
 	public void Push(Move move)
 	{
 		this.moves.Push(move);

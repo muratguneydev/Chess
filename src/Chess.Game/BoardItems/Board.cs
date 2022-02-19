@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Chess.Game;
 
 public record Board
@@ -11,15 +9,20 @@ public record Board
 		this.cells = this.CreateCells();
 	}
 
-	//[JsonConstructor]
-	public Board(Cell[,] cells)
+	public Board(Cell[,] cellTable)
 	{
-		this.cells = cells;
+		this.cells = new Cell[cellTable.GetUpperBound(0)+1, cellTable.GetUpperBound(1)+1];
+		for (var x = 0; x <= cellTable.GetUpperBound(0); x++)
+		{
+			for (var y = 0; y <= cellTable.GetUpperBound(1); y++)
+			{
+				this.cells[x, y] = new Cell(x, y, this, cellTable[x, y].Piece);
+			}
+		}
 	}
 
 	public Cell EmptyCell => new EmptyCell(this);//return single instance per board?
 	public Move EmptyMove => new EmptyMove(this);//return single instance per board?
-	//public BoardPieceDecorator EmptyBoardPiece => EmptyBoardPiece(this);//return single instance per board?
 	public int XSize => 8;
 	public int YSize => 8;
 

@@ -43,7 +43,7 @@ class Program
 		sessionPlayerRegistrar.AddPlayersRegisteredEventCallback(AllPlayersRegisteredHandler);
 		var sessionPlayers = new SessionPlayers(sessionPlayerRegistrar);
 		sessionPlayers.AddPlayersReadyEventCallback(AllPlayersReadyHandler);
-		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board);
+		return new Session(sessionPlayers, sessionPlayerRegistrar, new SessionStateMachine(), board, new MoveHistory(board));
 	}
 
 	public static void AllPlayersRegisteredHandler(SessionPlayerRegistrar sessionPlayerRegistrar)

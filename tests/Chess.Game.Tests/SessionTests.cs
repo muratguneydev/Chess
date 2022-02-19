@@ -20,9 +20,11 @@ public class SessionTests
 	{
 		var whiteClock = new Clock(new TestDateTimeProvider());
 		var blackClock = new Clock(new TestDateTimeProvider());
+		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
 			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
-			BoardTestHelper.Create());
+			board, moveHistory);
 		session.Start();
 		Assert.IsTrue(whiteClock.Ticking);
 		Assert.IsFalse(blackClock.Ticking);
@@ -34,8 +36,9 @@ public class SessionTests
 		var whiteClock = new Clock(new TestDateTimeProvider());
 		var blackClock = new Clock(new TestDateTimeProvider());
 		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
 		board.SetOpeningPosition();
 
 		session.Start();
@@ -54,8 +57,9 @@ public class SessionTests
 	public void ShouldStoreMovesWhenNextCalled()
 	{
 		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
 		board.SetOpeningPosition();
 
 		session.Start();
@@ -75,8 +79,9 @@ public class SessionTests
 	public void ShouldRemoveMovesWhenBackCalled()
 	{
 		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board);
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
 		board.SetOpeningPosition();
 
 		session.Start();
@@ -118,8 +123,10 @@ public class SessionTests
 	public void ShouldCallRegister()
 	{
 		var sessionPlayerRegistrarSpy = new SessionPlayerRegistrarSpy();
+		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.CreateWithoutRegister(), sessionPlayerRegistrarSpy, SessionStateMachineTestHelper.CreateDummy(),
-			BoardTestHelper.Create());
+			board, moveHistory);
 		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer());
 				session.RegisterWhitePlayer(PlayerTestHelper.CreateWhitePlayer());
 
@@ -131,8 +138,10 @@ public class SessionTests
 	public void ShouldCallReady()
 	{
 		var sessionPlayersSpy = new SessionPlayersSpy();
+		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(sessionPlayersSpy, SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(),
-			BoardTestHelper.Create());
+			board, moveHistory);
 		
 		session.SetBlackPlayerReady();
 		session.SetWhitePlayerReady();
@@ -145,8 +154,9 @@ public class SessionTests
 	public void ShouldTransitionToTheCorrectStatesWhenPlayersRegisterAndMove()
 	{
 		var board = BoardTestHelper.Create();
+		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board);
+			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board, moveHistory);
 		board.SetOpeningPosition();
 
 		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer());
