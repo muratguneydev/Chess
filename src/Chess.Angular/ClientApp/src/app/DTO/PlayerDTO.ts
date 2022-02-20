@@ -1,7 +1,5 @@
-import { Color } from "./Color";
-
 export interface PlayerDTO {
-	color: Color;
+	color: string;
 	name: string;
 	isReady: boolean;
 	elapsedSeconds: number;

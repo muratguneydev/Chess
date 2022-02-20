@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
+//import { ChessboardModule } from 'ng2-chessboard';
+
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
@@ -12,6 +15,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { ChessSessionComponent } from './chess-session/chess-session.component';
 import { ChessBoardComponent } from './chess-board/chess-board.component';
+import { PieceFactory } from './models/Pieces/PieceFactory';
 
 
 @NgModule({
@@ -35,8 +39,9 @@ import { ChessBoardComponent } from './chess-board/chess-board.component';
       { path: 'chess-session', component: ChessSessionComponent },
       { path: 'chess-board', component: ChessBoardComponent },
     ])
+	//ChessboardModule
   ],
-  providers: [],
+  providers: [PieceFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

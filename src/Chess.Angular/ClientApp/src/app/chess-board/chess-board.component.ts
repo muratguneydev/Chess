@@ -8,5 +8,5 @@ import { Board } from '../models/Board';
 })
 export class ChessBoardComponent {
 	@Input() board: Board = new EmptyBoard();
-
+	//public position: Position
 }

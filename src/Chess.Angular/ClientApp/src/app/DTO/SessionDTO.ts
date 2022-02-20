@@ -1,6 +1,6 @@
 import { RequestResult } from "../Request/RequestResult";
 import { BoardDTO } from "./BoardDTO";
-import { Color } from "./Color";
+import { Color } from "../models/Color";
 import { MoveDTO } from "./MoveDTO";
 import { PlayerDTO } from "./PlayerDTO";
 import { SessionIdDTO } from "./SessionIdDTO";

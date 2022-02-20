@@ -9,6 +9,7 @@ import { SessionIdRequest } from '../Request/SessionIdRequest';
 import { CellRequest } from '../Request/CellRequest';
 import { RegisterRequest } from '../Request/RegisterRequest';
 import { ReadyRequest } from '../Request/ReadyRequest';
+import { PieceFactory } from '../models/Pieces/PieceFactory';
 
 @Component({
   selector: 'app-chess-session',
@@ -21,7 +22,7 @@ export class ChessSessionComponent {
   public whitePlayerName: string = "";
   public blackPlayerName: string = "";
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private pieceFactory: PieceFactory) {
 
   }
 
@@ -30,7 +31,7 @@ export class ChessSessionComponent {
 				.post<SessionDTO>(this.baseUrl + 'session', null)
 				.subscribe(result => {
 								this.session = result;
-								this.board = new Board(this.session.board);
+								this.board = new Board(this.session.board, this.pieceFactory);
 								console.log(result);
 							},
 							error => console.error(error));
@@ -43,7 +44,7 @@ export class ChessSessionComponent {
 				.put<SessionDTO>(this.baseUrl + 'register', registerRequest)
 				.subscribe(result => {
 								this.session = result;
-								this.board = new Board(this.session.board);
+								this.board = new Board(this.session.board, this.pieceFactory);
 								console.log(result);
 							},
 							error => console.error(error));
@@ -56,7 +57,7 @@ export class ChessSessionComponent {
 				.put<SessionDTO>(this.baseUrl + 'ready', readyRequest)
 				.subscribe(result => {
 								this.session = result;
-								this.board = new Board(this.session.board);
+								this.board = new Board(this.session.board, this.pieceFactory);
 								console.log(result);
 							},
 							error => console.error(error));
@@ -69,7 +70,7 @@ export class ChessSessionComponent {
 				.put<SessionDTO>(this.baseUrl + 'move', moveRequest)
 				.subscribe(result => {
 								this.session = result;
-								this.board = new Board(this.session.board);
+								this.board = new Board(this.session.board, this.pieceFactory);
 								console.log(result);
 							},
 							error => console.error(error));
@@ -94,22 +95,15 @@ export class ChessSessionComponent {
 
 	private GetCellRequest(cellName: string) : CellRequest
 	{
-		// if (cellName.Length != 2)
-		// 	throw new InvalidCellNameException(cellName);
-		// var xName = cellName[0];
-		// var yName = cellName[1];
-
-		// if (xName < 97 || xName > 104) //a -> h
-		// 	throw new InvalidCellNameException(cellName);
-		// if (yName < 49 || yName > 56) //1 -> 8
-		// 	throw new InvalidCellNameException(cellName);
-
-		// var x = xName - 97;
-		// var y = yName - 49;
 		var x = cellName.charCodeAt(0) - 97;//a -> h
 		var y = cellName.charCodeAt(1) - 49;//1 -> 8
 
 		return new CellRequest(x, y)
+	}
+
+	private GetFENString()
+	{
+
 	}
 }
 
