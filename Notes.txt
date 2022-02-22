@@ -74,6 +74,6 @@ http://localhost:5341
 https://hub.docker.com/r/datalust/seq
 
 --install chessboardjs in ClientApp directory
-https://npm.io/package/ng2-chessboard
+https://www.npmjs.com/package/ngx-chess-board/v/2.2.0
 
 

@@ -1,6 +1,8 @@
 <div *ngIf="board.rows">
-	<!-- <ng2-chessboard [(position)]="{board.FENString}"></ng2-chessboard> -->
+	
 </div>
+
+<ngx-chess-board #boardView [freeMode]="true" (moveChange)="moveChanged()"></ngx-chess-board>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="board.rows">
   <tbody>

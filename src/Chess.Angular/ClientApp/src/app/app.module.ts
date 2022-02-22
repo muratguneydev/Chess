@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-//import { ChessboardModule } from 'ng2-chessboard';
+import { NgxChessBoardModule } from "ngx-chess-board";
 
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -38,8 +38,8 @@ import { PieceFactory } from './models/Pieces/PieceFactory';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'chess-session', component: ChessSessionComponent },
       { path: 'chess-board', component: ChessBoardComponent },
-    ])
-	//ChessboardModule
+    ]),
+	NgxChessBoardModule.forRoot()
   ],
   providers: [PieceFactory],
   bootstrap: [AppComponent]

@@ -12,3 +12,4 @@ export class Cell {
 	column: string = this.cellDTO.column;
 	piece: Piece = this.pieceFactory.Get(this.cellDTO.piece);
 }
+

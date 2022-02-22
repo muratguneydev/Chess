@@ -14,12 +14,20 @@ export class Board {
 										g[rowId] = g[rowId] || []; //Check the value exists, if not assign a new array
 										g[rowId].push(new Cell(cell, this.pieceFactory)); //Push the new value to the array
 										return g; //Very important! you need to return the value of g or it will become undefined on the next pass
-									}, {}));
+									}, {})
+								);
 
-	public FENString: string = this.rows
-										.map(row => this.JoinFENCharacters(row))
-										.join('/');
+	public FENString: string = this.reverseString(
+									this.squeezeFenEmptySquares(
+										this.rows
+												.map(row => this.JoinFENCharacters(row))
+												.join('/')
+									)
+								) + " w KQkq - 0 1";
 	
+	public GetCell(x: number, y: number) : Cell {
+		return this.rows[y][x];
+	}
 
 	private JoinFENCharacters(row: Cell[]): string {
 		return row
@@ -27,16 +35,19 @@ export class Board {
 			.join('');
 	}
 
-	
+	private squeezeFenEmptySquares (fen: string) : string{
+		return fen.replace(/11111111/g, '8')
+		  .replace(/1111111/g, '7')
+		  .replace(/111111/g, '6')
+		  .replace(/11111/g, '5')
+		  .replace(/1111/g, '4')
+		  .replace(/111/g, '3')
+		  .replace(/11/g, '2')
+	  }
+
+	private reverseString(str: string) : string{
+		return str.split("").reverse().join("");
+	}
 }
 
 
-function squeezeFenEmptySquares (fen: string) {
-    return fen.replace(/11111111/g, '8')
-      .replace(/1111111/g, '7')
-      .replace(/111111/g, '6')
-      .replace(/11111/g, '5')
-      .replace(/1111/g, '4')
-      .replace(/111/g, '3')
-      .replace(/11/g, '2')
-  }
