@@ -20,7 +20,7 @@ export class Board {
 	public FENString: string = this.reverseString(
 									this.squeezeFenEmptySquares(
 										this.rows
-												.map(row => this.JoinFENCharacters(row))
+												.map(row => this.reverseString(this.JoinFENCharacters(row)))
 												.join('/')
 									)
 								) + " w KQkq - 0 1";
@@ -35,7 +35,7 @@ export class Board {
 			.join('');
 	}
 
-	private squeezeFenEmptySquares (fen: string) : string{
+	private squeezeFenEmptySquares (fen: string) : string {
 		return fen.replace(/11111111/g, '8')
 		  .replace(/1111111/g, '7')
 		  .replace(/111111/g, '6')

@@ -21,43 +21,41 @@ public class BlackPawnAttackTests
 	[Test]
 	public void ShouldBeAllowedToAttackEnPassant()
 	{
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create();
+		var session = SessionTestHelper.GetStartedSessionWithEmptyBoard();
 		
 		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
 		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
 		
-		board.b4.SetPiece(attackingPawn);
-		board.c2.SetPiece(attackedPawn);
+		session.Board.b4.SetPiece(attackingPawn);
+		session.Board.c2.SetPiece(attackedPawn);
 		session.Start();
 
-		var move = board.c2.GetMove(board.c4);
+		var move = session.Board.c2.GetMove(session.Board.c4);
 		session.Move(move);
 		
-		var testMove = board.b4.GetMove(board.c3);
+		var testMove = session.Board.b4.GetMove(session.Board.c3);
 		MoveTestHelper.AssertIsValidMove(testMove);
 
 		session.Move(testMove);
-		Assert.IsFalse(board.c4.IsOccupied);
+		Assert.IsFalse(session.Board.c4.IsOccupied);
 	}
 
 	[Test]
 	public void ShouldNotBeAllowedToAttackEnPassantIfOpponentDidntMove2Forward()
 	{
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create();
+		var session = SessionTestHelper.GetStartedSessionWithEmptyBoard();
 		
 		var attackingPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
 		var attackedPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
 		
-		board.b3.SetPiece(attackingPawn);
-		board.c2.SetPiece(attackedPawn);
+		session.Board.b3.SetPiece(attackingPawn);
+		session.Board.c2.SetPiece(attackedPawn);
 		session.Start();
 
-		var move = board.c2.GetMove(board.c3);
+		var move = session.Board.c2.GetMove(session.Board.c3);
 		session.Move(move);
 		
-		var testMove = MoveTestHelper.Create(board.b3, board.c2);
+		var testMove = MoveTestHelper.Create(session.Board.b3, session.Board.c2);
 		MoveTestHelper.AssertIsNotValidMove(testMove);
 	}
 

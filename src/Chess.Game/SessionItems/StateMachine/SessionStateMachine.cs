@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Chess.Game;
 
 public class SessionStateMachine
@@ -9,7 +7,6 @@ public class SessionStateMachine
 		this.CurrentState = new SessionStateRegistration();
 	}
 
-	[JsonConstructor]
 	public SessionStateMachine(SessionState currentState)
 	{
 		this.CurrentState = currentState;

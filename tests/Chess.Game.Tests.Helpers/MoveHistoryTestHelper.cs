@@ -5,7 +5,7 @@ public static class MoveHistoryTestHelper
 	public static MoveHistory Create(Board? board = null, IEnumerable<Move>? moves = null)
 	{
 		board = board ?? BoardTestHelper.Create();
-		moves = moves ?? new [] { MoveTestHelper.Create() };
+		moves = moves ?? new Move[] { };//MoveTestHelper.Create()
 		
 		var moveHistory = new MoveHistory(board, moves);
 

@@ -8,25 +8,22 @@ public class MoveTests
     [Test]
     public void ShouldTakeBack()
     {
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create();
-		board.SetOpeningPosition();
-		session.Start();
+		var session = SessionTestHelper.GetStartedSession();
 
-		var a2OriginalPiece = board.a2.Piece;
-		var move = board.a2.GetMove(board.a4);
+		var a2OriginalPiece = session.Board.a2.Piece;
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		session.Move(move);
-		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(a2OriginalPiece, board.a4.Piece));
-		Assert.IsFalse(board.a2.IsOccupied);
+		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(a2OriginalPiece, session.Board.a4.Piece));
+		Assert.IsFalse(session.Board.a2.IsOccupied);
 
-		var b7OriginalPiece = board.b7.Piece;
-		move = board.b7.GetMove(board.b5);
+		var b7OriginalPiece = session.Board.b7.Piece;
+		move = session.Board.b7.GetMove(session.Board.b5);
 		session.Move(move);
-		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(b7OriginalPiece, board.b5.Piece));
-		Assert.IsFalse(board.b7.IsOccupied);
+		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(b7OriginalPiece, session.Board.b5.Piece));
+		Assert.IsFalse(session.Board.b7.IsOccupied);
 
 		var lastMove = session.Back();
-		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(b7OriginalPiece, board.b7.Piece));
-		Assert.IsFalse(board.b5.IsOccupied);
+		Assert.IsTrue(BoardPieceDecoratorTestHelper.Equals(b7OriginalPiece, session.Board.b7.Piece));
+		Assert.IsFalse(session.Board.b5.IsOccupied);
     }
 }

@@ -5,7 +5,7 @@ import { Piece } from "./Piece";
 export class ColoredPiece implements Piece {
 
 	constructor(private piece: Piece, private color: Color) {
-		console.log('Piece string color:' + color);
+		//console.log('Piece string color:' + color);
 
 	}
 	name: string = this.piece.name;

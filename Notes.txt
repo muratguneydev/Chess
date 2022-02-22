@@ -77,3 +77,5 @@ https://hub.docker.com/r/datalust/seq
 https://www.npmjs.com/package/ngx-chess-board/v/2.2.0
 
 
+--FEN string
+https://www.codewars.com/kata/5e343ecbcd2b84001f5594b9

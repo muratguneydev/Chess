@@ -28,7 +28,7 @@ public record Session
 	public Color PlayTurn => this.CurrentPlayer.Color;
 	public SessionState CurrentState => this.sessionStateMachine.CurrentState;
 
-	public Player CurrentPlayer => this.moves.LastMove.Color == Color.White
+	public Player CurrentPlayer => this.CurrentState is SessionStateBlackMove //Note: Possible: this.moves.LastMove.Color == Color.White
 		? this.BlackPlayer
 		: this.WhitePlayer;
 

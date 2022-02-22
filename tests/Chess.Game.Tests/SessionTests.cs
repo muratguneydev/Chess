@@ -12,7 +12,6 @@ public class SessionTests
 		var session = SessionTestHelper.Create();
 		session.Start();
 		Assert.AreEqual(Color.White, session.CurrentPlayer.Color);
-		//TODO: Should we dispose the players->timers?
 	}
 
 	[Test]
@@ -35,20 +34,16 @@ public class SessionTests
 	{
 		var whiteClock = new Clock(new TestDateTimeProvider());
 		var blackClock = new Clock(new TestDateTimeProvider());
-		var board = BoardTestHelper.Create();
-		var moveHistory = MoveHistoryTestHelper.Create(board);
-		var session = new Session(SessionPlayersTestHelper.Create(whiteClock, blackClock),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
-		board.SetOpeningPosition();
+		var sessionPlayers = SessionPlayersTestHelper.Create(whiteClock, blackClock);
 
-		session.Start();
-		
+		var session = SessionTestHelper.GetStartedSession(sessionPlayers);
+
 		Assert.IsTrue(whiteClock.Ticking);
 		Assert.IsFalse(blackClock.Ticking);
 
-		var move = board.a2.GetMove(board.a4);
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		session.Move(move);
-		
+
 		Assert.IsFalse(whiteClock.Ticking);
 		Assert.IsTrue(blackClock.Ticking);
 	}
@@ -56,20 +51,14 @@ public class SessionTests
 	[Test]
 	public void ShouldStoreMovesWhenNextCalled()
 	{
-		var board = BoardTestHelper.Create();
-		var moveHistory = MoveHistoryTestHelper.Create(board);
-		var session = new Session(SessionPlayersTestHelper.Create(),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
-		board.SetOpeningPosition();
-
-		session.Start();
+		var session = SessionTestHelper.GetStartedSession();
 		
-		var move = board.a2.GetMove(board.a4);
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		session.Move(move);
 		Assert.AreEqual(1, session.MoveHistory.Count());
 		Assert.AreEqual(session.MoveHistory.First(), move);
 
-		move = board.b7.GetMove(board.b5);
+		move = session.Board.b7.GetMove(session.Board.b5);
 		session.Move(move);
 		Assert.AreEqual(2, session.MoveHistory.Count());
 		Assert.AreEqual(session.MoveHistory.First(), move);
@@ -78,21 +67,15 @@ public class SessionTests
 	[Test]
 	public void ShouldRemoveMovesWhenBackCalled()
 	{
-		var board = BoardTestHelper.Create();
-		var moveHistory = MoveHistoryTestHelper.Create(board);
-		var session = new Session(SessionPlayersTestHelper.Create(),
-			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.CreateDummy(), board, moveHistory);
-		board.SetOpeningPosition();
-
-		session.Start();
+		var session = SessionTestHelper.GetStartedSession();
 		
-		var move = board.a2.GetMove(board.a4);
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		session.Move(move);
 
-		move = board.b7.GetMove(board.b5);
+		move = session.Board.b7.GetMove(session.Board.b5);
 		session.Move(move);
 
-		var moveToTakeBackLater = board.a4.GetMove(board.b5);
+		var moveToTakeBackLater = session.Board.a4.GetMove(session.Board.b5);
 		session.Move(moveToTakeBackLater);
 
 		var lastMove = session.Back();
@@ -105,15 +88,10 @@ public class SessionTests
 	public void ShouldInvokeMoveEventWhenAValidMoveIsMade()
 	{
 		bool isEventCallbackInvoked = false;
-		var board = BoardTestHelper.Create();
-		var session = SessionTestHelper.Create(board: board);
+		var session = SessionTestHelper.GetStartedSession();
 		session.AddMoveEventCallback(move => isEventCallbackInvoked = true);
-
-		board.SetOpeningPosition();
-
-		session.Start();
 		
-		var move = board.a2.GetMove(board.a4);
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		session.Move(move);
 
 		Assert.IsTrue(isEventCallbackInvoked);
@@ -157,6 +135,7 @@ public class SessionTests
 		var moveHistory = MoveHistoryTestHelper.Create(board);
 		var session = new Session(SessionPlayersTestHelper.Create(),
 			SessionPlayerRegistrarTestHelper.Create(), SessionStateMachineTestHelper.Create(), board, moveHistory);
+
 		board.SetOpeningPosition();
 
 		session.RegisterBlackPlayer(PlayerTestHelper.CreateBlackPlayer());

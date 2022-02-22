@@ -20,29 +20,28 @@ public class WhitePawnAttackTests
 	[Test]
 	public void ShouldBeAllowedToAttackEnPassant()
 	{
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create();
+		var session = SessionTestHelper.GetStartedSessionWithEmptyBoard();
 		
 		var attackingPawn = WhitePieceDecoratorTestHelper.Create(new WhitePawn());
 		var attackedPawn = BlackPieceDecoratorTestHelper.Create(new BlackPawn());
 		var otherPiece = WhitePieceDecoratorTestHelper.Create(new Queen());
 		
-		board.b4.SetPiece(attackingPawn);
-		board.c7.SetPiece(attackedPawn);
-		board.a1.SetPiece(otherPiece);
+		session.Board.b4.SetPiece(attackingPawn);
+		session.Board.c7.SetPiece(attackedPawn);
+		session.Board.a1.SetPiece(otherPiece);
 		session.Start();
 
-		var move = board.b4.GetMove(board.b5);
+		var move = session.Board.b4.GetMove(session.Board.b5);
 		session.Move(move);
 
-		move = board.c7.GetMove(board.c5);
+		move = session.Board.c7.GetMove(session.Board.c5);
 		session.Move(move);
 		
-		var testMove = board.b5.GetMove(board.c6);
+		var testMove = session.Board.b5.GetMove(session.Board.c6);
 		MoveTestHelper.AssertIsValidMove(testMove);
 
 		session.Move(testMove);
-		Assert.IsFalse(board.c5.IsOccupied);
+		Assert.IsFalse(session.Board.c5.IsOccupied);
 	}
 
 	private class WhitePawnAttackTestDataCollection

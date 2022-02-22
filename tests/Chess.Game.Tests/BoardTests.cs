@@ -35,19 +35,17 @@ public class BoardTests
 	[Test]
 	public void ShouldUpdatePieceLocationsAfterMove()
 	{
-		var session = SessionTestHelper.Create();
-		var board = BoardTestHelper.Create();
-		board.SetOpeningPosition();
+		var session = SessionTestHelper.GetStartedSession();
 
-		var move = board.a2.GetMove(board.a4);
+		var move = session.Board.a2.GetMove(session.Board.a4);
 		MoveTestHelper.AssertIsValidMove(move);//a2-a4		
 		session.Move(move);
 
-		move = board.b7.GetMove(board.b5);
+		move = session.Board.b7.GetMove(session.Board.b5);
 		MoveTestHelper.AssertIsValidMove(move);//b7-b5
 		session.Move(move);
 
-		move = board.a4.GetMove(board.b5);
+		move = session.Board.a4.GetMove(session.Board.b5);
 		MoveTestHelper.AssertIsValidMove(move);//a4-b5
 	}
 }
