@@ -20,7 +20,6 @@ import { ChessBoardComponent } from '../chess-board/chess-board.component';
 export class ChessSessionComponent {
   public session: SessionDTO = new EmptySessionDTO();
   public board: Board = new EmptyBoard();
-  public moveExpression: string = "";
   public whitePlayerName: string = "";
   public blackPlayerName: string = "";
   @ViewChild(ChessBoardComponent) chessBoard?:ChessBoardComponent;
@@ -71,8 +70,7 @@ export class ChessSessionComponent {
 							error => console.error(error));
   	}
 
-	public onMove(move: Move)
-	{
+	public onMove(move: Move) {
 		var moveRequest = new MoveRequest(new SessionIdRequest(this.session.id.value),
 			new CellRequest(move.from.x, move.from.y), new CellRequest(move.to.x, move.to.y));
 		console.log(moveRequest);
@@ -86,48 +84,5 @@ export class ChessSessionComponent {
 							},
 							error => console.error(error));
 	}
-
-  	// public move() {
-	// 	var moveRequest = this.GetMoveRequest();
-	// 	console.log(moveRequest);
-	// 	this.http
-	// 			.put<SessionDTO>(this.baseUrl + 'move', moveRequest)
-	// 			.subscribe(result => {
-	// 							this.session = result;
-	// 							this.board = new Board(this.session.board, this.pieceFactory);
-	// 							console.log(result);
-	// 						},
-	// 						error => console.error(error));
-  	// }
-
-	// private GetMoveRequest() : MoveRequest
-	// {
-	// 	// if (moveString == null)
-	// 	// 	throw new InvalidMoveStringException(string.Empty);
-	// 	var moveStringParts = this.moveExpression.split("-");
-	// 	// if (moveStringParts.length != 2)
-	// 	// 	throw new InvalidMoveStringException(moveString);
-		
-	// 	var fromCellString = moveStringParts[0];
-	// 	var toCellString = moveStringParts[1];
-		
-	// 	var fromCell = this.GetCellRequest(fromCellString);
-	// 	var toCell = this.GetCellRequest(toCellString);
-
-	// 	return new MoveRequest(new SessionIdRequest(this.session.id.value), fromCell, toCell);
-	// }
-
-	// private GetCellRequest(cellName: string) : CellRequest
-	// {
-	// 	var x = cellName.charCodeAt(0) - 97;//a -> h
-	// 	var y = cellName.charCodeAt(1) - 49;//1 -> 8
-
-	// 	return new CellRequest(x, y)
-	// }
-
-	// private GetFENString()
-	// {
-
-	// }
 }
 

@@ -77,5 +77,8 @@ public record Cell
 		return this.GetCellOnSameBoard(coordinate.X, coordinate.Y);
 	}
 
-
+	// public Cell Copy()
+	// {
+	// 	return new Cell(this);
+	// }
 }

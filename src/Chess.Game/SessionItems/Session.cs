@@ -36,7 +36,6 @@ public record Session
 		? this.BlackPlayer
 		: this.WhitePlayer;
 
-	//For serialization. Used to be able to store the session as a whole.
 	public Board Board { get; }
 	public SessionPlayers SessionPlayers => this.sessionPlayers;
 	public SessionPlayerRegistrar SessionPlayerRegistrar => this.sessionPlayerRegistrar;
@@ -55,11 +54,14 @@ public record Session
 		if (!this.CanMove(move))
 			return new InvalidMove(move);
 
+		var originalMove = move.Copy();
+		
 		move.Go();
 		this.sessionStateMachine.Move();
-		this.moves.Push(move);
 		this.SwitchTurns();
-		this.OnMove.Invoke(move);
+		
+		this.moves.Push(originalMove);
+		this.OnMove.Invoke(originalMove);
 		
 		return move;
 	}

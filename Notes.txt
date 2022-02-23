@@ -79,3 +79,8 @@ https://www.npmjs.com/package/ngx-chess-board/v/2.2.0
 
 --FEN string
 https://www.codewars.com/kata/5e343ecbcd2b84001f5594b9
+
+
+--Karma testing
+npm test
+https://www.webagesolutions.com/blog/running-and-debugging-tests-in-karma

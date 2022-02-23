@@ -1,16 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { EmptyBoard } from '../models/EmptyBoard';
 import { Board } from '../models/Board';
 import { NgxChessBoardService } from 'ngx-chess-board';
 import {NgxChessBoardView} from 'ngx-chess-board';
-import { MoveRequest } from '../Request/MoveRequest';
-import { HttpClient } from '@angular/common/http';
-import { SessionDTO } from '../DTO/SessionDTO';
-import { EmptySessionDTO } from '../DTO/EmptySessionDTO';
-import { PieceFactory } from '../models/Pieces/PieceFactory';
-import { SessionIdRequest } from '../Request/SessionIdRequest';
-import { CellRequest } from '../Request/CellRequest';
-import { SessionIdDTO } from '../DTO/SessionIdDTO';
 import { Cell } from '../models/Cell';
 import { Move } from '../models/Move';
 
@@ -19,12 +10,11 @@ import { Move } from '../models/Move';
   templateUrl: './chess-board.component.html'
 })
 export class ChessBoardComponent implements OnInit {
-	//public session: SessionDTO = new EmptySessionDTO();
-	@Input() board!: Board;// = new EmptyBoard();
-	//public board: Board = new EmptyBoard();
+	@Input() board!: Board;
 	@Output() onMove : EventEmitter<Move> = new EventEmitter();
 	@ViewChild('boardView', {static: false}) boardView!: NgxChessBoardView;//Using ! as the Non-null assertion operator
-	
+	public moveExpression: string = "";
+
 	constructor(private ngxChessBoardService: NgxChessBoardService) {
 		
 	}
@@ -37,19 +27,23 @@ export class ChessBoardComponent implements OnInit {
 		var moves = this.boardView.getMoveHistory();
 		var currentMove = moves[moves.length-1];
 		console.log(currentMove);
-		this.onMove.emit(this.GetMove(currentMove.move));
+		this.move(currentMove.move);
+	}
+
+	public move(moveExpression: string) {
+		this.onMove.emit(this.GetMove(moveExpression));
+	}
+
+	public moveWithText() {
+		this.move(this.moveExpression);
 	}
 
 	public setBoard(board: Board)
 	{
-		//this.board = new Board(this.board, this.pieceFactory);
-		//console.log(result);
-		//this.boardView.setFEN(this.board.FENString);
 		this.board = board;
 		console.log(board.FENString);
 		console.log(this.boardView.getFEN());
 		this.boardView.setFEN(this.board.FENString);
-		//this.boardView.setFEN("RNBQKBNR/PPPP1PPP/11111111/1111P111/1111p111/11111111/pppp1ppp/rnbqkbnr");
 	}
 
 	private GetMove(moveExpression: string) : Move

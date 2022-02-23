@@ -25,12 +25,20 @@ public class MoveController : ControllerBase
 	{
 		var sessionId = new SessionId(moveRequest.SessionId);
 		var currentSession = await this.chessSessionRepository.GetAsync(sessionId);
-		var move = new Move(GetCell(moveRequest.From, currentSession), GetCell(moveRequest.To, currentSession));
+		var move = GetMove(moveRequest, currentSession);
+		
 		var moveResult = currentSession.Move(move);
 		await this.chessSessionRepository.SetAsync(sessionId, currentSession);
+		
 		var requestResult = moveResult.IsValid ? new SuccessfulRequestResult(moveRequest) : new FailedRequestResult(moveRequest) as RequestResult;
-
 		return this.sessionDTOFactory.Get(currentSession, sessionId, requestResult);
+	}
+
+	private static Move GetMove(MoveRequest moveRequest, Session currentSession)
+	{
+		var from = GetCell(moveRequest.From, currentSession);
+		var to = GetCell(moveRequest.To, currentSession);
+		return from.GetMove(to);
 	}
 
 	private static Cell GetCell(CellRequest cellRequest, Session currentSession)

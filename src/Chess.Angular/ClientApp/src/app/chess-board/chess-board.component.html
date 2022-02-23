@@ -1,16 +1,20 @@
-<div *ngIf="board.rows">
+<!-- <div *ngIf="board.rows">
 	
-</div>
+</div> -->
 
+<div>
+	<div class="col-sm-3"><label>Move:</label></div><div class="col-sm-9"><input [(ngModel)]="moveExpression" #details="ngModel" /></div>
+	<button class="btn btn-primary" (click)="moveWithText()">Move</button>
+</div>
 <ngx-chess-board #boardView [freeMode]="true" (moveChange)="moveChanged()"></ngx-chess-board>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="board.rows">
+<!-- <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="board.rows">
   <tbody>
     <tr *ngFor="let row of board.rows">
       <td *ngFor="let rowCell of row">{{ rowCell.piece.name }}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <p>{{board.FENString}}</p>
 

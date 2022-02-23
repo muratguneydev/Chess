@@ -47,4 +47,9 @@ public record Move
 		//return !this.From.Board.GetPiecesInCoordinates(movePath.CoordinatesInPath)
 		//					.Any();
 	}
+
+	public Move Copy()
+	{
+		return new Move(this);
+	}
 }

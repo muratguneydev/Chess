@@ -11,9 +11,6 @@
 		<button class="btn btn-primary" (click)="register()">Register</button>
 
 		<button class="btn btn-primary" (click)="ready()">Ready</button>
-
-		<div class="col-sm-3"><label>Move:</label></div><div class="col-sm-9"><input [(ngModel)]="moveExpression" #details="ngModel" /></div>
-		<!-- <button class="btn btn-primary" (click)="move()">Move</button> -->
 		
 		<app-chess-board [board]="board" (onMove)='onMove($event)'></app-chess-board>
 		
